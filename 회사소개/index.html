@@ -1,0 +1,485 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>회사소개 | 러블리키친 - 프리미엄 음식물처리기</title>
+    <meta name="description" content="러블리키친 회사소개 - 대한민국 No.1 프리미엄 음식물처리기 전문 브랜드">
+    <meta name="keywords" content="러블리키친, 회사소개, 음식물처리기, 프리미엄">
+
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+
+    <!-- Libraries -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/about.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://lkitchen.co.kr/wp-content/uploads/2024/08/logo.png">
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div class="preloader-logo">
+                <img src="https://lkitchen.co.kr/wp-content/uploads/2024/08/logo.png" alt="Logo">
+            </div>
+            <div class="preloader-progress">
+                <div class="preloader-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll Progress -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Cursor Effect -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-outline" id="cursorOutline"></div>
+
+    <!-- Header -->
+    <header class="header scrolled" id="header">
+        <div class="header-container">
+            <a href="http://115.68.223.124/lovelykitchen/" class="logo">
+                <img src="https://lkitchen.co.kr/wp-content/uploads/2024/08/logo.png" alt="Lovely Kitchen" class="logo-img">
+            </a>
+
+            <nav class="nav-desktop">
+                <ul class="nav-menu">
+                    <li><a href="http://115.68.223.124/lovelykitchen/회사소개/" class="nav-link active">회사소개</a></li>
+                    <li class="has-dropdown">
+                        <a href="http://115.68.223.124/lovelykitchen/products.html" class="nav-link">제품 <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="http://115.68.223.124/lovelykitchen/products.html">음식물처리기</a>
+                            <a href="http://115.68.223.124/lovelykitchen/싱크볼/">아콴테 싱크볼</a>
+                            <a href="http://115.68.223.124/lovelykitchen/악세사리/">악세사리</a>
+                        </div>
+                    </li>
+                    <li class="has-dropdown">
+                        <a href="http://115.68.223.124/lovelykitchen/질문과-답변/" class="nav-link">고객지원 <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="http://115.68.223.124/lovelykitchen/질문과-답변/">질문과 답변</a>
+                            <a href="http://115.68.223.124/lovelykitchen/a-s-지원/">A/S 서비스 지원</a>
+                        </div>
+                    </li>
+                    <li class="has-dropdown">
+                        <a href="http://115.68.223.124/lovelykitchen/음식물처리기-후기/" class="nav-link">후기게시판 <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="http://115.68.223.124/lovelykitchen/음식물처리기-후기/">음식물처리기 후기</a>
+                            <a href="http://115.68.223.124/lovelykitchen/싱크볼-후기/">싱크볼 후기</a>
+                        </div>
+                    </li>
+                    <li class="has-dropdown">
+                        <a href="http://115.68.223.124/lovelykitchen/사진갤러리/" class="nav-link">사진 갤러리 <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="http://115.68.223.124/lovelykitchen/사진갤러리/">음식물처리기 갤러리</a>
+                            <a href="http://115.68.223.124/lovelykitchen/사진갤러리/">아콴테 싱크볼 갤러리</a>
+                        </div>
+                    </li>
+                    <li><a href="http://115.68.223.124/lovelykitchen/친환경제품/" class="nav-link">친환경제품</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <a href="tel:1661-9038" class="header-phone">
+                    <i class="fas fa-phone"></i>
+                    <span>1661-9038</span>
+                </a>
+                <a href="http://115.68.223.124/lovelykitchen/빠른상담/" class="btn-consultation">
+                    <span>무료상담</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <button class="mobile-toggle" id="mobileToggle" aria-label="메뉴">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-header">
+            <img src="https://lkitchen.co.kr/wp-content/uploads/2024/08/logo.png" alt="Logo" class="mobile-logo">
+            <button class="mobile-close" id="mobileClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <nav class="mobile-nav-content">
+            <ul class="mobile-menu">
+                <li><a href="http://115.68.223.124/lovelykitchen/회사소개/">회사소개</a></li>
+                <li class="has-submenu">
+                    <a href="#">제품 <i class="fas fa-plus"></i></a>
+                    <ul class="submenu">
+                        <li><a href="http://115.68.223.124/lovelykitchen/products.html">음식물처리기</a></li>
+                        <li><a href="http://115.68.223.124/lovelykitchen/싱크볼/">아콴테 싱크볼</a></li>
+                        <li><a href="http://115.68.223.124/lovelykitchen/악세사리/">악세사리</a></li>
+                    </ul>
+                </li>
+                <li class="has-submenu">
+                    <a href="#">고객지원 <i class="fas fa-plus"></i></a>
+                    <ul class="submenu">
+                        <li><a href="http://115.68.223.124/lovelykitchen/질문과-답변/">질문과 답변</a></li>
+                        <li><a href="http://115.68.223.124/lovelykitchen/a-s-지원/">A/S 서비스 지원</a></li>
+                    </ul>
+                </li>
+                <li class="has-submenu">
+                    <a href="#">후기게시판 <i class="fas fa-plus"></i></a>
+                    <ul class="submenu">
+                        <li><a href="http://115.68.223.124/lovelykitchen/음식물처리기-후기/">음식물처리기 후기</a></li>
+                        <li><a href="http://115.68.223.124/lovelykitchen/싱크볼-후기/">싱크볼 후기</a></li>
+                    </ul>
+                </li>
+                <li class="has-submenu">
+                    <a href="#">사진 갤러리 <i class="fas fa-plus"></i></a>
+                    <ul class="submenu">
+                        <li><a href="http://115.68.223.124/lovelykitchen/사진갤러리/">음식물처리기 갤러리</a></li>
+                        <li><a href="http://115.68.223.124/lovelykitchen/사진갤러리/">아콴테 싱크볼 갤러리</a></li>
+                    </ul>
+                </li>
+                <li><a href="http://115.68.223.124/lovelykitchen/친환경제품/">친환경제품</a></li>
+            </ul>
+            <div class="mobile-contact">
+                <a href="tel:1661-9038" class="mobile-phone">
+                    <i class="fas fa-phone"></i> 1661-9038
+                </a>
+                <a href="http://115.68.223.124/lovelykitchen/빠른상담/" class="mobile-consult-btn">무료 상담 신청</a>
+            </div>
+        </nav>
+    </div>
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <main>
+        <!-- Page Hero -->
+        <section class="page-hero">
+            <div class="page-hero-bg"></div>
+            <div class="page-hero-overlay"></div>
+            <div class="container">
+                <div class="page-hero-content" data-aos="fade-up">
+                    <nav class="breadcrumb">
+                        <a href="http://115.68.223.124/lovelykitchen/">홈</a>
+                        <span><i class="fas fa-chevron-right"></i></span>
+                        <span class="current">회사소개</span>
+                    </nav>
+                    <h1 class="page-title">회사소개</h1>
+                    <p class="page-subtitle">쾌적하고 위생적인 주방을 위한 필수품</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Intro Section -->
+        <section class="about-intro">
+            <div class="container">
+                <div class="about-intro-wrapper">
+                    <div class="about-intro-content" data-aos="fade-right">
+                        <div class="about-label">
+                            <span class="line"></span>
+                            <span>LOVELY KITCHEN</span>
+                        </div>
+                        <h2 class="about-title">
+                            러블리키친은<br>
+                            <span class="highlight">정말 제대로 만듭니다.</span>
+                        </h2>
+                        <p class="about-subtitle">정말 자신있습니다.</p>
+                        <p class="about-desc">
+                            러블리키친은 오랜 시간 고장 없이 새것처럼 사용할 수 있도록
+                            세계 최고 품질의 고강성 재료만을 사용하여 제품을 제작했습니다.
+                            고객이 선택한 제품이 정말 잘 사용된다는 확신을 줄 수 있도록
+                            철저하게 만들었습니다.
+                        </p>
+                        <p class="about-desc">
+                            우리는 수많은 어려움을 극복하며 최고의 제품을 만들어 왔습니다.
+                            개발 전문가와 협업하여, 어떤 음식물도 가볍게 처리할 수 있는
+                            혁신적인 제품을 개발했습니다.
+                        </p>
+                    </div>
+                    <div class="about-intro-image" data-aos="fade-left">
+                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/03/KakaoTalk_20250316_152140022_29-1-1-1024x683.png" alt="러블리키친 음식물처리기">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Company Values -->
+        <section class="company-values">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <span class="section-tag">OUR VALUES</span>
+                    <h2 class="section-title">러블리키친의 핵심 가치</h2>
+                    <p class="section-desc">고객을 최우선으로 생각하는 러블리키친의 가치입니다</p>
+                </div>
+
+                <div class="values-grid">
+                    <div class="value-card" data-aos="fade-up" data-aos-delay="100">
+                        <div class="value-icon">
+                            <i class="fas fa-gem"></i>
+                        </div>
+                        <h3>최고의 품질</h3>
+                        <p>세계 최고 품질의 고강성 재료만을 사용하여 오랜 시간 고장 없이 사용할 수 있는 제품을 만듭니다.</p>
+                    </div>
+                    <div class="value-card" data-aos="fade-up" data-aos-delay="200">
+                        <div class="value-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3>혁신적인 기술</h3>
+                        <p>국내 최초 4-WAY LK 멀티트랩 등 특허 기술을 통해 더 나은 제품을 개발합니다.</p>
+                    </div>
+                    <div class="value-card" data-aos="fade-up" data-aos-delay="300">
+                        <div class="value-icon">
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        <h3>고객 만족</h3>
+                        <p>고객이 선택한 제품에 확신을 가질 수 있도록 철저한 품질 관리와 A/S를 제공합니다.</p>
+                    </div>
+                    <div class="value-card" data-aos="fade-up" data-aos-delay="400">
+                        <div class="value-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3>친환경 경영</h3>
+                        <p>환경부 친환경 인증 제품으로 지속 가능한 미래를 위해 노력합니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Team Section -->
+        <section class="team-section" style="padding: 80px 0; background: #f8f9fa;">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <span class="section-tag">OUR TEAM</span>
+                    <h2 class="section-title">개발 전문가 팀</h2>
+                    <p class="section-desc">최고의 기술력으로 제품을 개발하는 전문가들</p>
+                </div>
+
+                <div class="team-image" data-aos="fade-up" style="text-align: center; margin-top: 40px;">
+                    <img src="https://lkitchen.co.kr/wp-content/uploads/2025/03/KakaoTalk_20250316_152140022_29-1-1-1024x683.png" alt="러블리키친 개발팀" style="max-width: 100%; border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.1);">
+                </div>
+
+                <div class="team-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; margin-top: 40px;">
+                    <div class="team-card" data-aos="fade-up" data-aos-delay="100" style="background: white; padding: 30px; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.05);">
+                        <h3 style="font-size: 1.5rem; color: #051535; margin-bottom: 10px;">Janet</h3>
+                        <p style="color: #3b82f6; font-weight: 600; margin-bottom: 15px;">음식물 처리기 개발 디렉터</p>
+                        <p style="color: #666; line-height: 1.7;">미국 음식물 처리기 전문기업 애너하임사 10년 근무 경력의 전문가입니다.</p>
+                    </div>
+                    <div class="team-card" data-aos="fade-up" data-aos-delay="200" style="background: white; padding: 30px; border-radius: 16px; box-shadow: 0 10px 40px rgba(0,0,0,0.05);">
+                        <h3 style="font-size: 1.5rem; color: #051535; margin-bottom: 10px;">Mr. Dang</h3>
+                        <p style="color: #3b82f6; font-weight: 600; margin-bottom: 15px;">음식물 처리기 개발 디렉터</p>
+                        <p style="color: #666; line-height: 1.7;">야마하 요트 엔지니어 20년 경력의 기술 전문가입니다.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Company Info -->
+        <section class="company-info">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <span class="section-tag">COMPANY INFO</span>
+                    <h2 class="section-title">회사 정보</h2>
+                </div>
+
+                <div class="info-card" data-aos="fade-up">
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <span class="info-label">회사명</span>
+                            <span class="info-value">러블리키친</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">대표이사</span>
+                            <span class="info-value">성정호</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">사업자등록번호</span>
+                            <span class="info-value">306-08-91986</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">본사 주소</span>
+                            <span class="info-value">서울시 서초구 반포대로22길 35, 2층 2002호</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">고객센터</span>
+                            <span class="info-value"><a href="tel:1661-9038">1661-9038</a></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">이메일</span>
+                            <span class="info-value"><a href="mailto:cs.lovelykitchen@gmail.com">cs.lovelykitchen@gmail.com</a></span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-label">팩스</span>
+                            <span class="info-value">070-4015-4515</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Trust Section -->
+        <section class="trust-section about-trust">
+            <div class="container">
+                <div class="trust-badges" data-aos="fade-up">
+                    <div class="trust-item">
+                        <i class="fas fa-shield-check"></i>
+                        <span>정품 인증</span>
+                    </div>
+                    <div class="trust-item">
+                        <i class="fas fa-truck-fast"></i>
+                        <span>무료 설치</span>
+                    </div>
+                    <div class="trust-item">
+                        <i class="fas fa-tools"></i>
+                        <span>5년 무상 A/S</span>
+                    </div>
+                    <div class="trust-item">
+                        <i class="fas fa-leaf"></i>
+                        <span>친환경 인증</span>
+                    </div>
+                    <div class="trust-item">
+                        <i class="fas fa-medal"></i>
+                        <span>특허 기술</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="cta-bg">
+                <div class="cta-pattern"></div>
+            </div>
+            <div class="container">
+                <div class="cta-content" data-aos="fade-up">
+                    <span class="cta-tag">GET STARTED</span>
+                    <h2 class="cta-title">
+                        주방의 새로운 시대,<br>
+                        <span class="gradient-text">지금 시작하세요</span>
+                    </h2>
+                    <p class="cta-desc">
+                        음식물 처리기 설치만으로 거주환경의 커다란 발전을 경험하세요
+                    </p>
+                    <div class="cta-buttons">
+                        <a href="http://115.68.223.124/lovelykitchen/빠른상담/" class="btn-primary large">
+                            <span>무료 상담 신청</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="tel:1661-9038" class="btn-outline-light large">
+                            <i class="fas fa-phone"></i>
+                            <span>1661-9038</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-brand">
+                        <a href="http://115.68.223.124/lovelykitchen/" class="footer-logo">
+                            <img src="https://lkitchen.co.kr/wp-content/uploads/2024/08/logo.png" alt="Lovely Kitchen">
+                        </a>
+                        <p class="footer-tagline">완벽한 분쇄, 차원이 다른 프리미엄</p>
+                        <div class="footer-social">
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                            <a href="#" aria-label="Blog"><i class="fab fa-blogger-b"></i></a>
+                            <a href="#" aria-label="KakaoTalk"><i class="fas fa-comment"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="footer-links">
+                        <h4>제품</h4>
+                        <ul>
+                            <li><a href="http://115.68.223.124/lovelykitchen/products.html">음식물처리기</a></li>
+                            <li><a href="http://115.68.223.124/lovelykitchen/싱크볼/">아콴테 싱크볼</a></li>
+                            <li><a href="http://115.68.223.124/lovelykitchen/악세사리/">악세사리</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-links">
+                        <h4>고객지원</h4>
+                        <ul>
+                            <li><a href="http://115.68.223.124/lovelykitchen/질문과-답변/">질문과 답변</a></li>
+                            <li><a href="http://115.68.223.124/lovelykitchen/a-s-지원/">A/S 서비스 지원</a></li>
+                            <li><a href="http://115.68.223.124/lovelykitchen/빠른상담/">빠른 상담</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-contact">
+                        <h4>연락처</h4>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <span class="label">고객센터</span>
+                                <a href="tel:1661-9038" class="value">1661-9038</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <span class="label">이메일</span>
+                                <a href="mailto:cs.lovelykitchen@gmail.com" class="value">cs.lovelykitchen@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-fax"></i>
+                            <div>
+                                <span class="label">팩스</span>
+                                <span class="value">070-4015-4515</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="footer-info">
+                    <p>러블리키친 총판 대표이사 성정호 ｜ 사업자등록번호 306-08-91986</p>
+                    <p>본사: 서울시 서초구 반포대로22길 35, 2층 2002호</p>
+                </div>
+                <div class="footer-copyright">
+                    <p>&copy; 2024 LOVELY KITCHEN. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Elements -->
+    <div class="floating-buttons">
+        <a href="tel:1661-9038" class="float-btn phone" aria-label="전화하기">
+            <i class="fas fa-phone"></i>
+            <span class="float-tooltip">전화하기</span>
+        </a>
+        <a href="https://pf.kakao.com/_lovelykitchen" class="float-btn kakao" target="_blank" aria-label="카카오톡 상담">
+            <i class="fas fa-comment"></i>
+            <span class="float-tooltip">카카오톡</span>
+        </a>
+        <button class="float-btn scroll-top" id="scrollTop" aria-label="맨 위로">
+            <i class="fas fa-arrow-up"></i>
+            <span class="float-tooltip">맨 위로</span>
+        </button>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="../js/main.js"></script>
+</body>
+</html>
