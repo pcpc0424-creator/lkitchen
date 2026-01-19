@@ -54,7 +54,7 @@
                 </div>
 
                 <div class="contact-form" data-aos="fade-up">
-                    <form action="#" method="post">
+                    <form id="inquiryForm" action="#" method="post">
                         <div class="form-group">
                             <label for="name">성함 *</label>
                             <input type="text" id="name" name="name" placeholder="성함을 입력해주세요" required>
@@ -78,8 +78,9 @@
                             <label for="message">문의사항 <span style="color: #888; font-weight: 400;">(180자 제한)</span></label>
                             <textarea id="message" name="message" placeholder="문의사항을 입력해주세요" maxlength="180"></textarea>
                         </div>
-                        <button type="submit" class="form-submit">신청하기</button>
+                        <button type="submit" class="form-submit" id="submitBtn">신청하기</button>
                     </form>
+                    <div id="formMessage" style="display: none; padding: 15px; border-radius: 8px; margin-top: 15px; text-align: center;"></div>
                 </div>
 
                 <div class="cta-box" data-aos="fade-up">
@@ -100,5 +101,63 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="../js/main.js"></script>
+    <script>
+    // 문의 폼 AJAX 제출
+    document.getElementById('inquiryForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        const form = this;
+        const submitBtn = document.getElementById('submitBtn');
+        const formMessage = document.getElementById('formMessage');
+        const originalBtnText = submitBtn.textContent;
+
+        // 버튼 비활성화
+        submitBtn.disabled = true;
+        submitBtn.textContent = '전송 중...';
+
+        // FormData 생성
+        const formData = new FormData(form);
+
+        // AJAX 요청
+        fetch('http://115.68.223.124/lovelykitchen/admin/submit_inquiry.php', {
+            method: 'POST',
+            body: formData
+        })
+        .then(response => response.json())
+        .then(data => {
+            formMessage.style.display = 'block';
+
+            if (data.success) {
+                formMessage.style.background = '#d1fae5';
+                formMessage.style.color = '#065f46';
+                formMessage.textContent = data.message;
+                form.reset();
+            } else {
+                formMessage.style.background = '#fee2e2';
+                formMessage.style.color = '#991b1b';
+                formMessage.textContent = data.message;
+            }
+
+            // 3초 후 메시지 숨기기
+            setTimeout(() => {
+                formMessage.style.display = 'none';
+            }, 5000);
+        })
+        .catch(error => {
+            formMessage.style.display = 'block';
+            formMessage.style.background = '#fee2e2';
+            formMessage.style.color = '#991b1b';
+            formMessage.textContent = '네트워크 오류가 발생했습니다. 잠시 후 다시 시도해주세요.';
+
+            setTimeout(() => {
+                formMessage.style.display = 'none';
+            }, 5000);
+        })
+        .finally(() => {
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalBtnText;
+        });
+    });
+    </script>
 </body>
 </html>

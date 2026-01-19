@@ -1,0 +1,448 @@
+/**
+ * Review Page Styles
+ * 러블리키친 후기 페이지 스타일시트
+ */
+
+/* Review Section */
+.review-section {
+    padding: 60px 0 80px;
+    background: #f8f9fa;
+}
+
+/* Review Grid */
+.review-grid-new {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 50px;
+}
+
+/* Review Item */
+.review-item {
+    background: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.review-item:hover {
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    transform: translateY(-5px);
+}
+
+/* Review Thumbnail */
+.review-thumb {
+    width: 100%;
+    height: 220px;
+    overflow: hidden;
+    background: #f0f0f0;
+}
+
+.review-thumb img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+}
+
+.review-item:hover .review-thumb img {
+    transform: scale(1.05);
+}
+
+/* Review Content */
+.review-content {
+    padding: 20px;
+}
+
+.review-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 12px;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.review-text {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.7;
+    margin-bottom: 15px;
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.review-author {
+    display: inline-block;
+    font-size: 0.85rem;
+    color: #999;
+}
+
+/* Review Pagination */
+.review-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.review-pagination .page-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 36px;
+    height: 36px;
+    padding: 0 12px;
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    color: #666;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+
+.review-pagination .page-link:hover {
+    background: #f0f0f0;
+    border-color: #ccc;
+}
+
+.review-pagination .page-link.active {
+    background: #3b82f6;
+    border-color: #3b82f6;
+    color: #ffffff;
+}
+
+.review-pagination .page-link.next,
+.review-pagination .page-link.last {
+    font-size: 0.85rem;
+}
+
+.review-pagination .page-link.last {
+    padding: 0 15px;
+}
+
+/* Counsel Float Button */
+.counsel-float {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    z-index: 1000;
+}
+
+.counsel-btn {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 15px 20px;
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    border-radius: 50px;
+    box-shadow: 0 4px 20px rgba(59, 130, 246, 0.4);
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.counsel-btn:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 30px rgba(59, 130, 246, 0.5);
+}
+
+.counsel-btn i {
+    font-size: 1.5rem;
+    color: #ffffff;
+}
+
+.counsel-text {
+    display: flex;
+    flex-direction: column;
+}
+
+.counsel-title {
+    font-size: 0.75rem;
+    color: rgba(255, 255, 255, 0.9);
+    font-weight: 500;
+}
+
+.counsel-sub {
+    font-size: 0.65rem;
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.counsel-number {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: 0.5px;
+}
+
+/* Responsive - Tablet */
+@media (max-width: 992px) {
+    .review-grid-new {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+    }
+
+    .review-thumb {
+        height: 200px;
+    }
+}
+
+/* Responsive - Mobile */
+@media (max-width: 640px) {
+    .review-section {
+        padding: 40px 0 60px;
+    }
+
+    .review-grid-new {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+
+    .review-thumb {
+        height: 220px;
+    }
+
+    .review-content {
+        padding: 18px;
+    }
+
+    .review-title {
+        font-size: 1rem;
+    }
+
+    .review-text {
+        font-size: 0.88rem;
+        -webkit-line-clamp: 3;
+    }
+
+    .review-pagination {
+        gap: 5px;
+    }
+
+    .review-pagination .page-link {
+        min-width: 32px;
+        height: 32px;
+        font-size: 0.85rem;
+    }
+
+    .review-pagination .page-link.last {
+        padding: 0 10px;
+        font-size: 0.8rem;
+    }
+
+    /* Counsel Float Mobile */
+    .counsel-float {
+        bottom: 20px;
+        right: 15px;
+    }
+
+    .counsel-btn {
+        padding: 12px 15px;
+        gap: 10px;
+    }
+
+    .counsel-btn i {
+        font-size: 1.3rem;
+    }
+
+    .counsel-title {
+        font-size: 0.7rem;
+    }
+
+    .counsel-sub {
+        font-size: 0.6rem;
+    }
+
+    .counsel-number {
+        font-size: 1rem;
+    }
+}
+
+/* ============================================
+   Review Detail Modal
+   ============================================ */
+.review-item {
+    cursor: pointer;
+}
+
+.review-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 2000;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.review-modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.review-modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    width: 90%;
+    max-width: 700px;
+    max-height: 90vh;
+    background: #ffffff;
+    border-radius: 16px;
+    z-index: 2001;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    box-shadow: 0 25px 80px rgba(0, 0, 0, 0.3);
+}
+
+.review-modal.active {
+    opacity: 1;
+    visibility: visible;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.review-modal-close {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.1);
+    border: none;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    color: #333;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 10;
+}
+
+.review-modal-close:hover {
+    background: rgba(0, 0, 0, 0.2);
+    transform: rotate(90deg);
+}
+
+.review-modal-content {
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.review-modal-image {
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+    background: #f0f0f0;
+}
+
+.review-modal-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.review-modal-body {
+    padding: 30px;
+}
+
+.review-modal-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 15px;
+    line-height: 1.4;
+}
+
+.review-modal-text {
+    font-size: 1rem;
+    color: #555;
+    line-height: 1.8;
+    margin-bottom: 20px;
+}
+
+.review-modal-author {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.review-modal-author-avatar {
+    width: 45px;
+    height: 45px;
+    background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 1.1rem;
+}
+
+.review-modal-author-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.review-modal-author-name {
+    font-weight: 600;
+    color: #333;
+    font-size: 0.95rem;
+}
+
+.review-modal-author-badge {
+    font-size: 0.8rem;
+    color: #4ade80;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+/* Modal Mobile Responsive */
+@media (max-width: 640px) {
+    .review-modal {
+        width: 95%;
+        max-height: 85vh;
+    }
+
+    .review-modal-image {
+        height: 250px;
+    }
+
+    .review-modal-body {
+        padding: 20px;
+    }
+
+    .review-modal-title {
+        font-size: 1.2rem;
+    }
+
+    .review-modal-text {
+        font-size: 0.95rem;
+    }
+
+    .review-modal-close {
+        top: 10px;
+        right: 10px;
+        width: 35px;
+        height: 35px;
+        font-size: 1rem;
+    }
+}

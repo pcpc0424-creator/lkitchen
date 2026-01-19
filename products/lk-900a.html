@@ -1,0 +1,603 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LK-900A 더놈프로 | 러블리키친 음식물처리기</title>
+    <meta name="description" content="러블리키친 LK-900A 더놈프로 - 대한민국 1등 판매제품. 진짜 1마력의 놀라운 퍼포먼스로 얇은 뼈와 씨앗까지 처리">
+    <meta name="keywords" content="LK-900A, 더놈프로, 음식물처리기, 러블리키친, 1마력, 베스트셀러">
+
+    <!-- Preconnect for Performance -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+
+    <!-- Libraries -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/products.css">
+    <link rel="stylesheet" href="../css/product-detail.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://lkitchen.co.kr/wp-content/uploads/2024/08/logo.png">
+</head>
+<body>
+    <!-- Preloader -->
+    <div class="preloader" id="preloader">
+        <div class="preloader-inner">
+            <div class="preloader-logo">
+                <img src="https://lkitchen.co.kr/wp-content/uploads/2024/08/logo.png" alt="Logo">
+            </div>
+            <div class="preloader-progress">
+                <div class="preloader-bar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scroll Progress -->
+    <div class="scroll-progress" id="scrollProgress"></div>
+
+    <!-- Cursor Effect -->
+    <div class="cursor-dot" id="cursorDot"></div>
+    <div class="cursor-outline" id="cursorOutline"></div>
+
+    <!-- Header -->
+    <header class="header scrolled" id="header">
+        <div class="header-container">
+            <a href="http://115.68.223.124/lovelykitchen/" class="logo">
+                <img src="https://lkitchen.co.kr/wp-content/uploads/2024/08/logo.png" alt="Lovely Kitchen" class="logo-img">
+            </a>
+
+            <nav class="nav-desktop">
+                <ul class="nav-menu">
+                    <li><a href="http://115.68.223.124/lovelykitchen/회사소개/" class="nav-link">회사소개</a></li>
+                    <li class="has-dropdown">
+                        <a href="http://115.68.223.124/lovelykitchen/products.html" class="nav-link active">제품 <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="http://115.68.223.124/lovelykitchen/products.html">음식물처리기</a>
+                            <a href="http://115.68.223.124/lovelykitchen/싱크볼/">아콴테 싱크볼</a>
+                            <a href="http://115.68.223.124/lovelykitchen/악세사리/">악세사리</a>
+                        </div>
+                    </li>
+                    <li class="has-dropdown">
+                        <a href="http://115.68.223.124/lovelykitchen/질문과-답변/" class="nav-link">고객지원 <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="http://115.68.223.124/lovelykitchen/질문과-답변/">질문과 답변</a>
+                            <a href="http://115.68.223.124/lovelykitchen/a-s-지원/">A/S 서비스 지원</a>
+                        </div>
+                    </li>
+                    <li class="has-dropdown">
+                        <a href="http://115.68.223.124/lovelykitchen/음식물처리기-후기/" class="nav-link">후기게시판 <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="http://115.68.223.124/lovelykitchen/음식물처리기-후기/">음식물처리기 후기</a>
+                            <a href="http://115.68.223.124/lovelykitchen/싱크볼-후기/">싱크볼 후기</a>
+                        </div>
+                    </li>
+                    <li class="has-dropdown">
+                        <a href="http://115.68.223.124/lovelykitchen/사진갤러리/" class="nav-link">사진 갤러리 <i class="fas fa-chevron-down"></i></a>
+                        <div class="dropdown-menu">
+                            <a href="http://115.68.223.124/lovelykitchen/사진갤러리/">음식물처리기 갤러리</a>
+                            <a href="http://115.68.223.124/lovelykitchen/사진갤러리/">아콴테 싱크볼 갤러리</a>
+                        </div>
+                    </li>
+                    <li><a href="http://115.68.223.124/lovelykitchen/친환경제품/" class="nav-link">친환경제품</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <a href="tel:1661-9038" class="header-phone">
+                    <i class="fas fa-phone"></i>
+                    <span>1661-9038</span>
+                </a>
+                <a href="http://115.68.223.124/lovelykitchen/빠른상담/" class="btn-consultation">
+                    <span>무료상담</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+                <button class="mobile-toggle" id="mobileToggle" aria-label="메뉴">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Navigation -->
+    <div class="mobile-nav" id="mobileNav">
+        <div class="mobile-nav-header">
+            <img src="https://lkitchen.co.kr/wp-content/uploads/2024/08/logo.png" alt="Logo" class="mobile-logo">
+            <button class="mobile-close" id="mobileClose">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <nav class="mobile-nav-content">
+            <ul class="mobile-menu">
+                <li><a href="http://115.68.223.124/lovelykitchen/회사소개/">회사소개</a></li>
+                <li class="has-submenu">
+                    <a href="#">제품 <i class="fas fa-plus"></i></a>
+                    <ul class="submenu">
+                        <li><a href="http://115.68.223.124/lovelykitchen/products.html">음식물처리기</a></li>
+                        <li><a href="http://115.68.223.124/lovelykitchen/싱크볼/">아콴테 싱크볼</a></li>
+                        <li><a href="http://115.68.223.124/lovelykitchen/악세사리/">악세사리</a></li>
+                    </ul>
+                </li>
+                <li class="has-submenu">
+                    <a href="#">고객지원 <i class="fas fa-plus"></i></a>
+                    <ul class="submenu">
+                        <li><a href="http://115.68.223.124/lovelykitchen/질문과-답변/">질문과 답변</a></li>
+                        <li><a href="http://115.68.223.124/lovelykitchen/a-s-지원/">A/S 서비스 지원</a></li>
+                    </ul>
+                </li>
+                <li class="has-submenu">
+                    <a href="#">후기게시판 <i class="fas fa-plus"></i></a>
+                    <ul class="submenu">
+                        <li><a href="http://115.68.223.124/lovelykitchen/음식물처리기-후기/">음식물처리기 후기</a></li>
+                        <li><a href="http://115.68.223.124/lovelykitchen/싱크볼-후기/">싱크볼 후기</a></li>
+                    </ul>
+                </li>
+                <li class="has-submenu">
+                    <a href="#">사진 갤러리 <i class="fas fa-plus"></i></a>
+                    <ul class="submenu">
+                        <li><a href="http://115.68.223.124/lovelykitchen/사진갤러리/">음식물처리기 갤러리</a></li>
+                        <li><a href="http://115.68.223.124/lovelykitchen/사진갤러리/">아콴테 싱크볼 갤러리</a></li>
+                    </ul>
+                </li>
+                <li><a href="http://115.68.223.124/lovelykitchen/친환경제품/">친환경제품</a></li>
+            </ul>
+            <div class="mobile-contact">
+                <a href="tel:1661-9038" class="mobile-phone">
+                    <i class="fas fa-phone"></i> 1661-9038
+                </a>
+                <a href="http://115.68.223.124/lovelykitchen/빠른상담/" class="mobile-consult-btn">무료 상담 신청</a>
+            </div>
+        </nav>
+    </div>
+    <div class="mobile-overlay" id="mobileOverlay"></div>
+
+    <main>
+        <!-- Page Hero -->
+        <section class="page-hero product-detail-hero">
+            <div class="page-hero-bg"></div>
+            <div class="page-hero-overlay"></div>
+            <div class="container">
+                <div class="page-hero-content" data-aos="fade-up">
+                    <nav class="breadcrumb">
+                        <a href="http://115.68.223.124/lovelykitchen/">홈</a>
+                        <span><i class="fas fa-chevron-right"></i></span>
+                        <a href="http://115.68.223.124/lovelykitchen/products.html">제품</a>
+                        <span><i class="fas fa-chevron-right"></i></span>
+                        <span class="current">LK-900A</span>
+                    </nav>
+                    <h1 class="page-title">LK-900A 더놈프로</h1>
+                    <p class="page-subtitle">대한민국 1등 판매제품, 진짜 1마력의 놀라운 퍼포먼스</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Detail Section -->
+        <section class="product-detail-section">
+            <div class="container">
+                <div class="product-detail-wrapper">
+                    <!-- Product Gallery -->
+                    <div class="product-gallery" data-aos="fade-right">
+                        <div class="product-badge-detail best">BEST</div>
+                        <div class="product-best-ribbon">
+                            <i class="fas fa-crown"></i>
+                            <span>인기 1위</span>
+                        </div>
+                        <div class="gallery-main">
+                            <div class="gallery-main-swiper swiper">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/03/Frame-99.png" alt="LK-900A 메인">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/03/Frame-50.png" alt="LK-900A 측면">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/03/Frame-103.png" alt="LK-900A 상세">
+                                    </div>
+                                </div>
+                                <div class="swiper-button-next"></div>
+                                <div class="swiper-button-prev"></div>
+                            </div>
+                        </div>
+                        <div class="gallery-thumbs">
+                            <div class="gallery-thumbs-swiper swiper">
+                                <div class="swiper-wrapper">
+                                    <div class="swiper-slide">
+                                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/03/Frame-99.png" alt="LK-900A 썸네일 1">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/03/Frame-50.png" alt="LK-900A 썸네일 2">
+                                    </div>
+                                    <div class="swiper-slide">
+                                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/03/Frame-103.png" alt="LK-900A 썸네일 3">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Info -->
+                    <div class="product-info" data-aos="fade-left">
+                        <div class="product-info-header">
+                            <span class="product-model-tag">LK-900A</span>
+                            <h2 class="product-detail-name">더놈프로 <span class="en-name">THE NORM PRO</span></h2>
+                            <p class="product-tagline">진짜 1마력, 놀라운 퍼포먼스의 베스트셀러</p>
+                        </div>
+
+                        <div class="product-price-box featured">
+                            <div class="price-main">
+                                <span class="price-value">990,000</span>
+                                <span class="price-unit">원</span>
+                            </div>
+                            <div class="price-benefits">
+                                <span><i class="fas fa-truck"></i> 무료 설치</span>
+                                <span><i class="fas fa-shield-alt"></i> 5년 무상 A/S</span>
+                            </div>
+                        </div>
+
+                        <div class="product-highlights">
+                            <div class="highlight-item">
+                                <div class="highlight-icon">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <div class="highlight-content">
+                                    <span class="highlight-label">출력</span>
+                                    <span class="highlight-value">1.0 HP (마력)</span>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <div class="highlight-icon">
+                                    <i class="fas fa-tachometer-alt"></i>
+                                </div>
+                                <div class="highlight-content">
+                                    <span class="highlight-label">분쇄속도</span>
+                                    <span class="highlight-value">2,800 RPM</span>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <div class="highlight-icon">
+                                    <i class="fas fa-bone"></i>
+                                </div>
+                                <div class="highlight-content">
+                                    <span class="highlight-label">분쇄능력</span>
+                                    <span class="highlight-value">얇은 뼈, 씨앗 가능</span>
+                                </div>
+                            </div>
+                            <div class="highlight-item">
+                                <div class="highlight-icon">
+                                    <i class="fas fa-shield-alt"></i>
+                                </div>
+                                <div class="highlight-content">
+                                    <span class="highlight-label">보증</span>
+                                    <span class="highlight-value">5년 무상 A/S</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="product-features-list">
+                            <h3>주요 특징</h3>
+                            <ul>
+                                <li><i class="fas fa-check-circle"></i> 대한민국 1등 판매제품</li>
+                                <li><i class="fas fa-check-circle"></i> 진짜 1마력의 강력한 분쇄력</li>
+                                <li><i class="fas fa-check-circle"></i> 얇은 뼈와 과일 씨앗 처리 가능</li>
+                                <li><i class="fas fa-check-circle"></i> 3중 방음 시스템으로 저소음</li>
+                                <li><i class="fas fa-check-circle"></i> 스테인리스 스틸 분쇄 챔버</li>
+                                <li><i class="fas fa-check-circle"></i> 4-WAY LK 멀티트랩 기본 제공</li>
+                            </ul>
+                        </div>
+
+                        <div class="product-actions-detail">
+                            <a href="http://115.68.223.124/lovelykitchen/빠른상담/" class="btn-inquiry-detail">
+                                <i class="fas fa-headset"></i>
+                                <span>무료 상담 신청</span>
+                            </a>
+                            <a href="tel:1661-9038" class="btn-call-detail">
+                                <i class="fas fa-phone"></i>
+                                <span>1661-9038</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Product Specs Section -->
+        <section class="product-specs-section">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <span class="section-tag">SPECIFICATIONS</span>
+                    <h2 class="section-title">제품 상세 사양</h2>
+                </div>
+
+                <div class="specs-table-wrapper" data-aos="fade-up">
+                    <table class="specs-table">
+                        <tbody>
+                            <tr>
+                                <th>모델명</th>
+                                <td>LK-900A 더놈프로 (THE NORM PRO)</td>
+                            </tr>
+                            <tr>
+                                <th>출력</th>
+                                <td>1.0 HP (마력)</td>
+                            </tr>
+                            <tr>
+                                <th>전압/주파수</th>
+                                <td>220V / 60Hz</td>
+                            </tr>
+                            <tr>
+                                <th>분쇄 방식</th>
+                                <td>연속 투입식</td>
+                            </tr>
+                            <tr>
+                                <th>분쇄 챔버</th>
+                                <td>스테인리스 스틸</td>
+                            </tr>
+                            <tr>
+                                <th>분쇄 속도</th>
+                                <td>2,800 RPM</td>
+                            </tr>
+                            <tr>
+                                <th>제품 크기</th>
+                                <td>185mm(W) x 185mm(D) x 365mm(H)</td>
+                            </tr>
+                            <tr>
+                                <th>싱크홀 규격</th>
+                                <td>표준 90mm (3.5인치)</td>
+                            </tr>
+                            <tr>
+                                <th>분쇄 가능</th>
+                                <td>얇은 뼈, 과일 씨앗, 대부분의 음식물</td>
+                            </tr>
+                            <tr>
+                                <th>무상 A/S</th>
+                                <td>5년</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+
+        <!-- What's Included Section -->
+        <section class="included-section">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <span class="section-tag">PACKAGE</span>
+                    <h2 class="section-title">구성품 안내</h2>
+                </div>
+
+                <div class="included-grid" data-aos="fade-up">
+                    <div class="included-item">
+                        <div class="included-icon">
+                            <i class="fas fa-blender"></i>
+                        </div>
+                        <span>음식물처리기 본체</span>
+                    </div>
+                    <div class="included-item">
+                        <div class="included-icon">
+                            <i class="fas fa-ring"></i>
+                        </div>
+                        <span>싱크 플랜지</span>
+                    </div>
+                    <div class="included-item">
+                        <div class="included-icon">
+                            <i class="fas fa-plug"></i>
+                        </div>
+                        <span>에어스위치</span>
+                    </div>
+                    <div class="included-item featured">
+                        <div class="included-icon">
+                            <i class="fas fa-cubes"></i>
+                        </div>
+                        <span>4-WAY LK 멀티트랩</span>
+                    </div>
+                    <div class="included-item">
+                        <div class="included-icon">
+                            <i class="fas fa-arrows-alt-v"></i>
+                        </div>
+                        <span>배수관 연결부</span>
+                    </div>
+                    <div class="included-item">
+                        <div class="included-icon">
+                            <i class="fas fa-file-alt"></i>
+                        </div>
+                        <span>사용 설명서</span>
+                    </div>
+                    <div class="included-item">
+                        <div class="included-icon">
+                            <i class="fas fa-certificate"></i>
+                        </div>
+                        <span>품질 보증서</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Other Products Section -->
+        <section class="other-products-section">
+            <div class="container">
+                <div class="section-header" data-aos="fade-up">
+                    <span class="section-tag">OTHER PRODUCTS</span>
+                    <h2 class="section-title">다른 제품 둘러보기</h2>
+                </div>
+
+                <div class="other-products-grid" data-aos="fade-up">
+                    <a href="http://115.68.223.124/lovelykitchen/products/lk-750a.html" class="other-product-card">
+                        <div class="other-product-badge entry">ENTRY</div>
+                        <div class="other-product-image">
+                            <img src="https://lkitchen.co.kr/wp-content/uploads/2025/03/Frame-97-1.png" alt="LK-750A">
+                        </div>
+                        <div class="other-product-info">
+                            <span class="other-product-model">LK-750A</span>
+                            <span class="other-product-name">에코라이트</span>
+                            <span class="other-product-power">0.5 HP</span>
+                        </div>
+                    </a>
+                    <a href="http://115.68.223.124/lovelykitchen/products/lk-1000a.html" class="other-product-card">
+                        <div class="other-product-badge premium">PREMIUM</div>
+                        <div class="other-product-image">
+                            <img src="https://lkitchen.co.kr/wp-content/uploads/2025/03/Frame-98-1.png" alt="LK-1000A">
+                        </div>
+                        <div class="other-product-info">
+                            <span class="other-product-model">LK-1000A</span>
+                            <span class="other-product-name">울트라 그라인드 X</span>
+                            <span class="other-product-power">1.5 HP</span>
+                        </div>
+                    </a>
+                    <a href="http://115.68.223.124/lovelykitchen/products/lk-1000b.html" class="other-product-card">
+                        <div class="other-product-badge flagship">FLAGSHIP</div>
+                        <div class="other-product-image">
+                            <img src="https://lkitchen.co.kr/wp-content/uploads/2025/03/Frame-100.png" alt="LK-1000B">
+                        </div>
+                        <div class="other-product-info">
+                            <span class="other-product-model">LK-1000B</span>
+                            <span class="other-product-name">게임체인저</span>
+                            <span class="other-product-power">1.5 HP</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="cta-section">
+            <div class="cta-bg">
+                <div class="cta-pattern"></div>
+            </div>
+            <div class="container">
+                <div class="cta-content" data-aos="fade-up">
+                    <span class="cta-tag">GET STARTED</span>
+                    <h2 class="cta-title">
+                        LK-900A 더놈프로,<br>
+                        <span class="gradient-text">지금 상담받아보세요</span>
+                    </h2>
+                    <p class="cta-desc">
+                        대한민국 1등 판매제품을 직접 경험해보세요
+                    </p>
+                    <div class="cta-buttons">
+                        <a href="http://115.68.223.124/lovelykitchen/빠른상담/" class="btn-primary large">
+                            <span>무료 상담 신청</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
+                        <a href="tel:1661-9038" class="btn-outline-light large">
+                            <i class="fas fa-phone"></i>
+                            <span>1661-9038</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-top">
+            <div class="container">
+                <div class="footer-grid">
+                    <div class="footer-brand">
+                        <a href="http://115.68.223.124/lovelykitchen/" class="footer-logo">
+                            <img src="https://lkitchen.co.kr/wp-content/uploads/2024/08/logo.png" alt="Lovely Kitchen">
+                        </a>
+                        <p class="footer-tagline">완벽한 분쇄, 차원이 다른 프리미엄</p>
+                        <div class="footer-social">
+                            <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                            <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                            <a href="#" aria-label="Blog"><i class="fab fa-blogger-b"></i></a>
+                            <a href="#" aria-label="KakaoTalk"><i class="fas fa-comment"></i></a>
+                        </div>
+                    </div>
+
+                    <div class="footer-links">
+                        <h4>제품</h4>
+                        <ul>
+                            <li><a href="http://115.68.223.124/lovelykitchen/products.html">음식물처리기</a></li>
+                            <li><a href="http://115.68.223.124/lovelykitchen/싱크볼/">아콴테 싱크볼</a></li>
+                            <li><a href="http://115.68.223.124/lovelykitchen/악세사리/">악세사리</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-links">
+                        <h4>고객지원</h4>
+                        <ul>
+                            <li><a href="http://115.68.223.124/lovelykitchen/질문과-답변/">질문과 답변</a></li>
+                            <li><a href="http://115.68.223.124/lovelykitchen/a-s-지원/">A/S 서비스 지원</a></li>
+                            <li><a href="http://115.68.223.124/lovelykitchen/빠른상담/">빠른 상담</a></li>
+                        </ul>
+                    </div>
+
+                    <div class="footer-contact">
+                        <h4>연락처</h4>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <span class="label">고객센터</span>
+                                <a href="tel:1661-9038" class="value">1661-9038</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <span class="label">이메일</span>
+                                <a href="mailto:cs.lovelykitchen@gmail.com" class="value">cs.lovelykitchen@gmail.com</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-fax"></i>
+                            <div>
+                                <span class="label">팩스</span>
+                                <span class="value">070-4015-4515</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="footer-info">
+                    <p>러블리키친 총판 대표이사 성정호 ｜ 사업자등록번호 306-08-91986</p>
+                    <p>본사: 서울시 서초구 반포대로22길 35, 2층 2002호</p>
+                </div>
+                <div class="footer-copyright">
+                    <p>&copy; 2024 LOVELY KITCHEN. All Rights Reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating Elements -->
+    <div class="floating-buttons">
+        <a href="tel:1661-9038" class="float-btn phone" aria-label="전화하기">
+            <i class="fas fa-phone"></i>
+            <span class="float-tooltip">전화하기</span>
+        </a>
+        <a href="https://pf.kakao.com/_lovelykitchen" class="float-btn kakao" target="_blank" aria-label="카카오톡 상담">
+            <i class="fas fa-comment"></i>
+            <span class="float-tooltip">카카오톡</span>
+        </a>
+        <button class="float-btn scroll-top" id="scrollTop" aria-label="맨 위로">
+            <i class="fas fa-arrow-up"></i>
+            <span class="float-tooltip">맨 위로</span>
+        </button>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/product-detail.js"></script>
+</body>
+</html>

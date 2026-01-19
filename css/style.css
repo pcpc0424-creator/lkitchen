@@ -154,6 +154,10 @@ ul, ol {
     animation: preloaderFadeOut 0.5s ease 2s forwards;
 }
 
+.preloader-inner {
+    text-align: center;
+}
+
 .preloader.hidden {
     opacity: 0;
     visibility: hidden;
@@ -168,12 +172,12 @@ ul, ol {
     }
 }
 
-.preloader-inner {
-    text-align: center;
-}
-
 .preloader-logo {
     margin-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
 }
 
 .preloader-logo img {
@@ -764,13 +768,13 @@ ul, ol {
 .hero-badge {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    padding: 10px 24px;
+    gap: 12px;
+    padding: 14px 32px;
     background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 9999px;
-    font-size: 0.9rem;
+    font-size: 1.1rem;
     font-weight: 500;
     margin-bottom: 2rem;
 }
@@ -1135,6 +1139,21 @@ ul, ol {
     margin-bottom: 5rem;
 }
 
+.section-header-link {
+    display: block;
+    text-decoration: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.section-header-link:hover {
+    transform: translateY(-3px);
+}
+
+.section-header-link:hover .section-title {
+    color: var(--color-accent);
+}
+
 .section-header.light {
     color: #ffffff;
 }
@@ -1453,6 +1472,7 @@ ul, ol {
     border-radius: 9999px;
     font-size: 0.9rem;
     margin-bottom: 2rem;
+    color: #ffffff;
 }
 
 .innovation-tag i {
@@ -1465,12 +1485,14 @@ ul, ol {
     font-weight: 700;
     line-height: 1.2;
     margin-bottom: 1.5rem;
+    color: #ffffff;
 }
 
 .innovation-patent {
     font-size: 0.9rem;
     opacity: 0.7;
     margin-bottom: 2rem;
+    color: #ffffff;
 }
 
 .innovation-desc {
@@ -1478,6 +1500,7 @@ ul, ol {
     line-height: 1.8;
     opacity: 0.9;
     margin-bottom: 3rem;
+    color: #ffffff;
 }
 
 .innovation-features {
@@ -1521,11 +1544,13 @@ ul, ol {
     font-size: 1rem;
     font-weight: 600;
     margin-bottom: 5px;
+    color: #ffffff;
 }
 
 .inno-feature-content p {
     font-size: 0.9rem;
     opacity: 0.8;
+    color: #ffffff;
 }
 
 .tag-new {
@@ -1571,6 +1596,7 @@ ul, ol {
     position: relative;
     z-index: 10;
     animation: float-slow 6s ease-in-out infinite;
+    filter: invert(1) brightness(1.2);
 }
 
 @keyframes float-slow {
@@ -2577,8 +2603,8 @@ ul, ol {
 
     /* Hero Section Mobile */
     .hero-badge {
-        font-size: 0.75rem;
-        padding: 8px 16px;
+        font-size: 0.95rem;
+        padding: 12px 24px;
         letter-spacing: 0;
     }
 
@@ -3166,5 +3192,113 @@ ul, ol {
     .quick-popup,
     .preloader {
         display: none !important;
+    }
+}
+
+/* ============================================
+   Promo & Review Banner Sections
+   ============================================ */
+.promo-banner-section {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    margin-top: 77px; /* 헤더 높이만큼 여백 추가 */
+    line-height: 0;
+    overflow: hidden;
+}
+
+.review-banner-section {
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    line-height: 0;
+    overflow: hidden;
+}
+
+/* Promo Banner (싱크볼 배너 - 22222.png) */
+.promo-banner-link {
+    display: block;
+    width: 100%;
+}
+
+.promo-banner-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Review Banner (리뷰 배너 - 피시-004-1.png) */
+.review-banner-link {
+    display: block;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.review-banner-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* Mobile Banner Adjustments */
+@media (max-width: 768px) {
+    /* 모바일 가로 스크롤 방지 */
+    html, body {
+        overflow-x: hidden !important;
+    }
+
+    /* 로딩 로고 중앙 정렬 */
+    .preloader-inner {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        width: 100% !important;
+    }
+
+    .preloader-logo {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+    }
+
+    .preloader-logo img {
+        margin: 0 auto !important;
+        display: block !important;
+    }
+
+    .preloader-progress {
+        margin: 0 auto !important;
+    }
+
+    /* 싱크볼 배너 - 크기 키우고 헤더 아래 위치 */
+    .promo-banner-section {
+        margin-top: 70px;
+        overflow: visible;
+        padding: 20px 0;
+    }
+
+    .promo-banner-link {
+        display: block;
+        transform: scale(1.8);
+        transform-origin: center center;
+    }
+
+    .promo-banner-img {
+        width: 100%;
+        max-width: none;
+        margin-left: 0;
+    }
+
+    /* 리뷰 배너 - 크기 줄이기 */
+    .review-banner-section {
+        padding: 0 20px;
+    }
+
+    .review-banner-img {
+        width: 85%;
+        margin: 0 auto;
     }
 }
