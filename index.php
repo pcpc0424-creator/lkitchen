@@ -1,9 +1,12 @@
+<?php
+require_once __DIR__ . '/includes/config.php';
+?>
 <!DOCTYPE html>
 <html lang="ko-KR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>러블리키친 | 프리미엄 음식물처리기 No.1</title>
+    <title><?php echo e($siteSettings['site_name']); ?> | <?php echo e($siteSettings['site_description']); ?></title>
     <meta name="description" content="러블리키친 - 완벽한 분쇄, 차원이 다른 프리미엄 음식물처리기. 대한민국 1등 음식물처리기 전문 브랜드">
     <meta name="keywords" content="음식물처리기, 러블리키친, 주방가전, 싱크대처리기, 프리미엄처리기">
 
@@ -49,53 +52,53 @@
     <!-- Header -->
     <header class="header" id="header">
         <div class="header-container">
-            <a href="http://115.68.223.124/lovelykitchen/" class="logo">
+            <a href="<?php echo SITE_URL; ?>/" class="logo">
                 <img src="https://lkitchen.co.kr/wp-content/uploads/2024/08/logo.png" alt="Lovely Kitchen" class="logo-img">
             </a>
 
             <nav class="nav-desktop">
                 <ul class="nav-menu">
-                    <li><a href="http://115.68.223.124/lovelykitchen/회사소개/" class="nav-link">회사소개</a></li>
+                    <li><a href="<?php echo SITE_URL; ?>/회사소개/" class="nav-link">회사소개</a></li>
                     <li class="has-dropdown">
-                        <a href="http://115.68.223.124/lovelykitchen/products.html" class="nav-link">제품 <i class="fas fa-chevron-down"></i></a>
+                        <a href="<?php echo SITE_URL; ?>/products.html" class="nav-link">제품 <i class="fas fa-chevron-down"></i></a>
                         <div class="dropdown-menu">
-                            <a href="http://115.68.223.124/lovelykitchen/products.html">음식물처리기</a>
-                            <a href="http://115.68.223.124/lovelykitchen/싱크볼/">아콴테 싱크볼</a>
-                            <a href="http://115.68.223.124/lovelykitchen/악세사리/">악세사리</a>
+                            <a href="<?php echo SITE_URL; ?>/products.html">음식물처리기</a>
+                            <a href="<?php echo SITE_URL; ?>/싱크볼/">아콴테 싱크볼</a>
+                            <a href="<?php echo SITE_URL; ?>/악세사리/">악세사리</a>
                         </div>
                     </li>
                     <li class="has-dropdown">
-                        <a href="http://115.68.223.124/lovelykitchen/질문과-답변/" class="nav-link">고객지원 <i class="fas fa-chevron-down"></i></a>
+                        <a href="<?php echo SITE_URL; ?>/질문과-답변/" class="nav-link">고객지원 <i class="fas fa-chevron-down"></i></a>
                         <div class="dropdown-menu">
-                            <a href="http://115.68.223.124/lovelykitchen/질문과-답변/">질문과 답변</a>
-                            <a href="http://115.68.223.124/lovelykitchen/a-s-지원/">A/S 서비스 지원</a>
+                            <a href="<?php echo SITE_URL; ?>/질문과-답변/">질문과 답변</a>
+                            <a href="<?php echo SITE_URL; ?>/a-s-지원/">A/S 서비스 지원</a>
                         </div>
                     </li>
                     <li class="has-dropdown">
-                        <a href="http://115.68.223.124/lovelykitchen/음식물처리기-후기/" class="nav-link">후기게시판 <i class="fas fa-chevron-down"></i></a>
+                        <a href="<?php echo SITE_URL; ?>/음식물처리기-후기/" class="nav-link">후기게시판 <i class="fas fa-chevron-down"></i></a>
                         <div class="dropdown-menu">
-                            <a href="http://115.68.223.124/lovelykitchen/음식물처리기-후기/">음식물처리기 후기</a>
-                            <a href="http://115.68.223.124/lovelykitchen/싱크볼-후기/">싱크볼 후기</a>
+                            <a href="<?php echo SITE_URL; ?>/음식물처리기-후기/">음식물처리기 후기</a>
+                            <a href="<?php echo SITE_URL; ?>/싱크볼-후기/">싱크볼 후기</a>
                         </div>
                     </li>
                     <li class="has-dropdown">
-                        <a href="http://115.68.223.124/lovelykitchen/사진갤러리/" class="nav-link">사진 갤러리 <i class="fas fa-chevron-down"></i></a>
+                        <a href="<?php echo SITE_URL; ?>/사진갤러리/" class="nav-link">사진 갤러리 <i class="fas fa-chevron-down"></i></a>
                         <div class="dropdown-menu">
-                            <a href="http://115.68.223.124/lovelykitchen/사진갤러리/">음식물처리기 갤러리</a>
-                            <a href="http://115.68.223.124/lovelykitchen/사진갤러리/">아콴테 싱크볼 갤러리</a>
+                            <a href="<?php echo SITE_URL; ?>/사진갤러리/">음식물처리기 갤러리</a>
+                            <a href="<?php echo SITE_URL; ?>/사진갤러리/">아콴테 싱크볼 갤러리</a>
                         </div>
                     </li>
-                    <li><a href="http://115.68.223.124/lovelykitchen/친환경제품/" class="nav-link">친환경제품</a></li>
-                    <li><a href="http://115.68.223.124/lovelykitchen/특가페이지/" class="nav-link" style="color: #ff6b6b; font-weight: 600;">특가페이지</a></li>
+                    <li><a href="<?php echo SITE_URL; ?>/친환경제품/" class="nav-link">친환경제품</a></li>
+                    <li><a href="<?php echo SITE_URL; ?>/특가페이지/" class="nav-link" style="color: #ff6b6b; font-weight: 600;">특가페이지</a></li>
                 </ul>
             </nav>
 
             <div class="header-actions">
-                <a href="tel:1661-9038" class="header-phone">
+                <a href="tel:<?php echo e($siteSettings['phone']); ?>" class="header-phone">
                     <i class="fas fa-phone"></i>
-                    <span>1661-9038</span>
+                    <span><?php echo e($siteSettings['phone']); ?></span>
                 </a>
-                <a href="http://115.68.223.124/lovelykitchen/빠른상담/" class="btn-consultation">
+                <a href="<?php echo SITE_URL; ?>/빠른상담/" class="btn-consultation">
                     <span>무료상담</span>
                     <i class="fas fa-arrow-right"></i>
                 </a>
@@ -118,44 +121,44 @@
         </div>
         <nav class="mobile-nav-content">
             <ul class="mobile-menu">
-                <li><a href="http://115.68.223.124/lovelykitchen/회사소개/">회사소개</a></li>
+                <li><a href="<?php echo SITE_URL; ?>/회사소개/">회사소개</a></li>
                 <li class="has-submenu">
                     <a href="#">제품 <i class="fas fa-plus"></i></a>
                     <ul class="submenu">
-                        <li><a href="http://115.68.223.124/lovelykitchen/products.html">음식물처리기</a></li>
-                        <li><a href="http://115.68.223.124/lovelykitchen/싱크볼/">아콴테 싱크볼</a></li>
-                        <li><a href="http://115.68.223.124/lovelykitchen/악세사리/">악세사리</a></li>
+                        <li><a href="<?php echo SITE_URL; ?>/products.html">음식물처리기</a></li>
+                        <li><a href="<?php echo SITE_URL; ?>/싱크볼/">아콴테 싱크볼</a></li>
+                        <li><a href="<?php echo SITE_URL; ?>/악세사리/">악세사리</a></li>
                     </ul>
                 </li>
                 <li class="has-submenu">
                     <a href="#">고객지원 <i class="fas fa-plus"></i></a>
                     <ul class="submenu">
-                        <li><a href="http://115.68.223.124/lovelykitchen/질문과-답변/">질문과 답변</a></li>
-                        <li><a href="http://115.68.223.124/lovelykitchen/a-s-지원/">A/S 서비스 지원</a></li>
+                        <li><a href="<?php echo SITE_URL; ?>/질문과-답변/">질문과 답변</a></li>
+                        <li><a href="<?php echo SITE_URL; ?>/a-s-지원/">A/S 서비스 지원</a></li>
                     </ul>
                 </li>
                 <li class="has-submenu">
                     <a href="#">후기게시판 <i class="fas fa-plus"></i></a>
                     <ul class="submenu">
-                        <li><a href="http://115.68.223.124/lovelykitchen/음식물처리기-후기/">음식물처리기 후기</a></li>
-                        <li><a href="http://115.68.223.124/lovelykitchen/싱크볼-후기/">싱크볼 후기</a></li>
+                        <li><a href="<?php echo SITE_URL; ?>/음식물처리기-후기/">음식물처리기 후기</a></li>
+                        <li><a href="<?php echo SITE_URL; ?>/싱크볼-후기/">싱크볼 후기</a></li>
                     </ul>
                 </li>
                 <li class="has-submenu">
                     <a href="#">사진 갤러리 <i class="fas fa-plus"></i></a>
                     <ul class="submenu">
-                        <li><a href="http://115.68.223.124/lovelykitchen/사진갤러리/">음식물처리기 갤러리</a></li>
-                        <li><a href="http://115.68.223.124/lovelykitchen/사진갤러리/">아콴테 싱크볼 갤러리</a></li>
+                        <li><a href="<?php echo SITE_URL; ?>/사진갤러리/">음식물처리기 갤러리</a></li>
+                        <li><a href="<?php echo SITE_URL; ?>/사진갤러리/">아콴테 싱크볼 갤러리</a></li>
                     </ul>
                 </li>
-                <li><a href="http://115.68.223.124/lovelykitchen/친환경제품/">친환경제품</a></li>
-                <li><a href="http://115.68.223.124/lovelykitchen/특가페이지/" style="color: #ff6b6b; font-weight: 600;">특가페이지</a></li>
+                <li><a href="<?php echo SITE_URL; ?>/친환경제품/">친환경제품</a></li>
+                <li><a href="<?php echo SITE_URL; ?>/특가페이지/" style="color: #ff6b6b; font-weight: 600;">특가페이지</a></li>
             </ul>
             <div class="mobile-contact">
-                <a href="tel:1661-9038" class="mobile-phone">
-                    <i class="fas fa-phone"></i> 1661-9038
+                <a href="tel:<?php echo e($siteSettings['phone']); ?>" class="mobile-phone">
+                    <i class="fas fa-phone"></i> <?php echo e($siteSettings['phone']); ?>
                 </a>
-                <a href="http://115.68.223.124/lovelykitchen/빠른상담/" class="mobile-consult-btn">무료 상담 신청</a>
+                <a href="<?php echo SITE_URL; ?>/빠른상담/" class="mobile-consult-btn">무료 상담 신청</a>
             </div>
         </nav>
     </div>
@@ -164,7 +167,7 @@
     <main>
         <!-- Sinkbowl Banner (Mobile: 헤더 바로 아래) -->
         <section class="promo-banner-section">
-            <a href="http://115.68.223.124/lovelykitchen/싱크볼/" class="promo-banner-link">
+            <a href="<?php echo SITE_URL; ?>/싱크볼/" class="promo-banner-link">
                 <img src="https://lkitchen.co.kr/wp-content/uploads/2025/09/22222.png" alt="아콴테 프리미엄 사각싱크볼" class="promo-banner-img">
             </a>
         </section>
@@ -206,11 +209,11 @@
                 </p>
 
                 <div class="hero-cta" data-aos="fade-up" data-aos-delay="400">
-                    <a href="http://115.68.223.124/lovelykitchen/products.html" class="btn-primary">
+                    <a href="<?php echo SITE_URL; ?>/products.html" class="btn-primary">
                         <span>제품 보러가기</span>
                         <i class="fas fa-arrow-right"></i>
                     </a>
-                    <a href="http://115.68.223.124/lovelykitchen/빠른상담/" class="btn-secondary">
+                    <a href="<?php echo SITE_URL; ?>/빠른상담/" class="btn-secondary">
                         <span>무료 상담</span>
                         <i class="fas fa-headset"></i>
                     </a>
@@ -247,7 +250,7 @@
 
         <!-- Review Banner -->
         <section class="review-banner-section">
-            <a href="http://115.68.223.124/lovelykitchen/싱크볼-후기/" class="review-banner-link">
+            <a href="<?php echo SITE_URL; ?>/싱크볼-후기/" class="review-banner-link">
                 <picture>
                     <source media="(max-width: 768px)" srcset="https://lkitchen.co.kr/wp-content/uploads/2025/10/모바일-002-3.png">
                     <img src="https://lkitchen.co.kr/wp-content/uploads/2025/10/피시-004-1.png" alt="고객 솔직 리뷰 모음.zip" class="review-banner-img">
@@ -280,7 +283,7 @@
                             개발 전문가와 협업하여, 어떤 음식물도 가볍게 처리할 수 있는
                             혁신적인 제품을 개발했습니다.
                         </p>
-                        <a href="http://115.68.223.124/lovelykitchen/products.html" class="company-intro-btn">
+                        <a href="<?php echo SITE_URL; ?>/products.html" class="company-intro-btn">
                             <span>제품 보러가기</span>
                             <i class="fas fa-arrow-right"></i>
                         </a>
@@ -353,7 +356,7 @@
                                 <div class="swiper-pagination"></div>
                             </div>
                             <div class="product-overlay">
-                                <a href="http://115.68.223.124/lovelykitchen/products/lk-750a.html" class="product-quick-view">
+                                <a href="<?php echo SITE_URL; ?>/products/lk-750a.html" class="product-quick-view">
                                     <i class="fas fa-eye"></i>
                                     <span>자세히 보기</span>
                                 </a>
@@ -369,7 +372,7 @@
                                 <li><i class="fas fa-check"></i> 대부분의 음식쓰레기 분쇄</li>
                                 <li><i class="fas fa-check"></i> 실용적이고 합리적</li>
                             </ul>
-                            <a href="http://115.68.223.124/lovelykitchen/products/lk-750a.html" class="product-btn">
+                            <a href="<?php echo SITE_URL; ?>/products/lk-750a.html" class="product-btn">
                                 <span>제품 보러가기</span>
                                 <i class="fas fa-arrow-right"></i>
                             </a>
@@ -395,7 +398,7 @@
                                 <div class="swiper-pagination"></div>
                             </div>
                             <div class="product-overlay">
-                                <a href="http://115.68.223.124/lovelykitchen/products/lk-900a.html" class="product-quick-view">
+                                <a href="<?php echo SITE_URL; ?>/products/lk-900a.html" class="product-quick-view">
                                     <i class="fas fa-eye"></i>
                                     <span>자세히 보기</span>
                                 </a>
@@ -412,7 +415,7 @@
                                 <li><i class="fas fa-check"></i> 진짜 1마력, 놀라운 퍼포먼스</li>
                                 <li><i class="fas fa-check"></i> 얇은 뼈와 씨앗 처리가능</li>
                             </ul>
-                            <a href="http://115.68.223.124/lovelykitchen/products/lk-900a.html" class="product-btn">
+                            <a href="<?php echo SITE_URL; ?>/products/lk-900a.html" class="product-btn">
                                 <span>제품 보러가기</span>
                                 <i class="fas fa-arrow-right"></i>
                             </a>
@@ -438,7 +441,7 @@
                                 <div class="swiper-pagination"></div>
                             </div>
                             <div class="product-overlay">
-                                <a href="http://115.68.223.124/lovelykitchen/products/lk-1000a.html" class="product-quick-view">
+                                <a href="<?php echo SITE_URL; ?>/products/lk-1000a.html" class="product-quick-view">
                                     <i class="fas fa-eye"></i>
                                     <span>자세히 보기</span>
                                 </a>
@@ -455,7 +458,7 @@
                                 <li><i class="fas fa-check"></i> 진정한 힘, 완벽한 성능</li>
                                 <li><i class="fas fa-check"></i> 대부분의 굵은 뼈와 씨앗 분쇄</li>
                             </ul>
-                            <a href="http://115.68.223.124/lovelykitchen/products/lk-1000a.html" class="product-btn">
+                            <a href="<?php echo SITE_URL; ?>/products/lk-1000a.html" class="product-btn">
                                 <span>제품 보러가기</span>
                                 <i class="fas fa-arrow-right"></i>
                             </a>
@@ -481,7 +484,7 @@
                                 <div class="swiper-pagination"></div>
                             </div>
                             <div class="product-overlay">
-                                <a href="http://115.68.223.124/lovelykitchen/products/lk-1000b.html" class="product-quick-view">
+                                <a href="<?php echo SITE_URL; ?>/products/lk-1000b.html" class="product-quick-view">
                                     <i class="fas fa-eye"></i>
                                     <span>자세히 보기</span>
                                 </a>
@@ -498,7 +501,7 @@
                                 <li><i class="fas fa-check"></i> 극강의 내구성 특화 모델</li>
                                 <li><i class="fas fa-check"></i> 진정한 게임체인저</li>
                             </ul>
-                            <a href="http://115.68.223.124/lovelykitchen/products/lk-1000b.html" class="product-btn">
+                            <a href="<?php echo SITE_URL; ?>/products/lk-1000b.html" class="product-btn">
                                 <span>제품 보러가기</span>
                                 <i class="fas fa-arrow-right"></i>
                             </a>
@@ -576,56 +579,56 @@
         <!-- Gallery Section -->
         <section class="gallery-section">
             <div class="container">
-                <a href="http://115.68.223.124/lovelykitchen/사진갤러리/" class="section-header section-header-link" data-aos="fade-up">
+                <a href="<?php echo SITE_URL; ?>/사진갤러리/" class="section-header section-header-link" data-aos="fade-up">
                     <span class="section-tag">GALLERY</span>
                     <h2 class="section-title">시공 스토리</h2>
                     <p class="section-desc">러블리키친과 함께하는 깨끗한 변화를 확인해보세요</p>
                 </a>
 
                 <div class="gallery-grid" data-aos="fade-up" data-aos-delay="100">
-                    <a href="http://115.68.223.124/lovelykitchen/사진갤러리/" class="gallery-item large">
+                    <a href="<?php echo SITE_URL; ?>/사진갤러리/" class="gallery-item large">
                         <img src="https://lkitchen.co.kr/wp-content/uploads/2025/04/1-96.jpg" alt="시공 사진" loading="lazy">
                         <div class="gallery-overlay">
                             <i class="fas fa-expand"></i>
                         </div>
                     </a>
-                    <a href="http://115.68.223.124/lovelykitchen/사진갤러리/" class="gallery-item">
+                    <a href="<?php echo SITE_URL; ?>/사진갤러리/" class="gallery-item">
                         <img src="https://lkitchen.co.kr/wp-content/uploads/2025/04/1-38.jpg" alt="시공 사진" loading="lazy">
                         <div class="gallery-overlay">
                             <i class="fas fa-expand"></i>
                         </div>
                     </a>
-                    <a href="http://115.68.223.124/lovelykitchen/사진갤러리/" class="gallery-item">
+                    <a href="<?php echo SITE_URL; ?>/사진갤러리/" class="gallery-item">
                         <img src="https://lkitchen.co.kr/wp-content/uploads/2025/04/1-49.jpg" alt="시공 사진" loading="lazy">
                         <div class="gallery-overlay">
                             <i class="fas fa-expand"></i>
                         </div>
                     </a>
-                    <a href="http://115.68.223.124/lovelykitchen/사진갤러리/" class="gallery-item">
+                    <a href="<?php echo SITE_URL; ?>/사진갤러리/" class="gallery-item">
                         <img src="https://lkitchen.co.kr/wp-content/uploads/2025/04/1-59.jpg" alt="시공 사진" loading="lazy">
                         <div class="gallery-overlay">
                             <i class="fas fa-expand"></i>
                         </div>
                     </a>
-                    <a href="http://115.68.223.124/lovelykitchen/사진갤러리/" class="gallery-item">
+                    <a href="<?php echo SITE_URL; ?>/사진갤러리/" class="gallery-item">
                         <img src="https://lkitchen.co.kr/wp-content/uploads/2025/04/1-75.jpg" alt="시공 사진" loading="lazy">
                         <div class="gallery-overlay">
                             <i class="fas fa-expand"></i>
                         </div>
                     </a>
-                    <a href="http://115.68.223.124/lovelykitchen/사진갤러리/" class="gallery-item tall">
+                    <a href="<?php echo SITE_URL; ?>/사진갤러리/" class="gallery-item tall">
                         <img src="https://lkitchen.co.kr/wp-content/uploads/2025/04/1-110.jpg" alt="시공 사진" loading="lazy">
                         <div class="gallery-overlay">
                             <i class="fas fa-expand"></i>
                         </div>
                     </a>
-                    <a href="http://115.68.223.124/lovelykitchen/사진갤러리/" class="gallery-item">
+                    <a href="<?php echo SITE_URL; ?>/사진갤러리/" class="gallery-item">
                         <img src="https://lkitchen.co.kr/wp-content/uploads/2025/04/1-89.jpg" alt="시공 사진" loading="lazy">
                         <div class="gallery-overlay">
                             <i class="fas fa-expand"></i>
                         </div>
                     </a>
-                    <a href="http://115.68.223.124/lovelykitchen/사진갤러리/" class="gallery-item">
+                    <a href="<?php echo SITE_URL; ?>/사진갤러리/" class="gallery-item">
                         <img src="https://lkitchen.co.kr/wp-content/uploads/2025/04/1-94.jpg" alt="시공 사진" loading="lazy">
                         <div class="gallery-overlay">
                             <i class="fas fa-expand"></i>
@@ -634,7 +637,7 @@
                 </div>
 
                 <div class="gallery-cta" data-aos="fade-up">
-                    <a href="http://115.68.223.124/lovelykitchen/사진갤러리/" class="btn-outline">
+                    <a href="<?php echo SITE_URL; ?>/사진갤러리/" class="btn-outline">
                         <span>더 많은 시공사례 보기</span>
                         <i class="fas fa-arrow-right"></i>
                     </a>
@@ -757,7 +760,7 @@
                 </div>
 
                 <div class="testimonials-cta" data-aos="fade-up">
-                    <a href="http://115.68.223.124/lovelykitchen/음식물처리기-후기/" class="btn-light">
+                    <a href="<?php echo SITE_URL; ?>/음식물처리기-후기/" class="btn-light">
                         <span>모든 후기 보기</span>
                         <i class="fas fa-arrow-right"></i>
                     </a>
@@ -823,13 +826,13 @@
                         음식물 처리기 설치만으로 거주환경의 커다란 발전을 경험하세요
                     </p>
                     <div class="cta-buttons">
-                        <a href="http://115.68.223.124/lovelykitchen/빠른상담/" class="btn-primary large">
+                        <a href="<?php echo SITE_URL; ?>/빠른상담/" class="btn-primary large">
                             <span>무료 상담 신청</span>
                             <i class="fas fa-arrow-right"></i>
                         </a>
-                        <a href="tel:1661-9038" class="btn-outline-light large">
+                        <a href="tel:<?php echo e($siteSettings['phone']); ?>" class="btn-outline-light large">
                             <i class="fas fa-phone"></i>
-                            <span>1661-9038</span>
+                            <span><?php echo e($siteSettings['phone']); ?></span>
                         </a>
                     </div>
                 </div>
@@ -874,7 +877,7 @@
             <div class="container">
                 <div class="footer-grid">
                     <div class="footer-brand">
-                        <a href="http://115.68.223.124/lovelykitchen/" class="footer-logo">
+                        <a href="<?php echo SITE_URL; ?>/" class="footer-logo">
                             <img src="https://lkitchen.co.kr/wp-content/uploads/2024/08/logo.png" alt="Lovely Kitchen">
                         </a>
                         <p class="footer-tagline">완벽한 분쇄, 차원이 다른 프리미엄</p>
@@ -882,25 +885,25 @@
                             <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
                             <a href="#" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
                             <a href="#" aria-label="Blog"><i class="fab fa-blogger-b"></i></a>
-                            <a href="#" aria-label="KakaoTalk"><i class="fas fa-comment"></i></a>
+                            <a href="<?php echo e($siteSettings['kakao_link']); ?>" aria-label="KakaoTalk"><i class="fas fa-comment"></i></a>
                         </div>
                     </div>
 
                     <div class="footer-links">
                         <h4>제품</h4>
                         <ul>
-                            <li><a href="http://115.68.223.124/lovelykitchen/products.html">음식물처리기</a></li>
-                            <li><a href="http://115.68.223.124/lovelykitchen/싱크볼/">아콴테 싱크볼</a></li>
-                            <li><a href="http://115.68.223.124/lovelykitchen/악세사리/">악세사리</a></li>
+                            <li><a href="<?php echo SITE_URL; ?>/products.html">음식물처리기</a></li>
+                            <li><a href="<?php echo SITE_URL; ?>/싱크볼/">아콴테 싱크볼</a></li>
+                            <li><a href="<?php echo SITE_URL; ?>/악세사리/">악세사리</a></li>
                         </ul>
                     </div>
 
                     <div class="footer-links">
                         <h4>고객지원</h4>
                         <ul>
-                            <li><a href="http://115.68.223.124/lovelykitchen/질문과-답변/">질문과 답변</a></li>
-                            <li><a href="http://115.68.223.124/lovelykitchen/a-s-지원/">A/S 서비스 지원</a></li>
-                            <li><a href="http://115.68.223.124/lovelykitchen/빠른상담/">빠른 상담</a></li>
+                            <li><a href="<?php echo SITE_URL; ?>/질문과-답변/">질문과 답변</a></li>
+                            <li><a href="<?php echo SITE_URL; ?>/a-s-지원/">A/S 서비스 지원</a></li>
+                            <li><a href="<?php echo SITE_URL; ?>/빠른상담/">빠른 상담</a></li>
                         </ul>
                     </div>
 
@@ -910,23 +913,18 @@
                             <i class="fas fa-phone"></i>
                             <div>
                                 <span class="label">고객센터</span>
-                                <a href="tel:1661-9038" class="value">1661-9038</a>
+                                <a href="tel:<?php echo e($siteSettings['phone']); ?>" class="value"><?php echo e($siteSettings['phone']); ?></a>
                             </div>
                         </div>
+                        <?php if (!empty($siteSettings['email'])): ?>
                         <div class="contact-item">
                             <i class="fas fa-envelope"></i>
                             <div>
                                 <span class="label">이메일</span>
-                                <a href="mailto:cs.lovelykitchen@gmail.com" class="value">cs.lovelykitchen@gmail.com</a>
+                                <a href="mailto:<?php echo e($siteSettings['email']); ?>" class="value"><?php echo e($siteSettings['email']); ?></a>
                             </div>
                         </div>
-                        <div class="contact-item">
-                            <i class="fas fa-fax"></i>
-                            <div>
-                                <span class="label">팩스</span>
-                                <span class="value">070-4015-4515</span>
-                            </div>
-                        </div>
+                        <?php endif; ?>
                     </div>
                 </div>
             </div>
@@ -935,17 +933,17 @@
         <div class="footer-bottom">
             <div class="container">
                 <div class="footer-info">
-                    <p>러블리키친 총판 대표이사 성정호 ｜ 사업자등록번호 306-08-91986</p>
-                    <p>본사: 서울시 서초구 반포대로22길 35, 2층 2002호</p>
+                    <p><?php echo e($siteSettings['company_name']); ?> 대표이사 <?php echo e($siteSettings['ceo_name']); ?> ｜ 사업자등록번호 <?php echo e($siteSettings['business_number']); ?></p>
+                    <p>본사: <?php echo e($siteSettings['address']); ?></p>
                 </div>
                 <div class="footer-copyright">
-                    <p>&copy; 2024 LOVELY KITCHEN. All Rights Reserved.</p>
+                    <p><?php echo e($siteSettings['footer_text']); ?></p>
                 </div>
             </div>
         </div>
     </footer>
 
-    <a href="tel:1661-9038" class="phone-inquiry-float" style="position: fixed; right: 10px; bottom: 10px; z-index: 9999;"><img decoding="async" src="https://lkitchen.co.kr/wp-content/uploads/2025/10/전화문의.png" alt="전화문의" width="222" height="202"></a>
+    <a href="tel:<?php echo e($siteSettings['phone']); ?>" class="phone-inquiry-float" style="position: fixed; right: 10px; bottom: 10px; z-index: 9999;"><img decoding="async" src="<?php echo e($siteSettings['phone_image_url']); ?>" alt="전화문의" width="222" height="202"></a>
 
     <!-- Quick Consultation Popup -->
     <div class="quick-popup" id="quickPopup">
@@ -957,9 +955,9 @@
                 <div class="popup-badge">SPECIAL</div>
                 <h3>무료 상담 신청</h3>
                 <p>지금 바로 전화 주시면<br>친절하게 상담해 드립니다</p>
-                <a href="tel:1661-9038" class="popup-phone">
+                <a href="tel:<?php echo e($siteSettings['phone']); ?>" class="popup-phone">
                     <i class="fas fa-phone"></i>
-                    1661-9038
+                    <?php echo e($siteSettings['phone']); ?>
                 </a>
                 <span class="popup-hours">평일 09:00 - 18:00</span>
             </div>

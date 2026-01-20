@@ -90,9 +90,21 @@ $inquiries = array_reverse($inquiries);
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="images.php" class="nav-link">
+                        <a href="gallery.php" class="nav-link">
                             <i class="fas fa-images"></i>
-                            <span>이미지 관리</span>
+                            <span>갤러리 관리</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="images.php" class="nav-link">
+                            <i class="fas fa-cloud-upload-alt"></i>
+                            <span>이미지 업로드</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="faq.php" class="nav-link">
+                            <i class="fas fa-question-circle"></i>
+                            <span>FAQ 관리</span>
                         </a>
                     </li>
                     <li class="nav-item active">
@@ -102,6 +114,12 @@ $inquiries = array_reverse($inquiries);
                             <?php if (count($newInquiries) > 0): ?>
                             <span class="nav-badge"><?php echo count($newInquiries); ?></span>
                             <?php endif; ?>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="settings.php" class="nav-link">
+                            <i class="fas fa-cog"></i>
+                            <span>사이트 설정</span>
                         </a>
                     </li>
                 </ul>
