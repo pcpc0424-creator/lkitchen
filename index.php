@@ -951,16 +951,6 @@ require_once __DIR__ . '/includes/config.php';
             <button class="popup-close" id="popupClose">
                 <i class="fas fa-times"></i>
             </button>
-            <div class="popup-inner">
-                <div class="popup-badge">SPECIAL</div>
-                <h3>무료 상담 신청</h3>
-                <p>지금 바로 전화 주시면<br>친절하게 상담해 드립니다</p>
-                <a href="tel:<?php echo e($siteSettings['phone']); ?>" class="popup-phone">
-                    <i class="fas fa-phone"></i>
-                    <?php echo e($siteSettings['phone']); ?>
-                </a>
-                <span class="popup-hours">평일 09:00 - 18:00</span>
-            </div>
         </div>
     </div>
     <div class="popup-overlay" id="popupOverlay"></div>
