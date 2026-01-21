@@ -89,7 +89,6 @@ require_once __DIR__ . '/includes/config.php';
                         </div>
                     </li>
                     <li><a href="<?php echo SITE_URL; ?>/친환경제품/" class="nav-link">친환경제품</a></li>
-                    <li><a href="<?php echo SITE_URL; ?>/특가페이지/" class="nav-link" style="color: #ff6b6b; font-weight: 600;">특가페이지</a></li>
                 </ul>
             </nav>
 
@@ -152,7 +151,6 @@ require_once __DIR__ . '/includes/config.php';
                     </ul>
                 </li>
                 <li><a href="<?php echo SITE_URL; ?>/친환경제품/">친환경제품</a></li>
-                <li><a href="<?php echo SITE_URL; ?>/특가페이지/" style="color: #ff6b6b; font-weight: 600;">특가페이지</a></li>
             </ul>
             <div class="mobile-contact">
                 <a href="tel:<?php echo e($siteSettings['phone']); ?>" class="mobile-phone">
@@ -943,7 +941,10 @@ require_once __DIR__ . '/includes/config.php';
         </div>
     </footer>
 
-    <a href="tel:<?php echo e($siteSettings['phone']); ?>" class="phone-inquiry-float" style="position: fixed; right: 10px; bottom: 10px; z-index: 9999;"><img decoding="async" src="<?php echo e($siteSettings['phone_image_url']); ?>" alt="전화문의" width="222" height="202"></a>
+    <div class="phone-inquiry-container" id="phoneInquiry">
+        <button class="close-btn" onclick="document.getElementById('phoneInquiry').classList.add('hidden');">&times;</button>
+        <a href="tel:<?php echo e($siteSettings['phone']); ?>" class="phone-inquiry-float"><img decoding="async" src="<?php echo e($siteSettings['phone_image_url']); ?>" alt="전화문의" width="222" height="202"></a>
+    </div>
 
     <!-- Quick Consultation Popup -->
     <div class="quick-popup" id="quickPopup">

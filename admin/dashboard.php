@@ -91,6 +91,12 @@ $sinkImages = is_dir(UPLOAD_PATH_SINK) ? count(glob(UPLOAD_PATH_SINK . '/*.{jpg,
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a href="special.php" class="nav-link">
+                            <i class="fas fa-tag"></i>
+                            <span>특가페이지 관리</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="settings.php" class="nav-link">
                             <i class="fas fa-cog"></i>
                             <span>사이트 설정</span>

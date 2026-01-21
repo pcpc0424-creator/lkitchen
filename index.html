@@ -86,7 +86,6 @@
                         </div>
                     </li>
                     <li><a href="http://115.68.223.124/lovelykitchen/친환경제품/" class="nav-link">친환경제품</a></li>
-                    <li><a href="http://115.68.223.124/lovelykitchen/특가페이지/" class="nav-link" style="color: #ff6b6b; font-weight: 600;">특가페이지</a></li>
                 </ul>
             </nav>
 
@@ -149,7 +148,6 @@
                     </ul>
                 </li>
                 <li><a href="http://115.68.223.124/lovelykitchen/친환경제품/">친환경제품</a></li>
-                <li><a href="http://115.68.223.124/lovelykitchen/특가페이지/" style="color: #ff6b6b; font-weight: 600;">특가페이지</a></li>
             </ul>
             <div class="mobile-contact">
                 <a href="tel:1661-9038" class="mobile-phone">
@@ -945,7 +943,10 @@
         </div>
     </footer>
 
-    <a href="tel:1661-9038" class="phone-inquiry-float" style="position: fixed; right: 10px; bottom: 10px; z-index: 9999;"><img decoding="async" src="https://lkitchen.co.kr/wp-content/uploads/2025/10/전화문의.png" alt="전화문의" width="222" height="202"></a>
+    <div class="phone-inquiry-container" id="phoneInquiry">
+        <button class="close-btn" onclick="document.getElementById('phoneInquiry').classList.add('hidden');">&times;</button>
+        <a href="tel:1661-9038" class="phone-inquiry-float"><img decoding="async" src="https://lkitchen.co.kr/wp-content/uploads/2025/10/전화문의.png" alt="전화문의" width="222" height="202"></a>
+    </div>
 
     <!-- Quick Consultation Popup -->
     <div class="quick-popup" id="quickPopup">

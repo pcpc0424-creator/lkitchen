@@ -1,3 +1,26 @@
+<?php
+/**
+ * 러블리키친 특가페이지
+ */
+define('SITE_URL', 'http://115.68.223.124/lovelykitchen');
+
+// JSON 데이터 로드
+$jsonFile = __DIR__ . '/../admin/data/special.json';
+$specialData = [];
+if (file_exists($jsonFile)) {
+    $specialData = json_decode(file_get_contents($jsonFile), true) ?: [];
+}
+
+$hero = $specialData['hero'] ?? [];
+$products = array_filter($specialData['products'] ?? [], function($p) { return $p['active'] ?? false; });
+$sinkbowls = array_filter($specialData['sinkbowls'] ?? [], function($s) { return $s['active'] ?? false; });
+$multitrap = $specialData['multitrap'] ?? [];
+$cta = $specialData['cta'] ?? [];
+
+function e($str) {
+    return htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
+}
+?>
 <!DOCTYPE html>
 <html lang="ko-KR">
 <head>
@@ -265,27 +288,6 @@
             margin-bottom: 15px;
         }
 
-        .accessory-options {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-        }
-
-        .accessory-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 15px;
-            background: #f8fafc;
-            border-radius: 10px;
-            font-size: 0.9rem;
-            color: #334155;
-        }
-
-        .accessory-item i {
-            color: #3b82f6;
-        }
-
         /* Sink Bowl Section */
         .sinkbowl-section {
             padding: 80px 0;
@@ -417,60 +419,6 @@
             border-radius: 20px;
         }
 
-        .multitrap-label {
-            position: absolute;
-            color: #ffffff;
-            font-size: 0.9rem;
-            font-weight: 500;
-            white-space: nowrap;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-
-        .multitrap-label .label-dot {
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            flex-shrink: 0;
-        }
-
-        .multitrap-label .label-badge {
-            background: #3b82f6;
-            color: #fff;
-            padding: 2px 8px;
-            border-radius: 4px;
-            font-size: 0.75rem;
-            font-weight: 600;
-        }
-
-        .multitrap-label.label-1 {
-            top: 22%;
-            right: 5%;
-        }
-
-        .multitrap-label.label-1 .label-dot {
-            background: #3b82f6;
-        }
-
-        .multitrap-label.label-2 {
-            top: 42%;
-            right: 5%;
-        }
-
-        .multitrap-label.label-2 .label-dot {
-            background: #f97316;
-        }
-
-        .multitrap-label.label-3 {
-            top: 62%;
-            right: 5%;
-        }
-
-        .multitrap-label.label-3 .label-dot {
-            background: #22c55e;
-        }
-
         .multitrap-badge {
             display: inline-block;
             background: rgba(96, 165, 250, 0.2);
@@ -579,7 +527,6 @@
             transform: translateY(-3px);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
         }
-
     </style>
 </head>
 <body>
@@ -605,53 +552,52 @@
     <!-- Header -->
     <header class="header scrolled" id="header">
         <div class="header-container">
-            <a href="http://115.68.223.124/lovelykitchen/" class="logo">
+            <a href="<?php echo SITE_URL; ?>/" class="logo">
                 <img src="https://lkitchen.co.kr/wp-content/uploads/2024/08/logo.png" alt="Lovely Kitchen" class="logo-img">
             </a>
 
             <nav class="nav-desktop">
                 <ul class="nav-menu">
-                    <li><a href="http://115.68.223.124/lovelykitchen/회사소개/" class="nav-link">회사소개</a></li>
+                    <li><a href="<?php echo SITE_URL; ?>/회사소개/" class="nav-link">회사소개</a></li>
                     <li class="has-dropdown">
-                        <a href="http://115.68.223.124/lovelykitchen/products.html" class="nav-link">제품 <i class="fas fa-chevron-down"></i></a>
+                        <a href="<?php echo SITE_URL; ?>/products.html" class="nav-link">제품 <i class="fas fa-chevron-down"></i></a>
                         <div class="dropdown-menu">
-                            <a href="http://115.68.223.124/lovelykitchen/products.html">음식물처리기</a>
-                            <a href="http://115.68.223.124/lovelykitchen/싱크볼/">아콴테 싱크볼</a>
-                            <a href="http://115.68.223.124/lovelykitchen/악세사리/">악세사리</a>
+                            <a href="<?php echo SITE_URL; ?>/products.html">음식물처리기</a>
+                            <a href="<?php echo SITE_URL; ?>/싱크볼/">아콴테 싱크볼</a>
+                            <a href="<?php echo SITE_URL; ?>/악세사리/">악세사리</a>
                         </div>
                     </li>
                     <li class="has-dropdown">
-                        <a href="http://115.68.223.124/lovelykitchen/질문과-답변/" class="nav-link">고객지원 <i class="fas fa-chevron-down"></i></a>
+                        <a href="<?php echo SITE_URL; ?>/질문과-답변/" class="nav-link">고객지원 <i class="fas fa-chevron-down"></i></a>
                         <div class="dropdown-menu">
-                            <a href="http://115.68.223.124/lovelykitchen/질문과-답변/">질문과 답변</a>
-                            <a href="http://115.68.223.124/lovelykitchen/a-s-지원/">A/S 서비스 지원</a>
+                            <a href="<?php echo SITE_URL; ?>/질문과-답변/">질문과 답변</a>
+                            <a href="<?php echo SITE_URL; ?>/a-s-지원/">A/S 서비스 지원</a>
                         </div>
                     </li>
                     <li class="has-dropdown">
-                        <a href="http://115.68.223.124/lovelykitchen/음식물처리기-후기/" class="nav-link">후기게시판 <i class="fas fa-chevron-down"></i></a>
+                        <a href="<?php echo SITE_URL; ?>/음식물처리기-후기/" class="nav-link">후기게시판 <i class="fas fa-chevron-down"></i></a>
                         <div class="dropdown-menu">
-                            <a href="http://115.68.223.124/lovelykitchen/음식물처리기-후기/">음식물처리기 후기</a>
-                            <a href="http://115.68.223.124/lovelykitchen/싱크볼-후기/">싱크볼 후기</a>
+                            <a href="<?php echo SITE_URL; ?>/음식물처리기-후기/">음식물처리기 후기</a>
+                            <a href="<?php echo SITE_URL; ?>/싱크볼-후기/">싱크볼 후기</a>
                         </div>
                     </li>
                     <li class="has-dropdown">
-                        <a href="http://115.68.223.124/lovelykitchen/사진갤러리/" class="nav-link">사진 갤러리 <i class="fas fa-chevron-down"></i></a>
+                        <a href="<?php echo SITE_URL; ?>/사진갤러리/" class="nav-link">사진 갤러리 <i class="fas fa-chevron-down"></i></a>
                         <div class="dropdown-menu">
-                            <a href="http://115.68.223.124/lovelykitchen/사진갤러리/">음식물처리기 갤러리</a>
-                            <a href="http://115.68.223.124/lovelykitchen/사진갤러리/">아콴테 싱크볼 갤러리</a>
+                            <a href="<?php echo SITE_URL; ?>/사진갤러리/">음식물처리기 갤러리</a>
+                            <a href="<?php echo SITE_URL; ?>/사진갤러리/">아콴테 싱크볼 갤러리</a>
                         </div>
                     </li>
-                    <li><a href="http://115.68.223.124/lovelykitchen/친환경제품/" class="nav-link">친환경제품</a></li>
-                    <li><a href="http://115.68.223.124/lovelykitchen/특가페이지/" class="nav-link active" style="color: #ff6b6b;">특가페이지</a></li>
+                    <li><a href="<?php echo SITE_URL; ?>/친환경제품/" class="nav-link">친환경제품</a></li>
                 </ul>
             </nav>
 
             <div class="header-actions">
-                <a href="tel:1661-9038" class="header-phone">
+                <a href="tel:<?php echo e($cta['phone'] ?? '010-2464-4987'); ?>" class="header-phone">
                     <i class="fas fa-phone"></i>
-                    <span>1661-9038</span>
+                    <span><?php echo e($cta['phone'] ?? '010-2464-4987'); ?></span>
                 </a>
-                <a href="http://115.68.223.124/lovelykitchen/빠른상담/" class="btn-consultation">
+                <a href="<?php echo SITE_URL; ?>/빠른상담/" class="btn-consultation">
                     <span>무료상담</span>
                     <i class="fas fa-arrow-right"></i>
                 </a>
@@ -674,44 +620,43 @@
         </div>
         <nav class="mobile-nav-content">
             <ul class="mobile-menu">
-                <li><a href="http://115.68.223.124/lovelykitchen/회사소개/">회사소개</a></li>
+                <li><a href="<?php echo SITE_URL; ?>/회사소개/">회사소개</a></li>
                 <li class="has-submenu">
                     <a href="#">제품 <i class="fas fa-plus"></i></a>
                     <ul class="submenu">
-                        <li><a href="http://115.68.223.124/lovelykitchen/products.html">음식물처리기</a></li>
-                        <li><a href="http://115.68.223.124/lovelykitchen/싱크볼/">아콴테 싱크볼</a></li>
-                        <li><a href="http://115.68.223.124/lovelykitchen/악세사리/">악세사리</a></li>
+                        <li><a href="<?php echo SITE_URL; ?>/products.html">음식물처리기</a></li>
+                        <li><a href="<?php echo SITE_URL; ?>/싱크볼/">아콴테 싱크볼</a></li>
+                        <li><a href="<?php echo SITE_URL; ?>/악세사리/">악세사리</a></li>
                     </ul>
                 </li>
                 <li class="has-submenu">
                     <a href="#">고객지원 <i class="fas fa-plus"></i></a>
                     <ul class="submenu">
-                        <li><a href="http://115.68.223.124/lovelykitchen/질문과-답변/">질문과 답변</a></li>
-                        <li><a href="http://115.68.223.124/lovelykitchen/a-s-지원/">A/S 서비스 지원</a></li>
+                        <li><a href="<?php echo SITE_URL; ?>/질문과-답변/">질문과 답변</a></li>
+                        <li><a href="<?php echo SITE_URL; ?>/a-s-지원/">A/S 서비스 지원</a></li>
                     </ul>
                 </li>
                 <li class="has-submenu">
                     <a href="#">후기게시판 <i class="fas fa-plus"></i></a>
                     <ul class="submenu">
-                        <li><a href="http://115.68.223.124/lovelykitchen/음식물처리기-후기/">음식물처리기 후기</a></li>
-                        <li><a href="http://115.68.223.124/lovelykitchen/싱크볼-후기/">싱크볼 후기</a></li>
+                        <li><a href="<?php echo SITE_URL; ?>/음식물처리기-후기/">음식물처리기 후기</a></li>
+                        <li><a href="<?php echo SITE_URL; ?>/싱크볼-후기/">싱크볼 후기</a></li>
                     </ul>
                 </li>
                 <li class="has-submenu">
                     <a href="#">사진 갤러리 <i class="fas fa-plus"></i></a>
                     <ul class="submenu">
-                        <li><a href="http://115.68.223.124/lovelykitchen/사진갤러리/">음식물처리기 갤러리</a></li>
-                        <li><a href="http://115.68.223.124/lovelykitchen/사진갤러리/">아콴테 싱크볼 갤러리</a></li>
+                        <li><a href="<?php echo SITE_URL; ?>/사진갤러리/">음식물처리기 갤러리</a></li>
+                        <li><a href="<?php echo SITE_URL; ?>/사진갤러리/">아콴테 싱크볼 갤러리</a></li>
                     </ul>
                 </li>
-                <li><a href="http://115.68.223.124/lovelykitchen/친환경제품/">친환경제품</a></li>
-                <li><a href="http://115.68.223.124/lovelykitchen/특가페이지/" style="color: #ff6b6b; font-weight: 600;">특가페이지</a></li>
+                <li><a href="<?php echo SITE_URL; ?>/친환경제품/">친환경제품</a></li>
             </ul>
             <div class="mobile-contact">
-                <a href="tel:1661-9038" class="mobile-phone">
-                    <i class="fas fa-phone"></i> 1661-9038
+                <a href="tel:<?php echo e($cta['phone'] ?? '010-2464-4987'); ?>" class="mobile-phone">
+                    <i class="fas fa-phone"></i> <?php echo e($cta['phone'] ?? '010-2464-4987'); ?>
                 </a>
-                <a href="http://115.68.223.124/lovelykitchen/빠른상담/" class="mobile-consult-btn">무료 상담 신청</a>
+                <a href="<?php echo SITE_URL; ?>/빠른상담/" class="mobile-consult-btn">무료 상담 신청</a>
             </div>
         </nav>
     </div>
@@ -724,13 +669,12 @@
                 <div class="special-hero-content" data-aos="fade-up">
                     <div class="special-badge">
                         <i class="fas fa-fire"></i>
-                        <span>SPECIAL PRICE</span>
+                        <span><?php echo e($hero['badge'] ?? 'SPECIAL PRICE'); ?></span>
                     </div>
                     <h1 class="special-title">
-                        <span class="highlight">더 특별한 가격</span>으로 만나는<br>
-                        러블리 키친
+                        <?php echo $hero['title'] ?? '<span class="highlight">더 특별한 가격</span>으로 만나는<br>러블리 키친'; ?>
                     </h1>
-                    <p class="special-subtitle">제품별 스펙 자세히 보기</p>
+                    <p class="special-subtitle"><?php echo e($hero['subtitle'] ?? '제품별 스펙 자세히 보기'); ?></p>
                 </div>
             </div>
         </section>
@@ -738,145 +682,43 @@
         <!-- Deals Section - 음식물처리기 -->
         <section class="deals-section">
             <div class="deals-container">
-                <!-- LK-750A 에코라이트 -->
+                <?php foreach ($products as $product): ?>
                 <div class="deal-card" data-aos="fade-up">
                     <div class="deal-image">
-                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/03/Frame-47.png" alt="LK-750A 에코라이트">
+                        <img src="<?php echo e($product['image']); ?>" alt="<?php echo e($product['model']); ?> <?php echo e($product['name']); ?>">
                         <div class="deal-model-name">
-                            <h3>LK-750A 에코라이트</h3>
-                            <p>(ECO_LITE)</p>
+                            <h3><?php echo e($product['model']); ?> <?php echo e($product['name']); ?></h3>
+                            <p>(<?php echo e($product['name_en']); ?>)</p>
                         </div>
                     </div>
                     <div class="deal-content">
                         <div class="deal-tags">
-                            <span class="deal-tag">#딱 필요한 만큼</span>
-                            <span class="deal-tag">#핵심만 담았다</span>
-                            <span class="deal-tag">#합리적인 선택</span>
-                            <span class="deal-tag">#경제적인 제품</span>
+                            <?php foreach ($product['tags'] as $tag): ?>
+                            <span class="deal-tag"><?php echo e($tag); ?></span>
+                            <?php endforeach; ?>
                         </div>
                         <div class="deal-price-box">
-                            <p class="original-price">소비자가 880,000원</p>
-                            <p class="sale-price">특별행사가 380,000원</p>
+                            <p class="original-price">소비자가 <?php echo e($product['original_price']); ?>원</p>
+                            <p class="sale-price">특별행사가 <?php echo e($product['sale_price']); ?>원</p>
                         </div>
                         <ul class="deal-features">
-                            <li><i class="fas fa-check"></i> 0.5마력 파워, 경제적이며, 믿을 수 있는 품질</li>
-                            <li><i class="fas fa-check"></i> 풋스위치 방식 (가장 편한 방식, 반영구 사용 가능)</li>
-                            <li><i class="fas fa-check"></i> 변형없고, 닳지않는 반영구 분쇄 시스템</li>
-                            <li><i class="fas fa-check"></i> 소음 저감장치 채용</li>
+                            <?php foreach ($product['features'] as $feature): ?>
+                            <li><i class="fas fa-check"></i> <?php echo e($feature); ?></li>
+                            <?php endforeach; ?>
                         </ul>
-                        <a href="tel:1661-9038" class="deal-btn">
-                            <span>문의하기</span>
-                            <i class="fas fa-phone"></i>
-                        </a>
-                        <p class="deal-note">* 상기모델은 모든 악세사리가 빠져있는 모델입니다. 고객분께서 필요시 추가하실 수 있습니다.</p>
+                        <?php if (!empty($product['note'])): ?>
+                        <p class="deal-note"><?php echo e($product['note']); ?></p>
+                        <?php endif; ?>
 
+                        <?php if (!empty($product['show_accessory_info'])): ?>
                         <div class="accessories-info">
                             <h4><i class="fas fa-info-circle"></i> 옵션 안내</h4>
                             <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 15px;">식기세척기(매립형) 또는 로봇청소기 직수 연결 사용시, 옵션 1번, 2번 모두 선택하셔야 합니다.</p>
                         </div>
+                        <?php endif; ?>
                     </div>
                 </div>
-
-                <!-- LK-900A 더놈프로 -->
-                <div class="deal-card" data-aos="fade-up">
-                    <div class="deal-image">
-                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/03/Frame-50.png" alt="LK-900A 더놈프로">
-                        <div class="deal-model-name">
-                            <h3>LK-900A 더놈프로</h3>
-                            <p>(THE NORM PRO)</p>
-                        </div>
-                    </div>
-                    <div class="deal-content">
-                        <div class="deal-tags">
-                            <span class="deal-tag">#어떤 음식물도 거침없이</span>
-                            <span class="deal-tag">#프리미엄을 경험하다</span>
-                            <span class="deal-tag">#고객들이 선택한 No.1</span>
-                            <span class="deal-tag">#메가히트</span>
-                        </div>
-                        <div class="deal-price-box">
-                            <p class="original-price">소비자가 990,000원</p>
-                            <p class="sale-price">특별행사가 550,000원</p>
-                        </div>
-                        <ul class="deal-features">
-                            <li><i class="fas fa-check"></i> 검증된 1마력, 차원이 다른 퍼포먼스</li>
-                            <li><i class="fas fa-check"></i> 프리미엄 기술, 압도적인 분쇄력으로 뼈와 씨앗까지 신속하게 처리</li>
-                            <li><i class="fas fa-check"></i> 최고급 소음 저감장치 채용, 쾌적한 사용 보장</li>
-                            <li><i class="fas fa-check"></i> 변형없고 닳지않는 반영구 분쇄 시스템</li>
-                            <li><i class="fas fa-check"></i> 풋스위치 방식 (가장 편한 방식, 반영구 사용 가능)</li>
-                        </ul>
-                        <a href="tel:1661-9038" class="deal-btn">
-                            <span>문의하기</span>
-                            <i class="fas fa-phone"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- LK-1000A 울트라 그라인드 X -->
-                <div class="deal-card" data-aos="fade-up">
-                    <div class="deal-image">
-                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/03/Frame-49.png" alt="LK-1000A 울트라 그라인드 X">
-                        <div class="deal-model-name">
-                            <h3>LK-1000A 울트라 그라인드 X</h3>
-                            <p>(ULTRA GRIND X)</p>
-                        </div>
-                    </div>
-                    <div class="deal-content">
-                        <div class="deal-tags">
-                            <span class="deal-tag">#하이엔드의 시작</span>
-                            <span class="deal-tag">#엄청난 기술로 집결된 명품</span>
-                            <span class="deal-tag">#최고출력 1.5HP</span>
-                        </div>
-                        <div class="deal-price-box">
-                            <p class="original-price">소비자가 1,090,000원</p>
-                            <p class="sale-price">특별행사가 650,000원</p>
-                        </div>
-                        <ul class="deal-features">
-                            <li><i class="fas fa-check"></i> 최고출력 1.5마력, 더 빠르고 부드러운 성능</li>
-                            <li><i class="fas fa-check"></i> 궁극의 수명을 위한 레전더리 스마트 전원 컨트롤 시스템 적용</li>
-                            <li><i class="fas fa-check"></i> 최고급 소음 저감장치 채용, 쾌적한 사용 보장</li>
-                            <li><i class="fas fa-check"></i> 변형없고 닳지않는 반영구 분쇄 시스템</li>
-                            <li><i class="fas fa-check"></i> 풋스위치 방식 (가장 편한 방식, 반영구 사용 가능)</li>
-                        </ul>
-                        <a href="tel:1661-9038" class="deal-btn">
-                            <span>문의하기</span>
-                            <i class="fas fa-phone"></i>
-                        </a>
-                    </div>
-                </div>
-
-                <!-- LK-1000B 게임체인저 -->
-                <div class="deal-card" data-aos="fade-up">
-                    <div class="deal-image">
-                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/03/Frame-51.png" alt="LK-1000B 게임체인저">
-                        <div class="deal-model-name">
-                            <h3>LK-1000B 게임체인저</h3>
-                            <p>(GAME CHANGER)</p>
-                        </div>
-                    </div>
-                    <div class="deal-content">
-                        <div class="deal-tags">
-                            <span class="deal-tag">#현존하는 음식물 처리기중 최고</span>
-                            <span class="deal-tag">#최대출력 1.5HP</span>
-                            <span class="deal-tag">#완벽을 추구하는 당신을 위한</span>
-                        </div>
-                        <div class="deal-price-box">
-                            <p class="original-price">소비자가 1,250,000원</p>
-                            <p class="sale-price">특별행사가 700,000원</p>
-                        </div>
-                        <ul class="deal-features">
-                            <li><i class="fas fa-check"></i> 최고출력 1.5마력, 더 빠르고 부드러운 성능</li>
-                            <li><i class="fas fa-check"></i> 초정밀 그라인딩 시스템으로, 잔여물없이 깨끗하게 처리 구현!</li>
-                            <li><i class="fas fa-check"></i> 궁극의 수명을 위한 레전더리 스마트 전원 컨트롤 시스템 적용</li>
-                            <li><i class="fas fa-check"></i> 최고급 소음 저감장치 채용, 쾌적한 사용 보장</li>
-                            <li><i class="fas fa-check"></i> 극강의 내구성 프리미엄 두께, 흔들리지 않는 안정성</li>
-                            <li><i class="fas fa-check"></i> 풋스위치 방식 (가장 편한 방식, 반영구 사용 가능)</li>
-                        </ul>
-                        <a href="tel:1661-9038" class="deal-btn">
-                            <span>문의하기</span>
-                            <i class="fas fa-phone"></i>
-                        </a>
-                    </div>
-                </div>
+                <?php endforeach; ?>
             </div>
         </section>
 
@@ -885,35 +727,23 @@
             <div class="deals-container">
                 <div class="multitrap-content">
                     <div class="multitrap-image" data-aos="fade-right">
-                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/03/제목을-입력해주세요_-004-3.png" alt="4-Way LK 멀티트랩" class="innovation-image">
+                        <img src="<?php echo e($multitrap['image'] ?? ''); ?>" alt="4-Way LK 멀티트랩" class="innovation-image">
                     </div>
                     <div class="multitrap-text" data-aos="fade-left">
-                        <span class="multitrap-badge">특허출원번호: 20-2024-002148</span>
+                        <span class="multitrap-badge"><?php echo e($multitrap['badge'] ?? ''); ?></span>
                         <h2 class="multitrap-title">
-                            국내 최초 4-WAY LK 멀티트랩!<br>
-                            러블리키친에서 직접 개발 및 생산
+                            <?php echo $multitrap['title'] ?? '국내 최초 4-WAY LK 멀티트랩!<br>러블리키친에서 직접 개발 및 생산'; ?>
                         </h2>
                         <p class="multitrap-desc">
-                            누수 없이, 악취 없이, 안전하게! 사용하는 내내 완벽한 편리함을 제공합니다.
-                            주방 가전과의 완벽한 호환성! 다양한 기기를 연결해도 역류·누수·악취 걱정 없이 안전한 사용을 보장합니다.
+                            <?php echo e($multitrap['description'] ?? ''); ?>
                         </p>
                         <div class="multitrap-features">
+                            <?php foreach ($multitrap['features'] ?? [] as $feature): ?>
                             <div class="multitrap-feature">
                                 <i class="fas fa-check-circle"></i>
-                                <span>6mm 정수기 퇴수 연결구</span>
+                                <span><?php echo e($feature); ?></span>
                             </div>
-                            <div class="multitrap-feature">
-                                <i class="fas fa-check-circle"></i>
-                                <span>식기세척기 드레인 연결구</span>
-                            </div>
-                            <div class="multitrap-feature">
-                                <i class="fas fa-check-circle"></i>
-                                <span>로봇청소기 드레인 연결구 (국내최초)</span>
-                            </div>
-                            <div class="multitrap-feature">
-                                <i class="fas fa-check-circle"></i>
-                                <span>빈틈없는 채결 보장</span>
-                            </div>
+                            <?php endforeach; ?>
                         </div>
                     </div>
                 </div>
@@ -921,6 +751,7 @@
         </section>
 
         <!-- Sinkbowl Section -->
+        <?php if (!empty($sinkbowls)): ?>
         <section class="sinkbowl-section">
             <div class="deals-container">
                 <div class="section-divider" data-aos="fade-up">
@@ -929,68 +760,29 @@
                 </div>
 
                 <div class="sinkbowl-grid">
-                    <!-- AQ-860NE -->
-                    <div class="sinkbowl-card" data-aos="fade-up" data-aos-delay="100">
+                    <?php foreach ($sinkbowls as $index => $sink): ?>
+                    <div class="sinkbowl-card" data-aos="fade-up" data-aos-delay="<?php echo ($index + 1) * 100; ?>">
                         <div class="sinkbowl-image">
-                            <img src="https://lkitchen.co.kr/wp-content/uploads/2025/09/12312312.jpg" alt="AQ-860NE 싱크볼">
+                            <img src="<?php echo e($sink['image']); ?>" alt="<?php echo e($sink['model']); ?> 싱크볼">
                         </div>
                         <div class="sinkbowl-content">
                             <h3 class="sinkbowl-model">
-                                AQ-860NE
+                                <?php echo e($sink['model']); ?>
                                 <span class="free-install">전문가무료시공포함</span>
                             </h3>
-                            <p class="sinkbowl-price">소비자가 480,000원</p>
+                            <p class="sinkbowl-price">소비자가 <?php echo e($sink['price']); ?>원</p>
                             <ul class="sinkbowl-features">
-                                <li><i class="fas fa-ruler-combined"></i> 860 × 525 × 210mm 와이드 사이즈</li>
-                                <li><i class="fas fa-shield-alt"></i> SUS304 두꺼운 반영구 싱크볼</li>
-                                <li><i class="fas fa-paint-brush"></i> 스크래치 방지 엠보싱</li>
-                                <li><i class="fas fa-spray-can"></i> 특수 제작, 나노 코팅</li>
-                                <li><i class="fas fa-volume-mute"></i> 소음 방지 시스템</li>
+                                <?php
+                                $icons = ['fa-ruler-combined', 'fa-shield-alt', 'fa-paint-brush', 'fa-spray-can', 'fa-volume-mute'];
+                                foreach ($sink['features'] as $i => $feature):
+                                    $icon = $icons[$i % count($icons)];
+                                ?>
+                                <li><i class="fas <?php echo $icon; ?>"></i> <?php echo e($feature); ?></li>
+                                <?php endforeach; ?>
                             </ul>
                         </div>
                     </div>
-
-                    <!-- AQ-900NE -->
-                    <div class="sinkbowl-card" data-aos="fade-up" data-aos-delay="200">
-                        <div class="sinkbowl-image">
-                            <img src="https://lkitchen.co.kr/wp-content/uploads/2025/09/12312312.jpg" alt="AQ-900NE 싱크볼">
-                        </div>
-                        <div class="sinkbowl-content">
-                            <h3 class="sinkbowl-model">
-                                AQ-900NE
-                                <span class="free-install">전문가무료시공포함</span>
-                            </h3>
-                            <p class="sinkbowl-price">소비자가 500,000원</p>
-                            <ul class="sinkbowl-features">
-                                <li><i class="fas fa-ruler-combined"></i> 900 × 525 × 210mm 와이드 사이즈</li>
-                                <li><i class="fas fa-shield-alt"></i> SUS304 두꺼운 반영구 싱크볼</li>
-                                <li><i class="fas fa-paint-brush"></i> 스크래치 방지 엠보싱</li>
-                                <li><i class="fas fa-spray-can"></i> 특수 제작, 나노 코팅</li>
-                                <li><i class="fas fa-volume-mute"></i> 소음 방지 시스템</li>
-                            </ul>
-                        </div>
-                    </div>
-
-                    <!-- AQ-980NE -->
-                    <div class="sinkbowl-card" data-aos="fade-up" data-aos-delay="300">
-                        <div class="sinkbowl-image">
-                            <img src="https://lkitchen.co.kr/wp-content/uploads/2025/09/12312312.jpg" alt="AQ-980NE 싱크볼">
-                        </div>
-                        <div class="sinkbowl-content">
-                            <h3 class="sinkbowl-model">
-                                AQ-980NE
-                                <span class="free-install">전문가무료시공포함</span>
-                            </h3>
-                            <p class="sinkbowl-price">소비자가 520,000원</p>
-                            <ul class="sinkbowl-features">
-                                <li><i class="fas fa-ruler-combined"></i> 980 × 525 × 210mm 와이드 사이즈</li>
-                                <li><i class="fas fa-shield-alt"></i> SUS304 두꺼운 반영구 싱크볼</li>
-                                <li><i class="fas fa-paint-brush"></i> 스크래치 방지 엠보싱</li>
-                                <li><i class="fas fa-spray-can"></i> 특수 제작, 나노 코팅</li>
-                                <li><i class="fas fa-volume-mute"></i> 소음 방지 시스템</li>
-                            </ul>
-                        </div>
-                    </div>
+                    <?php endforeach; ?>
                 </div>
 
                 <p style="text-align: center; margin-top: 30px; color: #64748b; font-size: 0.9rem;">
@@ -999,19 +791,20 @@
                 </p>
             </div>
         </section>
+        <?php endif; ?>
 
         <!-- CTA Section -->
         <section class="cta-section">
             <div class="deals-container">
                 <div class="cta-content" data-aos="fade-up">
-                    <h2>지금 바로 무료 상담 받아보세요</h2>
-                    <p>전문 상담원이 친절하게 안내해 드립니다</p>
+                    <h2><?php echo e($cta['title'] ?? '지금 바로 무료 상담 받아보세요'); ?></h2>
+                    <p><?php echo e($cta['subtitle'] ?? '전문 상담원이 친절하게 안내해 드립니다'); ?></p>
                     <div class="cta-buttons">
-                        <a href="tel:1661-9038" class="cta-btn primary">
+                        <a href="tel:<?php echo e($cta['phone'] ?? '010-2464-4987'); ?>" class="cta-btn primary">
                             <i class="fas fa-phone"></i>
-                            <span>전화 상담 1661-9038</span>
+                            <span>전화 상담 <?php echo e($cta['phone'] ?? '010-2464-4987'); ?></span>
                         </a>
-                        <a href="http://115.68.223.124/lovelykitchen/빠른상담/" class="cta-btn secondary">
+                        <a href="<?php echo SITE_URL; ?>/빠른상담/" class="cta-btn secondary">
                             <i class="fas fa-comment-dots"></i>
                             <span>빠른 상담 신청</span>
                         </a>
@@ -1026,7 +819,7 @@
             <div class="container">
                 <div class="footer-grid">
                     <div class="footer-brand">
-                        <a href="http://115.68.223.124/lovelykitchen/" class="footer-logo">
+                        <a href="<?php echo SITE_URL; ?>/" class="footer-logo">
                             <img src="https://lkitchen.co.kr/wp-content/uploads/2024/08/logo.png" alt="Lovely Kitchen">
                         </a>
                         <p class="footer-tagline">완벽한 분쇄, 차원이 다른 프리미엄</p>
@@ -1041,18 +834,18 @@
                     <div class="footer-links">
                         <h4>제품</h4>
                         <ul>
-                            <li><a href="http://115.68.223.124/lovelykitchen/products.html">음식물처리기</a></li>
-                            <li><a href="http://115.68.223.124/lovelykitchen/싱크볼/">아콴테 싱크볼</a></li>
-                            <li><a href="http://115.68.223.124/lovelykitchen/악세사리/">악세사리</a></li>
+                            <li><a href="<?php echo SITE_URL; ?>/products.html">음식물처리기</a></li>
+                            <li><a href="<?php echo SITE_URL; ?>/싱크볼/">아콴테 싱크볼</a></li>
+                            <li><a href="<?php echo SITE_URL; ?>/악세사리/">악세사리</a></li>
                         </ul>
                     </div>
 
                     <div class="footer-links">
                         <h4>고객지원</h4>
                         <ul>
-                            <li><a href="http://115.68.223.124/lovelykitchen/질문과-답변/">질문과 답변</a></li>
-                            <li><a href="http://115.68.223.124/lovelykitchen/a-s-지원/">A/S 서비스 지원</a></li>
-                            <li><a href="http://115.68.223.124/lovelykitchen/빠른상담/">빠른 상담</a></li>
+                            <li><a href="<?php echo SITE_URL; ?>/질문과-답변/">질문과 답변</a></li>
+                            <li><a href="<?php echo SITE_URL; ?>/a-s-지원/">A/S 서비스 지원</a></li>
+                            <li><a href="<?php echo SITE_URL; ?>/빠른상담/">빠른 상담</a></li>
                         </ul>
                     </div>
 
@@ -1062,7 +855,7 @@
                             <i class="fas fa-phone"></i>
                             <div>
                                 <span class="label">고객센터</span>
-                                <a href="tel:1661-9038" class="value">1661-9038</a>
+                                <a href="tel:<?php echo e($cta['phone'] ?? '010-2464-4987'); ?>" class="value"><?php echo e($cta['phone'] ?? '010-2464-4987'); ?></a>
                             </div>
                         </div>
                         <div class="contact-item">
@@ -1087,7 +880,7 @@
         <div class="footer-bottom">
             <div class="container">
                 <div class="footer-info">
-                    <p>러블리키친 총판 대표이사 성정호 ｜ 사업자등록번호 306-08-91986</p>
+                    <p>러블리키친 총판 대표이사 성정호 | 사업자등록번호 306-08-91986</p>
                     <p>본사: 서울시 서초구 반포대로22길 35, 2층 2002호</p>
                 </div>
                 <div class="footer-copyright">
@@ -1097,7 +890,6 @@
         </div>
     </footer>
 
-    <a href="tel:1661-9038" class="phone-inquiry-float" style="position: fixed; right: 10px; bottom: 10px; z-index: 9999;"><img decoding="async" src="https://lkitchen.co.kr/wp-content/uploads/2025/10/전화문의.png" alt="전화문의" width="222" height="202"></a>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
