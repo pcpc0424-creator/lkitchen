@@ -4,52 +4,30 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LK-1000B 게임체인저 | 러블리키친 음식물처리기</title>
-    <meta name="description" content="러블리키친 LK-1000B 게임체인저 - 전문가가 선택하는 최상위 플래그십 모델. 극강의 내구성과 진정한 게임체인저 퍼포먼스">
-    <meta name="keywords" content="LK-1000B, 게임체인저, 음식물처리기, 러블리키친, 1.5마력, 플래그십">
-
-    <!-- Preconnect for Performance -->
+    <meta name="description" content="러블리키친 LK-1000B 게임체인저 - 1.5마력 최상위 플래그십 모델, 극강의 내구성">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-
-    <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
-
-    <!-- Libraries -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css">
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
-
-    <!-- Custom CSS -->
-    <link rel="stylesheet" href="../css/style.css">
-    <link rel="stylesheet" href="../css/products.css">
-    <link rel="stylesheet" href="../css/product-detail.css">
-
-    <!-- Favicon -->
+    <link rel="stylesheet" href="/lovelykitchen/css/style.css">
+    <link rel="stylesheet" href="/lovelykitchen/css/products.css">
+    <link rel="stylesheet" href="/lovelykitchen/css/product-detail.css">
     <link rel="icon" type="image/png" href="https://lkitchen.co.kr/wp-content/uploads/2024/08/logo.png">
+    <style>
+        .main-image-container { width: 100%; aspect-ratio: 1/1; display: flex; align-items: center; justify-content: center; background: linear-gradient(180deg, #f8fafc 0%, #f1f5f9 100%); border-radius: 12px; }
+        .main-image-container img { max-width: 85%; max-height: 85%; object-fit: contain; }
+        .thumb-container { display: flex; gap: 10px; margin-top: 15px; }
+        .thumb { width: 80px; height: 80px; object-fit: contain; background: #f8fafc; border-radius: 8px; padding: 5px; cursor: pointer; border: 2px solid transparent; transition: border-color 0.3s; }
+        .thumb:hover, .thumb.active { border-color: #8b5cf6; }
+        .product-badge-detail.flagship { background: linear-gradient(135deg, #1e293b 0%, #334155 100%); }
+        .flagship-ribbon { position: absolute; top: 20px; right: 20px; display: flex; align-items: center; gap: 6px; padding: 8px 14px; background: rgba(139, 92, 246, 0.15); border: 1px solid #8b5cf6; color: #8b5cf6; border-radius: 20px; font-size: 0.8rem; font-weight: 600; }
+    </style>
 </head>
 <body>
-    <!-- Preloader -->
-    <div class="preloader" id="preloader">
-        <div class="preloader-inner">
-            <div class="preloader-logo">
-                <img src="https://lkitchen.co.kr/wp-content/uploads/2024/08/logo.png" alt="Logo">
-            </div>
-            <div class="preloader-progress">
-                <div class="preloader-bar"></div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Scroll Progress -->
-    <div class="scroll-progress" id="scrollProgress"></div>
-
-    <!-- Cursor Effect -->
-    <div class="cursor-dot" id="cursorDot"></div>
-    <div class="cursor-outline" id="cursorOutline"></div>
-
     <!-- Header -->
-    <header class="header scrolled" id="header">
+    <header class="header" id="header">
         <div class="header-container">
             <a href="http://115.68.223.124/lovelykitchen/" class="logo">
                 <img src="https://lkitchen.co.kr/wp-content/uploads/2024/08/logo.png" alt="Lovely Kitchen" class="logo-img">
@@ -163,11 +141,11 @@
 
     <main>
         <!-- Page Hero -->
-        <section class="page-hero product-detail-hero">
+        <section class="page-hero product-detail-hero" style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);">
             <div class="page-hero-bg"></div>
             <div class="page-hero-overlay"></div>
             <div class="container">
-                <div class="page-hero-content" data-aos="fade-up">
+                <div class="page-hero-content">
                     <nav class="breadcrumb">
                         <a href="http://115.68.223.124/lovelykitchen/">홈</a>
                         <span><i class="fas fa-chevron-right"></i></span>
@@ -175,8 +153,11 @@
                         <span><i class="fas fa-chevron-right"></i></span>
                         <span class="current">LK-1000B</span>
                     </nav>
+                    <div style="display: inline-flex; align-items: center; gap: 6px; background: rgba(139, 92, 246, 0.2); border: 1px solid #8b5cf6; padding: 8px 16px; border-radius: 20px; font-size: 0.9rem; margin-bottom: 15px; color: #c4b5fd;">
+                        <i class="fas fa-gem"></i> 최상위 플래그십 모델
+                    </div>
                     <h1 class="page-title">LK-1000B 게임체인저</h1>
-                    <p class="page-subtitle">전문가가 선택하는 최상위 플래그십, 진정한 게임체인저</p>
+                    <p class="page-subtitle">전문가가 선택하는 하이엔드, 진정한 게임체인저</p>
                 </div>
             </div>
         </section>
@@ -186,55 +167,32 @@
             <div class="container">
                 <div class="product-detail-wrapper">
                     <!-- Product Gallery -->
-                    <div class="product-gallery" data-aos="fade-right">
+                    <div class="product-gallery" style="position: relative;">
                         <div class="product-badge-detail flagship">FLAGSHIP</div>
-                        <div class="product-flagship-ribbon">
-                            <i class="fas fa-gem"></i>
-                            <span>최상위 모델</span>
-                        </div>
+                        <div class="flagship-ribbon"><i class="fas fa-gem"></i> 최상위 모델</div>
                         <div class="gallery-main">
-                            <div class="gallery-main-swiper swiper">
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide">
-                                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/03/Frame-100.png" alt="LK-1000B 메인">
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/03/Frame-51.png" alt="LK-1000B 측면">
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/03/Frame-104.png" alt="LK-1000B 상세">
-                                    </div>
-                                </div>
-                                <div class="swiper-button-next"></div>
-                                <div class="swiper-button-prev"></div>
+                            <div class="main-image-container">
+                                <img src="https://lkitchen.co.kr/wp-content/uploads/2025/03/Frame-100.png" alt="LK-1000B 게임체인저" id="mainImage">
                             </div>
                         </div>
                         <div class="gallery-thumbs">
-                            <div class="gallery-thumbs-swiper swiper">
-                                <div class="swiper-wrapper">
-                                    <div class="swiper-slide">
-                                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/03/Frame-100.png" alt="LK-1000B 썸네일 1">
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/03/Frame-51.png" alt="LK-1000B 썸네일 2">
-                                    </div>
-                                    <div class="swiper-slide">
-                                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/03/Frame-104.png" alt="LK-1000B 썸네일 3">
-                                    </div>
-                                </div>
+                            <div class="thumb-container">
+                                <img src="https://lkitchen.co.kr/wp-content/uploads/2025/03/Frame-100.png" alt="썸네일 1" class="thumb active" onclick="changeImage(this)">
+                                <img src="https://lkitchen.co.kr/wp-content/uploads/2025/03/Frame-51.png" alt="썸네일 2" class="thumb" onclick="changeImage(this)">
+                                <img src="https://lkitchen.co.kr/wp-content/uploads/2025/03/Frame-104.png" alt="썸네일 3" class="thumb" onclick="changeImage(this)">
                             </div>
                         </div>
                     </div>
 
                     <!-- Product Info -->
-                    <div class="product-info" data-aos="fade-left">
+                    <div class="product-info">
                         <div class="product-info-header">
-                            <span class="product-model-tag flagship">LK-1000B</span>
+                            <span class="product-model-tag">LK-1000B</span>
                             <h2 class="product-detail-name">게임체인저 <span class="en-name">GAME CHANGER</span></h2>
                             <p class="product-tagline">전문가가 선택하는 하이엔드, 진정한 게임체인저</p>
                         </div>
 
-                        <div class="product-price-box flagship">
+                        <div class="product-price-box" style="border-color: #8b5cf6; background: linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, rgba(167, 139, 250, 0.05) 100%);">
                             <div class="price-main">
                                 <span class="price-value">1,250,000</span>
                                 <span class="price-unit">원</span>
@@ -247,36 +205,28 @@
 
                         <div class="product-highlights">
                             <div class="highlight-item">
-                                <div class="highlight-icon">
-                                    <i class="fas fa-bolt"></i>
-                                </div>
+                                <div class="highlight-icon" style="background: linear-gradient(135deg, #1e293b 0%, #334155 100%);"><i class="fas fa-bolt"></i></div>
                                 <div class="highlight-content">
                                     <span class="highlight-label">출력</span>
                                     <span class="highlight-value">1.5 HP (마력)</span>
                                 </div>
                             </div>
                             <div class="highlight-item">
-                                <div class="highlight-icon">
-                                    <i class="fas fa-tachometer-alt"></i>
-                                </div>
+                                <div class="highlight-icon" style="background: linear-gradient(135deg, #1e293b 0%, #334155 100%);"><i class="fas fa-tachometer-alt"></i></div>
                                 <div class="highlight-content">
                                     <span class="highlight-label">분쇄속도</span>
                                     <span class="highlight-value">3,200 RPM</span>
                                 </div>
                             </div>
                             <div class="highlight-item">
-                                <div class="highlight-icon">
-                                    <i class="fas fa-gem"></i>
-                                </div>
+                                <div class="highlight-icon" style="background: linear-gradient(135deg, #1e293b 0%, #334155 100%);"><i class="fas fa-gem"></i></div>
                                 <div class="highlight-content">
                                     <span class="highlight-label">내구성</span>
                                     <span class="highlight-value">극강 내구성</span>
                                 </div>
                             </div>
                             <div class="highlight-item">
-                                <div class="highlight-icon">
-                                    <i class="fas fa-shield-alt"></i>
-                                </div>
+                                <div class="highlight-icon" style="background: linear-gradient(135deg, #1e293b 0%, #334155 100%);"><i class="fas fa-shield-alt"></i></div>
                                 <div class="highlight-content">
                                     <span class="highlight-label">보증</span>
                                     <span class="highlight-value">5년 무상 A/S</span>
@@ -298,7 +248,7 @@
                         </div>
 
                         <div class="product-actions-detail">
-                            <a href="http://115.68.223.124/lovelykitchen/빠른상담/" class="btn-inquiry-detail flagship">
+                            <a href="http://115.68.223.124/lovelykitchen/빠른상담/" class="btn-inquiry-detail" style="background: linear-gradient(135deg, #1e293b 0%, #334155 100%);">
                                 <i class="fas fa-headset"></i>
                                 <span>무료 상담 신청</span>
                             </a>
@@ -315,58 +265,24 @@
         <!-- Product Specs Section -->
         <section class="product-specs-section">
             <div class="container">
-                <div class="section-header" data-aos="fade-up">
-                    <span class="section-tag">SPECIFICATIONS</span>
+                <div class="section-header">
+                    <span class="section-tag" style="background: rgba(139,92,246,0.1); color: #8b5cf6;">SPECIFICATIONS</span>
                     <h2 class="section-title">제품 상세 사양</h2>
                 </div>
-
-                <div class="specs-table-wrapper" data-aos="fade-up">
+                <div class="specs-table-wrapper">
                     <table class="specs-table">
                         <tbody>
-                            <tr>
-                                <th>모델명</th>
-                                <td>LK-1000B 게임체인저 (GAME CHANGER)</td>
-                            </tr>
-                            <tr>
-                                <th>출력</th>
-                                <td>1.5 HP (마력)</td>
-                            </tr>
-                            <tr>
-                                <th>전압/주파수</th>
-                                <td>220V / 60Hz</td>
-                            </tr>
-                            <tr>
-                                <th>분쇄 방식</th>
-                                <td>연속 투입식</td>
-                            </tr>
-                            <tr>
-                                <th>분쇄 챔버</th>
-                                <td>항균 프리미엄 스테인리스 스틸</td>
-                            </tr>
-                            <tr>
-                                <th>분쇄 속도</th>
-                                <td>3,200 RPM</td>
-                            </tr>
-                            <tr>
-                                <th>제품 크기</th>
-                                <td>195mm(W) x 195mm(D) x 390mm(H)</td>
-                            </tr>
-                            <tr>
-                                <th>싱크홀 규격</th>
-                                <td>표준 90mm (3.5인치)</td>
-                            </tr>
-                            <tr>
-                                <th>분쇄 가능</th>
-                                <td>모든 뼈, 과일 씨앗, 모든 음식물</td>
-                            </tr>
-                            <tr>
-                                <th>특수 기능</th>
-                                <td>4중 방음, 항균 코팅, 자동 역회전</td>
-                            </tr>
-                            <tr>
-                                <th>무상 A/S</th>
-                                <td>5년</td>
-                            </tr>
+                            <tr><th>모델명</th><td>LK-1000B 게임체인저 (GAME CHANGER)</td></tr>
+                            <tr><th>출력</th><td>1.5 HP (마력)</td></tr>
+                            <tr><th>전압/주파수</th><td>220V / 60Hz</td></tr>
+                            <tr><th>분쇄 방식</th><td>연속 투입식</td></tr>
+                            <tr><th>분쇄 챔버</th><td>항균 프리미엄 스테인리스 스틸</td></tr>
+                            <tr><th>분쇄 속도</th><td>3,200 RPM</td></tr>
+                            <tr><th>제품 크기</th><td>195mm(W) x 195mm(D) x 390mm(H)</td></tr>
+                            <tr><th>싱크홀 규격</th><td>표준 90mm (3.5인치)</td></tr>
+                            <tr><th>분쇄 가능</th><td>모든 뼈, 과일 씨앗, 모든 음식물</td></tr>
+                            <tr><th>특수 기능</th><td>4중 방음, 항균 코팅, 자동 역회전</td></tr>
+                            <tr><th>무상 A/S</th><td>5년</td></tr>
                         </tbody>
                     </table>
                 </div>
@@ -376,52 +292,37 @@
         <!-- What's Included Section -->
         <section class="included-section">
             <div class="container">
-                <div class="section-header" data-aos="fade-up">
-                    <span class="section-tag">PACKAGE</span>
+                <div class="section-header">
+                    <span class="section-tag" style="background: rgba(139,92,246,0.1); color: #8b5cf6;">PACKAGE</span>
                     <h2 class="section-title">프리미엄 구성품</h2>
                 </div>
-
-                <div class="included-grid" data-aos="fade-up">
+                <div class="included-grid">
                     <div class="included-item">
-                        <div class="included-icon">
-                            <i class="fas fa-blender"></i>
-                        </div>
+                        <div class="included-icon" style="background: linear-gradient(135deg, #1e293b 0%, #334155 100%);"><i class="fas fa-blender"></i></div>
                         <span>음식물처리기 본체</span>
                     </div>
                     <div class="included-item">
-                        <div class="included-icon">
-                            <i class="fas fa-ring"></i>
-                        </div>
+                        <div class="included-icon" style="background: linear-gradient(135deg, #1e293b 0%, #334155 100%);"><i class="fas fa-ring"></i></div>
                         <span>프리미엄 싱크 플랜지</span>
                     </div>
-                    <div class="included-item featured">
-                        <div class="included-icon">
-                            <i class="fas fa-plug"></i>
-                        </div>
+                    <div class="included-item" style="background: linear-gradient(135deg, rgba(139,92,246,0.05) 0%, rgba(167,139,250,0.05) 100%); border: 2px solid #8b5cf6;">
+                        <div class="included-icon" style="background: linear-gradient(135deg, #1e293b 0%, #334155 100%);"><i class="fas fa-plug"></i></div>
                         <span>프리미엄 에어스위치</span>
                     </div>
-                    <div class="included-item featured">
-                        <div class="included-icon">
-                            <i class="fas fa-cubes"></i>
-                        </div>
+                    <div class="included-item" style="background: linear-gradient(135deg, rgba(139,92,246,0.05) 0%, rgba(167,139,250,0.05) 100%); border: 2px solid #8b5cf6;">
+                        <div class="included-icon" style="background: linear-gradient(135deg, #1e293b 0%, #334155 100%);"><i class="fas fa-cubes"></i></div>
                         <span>4-WAY LK 멀티트랩</span>
                     </div>
                     <div class="included-item">
-                        <div class="included-icon">
-                            <i class="fas fa-arrows-alt-v"></i>
-                        </div>
+                        <div class="included-icon" style="background: linear-gradient(135deg, #1e293b 0%, #334155 100%);"><i class="fas fa-arrows-alt-v"></i></div>
                         <span>배수관 연결부</span>
                     </div>
                     <div class="included-item">
-                        <div class="included-icon">
-                            <i class="fas fa-file-alt"></i>
-                        </div>
+                        <div class="included-icon" style="background: linear-gradient(135deg, #1e293b 0%, #334155 100%);"><i class="fas fa-file-alt"></i></div>
                         <span>사용 설명서</span>
                     </div>
                     <div class="included-item">
-                        <div class="included-icon">
-                            <i class="fas fa-certificate"></i>
-                        </div>
+                        <div class="included-icon" style="background: linear-gradient(135deg, #1e293b 0%, #334155 100%);"><i class="fas fa-certificate"></i></div>
                         <span>품질 보증서</span>
                     </div>
                 </div>
@@ -431,12 +332,11 @@
         <!-- Other Products Section -->
         <section class="other-products-section">
             <div class="container">
-                <div class="section-header" data-aos="fade-up">
+                <div class="section-header">
                     <span class="section-tag">OTHER PRODUCTS</span>
                     <h2 class="section-title">다른 제품 둘러보기</h2>
                 </div>
-
-                <div class="other-products-grid" data-aos="fade-up">
+                <div class="other-products-grid">
                     <a href="http://115.68.223.124/lovelykitchen/products/lk-750a.html" class="other-product-card">
                         <div class="other-product-badge entry">ENTRY</div>
                         <div class="other-product-image">
@@ -475,22 +375,15 @@
         </section>
 
         <!-- CTA Section -->
-        <section class="cta-section">
-            <div class="cta-bg">
-                <div class="cta-pattern"></div>
-            </div>
+        <section class="cta-section" style="background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);">
+            <div class="cta-bg"><div class="cta-pattern"></div></div>
             <div class="container">
-                <div class="cta-content" data-aos="fade-up">
+                <div class="cta-content">
                     <span class="cta-tag">GET STARTED</span>
-                    <h2 class="cta-title">
-                        LK-1000B 게임체인저,<br>
-                        <span class="gradient-text">지금 상담받아보세요</span>
-                    </h2>
-                    <p class="cta-desc">
-                        최상위 플래그십의 진정한 가치를 경험해보세요
-                    </p>
+                    <h2 class="cta-title">LK-1000B 게임체인저,<br><span style="color: #fff;">지금 상담받아보세요</span></h2>
+                    <p class="cta-desc">최상위 플래그십의 진정한 가치를 경험해보세요</p>
                     <div class="cta-buttons">
-                        <a href="http://115.68.223.124/lovelykitchen/빠른상담/" class="btn-primary large">
+                        <a href="http://115.68.223.124/lovelykitchen/빠른상담/" class="btn-primary large" style="background: #8b5cf6; color: #fff;">
                             <span>무료 상담 신청</span>
                             <i class="fas fa-arrow-right"></i>
                         </a>
@@ -583,15 +476,19 @@
 
     <div class="phone-inquiry-container" id="phoneInquiry">
         <button class="close-btn" onclick="document.getElementById('phoneInquiry').classList.add('hidden');">&times;</button>
-        <a href="tel:1661-9038" class="phone-inquiry-float"><img decoding="async" src="https://lkitchen.co.kr/wp-content/uploads/2025/10/전화문의.png" alt="전화문의" width="222" height="202"></a>
+        <a href="tel:1661-9038" class="phone-inquiry-float"><img src="https://lkitchen.co.kr/wp-content/uploads/2025/10/전화문의.png" alt="전화문의" width="222" height="202"></a>
     </div>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="../js/main.js"></script>
-    <script src="../js/product-detail.js"></script>
+    <script src="/lovelykitchen/js/main.js"></script>
+    <script>
+        function changeImage(thumb) {
+            document.getElementById('mainImage').src = thumb.src;
+            document.querySelectorAll('.thumb').forEach(img => img.classList.remove('active'));
+            thumb.classList.add('active');
+        }
+    </script>
 </body>
 </html>

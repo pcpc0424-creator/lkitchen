@@ -776,3 +776,30 @@
         justify-content: center;
     }
 }
+
+/* ============================================
+   Fallback - Ensure all elements are visible
+   ============================================ */
+.product-detail-section,
+.product-detail-wrapper,
+.product-gallery,
+.product-info,
+.gallery-main,
+.gallery-thumbs,
+.product-info-header,
+.product-price-box,
+.product-highlights,
+.product-features-list,
+.product-actions-detail {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+}
+
+.product-gallery img,
+.gallery-main-swiper img {
+    opacity: 1 !important;
+    visibility: visible !important;
+    max-width: 100%;
+    height: auto;
+}
