@@ -19,7 +19,7 @@ document.addEventListener('DOMContentLoaded', () => {
     PartnersSlider.init();
     ScrollProgress.init();
     FloatingButtons.init();
-    QuickPopup.init();
+    // QuickPopup.init(); // 팝업 비활성화
     CustomCursor.init();
 
     // Initialize AOS

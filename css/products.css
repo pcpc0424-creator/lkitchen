@@ -452,8 +452,16 @@
 
 @media (min-width: 768px) {
     .benefits-grid {
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
         gap: 30px;
+    }
+}
+
+/* 마지막 두 카드 나란히 중앙 정렬 */
+@media (min-width: 768px) {
+    .benefits-grid .benefit-card:nth-child(4),
+    .benefits-grid .benefit-card:nth-child(5) {
+        justify-self: center;
     }
 }
 
@@ -497,6 +505,112 @@
     font-size: 0.9rem;
     color: var(--text-secondary);
     line-height: 1.6;
+}
+
+/* 미생물 오염도 카드 스타일 */
+.benefit-card-contamination {
+    padding: 25px 20px;
+}
+
+.benefit-card-contamination .contamination-content {
+    text-align: center;
+}
+
+/* 오염도 수치 리스트 */
+.contamination-stats {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 18px 0;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.contamination-stats li {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+    padding: 8px 14px;
+    background: rgba(0,0,0,0.04);
+    border-radius: 25px;
+    white-space: nowrap;
+}
+
+.contamination-stats li strong {
+    color: var(--text-primary);
+    margin-left: 3px;
+}
+
+.contamination-stats li.highlight {
+    color: #fff;
+    background: linear-gradient(135deg, #e94560, #ff6b6b);
+}
+
+.contamination-stats li.highlight strong {
+    color: #fff;
+}
+
+/* 섹션 공통 */
+.contamination-section {
+    background: #f8f9fa;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 12px;
+}
+
+.contamination-section .section-label {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 10px;
+}
+
+/* 세균 증식 리스트 */
+.bacteria-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.bacteria-list li {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+}
+
+.bacteria-list li .num {
+    font-weight: 700;
+    color: #e94560;
+}
+
+/* 경고 박스 */
+.contamination-section.warning-box {
+    background: rgba(233, 69, 96, 0.08);
+    border-left: 3px solid #e94560;
+}
+
+.contamination-section.warning-box .section-label {
+    color: #e94560;
+}
+
+.contamination-section .section-desc {
+    font-size: 0.82rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 6px;
+}
+
+.contamination-section .section-desc:last-child {
+    margin-bottom: 0;
+}
+
+/* 하단 노트 */
+.contamination-note {
+    font-size: 0.75rem;
+    color: #aaa;
+    margin-top: 8px;
 }
 
 /* ============================================
@@ -599,16 +713,155 @@
     }
 
     .benefit-card {
-        padding: 25px 15px;
+        padding: 20px 15px;
+    }
+
+    .benefit-card h3 {
+        font-size: 0.95rem;
+        line-height: 1.4;
+        margin-bottom: 12px;
+        word-break: keep-all;
+    }
+
+    .benefit-card p {
+        font-size: 0.8rem;
+        line-height: 1.7;
+        word-break: keep-all;
+        text-align: left;
     }
 
     .benefit-icon {
-        width: 60px;
-        height: 60px;
+        width: 50px;
+        height: 50px;
+        margin-bottom: 15px;
     }
 
     .benefit-icon i {
-        font-size: 1.25rem;
+        font-size: 1.1rem;
+    }
+
+    /* 미생물 오염도 카드 모바일 최적화 - 전체 너비 */
+    .benefit-card-contamination {
+        grid-column: 1 / -1;
+        padding: 25px 20px;
+        background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+        color: #fff;
+    }
+
+    .benefit-card-contamination:hover {
+        transform: none;
+    }
+
+    .benefit-card-contamination .benefit-icon {
+        background: rgba(233, 69, 96, 0.2);
+        border: 2px solid rgba(233, 69, 96, 0.5);
+    }
+
+    .benefit-card-contamination .benefit-icon i {
+        color: #ff6b6b;
+    }
+
+    .benefit-card-contamination h3 {
+        font-size: 1.1rem;
+        margin-bottom: 20px;
+        color: #fff;
+    }
+
+    /* 오염도 수치 - 가로 정렬 */
+    .contamination-stats {
+        flex-direction: row;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 20px;
+        padding-bottom: 18px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .contamination-stats li {
+        font-size: 0.8rem;
+        padding: 10px 14px;
+        background: rgba(255,255,255,0.08);
+        color: rgba(255,255,255,0.7);
+        min-width: auto;
+        flex: 1;
+    }
+
+    .contamination-stats li strong {
+        display: block;
+        font-size: 1.1rem;
+        color: #fff;
+        margin-top: 4px;
+    }
+
+    .contamination-stats li.highlight {
+        background: linear-gradient(135deg, #e94560, #ff6b6b);
+        color: #fff;
+    }
+
+    .contamination-stats li.highlight strong {
+        color: #fff;
+        font-size: 1.3rem;
+    }
+
+    /* 섹션 모바일 */
+    .contamination-section {
+        padding: 15px;
+        margin-bottom: 12px;
+        text-align: center;
+        background: rgba(255,255,255,0.05);
+        border-radius: 12px;
+    }
+
+    .contamination-section .section-label {
+        font-size: 0.9rem;
+        margin-bottom: 12px;
+        color: #fff;
+    }
+
+    /* 세균 리스트 - 가로 정렬 */
+    .bacteria-list {
+        flex-direction: row;
+        justify-content: center;
+        gap: 25px;
+    }
+
+    .bacteria-list li {
+        font-size: 0.85rem;
+        color: rgba(255,255,255,0.7);
+    }
+
+    .bacteria-list li .num {
+        display: block;
+        font-size: 1.1rem;
+        color: #ff6b6b;
+        margin-top: 4px;
+    }
+
+    /* 경고 박스 모바일 */
+    .contamination-section.warning-box {
+        text-align: left;
+        background: rgba(233, 69, 96, 0.15);
+        border-left: 3px solid #e94560;
+    }
+
+    .contamination-section.warning-box .section-label {
+        color: #ff6b6b;
+    }
+
+    .contamination-section .section-desc {
+        font-size: 0.82rem;
+        line-height: 1.7;
+        word-break: keep-all;
+        color: rgba(255,255,255,0.75);
+    }
+
+    .contamination-section .section-desc br {
+        display: none;
+    }
+
+    .contamination-note {
+        font-size: 0.72rem;
+        color: rgba(255,255,255,0.4);
     }
 }
 

@@ -13,6 +13,146 @@
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/pages.css">
     <link rel="icon" type="image/png" href="https://lkitchen.co.kr/wp-content/uploads/2024/08/logo.png">
+    <style>
+        /* Model Checklist Styles */
+        .model-checklist {
+            background: #f8fafc;
+            padding: 20px;
+            border-radius: 12px;
+            margin-top: 10px;
+        }
+        .checklist-category {
+            margin-top: 20px;
+            padding-top: 15px;
+            border-top: 1px solid #e2e8f0;
+        }
+        .checklist-category:first-of-type {
+            margin-top: 15px;
+        }
+        .checklist-category h4 {
+            font-size: 0.95rem;
+            color: #3b82f6;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .checklist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 10px;
+        }
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 15px;
+            background: #fff;
+            border: 2px solid #e2e8f0;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .checkbox-label:hover {
+            border-color: #3b82f6;
+        }
+        .checkbox-label input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            accent-color: #3b82f6;
+        }
+        .checkbox-label input[type="checkbox"]:checked + .checkmark + span {
+            color: #3b82f6;
+            font-weight: 600;
+        }
+        .checkbox-label input[type="checkbox"]:checked ~ span {
+            color: #3b82f6;
+        }
+
+        /* Sinkball Extra Fields */
+        .sinkball-extra-fields {
+            background: #eff6ff;
+            padding: 20px;
+            border-radius: 12px;
+            margin: 20px 0;
+            border-left: 4px solid #3b82f6;
+        }
+        .form-group-subtitle {
+            font-weight: 600;
+            color: #3b82f6;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+        .form-group.half {
+            margin-bottom: 15px;
+        }
+        .recommended-model {
+            background: #fff;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            color: #059669;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        /* Photo Upload Styles */
+        .photo-upload-section {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        .photo-upload-item {
+            background: #f8fafc;
+            border: 2px dashed #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+        }
+        .upload-label {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            cursor: pointer;
+            color: #64748b;
+            transition: all 0.3s ease;
+        }
+        .upload-label:hover {
+            color: #3b82f6;
+        }
+        .upload-label i {
+            font-size: 2rem;
+        }
+        .file-name {
+            font-size: 0.85rem;
+            color: #94a3b8;
+            margin-top: 10px;
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .checklist-grid {
+                grid-template-columns: 1fr;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .photo-upload-section {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
 </head>
 <body>
     <div class="preloader" id="preloader"><div class="preloader-inner"><div class="preloader-logo"><img src="https://lkitchen.co.kr/wp-content/uploads/2024/08/logo.png" alt="Logo"></div><div class="preloader-progress"><div class="preloader-bar"></div></div></div></div>
@@ -24,11 +164,11 @@
             <nav class="nav-desktop">
                 <ul class="nav-menu">
                     <li><a href="http://115.68.223.124/lovelykitchen/회사소개/" class="nav-link">회사소개</a></li>
+                    <li><a href="http://115.68.223.124/lovelykitchen/친환경제품/" class="nav-link">친환경</a></li>
                     <li class="has-dropdown"><a href="http://115.68.223.124/lovelykitchen/products.html" class="nav-link">제품 <i class="fas fa-chevron-down"></i></a><div class="dropdown-menu"><a href="http://115.68.223.124/lovelykitchen/products.html">음식물처리기</a><a href="http://115.68.223.124/lovelykitchen/싱크볼/">아콴테 싱크볼</a><a href="http://115.68.223.124/lovelykitchen/악세사리/">악세사리</a></div></li>
+                    <li class="has-dropdown"><a href="http://115.68.223.124/lovelykitchen/사진갤러리/" class="nav-link">갤러리 <i class="fas fa-chevron-down"></i></a><div class="dropdown-menu"><a href="http://115.68.223.124/lovelykitchen/사진갤러리/">음식물처리기 갤러리</a><a href="http://115.68.223.124/lovelykitchen/사진갤러리/싱크볼/">아콴테 싱크볼 갤러리</a></div></li>
+                    <li class="has-dropdown"><a href="http://115.68.223.124/lovelykitchen/음식물처리기-후기/" class="nav-link">구매후기 <i class="fas fa-chevron-down"></i></a><div class="dropdown-menu"><a href="http://115.68.223.124/lovelykitchen/음식물처리기-후기/">음식물처리기 후기</a><a href="http://115.68.223.124/lovelykitchen/싱크볼-후기/">싱크볼 후기</a></div></li>
                     <li class="has-dropdown"><a href="http://115.68.223.124/lovelykitchen/질문과-답변/" class="nav-link">고객지원 <i class="fas fa-chevron-down"></i></a><div class="dropdown-menu"><a href="http://115.68.223.124/lovelykitchen/질문과-답변/">질문과 답변</a><a href="http://115.68.223.124/lovelykitchen/a-s-지원/">A/S 서비스 지원</a></div></li>
-                    <li class="has-dropdown"><a href="http://115.68.223.124/lovelykitchen/음식물처리기-후기/" class="nav-link">후기게시판 <i class="fas fa-chevron-down"></i></a><div class="dropdown-menu"><a href="http://115.68.223.124/lovelykitchen/음식물처리기-후기/">음식물처리기 후기</a><a href="http://115.68.223.124/lovelykitchen/싱크볼-후기/">싱크볼 후기</a></div></li>
-                    <li class="has-dropdown"><a href="http://115.68.223.124/lovelykitchen/사진갤러리/" class="nav-link">사진 갤러리 <i class="fas fa-chevron-down"></i></a><div class="dropdown-menu"><a href="http://115.68.223.124/lovelykitchen/사진갤러리/">음식물처리기 갤러리</a><a href="http://115.68.223.124/lovelykitchen/사진갤러리/">아콴테 싱크볼 갤러리</a></div></li>
-                    <li><a href="http://115.68.223.124/lovelykitchen/친환경제품/" class="nav-link">친환경제품</a></li>
                 </ul>
             </nav>
             <div class="header-actions">
@@ -39,7 +179,7 @@
         </div>
     </header>
 
-    <div class="mobile-nav" id="mobileNav"><div class="mobile-nav-header"><img src="https://lkitchen.co.kr/wp-content/uploads/2024/08/logo.png" alt="Logo" class="mobile-logo"><button class="mobile-close" id="mobileClose"><i class="fas fa-times"></i></button></div><nav class="mobile-nav-content"><ul class="mobile-menu"><li><a href="http://115.68.223.124/lovelykitchen/회사소개/">회사소개</a></li><li class="has-submenu"><a href="#">제품 <i class="fas fa-plus"></i></a><ul class="submenu"><li><a href="http://115.68.223.124/lovelykitchen/products.html">음식물처리기</a></li><li><a href="http://115.68.223.124/lovelykitchen/싱크볼/">아콴테 싱크볼</a></li><li><a href="http://115.68.223.124/lovelykitchen/악세사리/">악세사리</a></li></ul></li><li class="has-submenu"><a href="#">고객지원 <i class="fas fa-plus"></i></a><ul class="submenu"><li><a href="http://115.68.223.124/lovelykitchen/질문과-답변/">질문과 답변</a></li><li><a href="http://115.68.223.124/lovelykitchen/a-s-지원/">A/S 서비스 지원</a></li></ul></li><li class="has-submenu"><a href="#">후기게시판 <i class="fas fa-plus"></i></a><ul class="submenu"><li><a href="http://115.68.223.124/lovelykitchen/음식물처리기-후기/">음식물처리기 후기</a></li><li><a href="http://115.68.223.124/lovelykitchen/싱크볼-후기/">싱크볼 후기</a></li></ul></li><li><a href="http://115.68.223.124/lovelykitchen/친환경제품/">친환경제품</a></li></ul><div class="mobile-contact"><a href="tel:1661-9038" class="mobile-phone"><i class="fas fa-phone"></i> 1661-9038</a><a href="http://115.68.223.124/lovelykitchen/빠른상담/" class="mobile-consult-btn">무료 상담 신청</a></div></nav></div>
+    <div class="mobile-nav" id="mobileNav"><div class="mobile-nav-header"><img src="https://lkitchen.co.kr/wp-content/uploads/2024/08/logo.png" alt="Logo" class="mobile-logo"><button class="mobile-close" id="mobileClose"><i class="fas fa-times"></i></button></div><nav class="mobile-nav-content"><ul class="mobile-menu"><li><a href="http://115.68.223.124/lovelykitchen/회사소개/">회사소개</a></li><li><a href="http://115.68.223.124/lovelykitchen/친환경제품/">친환경</a></li><li class="has-submenu"><a href="#">제품 <i class="fas fa-plus"></i></a><ul class="submenu"><li><a href="http://115.68.223.124/lovelykitchen/products.html">음식물처리기</a></li><li><a href="http://115.68.223.124/lovelykitchen/싱크볼/">아콴테 싱크볼</a></li><li><a href="http://115.68.223.124/lovelykitchen/악세사리/">악세사리</a></li></ul></li><li class="has-submenu"><a href="#">갤러리 <i class="fas fa-plus"></i></a><ul class="submenu"><li><a href="http://115.68.223.124/lovelykitchen/사진갤러리/">음식물처리기 갤러리</a></li><li><a href="http://115.68.223.124/lovelykitchen/사진갤러리/싱크볼/">아콴테 싱크볼 갤러리</a></li></ul></li><li class="has-submenu"><a href="#">구매후기 <i class="fas fa-plus"></i></a><ul class="submenu"><li><a href="http://115.68.223.124/lovelykitchen/음식물처리기-후기/">음식물처리기 후기</a></li><li><a href="http://115.68.223.124/lovelykitchen/싱크볼-후기/">싱크볼 후기</a></li></ul></li><li class="has-submenu"><a href="#">고객지원 <i class="fas fa-plus"></i></a><ul class="submenu"><li><a href="http://115.68.223.124/lovelykitchen/질문과-답변/">질문과 답변</a></li><li><a href="http://115.68.223.124/lovelykitchen/a-s-지원/">A/S 서비스 지원</a></li></ul></li></ul><div class="mobile-contact"><a href="tel:1661-9038" class="mobile-phone"><i class="fas fa-phone"></i> 1661-9038</a><a href="http://115.68.223.124/lovelykitchen/빠른상담/" class="mobile-consult-btn">무료 상담 신청</a></div></nav></div>
     <div class="mobile-overlay" id="mobileOverlay"></div>
 
     <main>
@@ -54,25 +194,103 @@
                 </div>
 
                 <div class="contact-form" data-aos="fade-up">
-                    <form action="#" method="post">
+                    <form action="#" method="post" enctype="multipart/form-data">
                         <div class="form-group">
                             <label for="name">성함 *</label>
                             <input type="text" id="name" name="name" placeholder="성함을 입력해주세요" required>
                         </div>
                         <div class="form-group">
-                            <label for="product">희망모델 *</label>
-                            <select id="product" name="product" required>
-                                <option value="">선택해주세요</option>
-                                <option value="750A">750A</option>
-                                <option value="900A">900A</option>
-                                <option value="1000A">1000A</option>
-                                <option value="1000B">1000B</option>
-                                <option value="악세사리">악세사리</option>
-                                <option value="860NE 싱크볼">860NE 싱크볼</option>
-                                <option value="900NE 싱크볼">900NE 싱크볼</option>
-                                <option value="980NE 싱크볼">980NE 싱크볼</option>
-                            </select>
+                            <label>희망모델 (복수 선택 가능)</label>
+                            <div class="model-checklist">
+                                <div class="checklist-item">
+                                    <label class="checkbox-label">
+                                        <input type="checkbox" name="product[]" value="상담 후 결정" checked>
+                                        <span class="checkmark"></span>
+                                        <span>상담 후 결정</span>
+                                    </label>
+                                </div>
+                                <div class="checklist-category">
+                                    <h4><i class="fas fa-blender"></i> 분쇄기</h4>
+                                    <div class="checklist-grid">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="product[]" value="LK-750A">
+                                            <span class="checkmark"></span>
+                                            <span>LK-750A</span>
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="product[]" value="LK-900A">
+                                            <span class="checkmark"></span>
+                                            <span>LK-900A</span>
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="product[]" value="LK-1000A">
+                                            <span class="checkmark"></span>
+                                            <span>LK-1000A</span>
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="product[]" value="LK-1000B">
+                                            <span class="checkmark"></span>
+                                            <span>LK-1000B</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="checklist-category">
+                                    <h4><i class="fas fa-sink"></i> 싱크볼</h4>
+                                    <div class="checklist-grid">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="product[]" value="AQ860NE" class="sinkball-checkbox" onchange="toggleSinkballFields()">
+                                            <span class="checkmark"></span>
+                                            <span>AQ860NE</span>
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="product[]" value="AQ900NE" class="sinkball-checkbox" onchange="toggleSinkballFields()">
+                                            <span class="checkmark"></span>
+                                            <span>AQ900NE</span>
+                                        </label>
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="product[]" value="AQ980NE" class="sinkball-checkbox" onchange="toggleSinkballFields()">
+                                            <span class="checkmark"></span>
+                                            <span>AQ980NE</span>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="checklist-category">
+                                    <h4><i class="fas fa-plus-circle"></i> 악세사리</h4>
+                                    <div class="checklist-grid">
+                                        <label class="checkbox-label">
+                                            <input type="checkbox" name="product[]" value="ACC">
+                                            <span class="checkmark"></span>
+                                            <span>ACC (악세사리)</span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
+
+                        <!-- 싱크볼 선택 시 추가 입력 필드 -->
+                        <div class="sinkball-extra-fields" id="sinkballFields" style="display: none;">
+                            <div class="form-group-subtitle">
+                                <i class="fas fa-ruler-combined"></i> 싱크볼 선택 시 추가 정보 (선택)
+                            </div>
+                            <div class="form-row">
+                                <div class="form-group half">
+                                    <label for="currentSinkWidth">현재 싱크볼 가로 (mm)</label>
+                                    <input type="number" id="currentSinkWidth" name="currentSinkWidth" placeholder="예: 860">
+                                </div>
+                                <div class="form-group half">
+                                    <label for="currentSinkDepth">현재 싱크볼 세로 (mm)</label>
+                                    <input type="number" id="currentSinkDepth" name="currentSinkDepth" placeholder="예: 525">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="cabinetWidth">하부장 내부 가로 사이즈 (mm)</label>
+                                <input type="number" id="cabinetWidth" name="cabinetWidth" placeholder="예: 900">
+                            </div>
+                            <div class="recommended-model" id="recommendedModel" style="display: none;">
+                                <i class="fas fa-lightbulb"></i> 추천 모델: <strong id="recommendedModelName"></strong>
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <label for="phone">연락처 *</label>
                             <input type="tel" id="phone" name="phone" placeholder="연락처를 입력해주세요" required>
@@ -92,6 +310,30 @@
                                 </label>
                             </div>
                         </div>
+
+                        <!-- 사진 첨부 -->
+                        <div class="form-group">
+                            <label>사진 첨부 (선택)</label>
+                            <div class="photo-upload-section">
+                                <div class="photo-upload-item">
+                                    <label for="photo1" class="upload-label">
+                                        <i class="fas fa-camera"></i>
+                                        <span>싱크대 상판 사진</span>
+                                        <input type="file" id="photo1" name="photo_countertop" accept="image/*" style="display: none;">
+                                    </label>
+                                    <span class="file-name" id="fileName1">선택된 파일 없음</span>
+                                </div>
+                                <div class="photo-upload-item">
+                                    <label for="photo2" class="upload-label">
+                                        <i class="fas fa-camera"></i>
+                                        <span>하부장 내부 사진</span>
+                                        <input type="file" id="photo2" name="photo_cabinet" accept="image/*" style="display: none;">
+                                    </label>
+                                    <span class="file-name" id="fileName2">선택된 파일 없음</span>
+                                </div>
+                            </div>
+                        </div>
+
                         <div class="form-group">
                             <label for="message">추가 문의사항 <span style="color: #888; font-weight: 400;">(180자 제한)</span></label>
                             <textarea id="message" name="message" placeholder="추가 문의사항을 입력해주세요" maxlength="180"></textarea>
@@ -122,5 +364,52 @@
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="../js/main.js"></script>
+    <script>
+        // Toggle sinkball extra fields
+        function toggleSinkballFields() {
+            const sinkballCheckboxes = document.querySelectorAll('.sinkball-checkbox');
+            const sinkballFields = document.getElementById('sinkballFields');
+            const isAnySinkballChecked = Array.from(sinkballCheckboxes).some(cb => cb.checked);
+            sinkballFields.style.display = isAnySinkballChecked ? 'block' : 'none';
+        }
+
+        // Calculate recommended model based on dimensions
+        function calculateRecommendedModel() {
+            const width = parseInt(document.getElementById('currentSinkWidth').value) || 0;
+            const cabinetWidth = parseInt(document.getElementById('cabinetWidth').value) || 0;
+            const recommendedDiv = document.getElementById('recommendedModel');
+            const recommendedName = document.getElementById('recommendedModelName');
+
+            if (cabinetWidth > 0) {
+                let model = '';
+                if (cabinetWidth >= 980) {
+                    model = 'AQ980NE (980mm)';
+                } else if (cabinetWidth >= 900) {
+                    model = 'AQ900NE (900mm)';
+                } else {
+                    model = 'AQ860NE (860mm)';
+                }
+                recommendedName.textContent = model;
+                recommendedDiv.style.display = 'flex';
+            } else {
+                recommendedDiv.style.display = 'none';
+            }
+        }
+
+        // File upload handlers
+        document.getElementById('photo1').addEventListener('change', function(e) {
+            const fileName = e.target.files[0] ? e.target.files[0].name : '선택된 파일 없음';
+            document.getElementById('fileName1').textContent = fileName;
+        });
+
+        document.getElementById('photo2').addEventListener('change', function(e) {
+            const fileName = e.target.files[0] ? e.target.files[0].name : '선택된 파일 없음';
+            document.getElementById('fileName2').textContent = fileName;
+        });
+
+        // Add event listeners for dimension inputs
+        document.getElementById('currentSinkWidth').addEventListener('input', calculateRecommendedModel);
+        document.getElementById('cabinetWidth').addEventListener('input', calculateRecommendedModel);
+    </script>
 </body>
 </html>

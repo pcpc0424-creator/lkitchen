@@ -24,7 +24,7 @@ require_once __DIR__ . '/includes/config.php';
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css?v=20260120a">
+    <link rel="stylesheet" href="css/style.css?v=20260125g">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="https://lkitchen.co.kr/wp-content/uploads/2024/08/logo.png">
@@ -59,6 +59,7 @@ require_once __DIR__ . '/includes/config.php';
             <nav class="nav-desktop">
                 <ul class="nav-menu">
                     <li><a href="<?php echo SITE_URL; ?>/회사소개/" class="nav-link">회사소개</a></li>
+                    <li><a href="<?php echo SITE_URL; ?>/친환경제품/" class="nav-link">친환경</a></li>
                     <li class="has-dropdown">
                         <a href="<?php echo SITE_URL; ?>/products.html" class="nav-link">제품 <i class="fas fa-chevron-down"></i></a>
                         <div class="dropdown-menu">
@@ -68,27 +69,26 @@ require_once __DIR__ . '/includes/config.php';
                         </div>
                     </li>
                     <li class="has-dropdown">
-                        <a href="<?php echo SITE_URL; ?>/질문과-답변/" class="nav-link">고객지원 <i class="fas fa-chevron-down"></i></a>
+                        <a href="<?php echo SITE_URL; ?>/사진갤러리/" class="nav-link">갤러리 <i class="fas fa-chevron-down"></i></a>
                         <div class="dropdown-menu">
-                            <a href="<?php echo SITE_URL; ?>/질문과-답변/">질문과 답변</a>
-                            <a href="<?php echo SITE_URL; ?>/a-s-지원/">A/S 서비스 지원</a>
+                            <a href="<?php echo SITE_URL; ?>/사진갤러리/">음식물처리기 갤러리</a>
+                            <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/">아콴테 싱크볼 갤러리</a>
                         </div>
                     </li>
                     <li class="has-dropdown">
-                        <a href="<?php echo SITE_URL; ?>/음식물처리기-후기/" class="nav-link">후기게시판 <i class="fas fa-chevron-down"></i></a>
+                        <a href="<?php echo SITE_URL; ?>/음식물처리기-후기/" class="nav-link">구매후기 <i class="fas fa-chevron-down"></i></a>
                         <div class="dropdown-menu">
                             <a href="<?php echo SITE_URL; ?>/음식물처리기-후기/">음식물처리기 후기</a>
                             <a href="<?php echo SITE_URL; ?>/싱크볼-후기/">싱크볼 후기</a>
                         </div>
                     </li>
                     <li class="has-dropdown">
-                        <a href="<?php echo SITE_URL; ?>/사진갤러리/" class="nav-link">사진 갤러리 <i class="fas fa-chevron-down"></i></a>
+                        <a href="<?php echo SITE_URL; ?>/질문과-답변/" class="nav-link">고객지원 <i class="fas fa-chevron-down"></i></a>
                         <div class="dropdown-menu">
-                            <a href="<?php echo SITE_URL; ?>/사진갤러리/">음식물처리기 갤러리</a>
-                            <a href="<?php echo SITE_URL; ?>/사진갤러리/">아콴테 싱크볼 갤러리</a>
+                            <a href="<?php echo SITE_URL; ?>/질문과-답변/">질문과 답변</a>
+                            <a href="<?php echo SITE_URL; ?>/a-s-지원/">A/S 서비스 지원</a>
                         </div>
                     </li>
-                    <li><a href="<?php echo SITE_URL; ?>/친환경제품/" class="nav-link">친환경제품</a></li>
                 </ul>
             </nav>
 
@@ -121,6 +121,7 @@ require_once __DIR__ . '/includes/config.php';
         <nav class="mobile-nav-content">
             <ul class="mobile-menu">
                 <li><a href="<?php echo SITE_URL; ?>/회사소개/">회사소개</a></li>
+                <li><a href="<?php echo SITE_URL; ?>/친환경제품/">친환경</a></li>
                 <li class="has-submenu">
                     <a href="#">제품 <i class="fas fa-plus"></i></a>
                     <ul class="submenu">
@@ -130,27 +131,26 @@ require_once __DIR__ . '/includes/config.php';
                     </ul>
                 </li>
                 <li class="has-submenu">
-                    <a href="#">고객지원 <i class="fas fa-plus"></i></a>
+                    <a href="#">갤러리 <i class="fas fa-plus"></i></a>
                     <ul class="submenu">
-                        <li><a href="<?php echo SITE_URL; ?>/질문과-답변/">질문과 답변</a></li>
-                        <li><a href="<?php echo SITE_URL; ?>/a-s-지원/">A/S 서비스 지원</a></li>
+                        <li><a href="<?php echo SITE_URL; ?>/사진갤러리/">음식물처리기 갤러리</a></li>
+                        <li><a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/">아콴테 싱크볼 갤러리</a></li>
                     </ul>
                 </li>
                 <li class="has-submenu">
-                    <a href="#">후기게시판 <i class="fas fa-plus"></i></a>
+                    <a href="#">구매후기 <i class="fas fa-plus"></i></a>
                     <ul class="submenu">
                         <li><a href="<?php echo SITE_URL; ?>/음식물처리기-후기/">음식물처리기 후기</a></li>
                         <li><a href="<?php echo SITE_URL; ?>/싱크볼-후기/">싱크볼 후기</a></li>
                     </ul>
                 </li>
                 <li class="has-submenu">
-                    <a href="#">사진 갤러리 <i class="fas fa-plus"></i></a>
+                    <a href="#">고객지원 <i class="fas fa-plus"></i></a>
                     <ul class="submenu">
-                        <li><a href="<?php echo SITE_URL; ?>/사진갤러리/">음식물처리기 갤러리</a></li>
-                        <li><a href="<?php echo SITE_URL; ?>/사진갤러리/">아콴테 싱크볼 갤러리</a></li>
+                        <li><a href="<?php echo SITE_URL; ?>/질문과-답변/">질문과 답변</a></li>
+                        <li><a href="<?php echo SITE_URL; ?>/a-s-지원/">A/S 서비스 지원</a></li>
                     </ul>
                 </li>
-                <li><a href="<?php echo SITE_URL; ?>/친환경제품/">친환경제품</a></li>
             </ul>
             <div class="mobile-contact">
                 <a href="tel:<?php echo e($siteSettings['phone']); ?>" class="mobile-phone">
@@ -264,6 +264,7 @@ require_once __DIR__ . '/includes/config.php';
                         <div class="company-intro-label">
                             <span class="line"></span>
                             <span>LOVELY KITCHEN</span>
+                            <span class="line"></span>
                         </div>
                         <h2 class="company-intro-title">
                             러블리키친은<br>
@@ -271,17 +272,17 @@ require_once __DIR__ . '/includes/config.php';
                         </h2>
                         <p class="company-intro-subtitle">정말 자신있습니다.</p>
                         <p class="company-intro-desc">
-                            러블리키친은 오랜 시간 고장 없이 새것처럼 사용할 수 있도록
-                            세계 최고 품질의 고강성 재료만을 사용하여 제품을 제작했습니다.
-                            고객이 선택한 제품이 정말 잘 사용된다는 확신을 줄 수 있도록
+                            러블리키친은 오랜 시간 고장 없이 새것처럼 사용할 수 있도록<br>
+                            세계 최고 품질의 고강성 재료만을 사용하여 제품을 제작했습니다.<br>
+                            고객이 선택한 제품이 정말 잘 사용된다는 확신을 줄 수 있도록<br>
                             철저하게 만들었습니다.
                         </p>
                         <p class="company-intro-desc">
-                            우리는 수많은 어려움을 극복하며 최고의 제품을 만들어 왔습니다.
-                            개발 전문가와 협업하여, 어떤 음식물도 가볍게 처리할 수 있는
+                            우리는 수많은 어려움을 극복하며 최고의 제품을 만들어 왔습니다.<br>
+                            개발 전문가와 협업하여, 어떤 음식물도 가볍게 처리할 수 있는<br>
                             혁신적인 제품을 개발했습니다.
                         </p>
-                        <a href="<?php echo SITE_URL; ?>/products.html" class="company-intro-btn">
+                        <a href="<?php echo SITE_URL; ?>/products.html" class="company-intro-btn company-intro-btn-large">
                             <span>제품 보러가기</span>
                             <i class="fas fa-arrow-right"></i>
                         </a>
@@ -574,60 +575,60 @@ require_once __DIR__ . '/includes/config.php';
             </div>
         </section>
 
-        <!-- Gallery Section -->
+        <!-- Gallery Section 1: 음식물처리기 -->
         <section class="gallery-section">
             <div class="container">
                 <a href="<?php echo SITE_URL; ?>/사진갤러리/" class="section-header section-header-link" data-aos="fade-up">
                     <span class="section-tag">GALLERY</span>
-                    <h2 class="section-title">시공 스토리</h2>
-                    <p class="section-desc">러블리키친과 함께하는 깨끗한 변화를 확인해보세요</p>
+                    <h2 class="section-title">음식물처리기 갤러리</h2>
+                    <p class="section-desc">러블리키친 음식물처리기 시공 사례를 확인해보세요</p>
                 </a>
 
                 <div class="gallery-grid" data-aos="fade-up" data-aos-delay="100">
                     <a href="<?php echo SITE_URL; ?>/사진갤러리/" class="gallery-item large">
-                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/04/1-96.jpg" alt="시공 사진" loading="lazy">
+                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/04/1-96.jpg" alt="음식물처리기 시공 사진" loading="lazy">
                         <div class="gallery-overlay">
                             <i class="fas fa-expand"></i>
                         </div>
                     </a>
                     <a href="<?php echo SITE_URL; ?>/사진갤러리/" class="gallery-item">
-                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/04/1-38.jpg" alt="시공 사진" loading="lazy">
+                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/04/1-38.jpg" alt="음식물처리기 시공 사진" loading="lazy">
                         <div class="gallery-overlay">
                             <i class="fas fa-expand"></i>
                         </div>
                     </a>
                     <a href="<?php echo SITE_URL; ?>/사진갤러리/" class="gallery-item">
-                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/04/1-49.jpg" alt="시공 사진" loading="lazy">
+                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/04/1-49.jpg" alt="음식물처리기 시공 사진" loading="lazy">
                         <div class="gallery-overlay">
                             <i class="fas fa-expand"></i>
                         </div>
                     </a>
                     <a href="<?php echo SITE_URL; ?>/사진갤러리/" class="gallery-item">
-                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/04/1-59.jpg" alt="시공 사진" loading="lazy">
+                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/04/1-59.jpg" alt="음식물처리기 시공 사진" loading="lazy">
                         <div class="gallery-overlay">
                             <i class="fas fa-expand"></i>
                         </div>
                     </a>
                     <a href="<?php echo SITE_URL; ?>/사진갤러리/" class="gallery-item">
-                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/04/1-75.jpg" alt="시공 사진" loading="lazy">
+                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/04/1-75.jpg" alt="음식물처리기 시공 사진" loading="lazy">
                         <div class="gallery-overlay">
                             <i class="fas fa-expand"></i>
                         </div>
                     </a>
                     <a href="<?php echo SITE_URL; ?>/사진갤러리/" class="gallery-item tall">
-                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/04/1-110.jpg" alt="시공 사진" loading="lazy">
+                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/04/1-110.jpg" alt="음식물처리기 시공 사진" loading="lazy">
                         <div class="gallery-overlay">
                             <i class="fas fa-expand"></i>
                         </div>
                     </a>
                     <a href="<?php echo SITE_URL; ?>/사진갤러리/" class="gallery-item">
-                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/04/1-89.jpg" alt="시공 사진" loading="lazy">
+                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/04/1-89.jpg" alt="음식물처리기 시공 사진" loading="lazy">
                         <div class="gallery-overlay">
                             <i class="fas fa-expand"></i>
                         </div>
                     </a>
                     <a href="<?php echo SITE_URL; ?>/사진갤러리/" class="gallery-item">
-                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/04/1-94.jpg" alt="시공 사진" loading="lazy">
+                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/04/1-94.jpg" alt="음식물처리기 시공 사진" loading="lazy">
                         <div class="gallery-overlay">
                             <i class="fas fa-expand"></i>
                         </div>
@@ -637,6 +638,51 @@ require_once __DIR__ . '/includes/config.php';
                 <div class="gallery-cta" data-aos="fade-up">
                     <a href="<?php echo SITE_URL; ?>/사진갤러리/" class="btn-outline">
                         <span>더 많은 시공사례 보기</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Gallery Section 2: 아콴테 싱크볼 -->
+        <section class="gallery-section sinkbowl-gallery">
+            <div class="container">
+                <a href="<?php echo SITE_URL; ?>/사진갤러리/" class="section-header section-header-link" data-aos="fade-up">
+                    <span class="section-tag">SINKBOWL GALLERY</span>
+                    <h2 class="section-title">아콴테 싱크볼 갤러리</h2>
+                    <p class="section-desc">프리미엄 아콴테 싱크볼 시공 사례를 확인해보세요</p>
+                </a>
+
+                <div class="gallery-grid sinkbowl-grid" data-aos="fade-up" data-aos-delay="100">
+                    <a href="<?php echo SITE_URL; ?>/사진갤러리/" class="gallery-item">
+                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/04/67f0a23add8c71125721-1.jpg" alt="아콴테 싱크볼 시공 사진" loading="lazy">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                    </a>
+                    <a href="<?php echo SITE_URL; ?>/사진갤러리/" class="gallery-item">
+                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/04/67efa1b75a2d47977914-1.jpg" alt="아콴테 싱크볼 시공 사진" loading="lazy">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                    </a>
+                    <a href="<?php echo SITE_URL; ?>/사진갤러리/" class="gallery-item">
+                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/04/67efa11e462085118626.jpg" alt="아콴테 싱크볼 시공 사진" loading="lazy">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                    </a>
+                    <a href="<?php echo SITE_URL; ?>/사진갤러리/" class="gallery-item">
+                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/04/67efa08d596ec3265425-1.jpg" alt="아콴테 싱크볼 시공 사진" loading="lazy">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                    </a>
+                </div>
+
+                <div class="gallery-cta" data-aos="fade-up">
+                    <a href="<?php echo SITE_URL; ?>/사진갤러리/" class="btn-outline">
+                        <span>더 많은 싱크볼 시공사례 보기</span>
                         <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
@@ -805,6 +851,17 @@ require_once __DIR__ . '/includes/config.php';
                         <p>고객 만족을 최우선으로 생각합니다</p>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- Kitchen New Era Section -->
+        <section class="kitchen-era-section">
+            <div class="kitchen-era-image-wrapper">
+                <img src="http://115.68.223.124/lovelykitchen/images/kitchen-era.png" alt="주방의 새로운 시대" class="kitchen-era-img">
+                <a href="http://115.68.223.124/lovelykitchen/빠른상담/" class="kitchen-era-order-btn">
+                    <i class="fas fa-arrow-right"></i>
+                    <span>주문하기</span>
+                </a>
             </div>
         </section>
 
