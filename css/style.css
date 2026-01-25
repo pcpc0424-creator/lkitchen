@@ -2549,12 +2549,17 @@ ul, ol {
 }
 
 @media (max-width: 768px) {
+    .kitchen-era-img {
+        position: relative;
+        z-index: 1;
+    }
     .kitchen-era-order-btn {
-        left: 50%;
-        transform: translateX(-50%);
-        top: 38%;
-        padding: 8px 20px;
-        font-size: 0.85rem;
+        left: 5%;
+        transform: none;
+        top: 46%;
+        padding: 6px 14px;
+        font-size: 0.75rem;
+        z-index: 10;
     }
 }
 
