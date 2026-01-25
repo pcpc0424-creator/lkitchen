@@ -78,6 +78,12 @@ $inquiries = array_reverse($inquiries);
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a href="products.php" class="nav-link">
+                            <i class="fas fa-box"></i>
+                            <span>제품 관리</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="reviews.php?type=food" class="nav-link">
                             <i class="fas fa-utensils"></i>
                             <span>음식물처리기 후기</span>
@@ -114,6 +120,18 @@ $inquiries = array_reverse($inquiries);
                             <?php if (count($newInquiries) > 0): ?>
                             <span class="nav-badge"><?php echo count($newInquiries); ?></span>
                             <?php endif; ?>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="special.php" class="nav-link">
+                            <i class="fas fa-tag"></i>
+                            <span>특가페이지 관리</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="sinkbowl_calc.php" class="nav-link">
+                            <i class="fas fa-calculator"></i>
+                            <span>싱크볼 계산식</span>
                         </a>
                     </li>
                     <li class="nav-item">

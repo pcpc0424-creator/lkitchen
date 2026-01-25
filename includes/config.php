@@ -62,6 +62,22 @@ function getGalleryData($type = 'food') {
 }
 
 /**
+ * 후기 데이터 가져오기
+ */
+function getReviewData($type = 'food') {
+    $filename = $type === 'food' ? 'food_reviews.json' : 'sink_reviews.json';
+    return readJsonData($filename);
+}
+
+/**
+ * 제품 데이터 가져오기
+ */
+function getProductsData() {
+    $data = readJsonData('products.json');
+    return $data['products'] ?? [];
+}
+
+/**
  * XSS 방지
  */
 function e($string) {

@@ -1,0 +1,91 @@
+{
+    "products": [
+        {
+            "id": 1,
+            "model": "LK-750A",
+            "name": "에코라이트",
+            "name_en": "ECO LITE",
+            "category": "entry",
+            "badge": "ENTRY",
+            "badge_type": "entry",
+            "image": "https://lkitchen.co.kr/wp-content/uploads/2025/03/Frame-97-1.png",
+            "price": "770,000",
+            "hp": "0.5 HP",
+            "spec_icon": "fa-volume-down",
+            "spec_text": "저소음",
+            "features": [
+                "대부분의 음식쓰레기 분쇄",
+                "실용적이고 합리적인 가격",
+                "콤팩트한 디자인"
+            ],
+            "is_best": false,
+            "active": true
+        },
+        {
+            "id": 2,
+            "model": "LK-900A",
+            "name": "더놈프로",
+            "name_en": "THE NORM PRO",
+            "category": "premium",
+            "badge": "BEST",
+            "badge_type": "best",
+            "image": "https://lkitchen.co.kr/wp-content/uploads/2025/03/Frame-99.png",
+            "price": "990,000",
+            "hp": "1.0 HP",
+            "spec_icon": "fa-shield-alt",
+            "spec_text": "5년 무상 A/S",
+            "features": [
+                "대한민국 1등 판매제품",
+                "진짜 1마력, 놀라운 퍼포먼스",
+                "얇은 뼈와 씨앗 처리가능",
+                "강력한 성능과 내구성"
+            ],
+            "is_best": true,
+            "active": true
+        },
+        {
+            "id": 3,
+            "model": "LK-1000A",
+            "name": "울트라 그라인드 X",
+            "name_en": "ULTRA GRIND X",
+            "category": "premium",
+            "badge": "PREMIUM",
+            "badge_type": "premium",
+            "image": "https://lkitchen.co.kr/wp-content/uploads/2025/03/Frame-98-1.png",
+            "price": "1,090,000",
+            "hp": "1.5 HP",
+            "spec_icon": "fa-cog",
+            "spec_text": "하이엔드",
+            "features": [
+                "1.5마력, 하이엔드의 시작",
+                "진정한 힘, 완벽한 성능",
+                "대부분의 굵은 뼈와 씨앗 분쇄",
+                "놀라운 내구성 보장"
+            ],
+            "is_best": false,
+            "active": true
+        },
+        {
+            "id": 4,
+            "model": "LK-1000B",
+            "name": "게임체인저",
+            "name_en": "GAME CHANGER",
+            "category": "flagship",
+            "badge": "FLAGSHIP",
+            "badge_type": "flagship",
+            "image": "https://lkitchen.co.kr/wp-content/uploads/2025/03/Frame-100.png",
+            "price": "1,250,000",
+            "hp": "1.5 HP",
+            "spec_icon": "fa-gem",
+            "spec_text": "최상위 모델",
+            "features": [
+                "전문가가 선택하는 하이엔드",
+                "1.5마력이 선사하는 전율의 성능",
+                "대부분의 굵은 뼈와 씨앗 분쇄",
+                "극강의 내구성 특화 모델"
+            ],
+            "is_best": false,
+            "active": true
+        }
+    ]
+}

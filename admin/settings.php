@@ -21,7 +21,8 @@ $defaultSettings = [
     'address' => '서울시 서초구 반포대로22길 35, 2층 2002호',
     'email' => '',
     'footer_text' => '© 2024 LOVELY KITCHEN. All Rights Reserved.',
-    'phone_image_url' => 'https://lkitchen.co.kr/wp-content/uploads/2025/10/전화문의.png'
+    'phone_image_url' => 'https://lkitchen.co.kr/wp-content/uploads/2025/10/전화문의.png',
+    'sinkbowl_calc_image' => '/pototo/tkdlwlm.png'
 ];
 
 $settings = array_merge($defaultSettings, $settings);
@@ -43,6 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'email' => trim($_POST['email'] ?? ''),
             'footer_text' => trim($_POST['footer_text'] ?? ''),
             'phone_image_url' => trim($_POST['phone_image_url'] ?? ''),
+            'sinkbowl_calc_image' => trim($_POST['sinkbowl_calc_image'] ?? ''),
             'updated_at' => date('Y-m-d H:i:s')
         ];
 
@@ -140,6 +142,12 @@ $newInquiries = array_filter($inquiries, function($inquiry) {
                         </a>
                     </li>
                     <li class="nav-item">
+                        <a href="products.php" class="nav-link">
+                            <i class="fas fa-box"></i>
+                            <span>제품 관리</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
                         <a href="reviews.php?type=food" class="nav-link">
                             <i class="fas fa-utensils"></i>
                             <span>음식물처리기 후기</span>
@@ -176,6 +184,18 @@ $newInquiries = array_filter($inquiries, function($inquiry) {
                             <?php if (count($newInquiries) > 0): ?>
                             <span class="nav-badge"><?php echo count($newInquiries); ?></span>
                             <?php endif; ?>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="special.php" class="nav-link">
+                            <i class="fas fa-tag"></i>
+                            <span>특가페이지 관리</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="sinkbowl_calc.php" class="nav-link">
+                            <i class="fas fa-calculator"></i>
+                            <span>싱크볼 계산식</span>
                         </a>
                     </li>
                     <li class="nav-item active">
@@ -320,6 +340,26 @@ $newInquiries = array_filter($inquiries, function($inquiry) {
                         </div>
                     </div>
 
+                    <!-- 싱크볼 사이즈 계산식 이미지 -->
+                    <div class="settings-section">
+                        <h3><i class="fas fa-calculator"></i> 싱크볼 사이즈 계산식 이미지</h3>
+                        <div class="form-group">
+                            <label for="sinkbowl_calc_image">이미지 경로 또는 URL</label>
+                            <input type="text" id="sinkbowl_calc_image" name="sinkbowl_calc_image"
+                                   value="<?php echo sanitize($settings['sinkbowl_calc_image'] ?? '/pototo/tkdlwlm.png'); ?>"
+                                   placeholder="/pototo/tkdlwlm.png 또는 전체 URL">
+                            <small style="color: #666; display: block; margin-top: 5px;">
+                                이미지 관리에서 업로드한 이미지의 URL을 복사하여 붙여넣으세요.
+                            </small>
+                            <div class="preview-box">
+                                <strong>미리보기:</strong><br>
+                                <img src="<?php echo sanitize($settings['sinkbowl_calc_image'] ?? '/pototo/tkdlwlm.png'); ?>"
+                                     alt="싱크볼 계산식" id="calcImagePreview"
+                                     style="max-width: 100%; max-height: 300px;">
+                            </div>
+                        </div>
+                    </div>
+
                     <button type="submit" class="btn-primary" style="width: 100%; padding: 15px; font-size: 1rem;">
                         <i class="fas fa-save"></i> 설정 저장
                     </button>
@@ -336,9 +376,14 @@ $newInquiries = array_filter($inquiries, function($inquiry) {
 
     <script src="js/admin.js"></script>
     <script>
-        // 이미지 미리보기
+        // 전화문의 이미지 미리보기
         document.getElementById('phone_image_url').addEventListener('input', function() {
             document.getElementById('phoneImagePreview').src = this.value;
+        });
+
+        // 싱크볼 계산식 이미지 미리보기
+        document.getElementById('sinkbowl_calc_image').addEventListener('input', function() {
+            document.getElementById('calcImagePreview').src = this.value;
         });
     </script>
 </body>

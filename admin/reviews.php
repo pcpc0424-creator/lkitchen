@@ -116,6 +116,12 @@ if ($action === 'edit' && $id) {
                             <span>대시보드</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="products.php" class="nav-link">
+                            <i class="fas fa-box"></i>
+                            <span>제품 관리</span>
+                        </a>
+                    </li>
                     <li class="nav-item <?php echo $type === 'food' ? 'active' : ''; ?>">
                         <a href="reviews.php?type=food" class="nav-link">
                             <i class="fas fa-utensils"></i>
@@ -150,6 +156,18 @@ if ($action === 'edit' && $id) {
                         <a href="inquiries.php" class="nav-link">
                             <i class="fas fa-envelope"></i>
                             <span>문의 관리</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="special.php" class="nav-link">
+                            <i class="fas fa-tag"></i>
+                            <span>특가페이지 관리</span>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="sinkbowl_calc.php" class="nav-link">
+                            <i class="fas fa-calculator"></i>
+                            <span>싱크볼 계산식</span>
                         </a>
                     </li>
                     <li class="nav-item">
