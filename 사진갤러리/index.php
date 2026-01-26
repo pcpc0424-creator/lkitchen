@@ -80,8 +80,8 @@ $defaultImages = [
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>사진 갤러리 | <?php echo e($siteSettings['site_name']); ?></title>
-    <meta name="description" content="러블리키친 시공 사진 갤러리">
+    <title>음식물처리기 갤러리 | <?php echo e($siteSettings['site_name']); ?></title>
+    <meta name="description" content="러블리키친 음식물처리기 시공 갤러리">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
@@ -200,7 +200,7 @@ $defaultImages = [
     <div class="mobile-overlay" id="mobileOverlay"></div>
 
     <main>
-        <section class="page-hero"><div class="page-hero-bg"></div><div class="page-hero-overlay"></div><div class="container"><div class="page-hero-content" data-aos="fade-up"><nav class="breadcrumb"><a href="<?php echo SITE_URL; ?>/">홈</a><span><i class="fas fa-chevron-right"></i></span><span class="current">사진 갤러리</span></nav><h1 class="page-title">사진 갤러리</h1><p class="page-subtitle">러블리키친 시공 사진을 확인해보세요</p></div></div></section>
+        <section class="page-hero"><div class="page-hero-bg"></div><div class="page-hero-overlay"></div><div class="container"><div class="page-hero-content" data-aos="fade-up"><nav class="breadcrumb"><a href="<?php echo SITE_URL; ?>/">홈</a><span><i class="fas fa-chevron-right"></i></span><span class="current">음식물처리기 갤러리</span></nav><h1 class="page-title">음식물처리기 갤러리</h1><p class="page-subtitle">러블리키친 음식물처리기 시공 사진을 확인해보세요</p></div></div></section>
 
         <section class="content-section">
             <div class="container">

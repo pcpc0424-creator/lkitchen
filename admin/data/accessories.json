@@ -1,0 +1,52 @@
+[
+    {
+        "id": 1,
+        "name": "스플래시가드 안전고무 - 고급형",
+        "description": "음식물처리기 작동 시 물과 음식물이 튀는 것을 방지하는 고급형 안전고무입니다. 내구성이 뛰어나고 쉽게 세척할 수 있습니다.",
+        "image": "https:\/\/lkitchen.co.kr\/wp-content\/uploads\/2025\/03\/spl_b001.jpg",
+        "price": "8,000",
+        "shipping": "택배비 4,000원 별도",
+        "store_url": "https:\/\/smartstore.naver.com\/inkinkkr\/category\/6628cbaab4824efd8a731c745f5c5436?cp=1",
+        "active": true
+    },
+    {
+        "id": 2,
+        "name": "최고급 싱크대 거름망 (Sink Strainer)",
+        "description": "싱크볼 위에 장착하여 큰 음식물 찌꺼기를 걸러주는 거름망입니다. 음식물처리기의 효율적인 사용을 돕습니다.",
+        "image": "https:\/\/lkitchen.co.kr\/wp-content\/uploads\/2025\/03\/spl_c01-1.jpg",
+        "price": "8,000",
+        "shipping": "택배비 4,000원 별도",
+        "store_url": "https:\/\/smartstore.naver.com\/inkinkkr\/category\/6628cbaab4824efd8a731c745f5c5436?cp=1",
+        "active": true
+    },
+    {
+        "id": 3,
+        "name": "누수감지센서 (Leak Detection Sensor)",
+        "description": "싱크대 하부 누수 시 알람으로 즉시 확인할 수 있는 감지센서입니다. 누수로 인한 큰 문제들로부터 안심하고 관리할 수 있습니다.",
+        "image": "https:\/\/lkitchen.co.kr\/wp-content\/uploads\/2025\/03\/KakaoTalk_Photo_2025-03-24-14-58-48-removebg-preview.png",
+        "price": "18,000",
+        "shipping": "택배비 4,000원 별도",
+        "store_url": "https:\/\/smartstore.naver.com\/inkinkkr\/category\/6628cbaab4824efd8a731c745f5c5436?cp=1",
+        "active": true
+    },
+    {
+        "id": 4,
+        "name": "최고급 스크래퍼 (Scraper)",
+        "description": "음식물처리기 청소 및 관리에 사용하는 전용 스크래퍼입니다. 분쇄실 내부의 찌꺼기를 깔끔하게 제거합니다.",
+        "image": "https:\/\/lkitchen.co.kr\/wp-content\/uploads\/2025\/03\/spl_d02.jpg",
+        "price": "8,000",
+        "shipping": "택배비 4,000원 별도",
+        "store_url": "https:\/\/smartstore.naver.com\/inkinkkr\/category\/6628cbaab4824efd8a731c745f5c5436?cp=1",
+        "active": true
+    },
+    {
+        "id": 5,
+        "name": "최고급 스토퍼 (Stopper)",
+        "description": "싱크볼 사용 시 물을 고정하는 마개입니다. 설거지나 물 받아 사용할 때 필수적인 악세사리입니다.",
+        "image": "https:\/\/lkitchen.co.kr\/wp-content\/uploads\/2025\/03\/KakaoTalk_Photo_2025-03-25-16-45-42-removebg-1.png",
+        "price": "5,000",
+        "shipping": "택배비 4,000원 별도",
+        "store_url": "https:\/\/smartstore.naver.com\/inkinkkr\/category\/6628cbaab4824efd8a731c745f5c5436?cp=1",
+        "active": true
+    }
+]

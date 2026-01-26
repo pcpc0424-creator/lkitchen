@@ -39,6 +39,94 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $action === 'add') {
     }
 }
 
+// 이미지 파일 업로드 처리
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && $action === 'upload') {
+    if (!verifyCsrfToken($_POST['csrf_token'] ?? '')) {
+        $error = 'CSRF 토큰이 유효하지 않습니다.';
+    } elseif (!isset($_FILES['gallery_files']) || empty($_FILES['gallery_files']['name'][0])) {
+        $error = '업로드할 파일을 선택해주세요.';
+    } else {
+        $files = $_FILES['gallery_files'];
+        $uploadPath = ($type === 'sink') ? UPLOAD_PATH_SINK : UPLOAD_PATH_FOOD;
+        $webPath = ($type === 'sink') ? '/potopo' : '/pototo';
+        $description = trim($_POST['upload_description'] ?? '');
+
+        // 디렉토리 확인 및 생성
+        if (!is_dir($uploadPath)) {
+            mkdir($uploadPath, 0755, true);
+        }
+
+        $fileCount = count($files['name']);
+        $uploaded = 0;
+        $errors = [];
+
+        for ($i = 0; $i < $fileCount; $i++) {
+            $name = $files['name'][$i];
+            $tmpName = $files['tmp_name'][$i];
+            $fileError = $files['error'][$i];
+            $size = $files['size'][$i];
+
+            if ($fileError !== UPLOAD_ERR_OK) {
+                $errors[] = "{$name}: 업로드 실패";
+                continue;
+            }
+
+            if ($size > MAX_FILE_SIZE) {
+                $errors[] = "{$name}: 파일 크기가 10MB를 초과합니다.";
+                continue;
+            }
+
+            $extension = strtolower(pathinfo($name, PATHINFO_EXTENSION));
+            if (!in_array($extension, ALLOWED_EXTENSIONS)) {
+                $errors[] = "{$name}: 허용되지 않는 파일 형식입니다.";
+                continue;
+            }
+
+            $imageInfo = getimagesize($tmpName);
+            if ($imageInfo === false) {
+                $errors[] = "{$name}: 유효하지 않은 이미지 파일입니다.";
+                continue;
+            }
+
+            $newFilename = generateGalleryFilename($name);
+            $destination = $uploadPath . '/' . $newFilename;
+
+            if (move_uploaded_file($tmpName, $destination)) {
+                // 자동 리사이징 (최대 1600px, 비율 유지)
+                resizeImage($destination, 1600, 85);
+
+                $newImage = [
+                    'id' => uniqid(),
+                    'url' => SITE_URL . $webPath . '/' . $newFilename,
+                    'description' => $description ?: $name,
+                    'created_at' => date('Y-m-d H:i:s')
+                ];
+                array_unshift($galleryData, $newImage);
+                $uploaded++;
+            } else {
+                $errors[] = "{$name}: 파일 저장에 실패했습니다.";
+            }
+        }
+
+        if ($uploaded > 0) {
+            writeJsonData($galleryFile, $galleryData);
+        }
+
+        if (!empty($errors)) {
+            $error = implode('<br>', $errors);
+        }
+
+        if ($uploaded > 0) {
+            $successMsg = $uploaded . '개 파일이 업로드되었습니다.';
+            if (!empty($errors)) {
+                $successMsg .= ' (일부 오류 발생)';
+            }
+            header('Location: gallery.php?type=' . $type . '&uploaded=' . $uploaded);
+            exit;
+        }
+    }
+}
+
 // 이미지 삭제 처리
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && $action === 'delete') {
     $id = $_POST['id'] ?? '';
@@ -156,6 +244,61 @@ $pageTitle = $type === 'food' ? '음식물처리기 갤러리' : '싱크볼 갤�
         .tab-btn.active {
             background: #051535;
             color: #fff;
+        }
+        .drop-zone {
+            border: 2px dashed #dee2e6;
+            border-radius: 12px;
+            padding: 40px 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            background: #f8f9fa;
+        }
+        .drop-zone:hover, .drop-zone.drag-over {
+            border-color: #051535;
+            background: #e8ecf4;
+        }
+        .file-preview {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            gap: 12px;
+            margin-top: 16px;
+        }
+        .file-preview-item {
+            position: relative;
+            border-radius: 8px;
+            overflow: hidden;
+            background: #f8f9fa;
+            border: 1px solid #dee2e6;
+        }
+        .file-preview-item img {
+            width: 100%;
+            height: 90px;
+            object-fit: cover;
+        }
+        .file-preview-item .file-name {
+            padding: 4px 8px;
+            font-size: 0.7rem;
+            color: #666;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        .file-preview-item .remove-file {
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            background: rgba(255,0,0,0.8);
+            color: #fff;
+            border: none;
+            width: 22px;
+            height: 22px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
     </style>
 </head>
@@ -292,6 +435,12 @@ $pageTitle = $type === 'food' ? '음식물처리기 갤러리' : '싱크볼 갤�
                 </div>
                 <?php endif; ?>
 
+                <?php if (isset($_GET['uploaded'])): ?>
+                <div class="alert alert-success">
+                    <i class="fas fa-check-circle"></i> <?php echo (int)$_GET['uploaded']; ?>개 이미지가 업로드되었습니다.
+                </div>
+                <?php endif; ?>
+
                 <?php if (isset($error)): ?>
                 <div class="alert alert-error">
                     <i class="fas fa-exclamation-circle"></i> <?php echo $error; ?>
@@ -315,6 +464,30 @@ $pageTitle = $type === 'food' ? '음식물처리기 갤러리' : '싱크볼 갤�
                         </div>
                         <button type="submit" class="btn-primary">
                             <i class="fas fa-plus"></i> 이미지 추가
+                        </button>
+                    </form>
+                </div>
+
+                <!-- 파일 업로드 폼 -->
+                <div class="add-form">
+                    <h3 style="margin-bottom: 16px;"><i class="fas fa-cloud-upload-alt"></i> 이미지 파일 업로드</h3>
+                    <form method="POST" action="gallery.php?type=<?php echo $type; ?>&action=upload" enctype="multipart/form-data" id="uploadForm">
+                        <input type="hidden" name="csrf_token" value="<?php echo generateCsrfToken(); ?>">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="upload_description">설명 (선택, 모든 이미지에 적용)</label>
+                                <input type="text" id="upload_description" name="upload_description" placeholder="이미지 설명">
+                            </div>
+                        </div>
+                        <div class="drop-zone" id="dropZone">
+                            <i class="fas fa-cloud-upload-alt" style="font-size: 48px; color: #adb5bd; margin-bottom: 12px;"></i>
+                            <p style="color: #666; margin-bottom: 8px;">이미지를 여기에 드래그하거나 클릭하여 선택</p>
+                            <p style="color: #999; font-size: 0.8rem;">JPG, PNG, GIF, WebP / 최대 10MB / 다중 선택 가능</p>
+                            <input type="file" name="gallery_files[]" id="galleryFiles" multiple accept="image/jpeg,image/png,image/gif,image/webp" style="display: none;">
+                        </div>
+                        <div id="filePreview" class="file-preview" style="display: none;"></div>
+                        <button type="submit" class="btn-primary" id="uploadBtn" style="margin-top: 16px;" disabled>
+                            <i class="fas fa-upload"></i> 업로드
                         </button>
                     </form>
                 </div>
@@ -353,5 +526,86 @@ $pageTitle = $type === 'food' ? '음식물처리기 갤러리' : '싱크볼 갤�
     </div>
 
     <script src="js/admin.js"></script>
+    <script>
+    (function() {
+        const dropZone = document.getElementById('dropZone');
+        const fileInput = document.getElementById('galleryFiles');
+        const filePreview = document.getElementById('filePreview');
+        const uploadBtn = document.getElementById('uploadBtn');
+        let selectedFiles = [];
+
+        // 드롭존 클릭 → 파일 선택
+        dropZone.addEventListener('click', () => fileInput.click());
+
+        // 드래그 이벤트
+        dropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dropZone.classList.add('drag-over');
+        });
+        dropZone.addEventListener('dragleave', () => {
+            dropZone.classList.remove('drag-over');
+        });
+        dropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dropZone.classList.remove('drag-over');
+            const files = Array.from(e.dataTransfer.files).filter(f => f.type.startsWith('image/'));
+            if (files.length > 0) {
+                addFiles(files);
+            }
+        });
+
+        // 파일 선택
+        fileInput.addEventListener('change', () => {
+            addFiles(Array.from(fileInput.files));
+        });
+
+        function addFiles(newFiles) {
+            selectedFiles = selectedFiles.concat(newFiles);
+            updatePreview();
+            updateFileInput();
+        }
+
+        function removeFile(index) {
+            selectedFiles.splice(index, 1);
+            updatePreview();
+            updateFileInput();
+        }
+
+        function updateFileInput() {
+            const dt = new DataTransfer();
+            selectedFiles.forEach(f => dt.items.add(f));
+            fileInput.files = dt.files;
+            uploadBtn.disabled = selectedFiles.length === 0;
+        }
+
+        function updatePreview() {
+            if (selectedFiles.length === 0) {
+                filePreview.style.display = 'none';
+                filePreview.innerHTML = '';
+                return;
+            }
+            filePreview.style.display = 'grid';
+            filePreview.innerHTML = '';
+            selectedFiles.forEach((file, index) => {
+                const item = document.createElement('div');
+                item.className = 'file-preview-item';
+                const img = document.createElement('img');
+                img.src = URL.createObjectURL(file);
+                const name = document.createElement('div');
+                name.className = 'file-name';
+                name.textContent = file.name;
+                const removeBtn = document.createElement('button');
+                removeBtn.type = 'button';
+                removeBtn.className = 'remove-file';
+                removeBtn.innerHTML = '&times;';
+                removeBtn.onclick = () => removeFile(index);
+                item.appendChild(img);
+                item.appendChild(name);
+                item.appendChild(removeBtn);
+                filePreview.appendChild(item);
+            });
+        }
+    })();
+    </script>
 </body>
 </html>

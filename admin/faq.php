@@ -198,15 +198,9 @@ $categories = ['일반', '제품', '설치', '배송', 'A/S', '기타'];
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="gallery.php" class="nav-link">
-                            <i class="fas fa-images"></i>
-                            <span>갤러리 관리</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         <a href="images.php" class="nav-link">
                             <i class="fas fa-cloud-upload-alt"></i>
-                            <span>이미지 업로드</span>
+                            <span>갤러리 관리</span>
                         </a>
                     </li>
                     <li class="nav-item active">

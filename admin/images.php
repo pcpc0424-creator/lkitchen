@@ -7,37 +7,39 @@ checkLogin();
 
 $type = $_GET['type'] ?? 'food';
 
-// 이미지 목록 가져오기
-function getImages($path, $webPath) {
+// 갤러리 JSON에서 이미지 목록 가져오기 (디렉토리 스캔 안 함)
+function getGalleryImages($type) {
+    $filename = ($type === 'food') ? 'food_gallery.json' : 'sink_gallery.json';
+    $data = readJsonData($filename);
     $images = [];
-    if (is_dir($path)) {
-        $pattern = $path . '/*.{jpg,jpeg,png,gif,webp}';
-        foreach (glob($pattern, GLOB_BRACE) as $file) {
-            $filename = basename($file);
-            $images[] = [
-                'filename' => $filename,
-                'url' => SITE_URL . $webPath . '/' . $filename,
-                'size' => filesize($file),
-                'modified' => filemtime($file)
-            ];
-        }
-        // 최신순 정렬
-        usort($images, function($a, $b) {
-            return $b['modified'] - $a['modified'];
-        });
+    foreach ($data as $item) {
+        $url = $item['url'] ?? '';
+        $filename = basename($url);
+        // 로컬 파일인 경우 파일 크기 가져오기
+        $uploadPath = ($type === 'food') ? UPLOAD_PATH_FOOD : UPLOAD_PATH_SINK;
+        $filePath = $uploadPath . '/' . urldecode($filename);
+        $size = file_exists($filePath) ? filesize($filePath) : 0;
+        $images[] = [
+            'id' => $item['id'] ?? '',
+            'filename' => urldecode($filename),
+            'url' => $url,
+            'description' => $item['description'] ?? '',
+            'size' => $size,
+            'created_at' => $item['created_at'] ?? ''
+        ];
     }
     return $images;
 }
 
-$foodImages = getImages(UPLOAD_PATH_FOOD, '/pototo');
-$sinkImages = getImages(UPLOAD_PATH_SINK, '/potopo');
+$foodImages = getGalleryImages('food');
+$sinkImages = getGalleryImages('sink');
 ?>
 <!DOCTYPE html>
 <html lang="ko-KR">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>이미지 관리 | <?php echo SITE_NAME; ?></title>
+    <title>갤러리 관리 | <?php echo SITE_NAME; ?></title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -82,16 +84,10 @@ $sinkImages = getImages(UPLOAD_PATH_SINK, '/potopo');
                             <span>싱크볼 후기</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="gallery.php" class="nav-link">
-                            <i class="fas fa-images"></i>
-                            <span>갤러리 관리</span>
-                        </a>
-                    </li>
                     <li class="nav-item active">
                         <a href="images.php" class="nav-link">
                             <i class="fas fa-cloud-upload-alt"></i>
-                            <span>이미지 업로드</span>
+                            <span>갤러리 관리</span>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -142,7 +138,7 @@ $sinkImages = getImages(UPLOAD_PATH_SINK, '/potopo');
                     <button class="sidebar-toggle" id="sidebarToggle">
                         <i class="fas fa-bars"></i>
                     </button>
-                    <h1 class="page-title">이미지 관리</h1>
+                    <h1 class="page-title">갤러리 관리</h1>
                 </div>
                 <div class="header-right">
                     <a href="<?php echo SITE_URL; ?>" target="_blank" class="btn-site">

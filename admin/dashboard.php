@@ -15,9 +15,9 @@ $newInquiries = array_filter($inquiries, function($inquiry) {
     return $inquiry['status'] === 'new';
 });
 
-// 이미지 수 계산
-$foodImages = is_dir(UPLOAD_PATH_FOOD) ? count(glob(UPLOAD_PATH_FOOD . '/*.{jpg,jpeg,png,gif,webp}', GLOB_BRACE)) : 0;
-$sinkImages = is_dir(UPLOAD_PATH_SINK) ? count(glob(UPLOAD_PATH_SINK . '/*.{jpg,jpeg,png,gif,webp}', GLOB_BRACE)) : 0;
+// 이미지 수 계산 (갤러리 JSON 기준)
+$foodImages = count(readJsonData('food_gallery.json'));
+$sinkImages = count(readJsonData('sink_gallery.json'));
 ?>
 <!DOCTYPE html>
 <html lang="ko-KR">
@@ -70,15 +70,9 @@ $sinkImages = is_dir(UPLOAD_PATH_SINK) ? count(glob(UPLOAD_PATH_SINK . '/*.{jpg,
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="gallery.php" class="nav-link">
-                            <i class="fas fa-images"></i>
-                            <span>갤러리 관리</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         <a href="images.php" class="nav-link">
                             <i class="fas fa-cloud-upload-alt"></i>
-                            <span>이미지 업로드</span>
+                            <span>갤러리 관리</span>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -222,7 +216,7 @@ $sinkImages = is_dir(UPLOAD_PATH_SINK) ? count(glob(UPLOAD_PATH_SINK . '/*.{jpg,
                                 <i class="fas fa-cloud-upload-alt"></i>
                             </div>
                             <div class="action-info">
-                                <h3>이미지 업로드</h3>
+                                <h3>갤러리 관리</h3>
                                 <p>드래그 앤 드롭으로 업로드</p>
                             </div>
                         </a>

@@ -1,7 +1,7 @@
 {
     "hero": {
         "badge": "SPECIAL PRICE",
-        "title": "<span class=\"highlight\">더 특별한 가격</span>으로 만나는<br>러블리 키친",
+        "title": "<span class=\"highlight\">더 특별한 가격<\/span>으로 만나는<br>러블리 키친",
         "subtitle": "제품별 스펙 자세히 보기"
     },
     "products": [
@@ -10,8 +10,13 @@
             "model": "LK-750A",
             "name": "에코라이트",
             "name_en": "ECO_LITE",
-            "image": "https://lkitchen.co.kr/wp-content/uploads/2025/03/Frame-47.png",
-            "tags": ["#딱 필요한 만큼", "#핵심만 담았다", "#합리적인 선택", "#경제적인 제품"],
+            "image": "https:\/\/lkitchen.co.kr\/wp-content\/uploads\/2025\/03\/Frame-47.png",
+            "tags": [
+                "#딱 필요한 만큼",
+                "#핵심만 담았다",
+                "#합리적인 선택",
+                "#경제적인 제품"
+            ],
             "original_price": "880,000",
             "sale_price": "380,000",
             "features": [
@@ -29,8 +34,13 @@
             "model": "LK-900A",
             "name": "더놈프로",
             "name_en": "THE NORM PRO",
-            "image": "https://lkitchen.co.kr/wp-content/uploads/2025/03/Frame-50.png",
-            "tags": ["#어떤 음식물도 거침없이", "#프리미엄을 경험하다", "#고객들이 선택한 No.1", "#메가히트"],
+            "image": "https:\/\/lkitchen.co.kr\/wp-content\/uploads\/2025\/03\/Frame-50.png",
+            "tags": [
+                "#어떤 음식물도 거침없이",
+                "#프리미엄을 경험하다",
+                "#고객들이 선택한 No.1",
+                "#메가히트"
+            ],
             "original_price": "990,000",
             "sale_price": "550,000",
             "features": [
@@ -49,8 +59,12 @@
             "model": "LK-1000A",
             "name": "울트라 그라인드 X",
             "name_en": "ULTRA GRIND X",
-            "image": "https://lkitchen.co.kr/wp-content/uploads/2025/03/Frame-49.png",
-            "tags": ["#하이엔드의 시작", "#엄청난 기술로 집결된 명품", "#최고출력 1.5HP"],
+            "image": "https:\/\/lkitchen.co.kr\/wp-content\/uploads\/2025\/03\/Frame-49.png",
+            "tags": [
+                "#하이엔드의 시작",
+                "#엄청난 기술로 집결된 명품",
+                "#최고출력 1.5HP"
+            ],
             "original_price": "1,090,000",
             "sale_price": "650,000",
             "features": [
@@ -69,8 +83,12 @@
             "model": "LK-1000B",
             "name": "게임체인저",
             "name_en": "GAME CHANGER",
-            "image": "https://lkitchen.co.kr/wp-content/uploads/2025/03/Frame-51.png",
-            "tags": ["#현존하는 음식물 처리기중 최고", "#최대출력 1.5HP", "#완벽을 추구하는 당신을 위한"],
+            "image": "https:\/\/lkitchen.co.kr\/wp-content\/uploads\/2025\/03\/Frame-51.png",
+            "tags": [
+                "#현존하는 음식물 처리기중 최고",
+                "#최대출력 1.5HP",
+                "#완벽을 추구하는 당신을 위한"
+            ],
             "original_price": "1,250,000",
             "sale_price": "700,000",
             "features": [
@@ -90,7 +108,7 @@
         {
             "id": 1,
             "model": "AQ-860NE",
-            "image": "https://lkitchen.co.kr/wp-content/uploads/2025/09/12312312.jpg",
+            "image": "https:\/\/lkitchen.co.kr\/wp-content\/uploads\/2025\/09\/12312312.jpg",
             "price": "480,000",
             "size": "860 × 525 × 210mm",
             "features": [
@@ -105,7 +123,7 @@
         {
             "id": 2,
             "model": "AQ-900NE",
-            "image": "https://lkitchen.co.kr/wp-content/uploads/2025/09/12312312.jpg",
+            "image": "https:\/\/lkitchen.co.kr\/wp-content\/uploads\/2025\/09\/12312312.jpg",
             "price": "500,000",
             "size": "900 × 525 × 210mm",
             "features": [
@@ -120,7 +138,7 @@
         {
             "id": 3,
             "model": "AQ-980NE",
-            "image": "https://lkitchen.co.kr/wp-content/uploads/2025/09/12312312.jpg",
+            "image": "https:\/\/lkitchen.co.kr\/wp-content\/uploads\/2025\/09\/12312312.jpg",
             "price": "520,000",
             "size": "980 × 525 × 210mm",
             "features": [
@@ -137,7 +155,7 @@
         "badge": "특허출원번호: 20-2024-002148",
         "title": "국내 최초 4-WAY LK 멀티트랩!<br>러블리키친에서 직접 개발 및 생산",
         "description": "누수 없이, 악취 없이, 안전하게! 사용하는 내내 완벽한 편리함을 제공합니다. 주방 가전과의 완벽한 호환성! 다양한 기기를 연결해도 역류·누수·악취 걱정 없이 안전한 사용을 보장합니다.",
-        "image": "https://lkitchen.co.kr/wp-content/uploads/2025/03/제목을-입력해주세요_-004-3.png",
+        "image": "https:\/\/lkitchen.co.kr\/wp-content\/uploads\/2025\/03\/제목을-입력해주세요_-004-3.png",
         "features": [
             "6mm 정수기 퇴수 연결구",
             "식기세척기 드레인 연결구",

@@ -1038,10 +1038,12 @@ ul, ol {
     font-weight: 700;
     line-height: 1.3;
     margin-bottom: 2rem;
+    word-break: keep-all;
 }
 
 .company-intro-title .highlight {
     color: #60a5fa;
+    white-space: nowrap;
 }
 
 .company-intro-subtitle {
@@ -1295,7 +1297,7 @@ ul, ol {
 .product-image {
     position: relative;
     padding: 2rem;
-    background: #f7fafc;
+    background: #fff;
 }
 
 .product-carousel {
@@ -1314,7 +1316,7 @@ ul, ol {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(26, 26, 46, 0.8);
+    background: #fff;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -1331,7 +1333,7 @@ ul, ol {
     flex-direction: column;
     align-items: center;
     gap: 8px;
-    color: var(--text-white);
+    color: #333;
     font-size: 0.9rem;
     transform: translateY(20px);
     transition: var(--transition-base);
@@ -1614,11 +1616,12 @@ ul, ol {
     position: relative;
     z-index: 10;
     animation: float-slow 6s ease-in-out infinite;
-    filter: invert(1) brightness(1.2);
+    filter: invert(1) brightness(1.2) contrast(1.1);
     image-rendering: -webkit-optimize-contrast;
     image-rendering: crisp-edges;
     -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
+    -webkit-font-smoothing: antialiased;
 }
 
 @keyframes float-slow {
@@ -2485,33 +2488,87 @@ ul, ol {
    ============================================ */
 .kitchen-era-section {
     background: #000;
+    color: #fff;
+    overflow: hidden;
 }
 
-.kitchen-era-image-wrapper {
-    position: relative;
-    width: 100%;
+.kitchen-era-content {
     max-width: 1400px;
     margin: 0 auto;
+    padding: 60px 50px 40px;
 }
 
-.kitchen-era-img {
-    width: 100%;
-    height: auto;
-    display: block;
+.kitchen-era-top {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    min-height: 520px;
+}
+
+.kitchen-era-left {
+    flex: 0 0 40%;
+    padding-top: 10px;
+}
+
+.kitchen-era-title {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 20px;
+    color: #fff;
+    border-bottom: 2px solid #fff;
+    padding-bottom: 12px;
+    display: inline-block;
+}
+
+.kitchen-era-desc {
+    font-size: 0.95rem;
+    line-height: 1.8;
+    color: #ccc;
+    margin-bottom: 25px;
+    letter-spacing: 0.02em;
+}
+
+.kitchen-era-desc strong {
+    color: #fff;
+    font-weight: 700;
+}
+
+.kitchen-era-list {
+    list-style: none;
+    padding-left: 5px;
+    margin-bottom: 35px;
+    counter-reset: era-counter;
+}
+
+.kitchen-era-list li {
+    font-size: 0.9rem;
+    line-height: 2;
+    color: #bbb;
+    counter-increment: era-counter;
+}
+
+.kitchen-era-list li::before {
+    content: counter(era-counter) ". ";
+    color: #fff;
+    font-weight: 600;
+}
+
+.kitchen-era-cta-text {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 24px;
+    color: #fff;
 }
 
 .kitchen-era-order-btn {
-    position: absolute;
-    left: 5.5%;
-    top: 46%;
     display: inline-flex;
     align-items: center;
     gap: 12px;
-    padding: 18px 40px;
+    padding: 14px 32px;
     background: #000;
-    border: none;
+    border: 1px solid #555;
     color: #fff;
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     font-weight: 500;
     border-radius: 35px;
     text-decoration: none;
@@ -2524,42 +2581,172 @@ ul, ol {
 }
 
 .kitchen-era-order-btn i {
-    width: 22px;
-    height: 22px;
+    width: 26px;
+    height: 26px;
     background: rgba(255,255,255,0.15);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 0.75rem;
+    font-size: 0.8rem;
 }
 
 .kitchen-era-order-btn:hover i {
     background: rgba(255,255,255,0.25);
 }
 
+/* Right side: circle images layout (triangle) */
+.kitchen-era-right {
+    flex: 1;
+    position: relative;
+    min-height: 520px;
+}
+
+.kitchen-era-circles-row1 {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.kitchen-era-circles-row2 {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+.kitchen-era-circle {
+    text-align: center;
+}
+
+.kitchen-era-circle-img {
+    width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid rgba(255,255,255,0.25);
+    margin: 0 auto 10px;
+    background: #111;
+}
+
+.kitchen-era-circle-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.kitchen-era-circle-label {
+    font-size: 0.95rem;
+    color: #ccc;
+    display: block;
+    margin-top: 6px;
+    letter-spacing: 0.05em;
+}
+
+/* Bottom info section */
+.kitchen-era-bottom {
+    margin-top: 40px;
+    padding: 30px 0 20px;
+    border-top: 1px solid #222;
+}
+
+.kitchen-era-info {
+    font-size: 0.88rem;
+    color: #aaa;
+    margin-bottom: 10px;
+    line-height: 1.7;
+}
+
+.kitchen-era-highlight {
+    color: #ff6b6b;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+
+.kitchen-era-info-warning {
+    font-size: 0.88rem;
+    color: #ff6b6b;
+    line-height: 1.8;
+    margin-top: 14px;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.kitchen-era-info-note {
+    color: #e8a838;
+    font-size: 0.82rem;
+    font-weight: 400;
+    text-decoration: none;
+}
+
+/* Hide innovation badge on single-column layout */
+@media (max-width: 1023px) {
+    .innovation-badge-floating {
+        display: none;
+    }
+}
+
 /* Kitchen Era Responsive */
 @media (max-width: 992px) {
-    .kitchen-era-order-btn {
-        left: 5%;
-        top: 50%;
-        padding: 8px 18px;
-        font-size: 0.85rem;
+    .kitchen-era-content {
+        padding: 40px 24px;
+    }
+    .kitchen-era-top {
+        flex-direction: column;
+        min-height: auto;
+    }
+    .kitchen-era-left {
+        flex: none;
+    }
+    .kitchen-era-right {
+        min-height: auto;
+    }
+    .kitchen-era-circle-img {
+        width: 180px;
+        height: 180px;
+    }
+    .kitchen-era-circles-row2 {
+        gap: 30px;
     }
 }
 
 @media (max-width: 768px) {
-    .kitchen-era-img {
-        position: relative;
-        z-index: 1;
+    .kitchen-era-content {
+        padding: 30px 16px;
+    }
+    .kitchen-era-title {
+        font-size: 1.6rem;
+    }
+    .kitchen-era-cta-text {
+        font-size: 1.15rem;
     }
     .kitchen-era-order-btn {
-        left: 5%;
-        transform: none;
-        top: 46%;
-        padding: 6px 14px;
-        font-size: 0.75rem;
-        z-index: 10;
+        padding: 10px 24px;
+        font-size: 1rem;
+    }
+    .kitchen-era-circle-img {
+        width: 150px;
+        height: 150px;
+    }
+    .kitchen-era-circles-row2 {
+        gap: 16px;
+    }
+    .kitchen-era-highlight {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .kitchen-era-circle-img {
+        width: 120px;
+        height: 120px;
+    }
+    .kitchen-era-circles-row2 {
+        gap: 10px;
+    }
+    .kitchen-era-circle-label {
+        font-size: 0.78rem;
     }
 }
 

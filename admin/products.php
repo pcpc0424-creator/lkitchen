@@ -1,14 +1,27 @@
 <?php
 /**
- * 러블리키친 제품 관리
+ * 러블리키친 제품 관리 (음식물처리기 / 싱크볼 / 악세사리)
  */
 require_once 'config.php';
 checkLogin();
 
-// 제품 데이터 로드
+// 현재 탭
+$currentTab = $_GET['tab'] ?? 'food';
+if (!in_array($currentTab, ['food', 'sink', 'accessory'])) {
+    $currentTab = 'food';
+}
+
+// 데이터 로드
 $productsFile = 'products.json';
 $productsData = readJsonData($productsFile);
 $products = $productsData['products'] ?? [];
+
+$specialFile = 'special.json';
+$specialData = readJsonData($specialFile);
+$sinkbowls = $specialData['sinkbowls'] ?? [];
+
+$accessoriesFile = 'accessories.json';
+$accessories = readJsonData($accessoriesFile);
 
 $message = '';
 $messageType = '';
@@ -17,8 +30,9 @@ $messageType = '';
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $action = $_POST['action'] ?? '';
 
-    // 제품 추가
+    // ===== 음식물처리기 =====
     if ($action === 'add_product') {
+        $currentTab = 'food';
         $maxId = 0;
         foreach ($productsData['products'] as $p) {
             if ($p['id'] > $maxId) $maxId = $p['id'];
@@ -34,7 +48,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             'badge_type' => trim($_POST['badge_type'] ?? 'entry'),
             'image' => trim($_POST['image'] ?? ''),
             'price' => trim($_POST['price'] ?? ''),
-            'hp' => trim($_POST['hp'] ?? ''),
+            'usage' => trim($_POST['usage'] ?? '주방용 오물 분쇄기 (가정용)'),
+            'rotation_speed' => trim($_POST['rotation_speed'] ?? ''),
+            'power' => trim($_POST['power'] ?? ''),
+            'weight' => trim($_POST['weight'] ?? ''),
+            'grinder_size' => trim($_POST['grinder_size'] ?? ''),
+            'total_size' => trim($_POST['total_size'] ?? ''),
             'spec_icon' => trim($_POST['spec_icon'] ?? 'fa-bolt'),
             'spec_text' => trim($_POST['spec_text'] ?? ''),
             'features' => array_filter(array_map('trim', explode("\n", $_POST['features'] ?? ''))),
@@ -54,8 +73,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    // 제품 수정
     if ($action === 'update_product') {
+        $currentTab = 'food';
         $productId = (int)$_POST['product_id'];
         foreach ($productsData['products'] as &$product) {
             if ($product['id'] === $productId) {
@@ -67,7 +86,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $product['badge_type'] = trim($_POST['badge_type'] ?? '');
                 $product['image'] = trim($_POST['image'] ?? '');
                 $product['price'] = trim($_POST['price'] ?? '');
-                $product['hp'] = trim($_POST['hp'] ?? '');
+                $product['usage'] = trim($_POST['usage'] ?? '');
+                $product['rotation_speed'] = trim($_POST['rotation_speed'] ?? '');
+                $product['power'] = trim($_POST['power'] ?? '');
+                $product['weight'] = trim($_POST['weight'] ?? '');
+                $product['grinder_size'] = trim($_POST['grinder_size'] ?? '');
+                $product['total_size'] = trim($_POST['total_size'] ?? '');
                 $product['spec_icon'] = trim($_POST['spec_icon'] ?? '');
                 $product['spec_text'] = trim($_POST['spec_text'] ?? '');
                 $product['features'] = array_filter(array_map('trim', explode("\n", $_POST['features'] ?? '')));
@@ -88,8 +112,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         }
     }
 
-    // 제품 삭제
     if ($action === 'delete_product') {
+        $currentTab = 'food';
         $productId = (int)$_POST['product_id'];
         $productsData['products'] = array_values(array_filter($productsData['products'], function($p) use ($productId) {
             return $p['id'] !== $productId;
@@ -99,6 +123,151 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $message = '제품이 삭제되었습니다.';
             $messageType = 'success';
             $products = $productsData['products'];
+        } else {
+            $message = '삭제 중 오류가 발생했습니다.';
+            $messageType = 'error';
+        }
+    }
+
+    // ===== 싱크볼 =====
+    if ($action === 'add_sinkbowl') {
+        $currentTab = 'sink';
+        $maxId = 0;
+        foreach ($sinkbowls as $s) {
+            if ($s['id'] > $maxId) $maxId = $s['id'];
+        }
+
+        $newSinkbowl = [
+            'id' => $maxId + 1,
+            'model' => trim($_POST['model'] ?? ''),
+            'size' => trim($_POST['size'] ?? ''),
+            'price' => trim($_POST['price'] ?? ''),
+            'image' => trim($_POST['image'] ?? ''),
+            'features' => array_filter(array_map('trim', explode("\n", $_POST['features'] ?? ''))),
+            'active' => isset($_POST['active'])
+        ];
+
+        $specialData['sinkbowls'][] = $newSinkbowl;
+
+        if (writeJsonData($specialFile, $specialData)) {
+            $message = '새 싱크볼이 추가되었습니다.';
+            $messageType = 'success';
+            $sinkbowls = $specialData['sinkbowls'];
+        } else {
+            $message = '저장 중 오류가 발생했습니다.';
+            $messageType = 'error';
+        }
+    }
+
+    if ($action === 'update_sinkbowl') {
+        $currentTab = 'sink';
+        $sinkId = (int)$_POST['sink_id'];
+        foreach ($specialData['sinkbowls'] as &$sink) {
+            if ($sink['id'] === $sinkId) {
+                $sink['model'] = trim($_POST['model'] ?? '');
+                $sink['size'] = trim($_POST['size'] ?? '');
+                $sink['price'] = trim($_POST['price'] ?? '');
+                $sink['image'] = trim($_POST['image'] ?? '');
+                $sink['features'] = array_filter(array_map('trim', explode("\n", $_POST['features'] ?? '')));
+                $sink['active'] = isset($_POST['active']);
+                break;
+            }
+        }
+        unset($sink);
+
+        if (writeJsonData($specialFile, $specialData)) {
+            $message = '싱크볼 정보가 저장되었습니다.';
+            $messageType = 'success';
+            $sinkbowls = $specialData['sinkbowls'];
+        } else {
+            $message = '저장 중 오류가 발생했습니다.';
+            $messageType = 'error';
+        }
+    }
+
+    if ($action === 'delete_sinkbowl') {
+        $currentTab = 'sink';
+        $sinkId = (int)$_POST['sink_id'];
+        $specialData['sinkbowls'] = array_values(array_filter($specialData['sinkbowls'], function($s) use ($sinkId) {
+            return $s['id'] !== $sinkId;
+        }));
+
+        if (writeJsonData($specialFile, $specialData)) {
+            $message = '싱크볼이 삭제되었습니다.';
+            $messageType = 'success';
+            $sinkbowls = $specialData['sinkbowls'];
+        } else {
+            $message = '삭제 중 오류가 발생했습니다.';
+            $messageType = 'error';
+        }
+    }
+
+    // ===== 악세사리 =====
+    if ($action === 'add_accessory') {
+        $currentTab = 'accessory';
+        $maxId = 0;
+        foreach ($accessories as $a) {
+            if ($a['id'] > $maxId) $maxId = $a['id'];
+        }
+
+        $newAccessory = [
+            'id' => $maxId + 1,
+            'name' => trim($_POST['name'] ?? ''),
+            'description' => trim($_POST['description'] ?? ''),
+            'image' => trim($_POST['image'] ?? ''),
+            'price' => trim($_POST['price'] ?? ''),
+            'shipping' => trim($_POST['shipping'] ?? '택배비 4,000원 별도'),
+            'store_url' => trim($_POST['store_url'] ?? ''),
+            'active' => isset($_POST['active'])
+        ];
+
+        $accessories[] = $newAccessory;
+
+        if (writeJsonData($accessoriesFile, $accessories)) {
+            $message = '새 악세사리가 추가되었습니다.';
+            $messageType = 'success';
+        } else {
+            $message = '저장 중 오류가 발생했습니다.';
+            $messageType = 'error';
+        }
+    }
+
+    if ($action === 'update_accessory') {
+        $currentTab = 'accessory';
+        $accId = (int)$_POST['acc_id'];
+        foreach ($accessories as &$acc) {
+            if ($acc['id'] === $accId) {
+                $acc['name'] = trim($_POST['name'] ?? '');
+                $acc['description'] = trim($_POST['description'] ?? '');
+                $acc['image'] = trim($_POST['image'] ?? '');
+                $acc['price'] = trim($_POST['price'] ?? '');
+                $acc['shipping'] = trim($_POST['shipping'] ?? '');
+                $acc['store_url'] = trim($_POST['store_url'] ?? '');
+                $acc['active'] = isset($_POST['active']);
+                break;
+            }
+        }
+        unset($acc);
+
+        if (writeJsonData($accessoriesFile, $accessories)) {
+            $message = '악세사리 정보가 저장되었습니다.';
+            $messageType = 'success';
+        } else {
+            $message = '저장 중 오류가 발생했습니다.';
+            $messageType = 'error';
+        }
+    }
+
+    if ($action === 'delete_accessory') {
+        $currentTab = 'accessory';
+        $accId = (int)$_POST['acc_id'];
+        $accessories = array_values(array_filter($accessories, function($a) use ($accId) {
+            return $a['id'] !== $accId;
+        }));
+
+        if (writeJsonData($accessoriesFile, $accessories)) {
+            $message = '악세사리가 삭제되었습니다.';
+            $messageType = 'success';
         } else {
             $message = '삭제 중 오류가 발생했습니다.';
             $messageType = 'error';
@@ -125,6 +294,20 @@ $newInquiries = array_filter($inquiries, function($inquiry) {
     <link rel="stylesheet" href="css/admin.css?v=2">
     <link rel="icon" type="image/png" href="https://lkitchen.co.kr/wp-content/uploads/2024/08/logo.png">
     <style>
+        /* 탭 카운트 뱃지 */
+        .tab-count {
+            background: #e2e8f0;
+            color: #64748b;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .tab-btn.active .tab-count {
+            background: rgba(255,255,255,0.3);
+            color: #fff;
+        }
+
         .form-card {
             background: #fff;
             border-radius: 12px;
@@ -366,15 +549,9 @@ $newInquiries = array_filter($inquiries, function($inquiry) {
                         </a>
                     </li>
                     <li class="nav-item">
-                        <a href="gallery.php" class="nav-link">
-                            <i class="fas fa-images"></i>
-                            <span>갤러리 관리</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
                         <a href="images.php" class="nav-link">
                             <i class="fas fa-cloud-upload-alt"></i>
-                            <span>이미지 업로드</span>
+                            <span>갤러리 관리</span>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -431,10 +608,19 @@ $newInquiries = array_filter($inquiries, function($inquiry) {
                     <h1 class="page-title">제품 관리</h1>
                 </div>
                 <div class="header-right">
+                    <?php if ($currentTab === 'food'): ?>
                     <a href="<?php echo SITE_URL; ?>/products.html" target="_blank" class="btn-site">
-                        <i class="fas fa-external-link-alt"></i>
-                        제품 페이지 보기
+                        <i class="fas fa-external-link-alt"></i> 제품 페이지 보기
                     </a>
+                    <?php elseif ($currentTab === 'sink'): ?>
+                    <a href="<?php echo SITE_URL; ?>/싱크볼/" target="_blank" class="btn-site">
+                        <i class="fas fa-external-link-alt"></i> 싱크볼 페이지 보기
+                    </a>
+                    <?php else: ?>
+                    <a href="<?php echo SITE_URL; ?>/악세사리/" target="_blank" class="btn-site">
+                        <i class="fas fa-external-link-alt"></i> 악세사리 페이지 보기
+                    </a>
+                    <?php endif; ?>
                 </div>
             </header>
 
@@ -446,12 +632,29 @@ $newInquiries = array_filter($inquiries, function($inquiry) {
                 </div>
                 <?php endif; ?>
 
-                <!-- 제품 추가 버튼 -->
-                <button type="button" class="btn-add" onclick="toggleAddForm()">
+                <!-- 탭 네비게이션 -->
+                <div class="tabs">
+                    <a href="?tab=food" class="tab-btn <?php echo $currentTab === 'food' ? 'active' : ''; ?>">
+                        <i class="fas fa-utensils"></i> 음식물처리기
+                        <span class="tab-count"><?php echo count($products); ?></span>
+                    </a>
+                    <a href="?tab=sink" class="tab-btn <?php echo $currentTab === 'sink' ? 'active' : ''; ?>">
+                        <i class="fas fa-sink"></i> 아콴테 싱크볼
+                        <span class="tab-count"><?php echo count($sinkbowls); ?></span>
+                    </a>
+                    <a href="?tab=accessory" class="tab-btn <?php echo $currentTab === 'accessory' ? 'active' : ''; ?>">
+                        <i class="fas fa-puzzle-piece"></i> 악세사리
+                        <span class="tab-count"><?php echo count($accessories); ?></span>
+                    </a>
+                </div>
+
+                <!-- ==================== 음식물처리기 탭 ==================== -->
+                <?php if ($currentTab === 'food'): ?>
+
+                <button type="button" class="btn-add" onclick="toggleAddForm('addProductForm')">
                     <i class="fas fa-plus"></i> 새 제품 추가
                 </button>
 
-                <!-- 제품 추가 폼 -->
                 <form method="POST" class="form-card add-form" id="addProductForm">
                     <input type="hidden" name="action" value="add_product">
                     <div class="form-card-header">
@@ -504,21 +707,49 @@ $newInquiries = array_filter($inquiries, function($inquiry) {
                         <input type="url" name="image" placeholder="https://...">
                     </div>
 
+                    <div class="form-group">
+                        <label>가격 (원) *</label>
+                        <input type="text" name="price" required placeholder="990,000">
+                    </div>
+
+                    <h4 style="margin: 20px 0 15px; color: #475569; font-size: 0.95rem;"><i class="fas fa-list-alt"></i> 제품 상세 사양</h4>
                     <div class="form-row">
                         <div class="form-group">
-                            <label>가격 (원) *</label>
-                            <input type="text" name="price" required placeholder="990,000">
+                            <label>용도</label>
+                            <input type="text" name="usage" value="주방용 오물 분쇄기 (가정용)" placeholder="주방용 오물 분쇄기 (가정용)">
                         </div>
                         <div class="form-group">
-                            <label>마력</label>
-                            <input type="text" name="hp" placeholder="1.0 HP">
+                            <label>회전속도</label>
+                            <input type="text" name="rotation_speed" placeholder="3500RPM">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>전원</label>
+                            <input type="text" name="power" placeholder="220V / 60HZ / 750W">
+                        </div>
+                        <div class="form-group">
+                            <label>중량</label>
+                            <input type="text" name="weight" placeholder="5.7 KG">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>분쇄기 사이즈</label>
+                            <input type="text" name="grinder_size" placeholder="W220mm X H390mm X D220mm">
+                        </div>
+                        <div class="form-group">
+                            <label>전체 사이즈</label>
+                            <input type="text" name="total_size" placeholder="W440mm X H390mm X D220mm">
                         </div>
                     </div>
 
+                    <h4 style="margin: 20px 0 15px; color: #475569; font-size: 0.95rem;"><i class="fas fa-tag"></i> 제품 카드 표시</h4>
                     <div class="form-row">
                         <div class="form-group">
                             <label>스펙 아이콘</label>
                             <input type="text" name="spec_icon" value="fa-bolt" placeholder="fa-bolt">
+                            <small>FontAwesome 아이콘 클래스</small>
                         </div>
                         <div class="form-group">
                             <label>스펙 텍스트</label>
@@ -543,7 +774,7 @@ $newInquiries = array_filter($inquiries, function($inquiry) {
                     </div>
 
                     <button type="submit" class="btn-save"><i class="fas fa-plus"></i> 제품 추가</button>
-                    <button type="button" class="btn-delete" onclick="toggleAddForm()">취소</button>
+                    <button type="button" class="btn-delete" onclick="toggleAddForm('addProductForm')">취소</button>
                 </form>
 
                 <?php foreach ($products as $product): ?>
@@ -570,7 +801,7 @@ $newInquiries = array_filter($inquiries, function($inquiry) {
                         <img src="<?php echo sanitize($product['image']); ?>" alt="<?php echo sanitize($product['model']); ?>">
                         <div class="product-preview-info">
                             <h4><?php echo sanitize($product['model']); ?> <?php echo sanitize($product['name']); ?></h4>
-                            <p><?php echo sanitize($product['name_en']); ?> | <?php echo sanitize($product['hp']); ?></p>
+                            <p><?php echo sanitize($product['name_en']); ?> | <?php echo sanitize($product['rotation_speed'] ?? ''); ?> | <?php echo sanitize($product['power'] ?? ''); ?></p>
                             <p class="price"><?php echo sanitize($product['price']); ?>원</p>
                         </div>
                     </div>
@@ -617,20 +848,47 @@ $newInquiries = array_filter($inquiries, function($inquiry) {
                     <div class="form-group">
                         <label>이미지 URL</label>
                         <input type="url" name="image" value="<?php echo sanitize($product['image']); ?>">
-                        <small>이미지 업로드에서 업로드 후 URL을 복사하여 붙여넣으세요</small>
+                        <small>갤러리 관리에서 업로드 후 URL을 복사하여 붙여넣으세요</small>
                     </div>
 
+                    <div class="form-group">
+                        <label>가격 (원)</label>
+                        <input type="text" name="price" value="<?php echo sanitize($product['price']); ?>" placeholder="990,000">
+                    </div>
+
+                    <h4 style="margin: 20px 0 15px; color: #475569; font-size: 0.95rem;"><i class="fas fa-list-alt"></i> 제품 상세 사양</h4>
                     <div class="form-row">
                         <div class="form-group">
-                            <label>가격 (원)</label>
-                            <input type="text" name="price" value="<?php echo sanitize($product['price']); ?>" placeholder="990,000">
+                            <label>용도</label>
+                            <input type="text" name="usage" value="<?php echo sanitize($product['usage'] ?? ''); ?>" placeholder="주방용 오물 분쇄기 (가정용)">
                         </div>
                         <div class="form-group">
-                            <label>마력</label>
-                            <input type="text" name="hp" value="<?php echo sanitize($product['hp']); ?>" placeholder="1.0 HP">
+                            <label>회전속도</label>
+                            <input type="text" name="rotation_speed" value="<?php echo sanitize($product['rotation_speed'] ?? ''); ?>" placeholder="3500RPM">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>전원</label>
+                            <input type="text" name="power" value="<?php echo sanitize($product['power'] ?? ''); ?>" placeholder="220V / 60HZ / 750W">
+                        </div>
+                        <div class="form-group">
+                            <label>중량</label>
+                            <input type="text" name="weight" value="<?php echo sanitize($product['weight'] ?? ''); ?>" placeholder="5.7 KG">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>분쇄기 사이즈</label>
+                            <input type="text" name="grinder_size" value="<?php echo sanitize($product['grinder_size'] ?? ''); ?>" placeholder="W220mm X H390mm X D220mm">
+                        </div>
+                        <div class="form-group">
+                            <label>전체 사이즈</label>
+                            <input type="text" name="total_size" value="<?php echo sanitize($product['total_size'] ?? ''); ?>" placeholder="W440mm X H390mm X D220mm">
                         </div>
                     </div>
 
+                    <h4 style="margin: 20px 0 15px; color: #475569; font-size: 0.95rem;"><i class="fas fa-tag"></i> 제품 카드 표시</h4>
                     <div class="form-row">
                         <div class="form-group">
                             <label>스펙 아이콘</label>
@@ -660,35 +918,295 @@ $newInquiries = array_filter($inquiries, function($inquiry) {
                     </div>
 
                     <button type="submit" class="btn-save"><i class="fas fa-save"></i> 저장하기</button>
-                    <button type="button" class="btn-delete" onclick="deleteProduct(<?php echo $product['id']; ?>, '<?php echo sanitize($product['model']); ?>')">
+                    <button type="button" class="btn-delete" onclick="deleteItem('deleteProductForm', 'deleteProductId', <?php echo $product['id']; ?>, '<?php echo sanitize($product['model']); ?>')">
                         <i class="fas fa-trash"></i> 삭제
                     </button>
                 </form>
                 <?php endforeach; ?>
+
+                <!-- ==================== 싱크볼 탭 ==================== -->
+                <?php elseif ($currentTab === 'sink'): ?>
+
+                <button type="button" class="btn-add" onclick="toggleAddForm('addSinkForm')">
+                    <i class="fas fa-plus"></i> 새 싱크볼 추가
+                </button>
+
+                <form method="POST" class="form-card add-form" id="addSinkForm">
+                    <input type="hidden" name="action" value="add_sinkbowl">
+                    <div class="form-card-header">
+                        <h3 class="form-card-title">
+                            <i class="fas fa-plus-circle"></i> 새 싱크볼 추가
+                        </h3>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>모델명 *</label>
+                            <input type="text" name="model" required placeholder="AQ-XXX">
+                        </div>
+                        <div class="form-group">
+                            <label>사이즈 *</label>
+                            <input type="text" name="size" required placeholder="860 × 525 × 210mm">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>가격 (원) *</label>
+                        <input type="text" name="price" required placeholder="480,000">
+                    </div>
+
+                    <div class="form-group">
+                        <label>이미지 URL</label>
+                        <input type="url" name="image" placeholder="https://...">
+                        <small>갤러리 관리에서 업로드 후 URL을 복사하여 붙여넣으세요</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>특징 (줄바꿈으로 구분)</label>
+                        <textarea name="features" rows="5" placeholder="특징 1&#10;특징 2&#10;특징 3"></textarea>
+                    </div>
+
+                    <div class="checkbox-row">
+                        <div class="checkbox-group">
+                            <input type="checkbox" name="active" id="new_sink_active" checked>
+                            <label for="new_sink_active">페이지에 표시</label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-save"><i class="fas fa-plus"></i> 싱크볼 추가</button>
+                    <button type="button" class="btn-delete" onclick="toggleAddForm('addSinkForm')">취소</button>
+                </form>
+
+                <?php foreach ($sinkbowls as $sink): ?>
+                <form method="POST" class="form-card">
+                    <input type="hidden" name="action" value="update_sinkbowl">
+                    <input type="hidden" name="sink_id" value="<?php echo $sink['id']; ?>">
+
+                    <div class="form-card-header">
+                        <h3 class="form-card-title">
+                            <i class="fas fa-sink"></i>
+                            <?php echo sanitize($sink['model']); ?>
+                        </h3>
+                        <?php if ($sink['active'] ?? true): ?>
+                        <span class="status-active">활성화</span>
+                        <?php else: ?>
+                        <span class="status-inactive">비활성화</span>
+                        <?php endif; ?>
+                    </div>
+
+                    <div class="product-preview">
+                        <img src="<?php echo sanitize($sink['image']); ?>" alt="<?php echo sanitize($sink['model']); ?>">
+                        <div class="product-preview-info">
+                            <h4><?php echo sanitize($sink['model']); ?></h4>
+                            <p><?php echo sanitize($sink['size']); ?></p>
+                            <p class="price"><?php echo sanitize($sink['price']); ?>원</p>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>모델명</label>
+                            <input type="text" name="model" value="<?php echo sanitize($sink['model']); ?>">
+                        </div>
+                        <div class="form-group">
+                            <label>사이즈</label>
+                            <input type="text" name="size" value="<?php echo sanitize($sink['size']); ?>">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>가격 (원)</label>
+                        <input type="text" name="price" value="<?php echo sanitize($sink['price']); ?>" placeholder="480,000">
+                    </div>
+
+                    <div class="form-group">
+                        <label>이미지 URL</label>
+                        <input type="url" name="image" value="<?php echo sanitize($sink['image']); ?>">
+                        <small>갤러리 관리에서 업로드 후 URL을 복사하여 붙여넣으세요</small>
+                    </div>
+
+                    <div class="form-group">
+                        <label>특징 (줄바꿈으로 구분)</label>
+                        <textarea name="features" rows="5"><?php echo sanitize(implode("\n", $sink['features'] ?? [])); ?></textarea>
+                    </div>
+
+                    <div class="checkbox-row">
+                        <div class="checkbox-group">
+                            <input type="checkbox" name="active" id="sink_active_<?php echo $sink['id']; ?>" <?php echo ($sink['active'] ?? true) ? 'checked' : ''; ?>>
+                            <label for="sink_active_<?php echo $sink['id']; ?>">페이지에 표시</label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-save"><i class="fas fa-save"></i> 저장하기</button>
+                    <button type="button" class="btn-delete" onclick="deleteItem('deleteSinkForm', 'deleteSinkId', <?php echo $sink['id']; ?>, '<?php echo sanitize($sink['model']); ?>')">
+                        <i class="fas fa-trash"></i> 삭제
+                    </button>
+                </form>
+                <?php endforeach; ?>
+
+                <!-- ==================== 악세사리 탭 ==================== -->
+                <?php elseif ($currentTab === 'accessory'): ?>
+
+                <button type="button" class="btn-add" onclick="toggleAddForm('addAccForm')">
+                    <i class="fas fa-plus"></i> 새 악세사리 추가
+                </button>
+
+                <form method="POST" class="form-card add-form" id="addAccForm">
+                    <input type="hidden" name="action" value="add_accessory">
+                    <div class="form-card-header">
+                        <h3 class="form-card-title">
+                            <i class="fas fa-plus-circle"></i> 새 악세사리 추가
+                        </h3>
+                    </div>
+
+                    <div class="form-group">
+                        <label>이름 *</label>
+                        <input type="text" name="name" required placeholder="악세사리 이름">
+                    </div>
+
+                    <div class="form-group">
+                        <label>설명 *</label>
+                        <textarea name="description" rows="3" required placeholder="악세사리 설명"></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>이미지 URL</label>
+                        <input type="url" name="image" placeholder="https://...">
+                        <small>갤러리 관리에서 업로드 후 URL을 복사하여 붙여넣으세요</small>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>가격 (원) *</label>
+                            <input type="text" name="price" required placeholder="8,000">
+                        </div>
+                        <div class="form-group">
+                            <label>배송비</label>
+                            <input type="text" name="shipping" value="택배비 4,000원 별도" placeholder="택배비 4,000원 별도">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>스토어 URL</label>
+                        <input type="url" name="store_url" placeholder="https://smartstore.naver.com/...">
+                    </div>
+
+                    <div class="checkbox-row">
+                        <div class="checkbox-group">
+                            <input type="checkbox" name="active" id="new_acc_active" checked>
+                            <label for="new_acc_active">페이지에 표시</label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-save"><i class="fas fa-plus"></i> 악세사리 추가</button>
+                    <button type="button" class="btn-delete" onclick="toggleAddForm('addAccForm')">취소</button>
+                </form>
+
+                <?php foreach ($accessories as $acc): ?>
+                <form method="POST" class="form-card">
+                    <input type="hidden" name="action" value="update_accessory">
+                    <input type="hidden" name="acc_id" value="<?php echo $acc['id']; ?>">
+
+                    <div class="form-card-header">
+                        <h3 class="form-card-title">
+                            <i class="fas fa-puzzle-piece"></i>
+                            <?php echo sanitize($acc['name']); ?>
+                        </h3>
+                        <?php if ($acc['active'] ?? true): ?>
+                        <span class="status-active">활성화</span>
+                        <?php else: ?>
+                        <span class="status-inactive">비활성화</span>
+                        <?php endif; ?>
+                    </div>
+
+                    <div class="product-preview">
+                        <img src="<?php echo sanitize($acc['image']); ?>" alt="<?php echo sanitize($acc['name']); ?>">
+                        <div class="product-preview-info">
+                            <h4><?php echo sanitize($acc['name']); ?></h4>
+                            <p><?php echo sanitize($acc['description']); ?></p>
+                            <p class="price"><?php echo sanitize($acc['price']); ?>원</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>이름</label>
+                        <input type="text" name="name" value="<?php echo sanitize($acc['name']); ?>">
+                    </div>
+
+                    <div class="form-group">
+                        <label>설명</label>
+                        <textarea name="description" rows="3"><?php echo sanitize($acc['description']); ?></textarea>
+                    </div>
+
+                    <div class="form-group">
+                        <label>이미지 URL</label>
+                        <input type="url" name="image" value="<?php echo sanitize($acc['image']); ?>">
+                        <small>갤러리 관리에서 업로드 후 URL을 복사하여 붙여넣으세요</small>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>가격 (원)</label>
+                            <input type="text" name="price" value="<?php echo sanitize($acc['price']); ?>" placeholder="8,000">
+                        </div>
+                        <div class="form-group">
+                            <label>배송비</label>
+                            <input type="text" name="shipping" value="<?php echo sanitize($acc['shipping'] ?? ''); ?>" placeholder="택배비 4,000원 별도">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>스토어 URL</label>
+                        <input type="url" name="store_url" value="<?php echo sanitize($acc['store_url'] ?? ''); ?>" placeholder="https://smartstore.naver.com/...">
+                    </div>
+
+                    <div class="checkbox-row">
+                        <div class="checkbox-group">
+                            <input type="checkbox" name="active" id="acc_active_<?php echo $acc['id']; ?>" <?php echo ($acc['active'] ?? true) ? 'checked' : ''; ?>>
+                            <label for="acc_active_<?php echo $acc['id']; ?>">페이지에 표시</label>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn-save"><i class="fas fa-save"></i> 저장하기</button>
+                    <button type="button" class="btn-delete" onclick="deleteItem('deleteAccForm', 'deleteAccId', <?php echo $acc['id']; ?>, '<?php echo sanitize($acc['name']); ?>')">
+                        <i class="fas fa-trash"></i> 삭제
+                    </button>
+                </form>
+                <?php endforeach; ?>
+
+                <?php endif; ?>
             </div>
         </main>
     </div>
 
     <!-- 삭제 확인용 숨김 폼 -->
-    <form id="deleteForm" method="POST" style="display:none;">
+    <form id="deleteProductForm" method="POST" style="display:none;">
         <input type="hidden" name="action" value="delete_product">
         <input type="hidden" name="product_id" id="deleteProductId">
+    </form>
+    <form id="deleteSinkForm" method="POST" style="display:none;">
+        <input type="hidden" name="action" value="delete_sinkbowl">
+        <input type="hidden" name="sink_id" id="deleteSinkId">
+    </form>
+    <form id="deleteAccForm" method="POST" style="display:none;">
+        <input type="hidden" name="action" value="delete_accessory">
+        <input type="hidden" name="acc_id" id="deleteAccId">
     </form>
 
     <script src="js/admin.js"></script>
     <script>
-        function toggleAddForm() {
-            const form = document.getElementById('addProductForm');
+        function toggleAddForm(formId) {
+            const form = document.getElementById(formId);
             form.classList.toggle('show');
             if (form.classList.contains('show')) {
                 form.scrollIntoView({ behavior: 'smooth' });
             }
         }
 
-        function deleteProduct(id, model) {
-            if (confirm(model + ' 제품을 정말 삭제하시겠습니까?\n\n삭제된 제품은 복구할 수 없습니다.')) {
-                document.getElementById('deleteProductId').value = id;
-                document.getElementById('deleteForm').submit();
+        function deleteItem(formId, inputId, id, name) {
+            if (confirm(name + '을(를) 정말 삭제하시겠습니까?\n\n삭제된 항목은 복구할 수 없습니다.')) {
+                document.getElementById(inputId).value = id;
+                document.getElementById(formId).submit();
             }
         }
     </script>

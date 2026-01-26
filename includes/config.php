@@ -78,6 +78,13 @@ function getProductsData() {
 }
 
 /**
+ * 악세사리 데이터 가져오기
+ */
+function getAccessoriesData() {
+    return readJsonData('accessories.json');
+}
+
+/**
  * XSS 방지
  */
 function e($string) {

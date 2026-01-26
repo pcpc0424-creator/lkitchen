@@ -62,13 +62,108 @@ function writeJsonData($filename, $data) {
 }
 
 /**
- * 안전한 파일명 생성
+ * 안전한 파일명 생성 (후기용)
  */
 function generateSafeFilename($originalName) {
     $extension = strtolower(pathinfo($originalName, PATHINFO_EXTENSION));
     $timestamp = date('Y-m-d-H-i-s');
     $random = substr(md5(uniqid()), 0, 8);
     return "review_{$timestamp}_{$random}.{$extension}";
+}
+
+/**
+ * 안전한 파일명 생성 (갤러리용)
+ */
+function generateGalleryFilename($originalName) {
+    $extension = strtolower(pathinfo($originalName, PATHINFO_EXTENSION));
+    $timestamp = date('Y-m-d-H-i-s');
+    $random = substr(md5(uniqid()), 0, 8);
+    return "gallery_{$timestamp}_{$random}.{$extension}";
+}
+
+/**
+ * 이미지 리사이징 (최대 크기 기준, 비율 유지)
+ * @param string $filePath 이미지 파일 경로
+ * @param int $maxDimension 최대 가로/세로 크기 (px)
+ * @param int $quality JPEG/WebP 품질 (1-100)
+ * @return bool 성공 여부
+ */
+function resizeImage($filePath, $maxDimension = 1600, $quality = 85) {
+    $imageInfo = getimagesize($filePath);
+    if ($imageInfo === false) return false;
+
+    $origWidth = $imageInfo[0];
+    $origHeight = $imageInfo[1];
+    $mimeType = $imageInfo['mime'];
+
+    // 이미 작으면 리사이징 불필요
+    if ($origWidth <= $maxDimension && $origHeight <= $maxDimension) {
+        return true;
+    }
+
+    // 비율 계산
+    if ($origWidth >= $origHeight) {
+        $newWidth = $maxDimension;
+        $newHeight = (int) round($origHeight * ($maxDimension / $origWidth));
+    } else {
+        $newHeight = $maxDimension;
+        $newWidth = (int) round($origWidth * ($maxDimension / $origHeight));
+    }
+
+    // 원본 이미지 로드
+    switch ($mimeType) {
+        case 'image/jpeg':
+            $srcImage = imagecreatefromjpeg($filePath);
+            break;
+        case 'image/png':
+            $srcImage = imagecreatefrompng($filePath);
+            break;
+        case 'image/gif':
+            $srcImage = imagecreatefromgif($filePath);
+            break;
+        case 'image/webp':
+            $srcImage = imagecreatefromwebp($filePath);
+            break;
+        default:
+            return false;
+    }
+
+    if (!$srcImage) return false;
+
+    // 리사이징
+    $dstImage = imagecreatetruecolor($newWidth, $newHeight);
+
+    // PNG/GIF 투명도 유지
+    if ($mimeType === 'image/png' || $mimeType === 'image/gif') {
+        imagealphablending($dstImage, false);
+        imagesavealpha($dstImage, true);
+        $transparent = imagecolorallocatealpha($dstImage, 0, 0, 0, 127);
+        imagefilledrectangle($dstImage, 0, 0, $newWidth, $newHeight, $transparent);
+    }
+
+    imagecopyresampled($dstImage, $srcImage, 0, 0, 0, 0, $newWidth, $newHeight, $origWidth, $origHeight);
+
+    // 저장
+    $result = false;
+    switch ($mimeType) {
+        case 'image/jpeg':
+            $result = imagejpeg($dstImage, $filePath, $quality);
+            break;
+        case 'image/png':
+            $result = imagepng($dstImage, $filePath, 8);
+            break;
+        case 'image/gif':
+            $result = imagegif($dstImage, $filePath);
+            break;
+        case 'image/webp':
+            $result = imagewebp($dstImage, $filePath, $quality);
+            break;
+    }
+
+    imagedestroy($srcImage);
+    imagedestroy($dstImage);
+
+    return $result;
 }
 
 /**

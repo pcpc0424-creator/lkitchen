@@ -18,11 +18,15 @@ if (!is_dir($uploadPath)) {
     mkdir($uploadPath, 0755, true);
 }
 
+// 갤러리 JSON 파일명
+$galleryFile = ($type === 'sink') ? 'sink_gallery.json' : 'food_gallery.json';
+
 // 파일 업로드 처리
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['files'])) {
     $files = $_FILES['files'];
     $uploadedFiles = [];
     $errors = [];
+    $galleryData = readJsonData($galleryFile);
 
     // 파일 배열 정리
     $fileCount = is_array($files['name']) ? count($files['name']) : 1;
@@ -59,21 +63,40 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['files'])) {
             continue;
         }
 
-        // 안전한 파일명 생성
-        $newFilename = generateSafeFilename($name);
+        // 안전한 파일명 생성 (갤러리용)
+        $newFilename = generateGalleryFilename($name);
         $destination = $uploadPath . '/' . $newFilename;
 
         // 파일 이동
         if (move_uploaded_file($tmpName, $destination)) {
+            // 자동 리사이징 (최대 1600px, 비율 유지)
+            resizeImage($destination, 1600, 85);
+
+            $imageUrl = SITE_URL . $webPath . '/' . $newFilename;
+
+            // 갤러리 JSON에 자동 등록
+            $newImage = [
+                'id' => uniqid(),
+                'url' => $imageUrl,
+                'description' => $name,
+                'created_at' => date('Y-m-d H:i:s')
+            ];
+            array_unshift($galleryData, $newImage);
+
             $uploadedFiles[] = [
                 'filename' => $newFilename,
                 'original' => $name,
                 'size' => $size,
-                'url' => SITE_URL . $webPath . '/' . $newFilename
+                'url' => $imageUrl
             ];
         } else {
             $errors[] = "{$name}: 파일 저장에 실패했습니다.";
         }
+    }
+
+    // 갤러리 JSON 저장
+    if (!empty($uploadedFiles)) {
+        writeJsonData($galleryFile, $galleryData);
     }
 
     // 응답
@@ -107,6 +130,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'DELETE' || ($_SERVER['REQUEST_METHOD'] === '
     $filename = basename($filename);
     $filepath = $uploadPath . '/' . $filename;
 
+    // 갤러리 JSON에서도 제거
+    $galleryData = readJsonData($galleryFile);
+    $galleryData = array_filter($galleryData, function($img) use ($filename) {
+        $imgFilename = basename($img['url'] ?? '');
+        return urldecode($imgFilename) !== $filename && $imgFilename !== $filename;
+    });
+    $galleryData = array_values($galleryData);
+    writeJsonData($galleryFile, $galleryData);
+
     if (file_exists($filepath)) {
         if (unlink($filepath)) {
             jsonResponse(true, '파일이 삭제되었습니다.');
@@ -114,29 +146,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'DELETE' || ($_SERVER['REQUEST_METHOD'] === '
             jsonResponse(false, '파일 삭제에 실패했습니다.');
         }
     } else {
-        jsonResponse(false, '파일을 찾을 수 없습니다.');
+        jsonResponse(true, '갤러리에서 제거되었습니다.');
     }
 }
 
-// 파일 목록 조회
+// 파일 목록 조회 (갤러리 JSON에서 읽기)
 if ($_SERVER['REQUEST_METHOD'] === 'GET' && isset($_GET['list'])) {
+    $galleryData = readJsonData($galleryFile);
     $files = [];
-    $pattern = $uploadPath . '/*.{jpg,jpeg,png,gif,webp}';
 
-    foreach (glob($pattern, GLOB_BRACE) as $file) {
-        $filename = basename($file);
+    foreach ($galleryData as $item) {
+        $url = $item['url'] ?? '';
+        $fname = urldecode(basename($url));
+        $filePath = $uploadPath . '/' . $fname;
         $files[] = [
-            'filename' => $filename,
-            'url' => SITE_URL . $webPath . '/' . $filename,
-            'size' => filesize($file),
-            'modified' => date('Y-m-d H:i:s', filemtime($file))
+            'filename' => $fname,
+            'url' => $url,
+            'size' => file_exists($filePath) ? filesize($filePath) : 0,
+            'modified' => $item['created_at'] ?? ''
         ];
     }
-
-    // 최신순 정렬
-    usort($files, function($a, $b) {
-        return strtotime($b['modified']) - strtotime($a['modified']);
-    });
 
     jsonResponse(true, '', $files);
 }

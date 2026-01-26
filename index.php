@@ -24,7 +24,7 @@ require_once __DIR__ . '/includes/config.php';
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css?v=20260125g">
+    <link rel="stylesheet" href="css/style.css?v=20260126a">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="https://lkitchen.co.kr/wp-content/uploads/2024/08/logo.png">
@@ -229,12 +229,6 @@ require_once __DIR__ . '/includes/config.php';
                         <span class="stat-unit">%</span>
                         <span class="stat-label">고객 만족도</span>
                     </div>
-                    <div class="stat-divider"></div>
-                    <div class="stat-item">
-                        <span class="stat-number" data-count="5">0</span>
-                        <span class="stat-unit">년</span>
-                        <span class="stat-label">무상 A/S</span>
-                    </div>
                 </div>
             </div>
 
@@ -305,10 +299,6 @@ require_once __DIR__ . '/includes/config.php';
                     <div class="trust-item">
                         <i class="fas fa-truck-fast"></i>
                         <span>무료 설치</span>
-                    </div>
-                    <div class="trust-item">
-                        <i class="fas fa-tools"></i>
-                        <span>5년 무상 A/S</span>
                     </div>
                     <div class="trust-item">
                         <i class="fas fa-leaf"></i>
@@ -647,33 +637,33 @@ require_once __DIR__ . '/includes/config.php';
         <!-- Gallery Section 2: 아콴테 싱크볼 -->
         <section class="gallery-section sinkbowl-gallery">
             <div class="container">
-                <a href="<?php echo SITE_URL; ?>/사진갤러리/" class="section-header section-header-link" data-aos="fade-up">
+                <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" class="section-header section-header-link" data-aos="fade-up">
                     <span class="section-tag">SINKBOWL GALLERY</span>
                     <h2 class="section-title">아콴테 싱크볼 갤러리</h2>
                     <p class="section-desc">프리미엄 아콴테 싱크볼 시공 사례를 확인해보세요</p>
                 </a>
 
                 <div class="gallery-grid sinkbowl-grid" data-aos="fade-up" data-aos-delay="100">
-                    <a href="<?php echo SITE_URL; ?>/사진갤러리/" class="gallery-item">
-                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/04/67f0a23add8c71125721-1.jpg" alt="아콴테 싱크볼 시공 사진" loading="lazy">
+                    <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" class="gallery-item">
+                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/09/8H2A9604-1-1024x683.jpg" alt="아콴테 싱크볼 시공 사진" loading="lazy">
                         <div class="gallery-overlay">
                             <i class="fas fa-expand"></i>
                         </div>
                     </a>
-                    <a href="<?php echo SITE_URL; ?>/사진갤러리/" class="gallery-item">
-                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/04/67efa1b75a2d47977914-1.jpg" alt="아콴테 싱크볼 시공 사진" loading="lazy">
+                    <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" class="gallery-item">
+                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/09/8H2A9623-1024x683.jpg" alt="아콴테 싱크볼 시공 사진" loading="lazy">
                         <div class="gallery-overlay">
                             <i class="fas fa-expand"></i>
                         </div>
                     </a>
-                    <a href="<?php echo SITE_URL; ?>/사진갤러리/" class="gallery-item">
-                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/04/67efa11e462085118626.jpg" alt="아콴테 싱크볼 시공 사진" loading="lazy">
+                    <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" class="gallery-item">
+                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/09/8H2A9541-1-1024x683.jpg" alt="아콴테 싱크볼 시공 사진" loading="lazy">
                         <div class="gallery-overlay">
                             <i class="fas fa-expand"></i>
                         </div>
                     </a>
-                    <a href="<?php echo SITE_URL; ?>/사진갤러리/" class="gallery-item">
-                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/04/67efa08d596ec3265425-1.jpg" alt="아콴테 싱크볼 시공 사진" loading="lazy">
+                    <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" class="gallery-item">
+                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/09/8H2A9450-1-1024x683.jpg" alt="아콴테 싱크볼 시공 사진" loading="lazy">
                         <div class="gallery-overlay">
                             <i class="fas fa-expand"></i>
                         </div>
@@ -681,7 +671,7 @@ require_once __DIR__ . '/includes/config.php';
                 </div>
 
                 <div class="gallery-cta" data-aos="fade-up">
-                    <a href="<?php echo SITE_URL; ?>/사진갤러리/" class="btn-outline">
+                    <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" class="btn-outline">
                         <span>더 많은 싱크볼 시공사례 보기</span>
                         <i class="fas fa-arrow-right"></i>
                     </a>
@@ -805,7 +795,7 @@ require_once __DIR__ . '/includes/config.php';
 
                 <div class="testimonials-cta" data-aos="fade-up">
                     <a href="<?php echo SITE_URL; ?>/음식물처리기-후기/" class="btn-light">
-                        <span>모든 후기 보기</span>
+                        <span>실 구매 후기 보러가기</span>
                         <i class="fas fa-arrow-right"></i>
                     </a>
                 </div>
@@ -841,7 +831,7 @@ require_once __DIR__ . '/includes/config.php';
                             <i class="fas fa-headset"></i>
                         </div>
                         <h3>신속한 A/S</h3>
-                        <p>5년 무상 A/S와 신속한 사후관리</p>
+                        <p>신속하고 정확한 사후관리</p>
                     </div>
                     <div class="promise-card" data-aos="fade-up" data-aos-delay="400">
                         <div class="promise-icon">
@@ -856,12 +846,55 @@ require_once __DIR__ . '/includes/config.php';
 
         <!-- Kitchen New Era Section -->
         <section class="kitchen-era-section">
-            <div class="kitchen-era-image-wrapper">
-                <img src="http://115.68.223.124/lovelykitchen/images/kitchen-era.png" alt="주방의 새로운 시대" class="kitchen-era-img">
-                <a href="http://115.68.223.124/lovelykitchen/빠른상담/" class="kitchen-era-order-btn">
-                    <i class="fas fa-arrow-right"></i>
-                    <span>주문하기</span>
-                </a>
+            <div class="kitchen-era-content">
+                <div class="kitchen-era-top">
+                    <div class="kitchen-era-left">
+                        <h2 class="kitchen-era-title">주방의 새로운 시대</h2>
+                        <p class="kitchen-era-desc">식사 후에 단<strong>10초</strong>의 구동만으로 잔반을 제거함은 물론, 귀하의 거주 환경에 새로운 시대가 열렸음을 알게 합니다.</p>
+                        <ol class="kitchen-era-list">
+                            <li>음식물 처리를 하기위해 쏟아붓는 시간</li>
+                            <li>주방의 각종 오염을 방지</li>
+                            <li>유해균 생성 예방</li>
+                            <li>불쾌한 악취를 잊게되는 삶</li>
+                            <li>언제나 쾌적한 주방</li>
+                            <li>놀라운 시간 절약으로 다가오는 소중한 순간들</li>
+                        </ol>
+                        <p class="kitchen-era-cta-text">망설일 이유가 있을까요 ?</p>
+                        <a href="http://115.68.223.124/lovelykitchen/빠른상담/" class="kitchen-era-order-btn">
+                            <i class="fas fa-arrow-right"></i>
+                            <span>주문하기</span>
+                        </a>
+                    </div>
+                    <div class="kitchen-era-right">
+                        <div class="kitchen-era-circles-row1">
+                            <div class="kitchen-era-circle">
+                                <div class="kitchen-era-circle-img">
+                                    <img src="http://115.68.223.124/lovelykitchen/potopo/b.png" alt="아플라톡신 바이러스">
+                                </div>
+                                <span class="kitchen-era-circle-label">아플라톡신 바이러스</span>
+                            </div>
+                        </div>
+                        <div class="kitchen-era-circles-row2">
+                            <div class="kitchen-era-circle">
+                                <div class="kitchen-era-circle-img">
+                                    <img src="http://115.68.223.124/lovelykitchen/potopo/c.png" alt="박테리아">
+                                </div>
+                                <span class="kitchen-era-circle-label">박테리아</span>
+                            </div>
+                            <div class="kitchen-era-circle">
+                                <div class="kitchen-era-circle-img">
+                                    <img src="http://115.68.223.124/lovelykitchen/potopo/a-01-26-20-57-16.jpeg" alt="악취">
+                                </div>
+                                <span class="kitchen-era-circle-label">악취</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="kitchen-era-bottom">
+                    <p class="kitchen-era-info">※미생물 오염도 (ATP 기준) - 화장실 200 / 쓰레기통 1800 / <span class="kitchen-era-highlight">음식물쓰레기 930u</span></p>
+                    <p class="kitchen-era-info">상온에 음식물 쓰레기 방치 시 곰팡이 세균 증식 10시간 → 1억마리 / 15시간 → 100억 마리</p>
+                    <p class="kitchen-era-info-warning">아플라톡신이란? 오래된 음식물에 발생하는 곰팡이로 발암성이 있는 독성물질이다.<br>독성이 강한 아플라톡신 B1은 피부를 통해 침투할 수 있다.<br><span class="kitchen-era-info-note">(환경에 따라 차이가 있을 수 있음)</span></p>
+                </div>
             </div>
         </section>
 
