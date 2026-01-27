@@ -24,7 +24,7 @@ require_once __DIR__ . '/includes/config.php';
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css?v=20260126a">
+    <link rel="stylesheet" href="css/style.css?v=20260127f">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="https://lkitchen.co.kr/wp-content/uploads/2024/08/logo.png">
@@ -245,7 +245,7 @@ require_once __DIR__ . '/includes/config.php';
             <a href="<?php echo SITE_URL; ?>/싱크볼-후기/" class="review-banner-link">
                 <picture>
                     <source media="(max-width: 768px)" srcset="https://lkitchen.co.kr/wp-content/uploads/2025/10/모바일-002-3.png">
-                    <img src="https://lkitchen.co.kr/wp-content/uploads/2025/10/피시-004-1.png" alt="고객 솔직 리뷰 모음.zip" class="review-banner-img">
+                    <img src="https://lkitchen.co.kr/wp-content/uploads/2025/10/피시-003.png" alt="고객 솔직 리뷰 모음.zip" class="review-banner-img">
                 </picture>
             </a>
         </section>
@@ -282,7 +282,7 @@ require_once __DIR__ . '/includes/config.php';
                         </a>
                     </div>
                     <div class="company-intro-image" data-aos="fade-left">
-                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/03/KakaoTalk_20250316_152140022_29-1-1-1024x683.png" alt="러블리키친 음식물처리기">
+                        <img src="http://115.68.223.124/lovelykitchen/수정/qorud.png" alt="러블리키친 음식물처리기">
                     </div>
                 </div>
             </div>
@@ -844,60 +844,6 @@ require_once __DIR__ . '/includes/config.php';
             </div>
         </section>
 
-        <!-- Kitchen New Era Section -->
-        <section class="kitchen-era-section">
-            <div class="kitchen-era-content">
-                <div class="kitchen-era-top">
-                    <div class="kitchen-era-left">
-                        <h2 class="kitchen-era-title">주방의 새로운 시대</h2>
-                        <p class="kitchen-era-desc">식사 후에 단<strong>10초</strong>의 구동만으로 잔반을 제거함은 물론, 귀하의 거주 환경에 새로운 시대가 열렸음을 알게 합니다.</p>
-                        <ol class="kitchen-era-list">
-                            <li>음식물 처리를 하기위해 쏟아붓는 시간</li>
-                            <li>주방의 각종 오염을 방지</li>
-                            <li>유해균 생성 예방</li>
-                            <li>불쾌한 악취를 잊게되는 삶</li>
-                            <li>언제나 쾌적한 주방</li>
-                            <li>놀라운 시간 절약으로 다가오는 소중한 순간들</li>
-                        </ol>
-                        <p class="kitchen-era-cta-text">망설일 이유가 있을까요 ?</p>
-                        <a href="http://115.68.223.124/lovelykitchen/빠른상담/" class="kitchen-era-order-btn">
-                            <i class="fas fa-arrow-right"></i>
-                            <span>주문하기</span>
-                        </a>
-                    </div>
-                    <div class="kitchen-era-right">
-                        <div class="kitchen-era-circles-row1">
-                            <div class="kitchen-era-circle">
-                                <div class="kitchen-era-circle-img">
-                                    <img src="http://115.68.223.124/lovelykitchen/potopo/b.png" alt="아플라톡신 바이러스">
-                                </div>
-                                <span class="kitchen-era-circle-label">아플라톡신 바이러스</span>
-                            </div>
-                        </div>
-                        <div class="kitchen-era-circles-row2">
-                            <div class="kitchen-era-circle">
-                                <div class="kitchen-era-circle-img">
-                                    <img src="http://115.68.223.124/lovelykitchen/potopo/c.png" alt="박테리아">
-                                </div>
-                                <span class="kitchen-era-circle-label">박테리아</span>
-                            </div>
-                            <div class="kitchen-era-circle">
-                                <div class="kitchen-era-circle-img">
-                                    <img src="http://115.68.223.124/lovelykitchen/potopo/a-01-26-20-57-16.jpeg" alt="악취">
-                                </div>
-                                <span class="kitchen-era-circle-label">악취</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="kitchen-era-bottom">
-                    <p class="kitchen-era-info">※미생물 오염도 (ATP 기준) - 화장실 200 / 쓰레기통 1800 / <span class="kitchen-era-highlight">음식물쓰레기 930u</span></p>
-                    <p class="kitchen-era-info">상온에 음식물 쓰레기 방치 시 곰팡이 세균 증식 10시간 → 1억마리 / 15시간 → 100억 마리</p>
-                    <p class="kitchen-era-info-warning">아플라톡신이란? 오래된 음식물에 발생하는 곰팡이로 발암성이 있는 독성물질이다.<br>독성이 강한 아플라톡신 B1은 피부를 통해 침투할 수 있다.<br><span class="kitchen-era-info-note">(환경에 따라 차이가 있을 수 있음)</span></p>
-                </div>
-            </div>
-        </section>
-
         <!-- CTA Section -->
         <section class="cta-section">
             <div class="cta-bg">
@@ -911,8 +857,48 @@ require_once __DIR__ . '/includes/config.php';
                         <span class="gradient-text">지금 시작하세요</span>
                     </h2>
                     <p class="cta-desc">
-                        음식물 처리기 설치만으로 거주환경의 커다란 발전을 경험하세요
+                        식사 후에 단 <strong>10초</strong>의 구동만으로 잔반을 제거함은 물론,<br>
+                        귀하의 거주 환경에 새로운 시대가 열렸음을 알게 합니다.
                     </p>
+
+                    <ol class="cta-era-list">
+                        <li>음식물 처리를 하기위해 쏟아붓는 시간</li>
+                        <li>주방의 각종 오염을 방지</li>
+                        <li>유해균 생성 예방</li>
+                        <li>불쾌한 악취를 잊게되는 삶</li>
+                        <li>언제나 쾌적한 주방</li>
+                        <li>놀라운 시간 절약으로 다가오는 소중한 순간들</li>
+                    </ol>
+
+                    <div class="cta-circles">
+                        <div class="cta-circle">
+                            <div class="cta-circle-img">
+                                <img src="<?php echo SITE_URL; ?>/potopo/b.png" alt="아플라톡신 바이러스">
+                            </div>
+                            <span class="cta-circle-label">아플라톡신 바이러스</span>
+                        </div>
+                        <div class="cta-circle">
+                            <div class="cta-circle-img">
+                                <img src="<?php echo SITE_URL; ?>/potopo/c.png" alt="박테리아">
+                            </div>
+                            <span class="cta-circle-label">박테리아</span>
+                        </div>
+                        <div class="cta-circle">
+                            <div class="cta-circle-img">
+                                <img src="<?php echo SITE_URL; ?>/potopo/a-01-26-20-57-16.jpeg" alt="악취">
+                            </div>
+                            <span class="cta-circle-label">악취</span>
+                        </div>
+                    </div>
+
+                    <div class="cta-info-box">
+                        <p>※미생물 오염도 (ATP 기준) - 화장실 200 / 쓰레기통 1800 / <span class="cta-info-highlight">음식물쓰레기 930u</span></p>
+                        <p>상온에 음식물 쓰레기 방치 시 곰팡이 세균 증식 10시간 → 1억마리 / 15시간 → 100억 마리</p>
+                        <p class="cta-info-warning">아플라톡신이란? 오래된 음식물에 발생하는 곰팡이로 발암성이 있는 독성물질이다.<br>독성이 강한 아플라톡신 B1은 피부를 통해 침투할 수 있다.<br><span class="cta-info-note">(환경에 따라 차이가 있을 수 있음)</span></p>
+                    </div>
+
+                    <p class="cta-ask">망설일 이유가 있을까요 ?</p>
+
                     <div class="cta-buttons">
                         <a href="<?php echo SITE_URL; ?>/빠른상담/" class="btn-primary large">
                             <span>무료 상담 신청</span>

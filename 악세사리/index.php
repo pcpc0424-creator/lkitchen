@@ -41,7 +41,7 @@ $accessories = array_filter($accessories, function($a) {
         }
         .accessory-img {
             height: 250px;
-            background: linear-gradient(135deg, #f7fafc 0%, #edf2f7 100%);
+            background: #fff;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -104,6 +104,20 @@ $accessories = array_filter($accessories, function($a) {
         }
         .accessory-btn:hover {
             background: #3b82f6;
+        }
+        .accessory-btn-group {
+            display: flex;
+            gap: 8px;
+        }
+        .accessory-btn-detail {
+            background: #3b82f6;
+        }
+        .accessory-btn-detail:hover {
+            background: #2563eb;
+        }
+        .accessory-img-link {
+            display: block;
+            text-decoration: none;
         }
 
         .accessory-notice {
@@ -200,20 +214,27 @@ $accessories = array_filter($accessories, function($a) {
                 <div class="accessory-grid">
                     <?php $delay = 0; foreach ($accessories as $acc): ?>
                     <div class="accessory-card" data-aos="fade-up" data-aos-delay="<?php echo $delay; ?>">
-                        <div class="accessory-img">
-                            <img src="<?php echo e($acc['image']); ?>" alt="<?php echo e($acc['name']); ?>">
-                        </div>
+                        <a href="http://115.68.223.124<?php echo e($acc['detail_url'] ?? '#'); ?>" class="accessory-img-link">
+                            <div class="accessory-img">
+                                <img src="<?php echo e($acc['image']); ?>" alt="<?php echo e($acc['name']); ?>">
+                            </div>
+                        </a>
                         <div class="accessory-info">
-                            <h3><?php echo e($acc['name']); ?></h3>
+                            <h3><a href="http://115.68.223.124<?php echo e($acc['detail_url'] ?? '#'); ?>" style="color: inherit; text-decoration: none;"><?php echo e($acc['name']); ?></a></h3>
                             <p><?php echo e($acc['description']); ?></p>
                             <div class="accessory-price">
                                 <div>
                                     <span class="price-value"><?php echo e($acc['price']); ?>원</span>
                                     <span class="price-shipping"><?php echo e($acc['shipping'] ?? ''); ?></span>
                                 </div>
-                                <?php if (!empty($acc['store_url'])): ?>
-                                <a href="<?php echo e($acc['store_url']); ?>" target="_blank" class="accessory-btn">스토어 구매 <i class="fas fa-shopping-cart"></i></a>
-                                <?php endif; ?>
+                                <div class="accessory-btn-group">
+                                    <?php if (!empty($acc['detail_url'])): ?>
+                                    <a href="http://115.68.223.124<?php echo e($acc['detail_url']); ?>" class="accessory-btn accessory-btn-detail">자세히 보기 <i class="fas fa-arrow-right"></i></a>
+                                    <?php endif; ?>
+                                    <?php if (!empty($acc['store_url'])): ?>
+                                    <a href="<?php echo e($acc['store_url']); ?>" target="_blank" class="accessory-btn">스토어 구매 <i class="fas fa-shopping-cart"></i></a>
+                                    <?php endif; ?>
+                                </div>
                             </div>
                         </div>
                     </div>

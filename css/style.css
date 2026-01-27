@@ -1101,8 +1101,9 @@ ul, ol {
 
 .company-intro-image img {
     width: 100%;
-    border-radius: 12px;
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    border-radius: 0;
+    box-shadow: none;
+    background: transparent;
 }
 
 /* ============================================
@@ -2058,7 +2059,108 @@ ul, ol {
 .cta-desc {
     font-size: 1.1rem;
     opacity: 0.9;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
+}
+
+.cta-desc strong {
+    color: #fff;
+    font-weight: 700;
+}
+
+.cta-era-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 auto 2.5rem;
+    max-width: 500px;
+    counter-reset: era-counter;
+    text-align: left;
+}
+
+.cta-era-list li {
+    font-size: 0.95rem;
+    line-height: 2;
+    color: rgba(255,255,255,0.75);
+    counter-increment: era-counter;
+}
+
+.cta-era-list li::before {
+    content: counter(era-counter) ". ";
+    color: #fff;
+    font-weight: 600;
+}
+
+.cta-circles {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 2.5rem;
+}
+
+.cta-circle {
+    text-align: center;
+}
+
+.cta-circle-img {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    overflow: hidden;
+    border: 2px solid rgba(255,255,255,0.25);
+    margin: 0 auto 10px;
+    background: rgba(255,255,255,0.05);
+}
+
+.cta-circle-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.cta-circle-label {
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.8);
+    display: block;
+    margin-top: 6px;
+}
+
+.cta-info-box {
+    margin-bottom: 2rem;
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.7;
+}
+
+.cta-info-box p {
+    margin-bottom: 8px;
+}
+
+.cta-info-highlight {
+    color: #ff6b6b;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.cta-info-warning {
+    color: #ff6b6b;
+    font-weight: 600;
+    text-decoration: underline;
+    text-underline-offset: 3px;
+    margin-top: 10px;
+}
+
+.cta-info-note {
+    color: #e8a838;
+    font-size: 0.8rem;
+    font-weight: 400;
+    text-decoration: none;
+}
+
+.cta-ask {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 2rem;
 }
 
 .cta-buttons {
@@ -2486,44 +2588,27 @@ ul, ol {
 /* ============================================
    Kitchen New Era Section
    ============================================ */
-.kitchen-era-section {
-    background: #000;
-    color: #fff;
-    overflow: hidden;
-}
-
 .kitchen-era-content {
-    max-width: 1400px;
-    margin: 0 auto;
-    padding: 60px 50px 40px;
+    max-width: 1200px;
+    margin: 2.5rem auto 2.5rem;
+    padding: 0;
+    text-align: left;
 }
 
 .kitchen-era-top {
     display: flex;
-    gap: 20px;
+    gap: 40px;
     align-items: flex-start;
-    min-height: 520px;
 }
 
 .kitchen-era-left {
-    flex: 0 0 40%;
-    padding-top: 10px;
-}
-
-.kitchen-era-title {
-    font-size: 2.2rem;
-    font-weight: 700;
-    margin-bottom: 20px;
-    color: #fff;
-    border-bottom: 2px solid #fff;
-    padding-bottom: 12px;
-    display: inline-block;
+    flex: 0 0 45%;
 }
 
 .kitchen-era-desc {
     font-size: 0.95rem;
     line-height: 1.8;
-    color: #ccc;
+    color: rgba(255,255,255,0.8);
     margin-bottom: 25px;
     letter-spacing: 0.02em;
 }
@@ -2543,7 +2628,7 @@ ul, ol {
 .kitchen-era-list li {
     font-size: 0.9rem;
     line-height: 2;
-    color: #bbb;
+    color: rgba(255,255,255,0.7);
     counter-increment: era-counter;
 }
 
@@ -2553,53 +2638,10 @@ ul, ol {
     font-weight: 600;
 }
 
-.kitchen-era-cta-text {
-    font-size: 1.5rem;
-    font-weight: 700;
-    margin-bottom: 24px;
-    color: #fff;
-}
-
-.kitchen-era-order-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 12px;
-    padding: 14px 32px;
-    background: #000;
-    border: 1px solid #555;
-    color: #fff;
-    font-size: 1.2rem;
-    font-weight: 500;
-    border-radius: 35px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-.kitchen-era-order-btn:hover {
-    background: #333;
-    color: #fff;
-}
-
-.kitchen-era-order-btn i {
-    width: 26px;
-    height: 26px;
-    background: rgba(255,255,255,0.15);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 0.8rem;
-}
-
-.kitchen-era-order-btn:hover i {
-    background: rgba(255,255,255,0.25);
-}
-
 /* Right side: circle images layout (triangle) */
 .kitchen-era-right {
     flex: 1;
     position: relative;
-    min-height: 520px;
 }
 
 .kitchen-era-circles-row1 {
@@ -2625,7 +2667,7 @@ ul, ol {
     overflow: hidden;
     border: 2px solid rgba(255,255,255,0.25);
     margin: 0 auto 10px;
-    background: #111;
+    background: rgba(255,255,255,0.05);
 }
 
 .kitchen-era-circle-img img {
@@ -2637,7 +2679,7 @@ ul, ol {
 
 .kitchen-era-circle-label {
     font-size: 0.95rem;
-    color: #ccc;
+    color: rgba(255,255,255,0.8);
     display: block;
     margin-top: 6px;
     letter-spacing: 0.05em;
@@ -2647,12 +2689,12 @@ ul, ol {
 .kitchen-era-bottom {
     margin-top: 40px;
     padding: 30px 0 20px;
-    border-top: 1px solid #222;
+    border-top: 1px solid rgba(255,255,255,0.15);
 }
 
 .kitchen-era-info {
     font-size: 0.88rem;
-    color: #aaa;
+    color: rgba(255,255,255,0.6);
     margin-bottom: 10px;
     line-height: 1.7;
 }
@@ -2689,18 +2731,11 @@ ul, ol {
 
 /* Kitchen Era Responsive */
 @media (max-width: 992px) {
-    .kitchen-era-content {
-        padding: 40px 24px;
-    }
     .kitchen-era-top {
         flex-direction: column;
-        min-height: auto;
     }
     .kitchen-era-left {
         flex: none;
-    }
-    .kitchen-era-right {
-        min-height: auto;
     }
     .kitchen-era-circle-img {
         width: 180px;
@@ -2712,19 +2747,6 @@ ul, ol {
 }
 
 @media (max-width: 768px) {
-    .kitchen-era-content {
-        padding: 30px 16px;
-    }
-    .kitchen-era-title {
-        font-size: 1.6rem;
-    }
-    .kitchen-era-cta-text {
-        font-size: 1.15rem;
-    }
-    .kitchen-era-order-btn {
-        padding: 10px 24px;
-        font-size: 1rem;
-    }
     .kitchen-era-circle-img {
         width: 150px;
         height: 150px;
@@ -3089,7 +3111,7 @@ ul, ol {
     }
 
     .company-intro-title br {
-        display: none;
+        display: block;
     }
 
     .company-intro-subtitle {
@@ -3390,6 +3412,43 @@ ul, ol {
         margin-bottom: 1.5rem;
         padding: 0 15px;
         letter-spacing: -0.01em;
+    }
+
+    .cta-era-list {
+        max-width: 100%;
+        padding: 0 15px;
+        margin-bottom: 1.5rem;
+    }
+
+    .cta-era-list li {
+        font-size: 0.85rem;
+    }
+
+    .cta-circles {
+        gap: 16px;
+        margin-bottom: 1.5rem;
+    }
+
+    .cta-circle-img {
+        width: 100px;
+        height: 100px;
+    }
+
+    .cta-circle-label {
+        font-size: 0.75rem;
+    }
+
+    .cta-info-box {
+        font-size: 0.78rem;
+        padding: 0 10px;
+    }
+
+    .cta-info-highlight {
+        font-size: 0.95rem;
+    }
+
+    .cta-ask {
+        font-size: 1.15rem;
     }
 
     .cta-buttons {
