@@ -27,14 +27,14 @@ require_once __DIR__ . '/includes/config.php';
     <link rel="stylesheet" href="css/style.css?v=20260127f">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="https://lkitchen.co.kr/wp-content/uploads/2024/08/logo.png">
+    <link rel="icon" type="image/png" href="http://115.68.223.124/lovelykitchen/수정/fhrh.png">
 </head>
 <body>
     <!-- Preloader -->
     <div class="preloader" id="preloader">
         <div class="preloader-inner">
             <div class="preloader-logo">
-                <img src="https://lkitchen.co.kr/wp-content/uploads/2024/08/logo.png" alt="Logo">
+                <img src="http://115.68.223.124/lovelykitchen/수정/fhrh.png" alt="Logo">
             </div>
             <div class="preloader-progress">
                 <div class="preloader-bar"></div>
@@ -53,7 +53,7 @@ require_once __DIR__ . '/includes/config.php';
     <header class="header" id="header">
         <div class="header-container">
             <a href="<?php echo SITE_URL; ?>/" class="logo">
-                <img src="https://lkitchen.co.kr/wp-content/uploads/2024/08/logo.png" alt="Lovely Kitchen" class="logo-img">
+                <img src="http://115.68.223.124/lovelykitchen/수정/fhrh.png" alt="Lovely Kitchen" class="logo-img">
             </a>
 
             <nav class="nav-desktop">
@@ -113,7 +113,7 @@ require_once __DIR__ . '/includes/config.php';
     <!-- Mobile Navigation -->
     <div class="mobile-nav" id="mobileNav">
         <div class="mobile-nav-header">
-            <img src="https://lkitchen.co.kr/wp-content/uploads/2024/08/logo.png" alt="Logo" class="mobile-logo">
+            <img src="http://115.68.223.124/lovelykitchen/수정/fhrh.png" alt="Logo" class="mobile-logo">
             <button class="mobile-close" id="mobileClose">
                 <i class="fas fa-times"></i>
             </button>
@@ -952,7 +952,7 @@ require_once __DIR__ . '/includes/config.php';
                 <div class="footer-grid">
                     <div class="footer-brand">
                         <a href="<?php echo SITE_URL; ?>/" class="footer-logo">
-                            <img src="https://lkitchen.co.kr/wp-content/uploads/2024/08/logo.png" alt="Lovely Kitchen">
+                            <img src="http://115.68.223.124/lovelykitchen/수정/fhrh.png" alt="Lovely Kitchen">
                         </a>
                         <p class="footer-tagline">완벽한 분쇄, 차원이 다른 프리미엄</p>
                         <div class="footer-social">

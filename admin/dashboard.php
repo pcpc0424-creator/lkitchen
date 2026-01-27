@@ -30,7 +30,7 @@ $sinkImages = count(readJsonData('sink_gallery.json'));
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="css/admin.css?v=2">
-    <link rel="icon" type="image/png" href="https://lkitchen.co.kr/wp-content/uploads/2024/08/logo.png">
+    <link rel="icon" type="image/png" href="http://115.68.223.124/lovelykitchen/수정/fhrh.png">
 </head>
 <body>
     <div class="admin-wrapper">
@@ -38,7 +38,7 @@ $sinkImages = count(readJsonData('sink_gallery.json'));
         <aside class="sidebar">
             <div class="sidebar-header">
                 <a href="dashboard.php" class="sidebar-logo">
-                    <img src="https://lkitchen.co.kr/wp-content/uploads/2024/08/logo.png" alt="러블리키친">
+                    <img src="http://115.68.223.124/lovelykitchen/수정/fhrh.png" alt="러블리키친">
                 </a>
                 <span class="sidebar-title">관리자</span>
             </div>

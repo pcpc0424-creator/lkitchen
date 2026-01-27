@@ -48,7 +48,7 @@ function e($str) {
     <link rel="stylesheet" href="../css/pages.css">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="https://lkitchen.co.kr/wp-content/uploads/2024/08/logo.png">
+    <link rel="icon" type="image/png" href="http://115.68.223.124/lovelykitchen/수정/fhrh.png">
 
     <style>
         /* Special Deals Page Styles */
@@ -534,7 +534,7 @@ function e($str) {
     <div class="preloader" id="preloader">
         <div class="preloader-inner">
             <div class="preloader-logo">
-                <img src="https://lkitchen.co.kr/wp-content/uploads/2024/08/logo.png" alt="Logo">
+                <img src="http://115.68.223.124/lovelykitchen/수정/fhrh.png" alt="Logo">
             </div>
             <div class="preloader-progress">
                 <div class="preloader-bar"></div>
@@ -553,7 +553,7 @@ function e($str) {
     <header class="header scrolled" id="header">
         <div class="header-container">
             <a href="<?php echo SITE_URL; ?>/" class="logo">
-                <img src="https://lkitchen.co.kr/wp-content/uploads/2024/08/logo.png" alt="Lovely Kitchen" class="logo-img">
+                <img src="http://115.68.223.124/lovelykitchen/수정/fhrh.png" alt="Lovely Kitchen" class="logo-img">
             </a>
 
             <nav class="nav-desktop">
@@ -613,7 +613,7 @@ function e($str) {
     <!-- Mobile Navigation -->
     <div class="mobile-nav" id="mobileNav">
         <div class="mobile-nav-header">
-            <img src="https://lkitchen.co.kr/wp-content/uploads/2024/08/logo.png" alt="Logo" class="mobile-logo">
+            <img src="http://115.68.223.124/lovelykitchen/수정/fhrh.png" alt="Logo" class="mobile-logo">
             <button class="mobile-close" id="mobileClose">
                 <i class="fas fa-times"></i>
             </button>
@@ -820,7 +820,7 @@ function e($str) {
                 <div class="footer-grid">
                     <div class="footer-brand">
                         <a href="<?php echo SITE_URL; ?>/" class="footer-logo">
-                            <img src="https://lkitchen.co.kr/wp-content/uploads/2024/08/logo.png" alt="Lovely Kitchen">
+                            <img src="http://115.68.223.124/lovelykitchen/수정/fhrh.png" alt="Lovely Kitchen">
                         </a>
                         <p class="footer-tagline">완벽한 분쇄, 차원이 다른 프리미엄</p>
                         <div class="footer-social">

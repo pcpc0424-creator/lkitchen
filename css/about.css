@@ -174,9 +174,7 @@
 }
 
 .about-intro-image {
-    border-radius: var(--radius-lg);
     overflow: hidden;
-    box-shadow: var(--shadow-xl);
 }
 
 .about-intro-image img {

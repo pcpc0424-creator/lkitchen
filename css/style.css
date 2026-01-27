@@ -3402,7 +3402,7 @@ ul, ol {
     }
 
     .cta-title br {
-        display: none;
+        display: inline;
     }
 
     .cta-desc {

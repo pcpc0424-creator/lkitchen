@@ -15,8 +15,8 @@ define('ADMIN_PATH', __DIR__);
 define('DATA_PATH', ADMIN_PATH . '/data');
 
 // 관리자 계정 (실제 운영 시 변경 필요)
-define('ADMIN_USERNAME', 'admin');
-define('ADMIN_PASSWORD', 'lovelykitchen2024!');
+define('ADMIN_USERNAME', 'Admin');
+define('ADMIN_PASSWORD', 'rich7744');
 
 // 이미지 업로드 설정
 define('UPLOAD_PATH_FOOD', ROOT_PATH . '/pototo');
