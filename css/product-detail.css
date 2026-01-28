@@ -250,6 +250,13 @@
     color: var(--text-secondary);
 }
 
+.price-main .price-note {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--color-accent);
+    margin-left: 8px;
+}
+
 .price-benefits {
     display: flex;
     gap: 20px;

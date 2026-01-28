@@ -44,16 +44,64 @@ document.addEventListener('DOMContentLoaded', function() {
         card.classList.add('show');
     });
 
+    // Make product cards clickable (navigate to detail page)
+    productCards.forEach(card => {
+        card.style.cursor = 'pointer';
+        card.addEventListener('click', function(e) {
+            // Don't navigate if clicking on buttons or links
+            if (e.target.closest('.btn-inquiry') ||
+                e.target.closest('.btn-call') ||
+                e.target.closest('.product-detail-btn') ||
+                e.target.closest('.swiper-pagination')) {
+                return;
+            }
+
+            // Find the product link in this card
+            const productLink = this.querySelector('.product-link');
+            if (productLink) {
+                window.location.href = productLink.href;
+            }
+        });
+    });
+
+    // Initialize Product Page Carousels
+    const productPageCarousels = document.querySelectorAll('.product-page-carousel');
+    productPageCarousels.forEach(carousel => {
+        new Swiper(carousel, {
+            slidesPerView: 1,
+            spaceBetween: 0,
+            loop: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: carousel.querySelector('.swiper-pagination'),
+                clickable: true,
+            },
+            effect: 'fade',
+            fadeEffect: {
+                crossFade: true
+            }
+        });
+    });
+
     // Product Image Hover Effect Enhancement
     const productImages = document.querySelectorAll('.product-page-image');
 
-    productImages.forEach(img => {
-        img.addEventListener('mouseenter', function() {
-            this.querySelector('img').style.transform = 'scale(1.08)';
+    productImages.forEach(container => {
+        container.addEventListener('mouseenter', function() {
+            const images = this.querySelectorAll('.swiper-slide img');
+            images.forEach(img => {
+                img.style.transform = 'scale(1.08)';
+            });
         });
 
-        img.addEventListener('mouseleave', function() {
-            this.querySelector('img').style.transform = 'scale(1)';
+        container.addEventListener('mouseleave', function() {
+            const images = this.querySelectorAll('.swiper-slide img');
+            images.forEach(img => {
+                img.style.transform = 'scale(1)';
+            });
         });
     });
 

@@ -242,9 +242,9 @@ require_once __DIR__ . '/includes/config.php';
 
         <!-- Review Banner -->
         <section class="review-banner-section">
-            <a href="<?php echo SITE_URL; ?>/싱크볼-후기/" class="review-banner-link">
+            <a href="<?php echo SITE_URL; ?>/음식물처리기-후기/" class="review-banner-link">
                 <picture>
-                    <source media="(max-width: 768px)" srcset="https://lkitchen.co.kr/wp-content/uploads/2025/10/모바일-002-3.png">
+                    <source media="(max-width: 768px)" srcset="<?php echo SITE_URL; ?>/images/review-banner-mobile.png">
                     <img src="https://lkitchen.co.kr/wp-content/uploads/2025/10/피시-003.png" alt="고객 솔직 리뷰 모음.zip" class="review-banner-img">
                 </picture>
             </a>

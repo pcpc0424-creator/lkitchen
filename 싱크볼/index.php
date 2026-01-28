@@ -56,7 +56,7 @@ $badges = ['COMPACT', 'STANDARD', 'PREMIUM', 'FLAGSHIP'];
             left: 0;
             width: 100%;
             height: 100%;
-            background: url('https://lkitchen.co.kr/wp-content/uploads/2025/04/1-96.jpg') center/cover no-repeat;
+            background: url('https://lkitchen.co.kr/wp-content/uploads/2025/12/5-1024x768.jpg') center/cover no-repeat;
             opacity: 0.2;
         }
         .sink-hero .container {
@@ -321,7 +321,7 @@ $badges = ['COMPACT', 'STANDARD', 'PREMIUM', 'FLAGSHIP'];
                                     <?php endforeach; ?>
                                 </ul>
                             </div>
-                            <a href="<?php echo SITE_URL; ?>/빠른상담/" class="sink-btn">제품 보러가기 <i class="fas fa-arrow-right"></i></a>
+                            <a href="<?php echo SITE_URL; ?>/싱크볼/<?php echo strtolower($sink['model']); ?>.html" class="sink-btn">제품 상세보기 <i class="fas fa-arrow-right"></i></a>
                         </div>
                     </div>
                 </div>

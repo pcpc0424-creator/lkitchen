@@ -1220,8 +1220,12 @@ ul, ol {
 .products-section {
     position: relative;
     padding: 8rem 0;
-    background: #f7fafc;
+    background: #ffffff;
     overflow: hidden;
+}
+
+.products-page-section {
+    background: #ffffff;
 }
 
 .section-bg-pattern {
@@ -3679,14 +3683,23 @@ ul, ol {
         margin-left: 0;
     }
 
-    /* 리뷰 배너 - 크기 줄이기 */
+    /* 리뷰 배너 */
     .review-banner-section {
-        padding: 0 20px;
+        padding: 0;
+    }
+
+    .review-banner-link {
+        display: block;
+        max-width: none;
     }
 
     .review-banner-img {
-        width: 85%;
-        margin: 0 auto;
+        width: 100%;
+        max-width: none;
+        margin: 0;
+        display: block;
+        aspect-ratio: 3 / 1;
+        object-fit: cover;
     }
 }
 
