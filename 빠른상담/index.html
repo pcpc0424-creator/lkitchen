@@ -410,6 +410,72 @@
         // Add event listeners for dimension inputs
         document.getElementById('currentSinkWidth').addEventListener('input', calculateRecommendedModel);
         document.getElementById('cabinetWidth').addEventListener('input', calculateRecommendedModel);
+
+        // Form submission handler
+        document.querySelector('.contact-form form').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const form = this;
+            const submitBtn = form.querySelector('.form-submit');
+            const originalText = submitBtn.textContent;
+
+            // Get selected products
+            const selectedProducts = [];
+            form.querySelectorAll('input[name="product[]"]:checked').forEach(cb => {
+                selectedProducts.push(cb.value);
+            });
+
+            if (selectedProducts.length === 0) {
+                alert('희망모델을 선택해주세요.');
+                return;
+            }
+
+            // Create form data
+            const formData = new FormData();
+            formData.append('name', form.querySelector('#name').value);
+            formData.append('product', selectedProducts.join(', '));
+            formData.append('phone', form.querySelector('#phone').value);
+            formData.append('address', form.querySelector('#address').value);
+            formData.append('daytime', form.querySelector('input[name="daytime"]:checked')?.value || '');
+            formData.append('message', form.querySelector('#message').value);
+
+            // Sinkball extra info
+            const sinkWidth = form.querySelector('#currentSinkWidth').value;
+            const sinkDepth = form.querySelector('#currentSinkDepth').value;
+            const cabinetWidth = form.querySelector('#cabinetWidth').value;
+            if (sinkWidth || sinkDepth || cabinetWidth) {
+                formData.append('sinkInfo', `싱크볼: ${sinkWidth || '-'}x${sinkDepth || '-'}mm, 하부장: ${cabinetWidth || '-'}mm`);
+            }
+
+            // Disable button
+            submitBtn.disabled = true;
+            submitBtn.textContent = '접수 중...';
+
+            fetch('/lovelykitchen/admin/submit_inquiry.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert('상담 신청이 완료되었습니다.\n빠른 시일 내에 연락드리겠습니다.');
+                    form.reset();
+                    document.getElementById('sinkballFields').style.display = 'none';
+                    document.getElementById('fileName1').textContent = '선택된 파일 없음';
+                    document.getElementById('fileName2').textContent = '선택된 파일 없음';
+                } else {
+                    alert(data.message || '접수 중 오류가 발생했습니다.');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('접수 중 오류가 발생했습니다. 전화로 문의해주세요.');
+            })
+            .finally(() => {
+                submitBtn.disabled = false;
+                submitBtn.textContent = originalText;
+            });
+        });
     </script>
 </body>
 </html>
