@@ -383,9 +383,6 @@ $badges = ['COMPACT', 'STANDARD', 'PREMIUM', 'FLAGSHIP'];
                     <img src="https://lkitchen.co.kr/wp-content/uploads/2025/09/8H2A9450-1-1024x683.jpg" alt="싱크볼 시공 사진" loading="lazy">
                     <img src="https://lkitchen.co.kr/wp-content/uploads/2025/09/8H2A9623-1024x683.jpg" alt="싱크볼 시공 사진" loading="lazy">
                     <img src="https://lkitchen.co.kr/wp-content/uploads/2025/09/8H2A9537-1024x683.jpg" alt="싱크볼 시공 사진" loading="lazy">
-                    <img src="https://lkitchen.co.kr/wp-content/uploads/2025/04/1-96.jpg" alt="싱크볼 시공 사진" loading="lazy">
-                    <img src="https://lkitchen.co.kr/wp-content/uploads/2025/04/1-38.jpg" alt="싱크볼 시공 사진" loading="lazy">
-                    <img src="https://lkitchen.co.kr/wp-content/uploads/2025/04/1-49.jpg" alt="싱크볼 시공 사진" loading="lazy">
                 </div>
 
                 <div class="cta-box" data-aos="fade-up" style="margin-top: 60px;">
