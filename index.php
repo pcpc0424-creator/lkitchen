@@ -24,7 +24,7 @@ require_once __DIR__ . '/includes/config.php';
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="css/style.css?v=20260127f">
+    <link rel="stylesheet" href="css/style.css?v=20260129a">
 
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="http://115.68.223.124/lovelykitchen/수정/fhrh.png">
