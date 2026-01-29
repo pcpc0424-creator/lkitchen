@@ -645,16 +645,16 @@ require_once __DIR__ . '/includes/config.php';
 
                 <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;" data-aos="fade-up" data-aos-delay="100">
                     <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" style="flex: 0 0 calc(25% - 20px); border-radius: 12px; overflow: hidden;">
-                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/09/8H2A9604-1-1024x683.jpg" alt="아콴테 싱크볼 시공 사진" style="width: 100%; height: auto; display: block;" loading="lazy">
+                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/5.jpg" alt="아콴테 싱크볼 시공 사진" style="width: 100%; height: auto; display: block;" loading="lazy">
                     </a>
                     <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" style="flex: 0 0 calc(25% - 20px); border-radius: 12px; overflow: hidden;">
-                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/09/8H2A9623-1024x683.jpg" alt="아콴테 싱크볼 시공 사진" style="width: 100%; height: auto; display: block;" loading="lazy">
+                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/0.jpg" alt="아콴테 싱크볼 시공 사진" style="width: 100%; height: auto; display: block;" loading="lazy">
                     </a>
                     <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" style="flex: 0 0 calc(25% - 20px); border-radius: 12px; overflow: hidden;">
-                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/09/8H2A9541-1-1024x683.jpg" alt="아콴테 싱크볼 시공 사진" style="width: 100%; height: auto; display: block;" loading="lazy">
+                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/2.jpg" alt="아콴테 싱크볼 시공 사진" style="width: 100%; height: auto; display: block;" loading="lazy">
                     </a>
                     <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" style="flex: 0 0 calc(25% - 20px); border-radius: 12px; overflow: hidden;">
-                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/09/8H2A9450-1-1024x683.jpg" alt="아콴테 싱크볼 시공 사진" style="width: 100%; height: auto; display: block;" loading="lazy">
+                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/1.jpg" alt="아콴테 싱크볼 시공 사진" style="width: 100%; height: auto; display: block;" loading="lazy">
                     </a>
                 </div>
 
