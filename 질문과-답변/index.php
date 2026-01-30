@@ -146,15 +146,21 @@ $faqData = getFaqData();
                             <input type="text" id="name" name="name" placeholder="성함을 입력해주세요" required>
                         </div>
                         <div class="form-group">
-                            <label for="product">희망모델 *</label>
-                            <select id="product" name="product" required>
-                                <option value="">선택해주세요</option>
-                                <option value="750A">750A</option>
-                                <option value="900A">900A</option>
-                                <option value="1000A">1000A</option>
-                                <option value="1000B">1000B</option>
-                                <option value="악세사리">악세사리</option>
-                            </select>
+                            <label>관심 제품 * <span style="color: #888; font-weight: 400;">(복수선택 가능)</span></label>
+                            <div class="checkbox-group" style="display: flex; gap: 20px; flex-wrap: wrap; margin-top: 8px;">
+                                <label class="checkbox-label" style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                    <input type="checkbox" name="product[]" value="음식물처리기" style="width: 18px; height: 18px; cursor: pointer;">
+                                    <span>음식물처리기</span>
+                                </label>
+                                <label class="checkbox-label" style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                    <input type="checkbox" name="product[]" value="아콴테 싱크볼" style="width: 18px; height: 18px; cursor: pointer;">
+                                    <span>아콴테 싱크볼</span>
+                                </label>
+                                <label class="checkbox-label" style="display: flex; align-items: center; gap: 8px; cursor: pointer;">
+                                    <input type="checkbox" name="product[]" value="악세서리" style="width: 18px; height: 18px; cursor: pointer;">
+                                    <span>악세서리</span>
+                                </label>
+                            </div>
                         </div>
                         <div class="form-group">
                             <label for="phone">연락처 *</label>
@@ -217,6 +223,17 @@ $faqData = getFaqData();
         const submitBtn = document.getElementById('submitBtn');
         const formMessage = document.getElementById('formMessage');
         const originalBtnText = submitBtn.textContent;
+
+        // 체크박스 최소 1개 선택 검증
+        const checkboxes = form.querySelectorAll('input[name="product[]"]:checked');
+        if (checkboxes.length === 0) {
+            formMessage.style.display = 'block';
+            formMessage.style.background = '#fee2e2';
+            formMessage.style.color = '#991b1b';
+            formMessage.textContent = '관심 제품을 최소 1개 이상 선택해주세요.';
+            setTimeout(() => { formMessage.style.display = 'none'; }, 3000);
+            return;
+        }
 
         submitBtn.disabled = true;
         submitBtn.textContent = '전송 중...';

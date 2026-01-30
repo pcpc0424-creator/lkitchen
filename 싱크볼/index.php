@@ -24,7 +24,7 @@ $calcRules = $settings['sinkbowl_calc_rules'] ?? [
 ];
 
 // 뱃지 매핑
-$badges = ['COMPACT', 'STANDARD', 'PREMIUM', 'FLAGSHIP'];
+$badges = ['COMPACT', 'BEST', 'WIDE', 'FLAGSHIP'];
 ?>
 <!DOCTYPE html>
 <html lang="ko-KR">
@@ -129,13 +129,23 @@ $badges = ['COMPACT', 'STANDARD', 'PREMIUM', 'FLAGSHIP'];
         .sink-card .subtitle {
             font-size: 1rem;
             color: #666;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
         .sink-price {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: #b91c1c;
+            font-size: 1.1rem;
+            color: #333;
             margin-bottom: 20px;
+            font-weight: 500;
+        }
+        .sink-price .price-value {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #3b82f6;
+        }
+        .sink-price .price-note {
+            font-size: 0.85rem;
+            color: #888;
+            font-weight: 400;
         }
         .sink-specs {
             margin-bottom: 25px;
@@ -308,7 +318,7 @@ $badges = ['COMPACT', 'STANDARD', 'PREMIUM', 'FLAGSHIP'];
                             <span class="sink-badge"><?php echo $badge; ?></span>
                             <h3><?php echo e($sink['model']); ?> 사각싱크볼</h3>
                             <p class="subtitle"><?php echo e($sink['size']); ?></p>
-                            <p class="sink-price"><?php echo e($sink['price']); ?>원 (전문가무료시공포함)</p>
+                            <p class="sink-price"><span class="price-value"><?php echo e($sink['original_price']); ?></span>원 <span class="price-note">(전문가 무료설치 포함)</span></p>
                             <div class="sink-specs">
                                 <h4>제품 사양</h4>
                                 <ul>
@@ -378,11 +388,11 @@ $badges = ['COMPACT', 'STANDARD', 'PREMIUM', 'FLAGSHIP'];
                 </div>
 
                 <div class="gallery-grid" data-aos="fade-up">
-                    <img src="https://lkitchen.co.kr/wp-content/uploads/2025/09/8H2A9604-1-1024x683.jpg" alt="싱크볼 시공 사진" loading="lazy">
-                    <img src="https://lkitchen.co.kr/wp-content/uploads/2025/09/8H2A9541-1-1024x683.jpg" alt="싱크볼 시공 사진" loading="lazy">
-                    <img src="https://lkitchen.co.kr/wp-content/uploads/2025/09/8H2A9450-1-1024x683.jpg" alt="싱크볼 시공 사진" loading="lazy">
-                    <img src="https://lkitchen.co.kr/wp-content/uploads/2025/09/8H2A9623-1024x683.jpg" alt="싱크볼 시공 사진" loading="lazy">
-                    <img src="https://lkitchen.co.kr/wp-content/uploads/2025/09/8H2A9537-1024x683.jpg" alt="싱크볼 시공 사진" loading="lazy">
+                    <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/0-2048x1536.jpg" alt="싱크볼 시공 사진" loading="lazy">
+                    <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/1-2048x1536.jpg" alt="싱크볼 시공 사진" loading="lazy">
+                    <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/3-2048x1536.jpg" alt="싱크볼 시공 사진" loading="lazy">
+                    <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/3-2-2048x1536.jpg" alt="싱크볼 시공 사진" loading="lazy">
+                    <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/0-1-2048x1536.jpg" alt="싱크볼 시공 사진" loading="lazy">
                 </div>
 
                 <div class="cta-box" data-aos="fade-up" style="margin-top: 60px;">

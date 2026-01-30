@@ -2,7 +2,7 @@
 /**
  * 러블리키친 특가페이지
  */
-define('SITE_URL', 'http://115.68.223.124/lovelykitchen');
+require_once __DIR__ . '/../includes/config.php';
 
 // JSON 데이터 로드
 $jsonFile = __DIR__ . '/../admin/data/special.json';
@@ -16,10 +16,6 @@ $products = array_filter($specialData['products'] ?? [], function($p) { return $
 $sinkbowls = array_filter($specialData['sinkbowls'] ?? [], function($s) { return $s['active'] ?? false; });
 $multitrap = $specialData['multitrap'] ?? [];
 $cta = $specialData['cta'] ?? [];
-
-function e($str) {
-    return htmlspecialchars($str, ENT_QUOTES, 'UTF-8');
-}
 ?>
 <!DOCTYPE html>
 <html lang="ko-KR">
@@ -527,6 +523,200 @@ function e($str) {
             transform: translateY(-3px);
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
         }
+
+        /* ============================================
+           Responsive Styles
+           ============================================ */
+        @media (max-width: 768px) {
+            .special-hero {
+                padding: 120px 0 60px;
+            }
+
+            .special-subtitle {
+                font-size: 1rem;
+                padding: 0 15px;
+            }
+
+            .deals-section {
+                padding: 50px 0;
+            }
+
+            .deals-container {
+                padding: 0 15px;
+            }
+
+            .deal-card {
+                margin-bottom: 40px;
+                border-radius: 15px;
+            }
+
+            .deal-image {
+                padding: 25px;
+            }
+
+            .deal-image img {
+                max-height: 250px;
+            }
+
+            .deal-model-name h3 {
+                font-size: 1.3rem;
+            }
+
+            .deal-model-name p {
+                font-size: 0.95rem;
+            }
+
+            .deal-content {
+                padding: 25px;
+            }
+
+            .deal-tags {
+                gap: 6px;
+            }
+
+            .deal-tag {
+                padding: 5px 10px;
+                font-size: 0.75rem;
+            }
+
+            .deal-price-box {
+                padding: 20px;
+            }
+
+            .original-price {
+                font-size: 0.9rem;
+            }
+
+            .sale-price {
+                font-size: 1.6rem;
+            }
+
+            .deal-features li {
+                font-size: 0.88rem;
+                padding: 8px 0;
+            }
+
+            .deal-btn {
+                width: 100%;
+                padding: 14px 24px;
+            }
+
+            .sinkbowl-section {
+                padding: 50px 0;
+            }
+
+            .section-divider {
+                margin-bottom: 40px;
+            }
+
+            .section-divider p {
+                font-size: 0.95rem;
+            }
+
+            .sinkbowl-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .sinkbowl-image {
+                height: 200px;
+            }
+
+            .sinkbowl-content {
+                padding: 20px;
+            }
+
+            .sinkbowl-model {
+                font-size: 1.1rem;
+            }
+
+            .sinkbowl-model .free-install {
+                display: block;
+                margin-top: 5px;
+            }
+
+            .sinkbowl-price {
+                font-size: 1.3rem;
+            }
+
+            .sinkbowl-features li {
+                font-size: 0.85rem;
+            }
+
+            .multitrap-section {
+                padding: 50px 0;
+            }
+
+            .multitrap-image img {
+                border-radius: 15px;
+            }
+
+            .multitrap-title {
+                font-size: 1.4rem;
+            }
+
+            .multitrap-desc {
+                font-size: 0.95rem;
+            }
+
+            .cta-section {
+                padding: 50px 0;
+            }
+
+            .cta-content p {
+                font-size: 0.95rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                gap: 12px;
+            }
+
+            .cta-btn {
+                width: 100%;
+                justify-content: center;
+                padding: 14px 24px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .special-hero {
+                padding: 100px 0 50px;
+            }
+
+            .special-badge {
+                font-size: 0.8rem;
+                padding: 6px 14px;
+            }
+
+            .deal-image {
+                padding: 20px;
+            }
+
+            .deal-image img {
+                max-height: 200px;
+            }
+
+            .deal-content {
+                padding: 20px;
+            }
+
+            .sale-price {
+                font-size: 1.4rem;
+            }
+
+            .sinkbowl-image {
+                height: 180px;
+            }
+
+            .multitrap-feature {
+                padding: 12px;
+            }
+
+            .multitrap-feature span {
+                font-size: 0.85rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -710,12 +900,32 @@ function e($str) {
                         <p class="deal-note"><?php echo e($product['note']); ?></p>
                         <?php endif; ?>
 
-                        <?php if (!empty($product['show_accessory_info'])): ?>
+                        <?php if (!empty($product['options'])): ?>
+                        <div class="accessories-info" style="background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 12px; padding: 20px;">
+                            <h4 style="font-size: 1rem; font-weight: 600; color: #051535; margin-bottom: 15px;"><i class="fas fa-list-check" style="color: #3b82f6; margin-right: 8px;"></i>옵션 선택</h4>
+                            <?php foreach ($product['options'] as $option): ?>
+                            <div style="display: flex; justify-content: space-between; align-items: center; padding: 12px 15px; background: #fff; border-radius: 8px; margin-bottom: 8px; border: 1px solid #e2e8f0;">
+                                <span style="color: #475569; font-size: 0.9rem;"><?php echo e($option['name']); ?></span>
+                            </div>
+                            <?php endforeach; ?>
+                            <?php if (!empty($product['show_accessory_info'])): ?>
+                            <p style="margin-top: 12px; padding: 12px; background: #fef3c7; border-radius: 8px; font-size: 0.85rem; color: #92400e;">
+                                <i class="fas fa-info-circle" style="margin-right: 6px;"></i>
+                                식기세척기(매립형) 또는 로봇청소기 직수 연결 사용시, 옵션 1번, 2번 모두 선택하셔야 합니다.
+                            </p>
+                            <?php endif; ?>
+                        </div>
+                        <?php elseif (!empty($product['show_accessory_info'])): ?>
                         <div class="accessories-info">
                             <h4><i class="fas fa-info-circle"></i> 옵션 안내</h4>
                             <p style="font-size: 0.9rem; color: #64748b; margin-bottom: 15px;">식기세척기(매립형) 또는 로봇청소기 직수 연결 사용시, 옵션 1번, 2번 모두 선택하셔야 합니다.</p>
                         </div>
                         <?php endif; ?>
+
+                        <a href="<?php echo strtolower(str_replace('-', '-', $product['model'])); ?>.html" class="deal-btn">
+                            <span>자세히 보기</span>
+                            <i class="fas fa-arrow-right"></i>
+                        </a>
                     </div>
                 </div>
                 <?php endforeach; ?>
@@ -770,7 +980,8 @@ function e($str) {
                                 <?php echo e($sink['model']); ?>
                                 <span class="free-install">전문가무료시공포함</span>
                             </h3>
-                            <p class="sinkbowl-price">소비자가 <?php echo e($sink['price']); ?>원</p>
+                            <p class="original-price" style="font-size: 0.95rem; color: #94a3b8; text-decoration: line-through; margin-bottom: 5px;">소비자가 <?php echo e($sink['original_price']); ?>원</p>
+                            <p class="sinkbowl-price">특별행사가 <?php echo e($sink['sale_price']); ?>원</p>
                             <ul class="sinkbowl-features">
                                 <?php
                                 $icons = ['fa-ruler-combined', 'fa-shield-alt', 'fa-paint-brush', 'fa-spray-can', 'fa-volume-mute'];
@@ -780,6 +991,10 @@ function e($str) {
                                 <li><i class="fas <?php echo $icon; ?>"></i> <?php echo e($feature); ?></li>
                                 <?php endforeach; ?>
                             </ul>
+                            <a href="<?php echo strtolower($sink['model']); ?>.html" class="deal-btn" style="margin-top: 20px;">
+                                <span>자세히 보기</span>
+                                <i class="fas fa-arrow-right"></i>
+                            </a>
                         </div>
                     </div>
                     <?php endforeach; ?>

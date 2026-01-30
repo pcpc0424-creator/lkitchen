@@ -1,0 +1,2 @@
+2026-01-28 23:28:19 | HTTP 200 | {"groupId":"G4V20260128232833C78QUHPA0V7APIR","to":"01090474987","from":"01090474987","type":"SMS","statusMessage":"정상 접수(이통사로 접수 예정) ","country":"82","messageId":"M4V202601282328330RBPFQGKVZHWIPM","statusCode":"2000","accountId":"12431295"}
+2026-01-30 17:55:28 | HTTP 200 | {"groupId":"G4V20260130175543OJ7LSZWXW0LV7M7","to":"01090474987","from":"01090474987","type":"SMS","statusMessage":"정상 접수(이통사로 접수 예정) ","country":"82","messageId":"M4V20260130175543FTIBOEPM1N0VJGF","statusCode":"2000","accountId":"12431295"}

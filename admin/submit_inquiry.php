@@ -27,7 +27,13 @@ if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
 
 // 데이터 받기
 $name = trim($_POST['name'] ?? '');
-$product = trim($_POST['product'] ?? '');
+// product가 배열인 경우(체크박스) 또는 문자열인 경우(기존 select) 처리
+$productRaw = $_POST['product'] ?? '';
+if (is_array($productRaw)) {
+    $product = implode(', ', array_map('trim', $productRaw));
+} else {
+    $product = trim($productRaw);
+}
 $phone = trim($_POST['phone'] ?? '');
 $address = trim($_POST['address'] ?? '');
 $daytime = trim($_POST['daytime'] ?? '');
@@ -41,7 +47,7 @@ if (empty($name)) {
 }
 
 if (empty($product)) {
-    echo json_encode(['success' => false, 'message' => '희망모델을 선택해주세요.'], JSON_UNESCAPED_UNICODE);
+    echo json_encode(['success' => false, 'message' => '관심 제품을 선택해주세요.'], JSON_UNESCAPED_UNICODE);
     exit;
 }
 

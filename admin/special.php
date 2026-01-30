@@ -61,7 +61,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             if ($sink['id'] === $sinkId) {
                 $sink['model'] = $_POST['model'] ?? '';
                 $sink['image'] = $_POST['image'] ?? '';
-                $sink['price'] = $_POST['price'] ?? '';
+                $sink['original_price'] = $_POST['original_price'] ?? '';
+                $sink['sale_price'] = $_POST['sale_price'] ?? '';
                 $sink['size'] = $_POST['size'] ?? '';
                 $sink['features'] = array_filter(array_map('trim', explode("\n", $_POST['features'] ?? '')));
                 $sink['active'] = isset($_POST['active']);
@@ -572,12 +573,19 @@ $newInquiries = array_filter($inquiries, function($inquiry) {
                                 <input type="text" name="model" value="<?php echo sanitize($sink['model']); ?>">
                             </div>
                             <div class="form-group">
-                                <label>가격 (원)</label>
-                                <input type="text" name="price" value="<?php echo sanitize($sink['price']); ?>">
-                            </div>
-                            <div class="form-group">
                                 <label>크기</label>
                                 <input type="text" name="size" value="<?php echo sanitize($sink['size']); ?>">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label>소비자가 (원)</label>
+                                <input type="text" name="original_price" value="<?php echo sanitize($sink['original_price'] ?? ''); ?>">
+                            </div>
+                            <div class="form-group">
+                                <label>특가가격 (원)</label>
+                                <input type="text" name="sale_price" value="<?php echo sanitize($sink['sale_price'] ?? ''); ?>">
                             </div>
                         </div>
 

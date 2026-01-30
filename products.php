@@ -10,8 +10,6 @@ $productsData = readJsonData('products.json');
 $products = array_filter($productsData['products'] ?? [], function($p) {
     return $p['active'] ?? true;
 });
-
-define('SITE_URL', 'http://115.68.223.124/lovelykitchen');
 ?>
 <!DOCTYPE html>
 <html lang="ko-KR">
@@ -235,7 +233,7 @@ define('SITE_URL', 'http://115.68.223.124/lovelykitchen');
                             <h3 class="product-page-name"><?php echo e($product['name']); ?></h3>
                             <p class="product-page-subtitle"><?php echo e($product['name_en']); ?></p>
                             <div class="product-page-specs">
-                                <span class="spec-item"><i class="fas fa-bolt"></i> <?php echo e($product['hp']); ?></span>
+                                <span class="spec-item"><i class="fas fa-bolt"></i> <?php echo e($product['rotation_speed'] ?? ''); ?></span>
                                 <span class="spec-item"><i class="fas <?php echo e($product['spec_icon'] ?? 'fa-cog'); ?>"></i> <?php echo e($product['spec_text'] ?? ''); ?></span>
                             </div>
                             <ul class="product-page-features">
