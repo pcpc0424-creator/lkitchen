@@ -7,6 +7,7 @@ checkLogin();
 
 // 문의 데이터 읽기
 $inquiries = readJsonData('inquiries.json');
+$consultations = readJsonData('consultations.json');
 
 // 상태 업데이트 처리
 if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
@@ -42,6 +43,11 @@ $newInquiries = array_filter($inquiries, function($inquiry) {
     return $inquiry['status'] === 'new';
 });
 
+// 새 상담 수 계산
+$newConsultations = array_filter($consultations, function($consultation) {
+    return $consultation['status'] === 'new';
+});
+
 // 역순 정렬 (최신순)
 $inquiries = array_reverse($inquiries);
 ?>
@@ -56,7 +62,7 @@ $inquiries = array_reverse($inquiries);
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="css/admin.css?v=2">
-    <link rel="icon" type="image/png" href="http://115.68.223.124/lovelykitchen/수정/fhrh.png">
+    <link rel="icon" type="image/png" href="/수정/fhrh.png">
 </head>
 <body>
     <div class="admin-wrapper">
@@ -64,7 +70,7 @@ $inquiries = array_reverse($inquiries);
         <aside class="sidebar">
             <div class="sidebar-header">
                 <a href="dashboard.php" class="sidebar-logo">
-                    <img src="http://115.68.223.124/lovelykitchen/수정/fhrh.png" alt="러블리키친">
+                    <img src="/수정/fhrh.png" alt="러블리키친">
                 </a>
                 <span class="sidebar-title">관리자</span>
             </div>
@@ -114,6 +120,12 @@ $inquiries = array_reverse($inquiries);
                             <?php if (count($newInquiries) > 0): ?>
                             <span class="nav-badge"><?php echo count($newInquiries); ?></span>
                             <?php endif; ?>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="consultations.php" class="nav-link">
+                            <i class="fas fa-headset"></i>
+                            <span>상담 신청</span>
                         </a>
                     </li>
                     <li class="nav-item">
@@ -230,13 +242,9 @@ $inquiries = array_reverse($inquiries);
                                         </a>
                                     </td>
                                     <td data-label="문의사항" class="message-cell">
-                                        <?php if (!empty($inquiry['message'])): ?>
-                                        <span class="message-preview" title="<?php echo sanitize($inquiry['message']); ?>">
-                                            <?php echo mb_substr(sanitize($inquiry['message']), 0, 30) . (mb_strlen($inquiry['message']) > 30 ? '...' : ''); ?>
-                                        </span>
-                                        <?php else: ?>
-                                        <span class="no-message">-</span>
-                                        <?php endif; ?>
+                                        <button type="button" class="btn-sm btn-view" onclick="showDetail(<?php echo htmlspecialchars(json_encode($inquiry, JSON_UNESCAPED_UNICODE)); ?>)">
+                                            <i class="fas fa-eye"></i><span>상세<br>보기</span>
+                                        </button>
                                     </td>
                                     <td data-label="상태">
                                         <?php if ($inquiry['status'] === 'new'): ?>
@@ -279,6 +287,69 @@ $inquiries = array_reverse($inquiries);
         </main>
     </div>
 
+    <!-- 상세보기 모달 -->
+    <div id="detailModal" class="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.5); z-index:9999; justify-content:center; align-items:center;">
+        <div class="modal-content" style="background:#fff; padding:30px; border-radius:12px; max-width:500px; width:90%; max-height:80vh; overflow-y:auto; position:relative;">
+            <button onclick="closeDetail()" style="position:absolute; top:15px; right:15px; background:none; border:none; font-size:24px; cursor:pointer; color:#666;">&times;</button>
+            <h3 style="margin-bottom:20px; color:#1e3a5f; border-bottom:2px solid #3b82f6; padding-bottom:10px;">
+                <i class="fas fa-envelope-open-text"></i> 문의 상세 정보
+            </h3>
+            <div id="detailContent"></div>
+        </div>
+    </div>
+
     <script src="js/admin.js"></script>
+    <script>
+    function showDetail(inquiry) {
+        const content = document.getElementById('detailContent');
+        let html = '<table style="width:100%; border-collapse:collapse;">';
+
+        const fields = [
+            {key: 'id', label: '문의번호'},
+            {key: 'name', label: '성함'},
+            {key: 'product', label: '관심제품'},
+            {key: 'phone', label: '연락처'},
+            {key: 'address', label: '주소'},
+            {key: 'daytime', label: '통화가능시간'},
+            {key: 'sinkInfo', label: '싱크대정보'},
+            {key: 'message', label: '문의메시지'},
+            {key: 'created_at', label: '접수일시'}
+        ];
+
+        fields.forEach(function(field) {
+            const value = inquiry[field.key] || '-';
+            html += '<tr style="border-bottom:1px solid #eee;">';
+            html += '<td style="padding:12px 10px; font-weight:600; color:#374151; width:100px; vertical-align:top;">' + field.label + '</td>';
+            html += '<td style="padding:12px 10px; color:#1f2937;">' + escapeHtml(value) + '</td>';
+            html += '</tr>';
+        });
+
+        html += '</table>';
+        content.innerHTML = html;
+
+        document.getElementById('detailModal').style.display = 'flex';
+    }
+
+    function closeDetail() {
+        document.getElementById('detailModal').style.display = 'none';
+    }
+
+    function escapeHtml(text) {
+        if (typeof text !== 'string') return text;
+        const div = document.createElement('div');
+        div.textContent = text;
+        return div.innerHTML;
+    }
+
+    // 모달 외부 클릭시 닫기
+    document.getElementById('detailModal').addEventListener('click', function(e) {
+        if (e.target === this) closeDetail();
+    });
+
+    // ESC 키로 닫기
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') closeDetail();
+    });
+    </script>
 </body>
 </html>

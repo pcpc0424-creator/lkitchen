@@ -74,7 +74,7 @@ function generateReviewPages($type) {
  * 페이지 HTML 생성
  */
 function generatePageHtml($type, $cfg, $reviews, $currentPage, $totalPages) {
-    $baseUrl = 'http://115.68.223.124/lovelykitchen';
+    $baseUrl = 'https://lkitchen.co.kr';
     $typeUrl = $type === 'food' ? '음식물처리기-후기' : '싱크볼-후기';
     $subtitle = $type === 'food'
         ? '고객님들의 생생한 사용 후기를 확인하세요'
@@ -97,15 +97,15 @@ function generatePageHtml($type, $cfg, $reviews, $currentPage, $totalPages) {
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/pages.css">
     <link rel="stylesheet" href="../css/review.css">
-    <link rel="icon" type="image/png" href="http://115.68.223.124/lovelykitchen/수정/fhrh.png">
+    <link rel="icon" type="image/png" href="/수정/fhrh.png">
 </head>
 <body>
-    <div class="preloader" id="preloader"><div class="preloader-inner"><div class="preloader-logo"><img src="http://115.68.223.124/lovelykitchen/수정/fhrh.png" alt="Logo"></div><div class="preloader-progress"><div class="preloader-bar"></div></div></div></div>
+    <div class="preloader" id="preloader"><div class="preloader-inner"><div class="preloader-logo"><img src="/수정/fhrh.png" alt="Logo"></div><div class="preloader-progress"><div class="preloader-bar"></div></div></div></div>
     <div class="scroll-progress" id="scrollProgress"></div>
 
     <header class="header scrolled" id="header">
         <div class="header-container">
-            <a href="<?php echo $baseUrl; ?>/" class="logo"><img src="http://115.68.223.124/lovelykitchen/수정/fhrh.png" alt="Lovely Kitchen" class="logo-img"></a>
+            <a href="<?php echo $baseUrl; ?>/" class="logo"><img src="/수정/fhrh.png" alt="Lovely Kitchen" class="logo-img"></a>
             <nav class="nav-desktop">
                 <ul class="nav-menu">
                     <li><a href="<?php echo $baseUrl; ?>/회사소개/" class="nav-link">회사소개</a></li>
@@ -124,7 +124,7 @@ function generatePageHtml($type, $cfg, $reviews, $currentPage, $totalPages) {
         </div>
     </header>
 
-    <div class="mobile-nav" id="mobileNav"><div class="mobile-nav-header"><img src="http://115.68.223.124/lovelykitchen/수정/fhrh.png" alt="Logo" class="mobile-logo"><button class="mobile-close" id="mobileClose"><i class="fas fa-times"></i></button></div><nav class="mobile-nav-content"><ul class="mobile-menu"><li><a href="<?php echo $baseUrl; ?>/회사소개/">회사소개</a></li><li class="has-submenu"><a href="#">제품 <i class="fas fa-plus"></i></a><ul class="submenu"><li><a href="<?php echo $baseUrl; ?>/products.html">음식물처리기</a></li><li><a href="<?php echo $baseUrl; ?>/싱크볼/">아콴테 싱크볼</a></li><li><a href="<?php echo $baseUrl; ?>/악세사리/">악세사리</a></li></ul></li><li class="has-submenu"><a href="#">고객지원 <i class="fas fa-plus"></i></a><ul class="submenu"><li><a href="<?php echo $baseUrl; ?>/질문과-답변/">질문과 답변</a></li><li><a href="<?php echo $baseUrl; ?>/a-s-지원/">A/S 서비스 지원</a></li></ul></li><li class="has-submenu"><a href="#">후기게시판 <i class="fas fa-plus"></i></a><ul class="submenu"><li><a href="<?php echo $baseUrl; ?>/음식물처리기-후기/">음식물처리기 후기</a></li><li><a href="<?php echo $baseUrl; ?>/싱크볼-후기/">싱크볼 후기</a></li></ul></li><li><a href="<?php echo $baseUrl; ?>/친환경제품/">친환경제품</a></li></ul><div class="mobile-contact"><a href="tel:1661-9038" class="mobile-phone"><i class="fas fa-phone"></i> 1661-9038</a><a href="<?php echo $baseUrl; ?>/빠른상담/" class="mobile-consult-btn">무료 상담 신청</a></div></nav></div>
+    <div class="mobile-nav" id="mobileNav"><div class="mobile-nav-header"><img src="/수정/fhrh.png" alt="Logo" class="mobile-logo"><button class="mobile-close" id="mobileClose"><i class="fas fa-times"></i></button></div><nav class="mobile-nav-content"><ul class="mobile-menu"><li><a href="<?php echo $baseUrl; ?>/회사소개/">회사소개</a></li><li class="has-submenu"><a href="#">제품 <i class="fas fa-plus"></i></a><ul class="submenu"><li><a href="<?php echo $baseUrl; ?>/products.html">음식물처리기</a></li><li><a href="<?php echo $baseUrl; ?>/싱크볼/">아콴테 싱크볼</a></li><li><a href="<?php echo $baseUrl; ?>/악세사리/">악세사리</a></li></ul></li><li class="has-submenu"><a href="#">고객지원 <i class="fas fa-plus"></i></a><ul class="submenu"><li><a href="<?php echo $baseUrl; ?>/질문과-답변/">질문과 답변</a></li><li><a href="<?php echo $baseUrl; ?>/a-s-지원/">A/S 서비스 지원</a></li></ul></li><li class="has-submenu"><a href="#">후기게시판 <i class="fas fa-plus"></i></a><ul class="submenu"><li><a href="<?php echo $baseUrl; ?>/음식물처리기-후기/">음식물처리기 후기</a></li><li><a href="<?php echo $baseUrl; ?>/싱크볼-후기/">싱크볼 후기</a></li></ul></li><li><a href="<?php echo $baseUrl; ?>/친환경제품/">친환경제품</a></li></ul><div class="mobile-contact"><a href="tel:1661-9038" class="mobile-phone"><i class="fas fa-phone"></i> 1661-9038</a><a href="<?php echo $baseUrl; ?>/빠른상담/" class="mobile-consult-btn">무료 상담 신청</a></div></nav></div>
     <div class="mobile-overlay" id="mobileOverlay"></div>
 
     <main>
@@ -176,7 +176,7 @@ function generatePageHtml($type, $cfg, $reviews, $currentPage, $totalPages) {
         </a>
     </div>
 
-    <footer class="footer"><div class="footer-top"><div class="container"><div class="footer-grid"><div class="footer-brand"><a href="<?php echo $baseUrl; ?>/" class="footer-logo"><img src="http://115.68.223.124/lovelykitchen/수정/fhrh.png" alt="Lovely Kitchen"></a><p class="footer-tagline">완벽한 분쇄, 차원이 다른 프리미엄</p></div><div class="footer-links"><h4>제품</h4><ul><li><a href="<?php echo $baseUrl; ?>/products.html">음식물처리기</a></li><li><a href="<?php echo $baseUrl; ?>/싱크볼/">아콴테 싱크볼</a></li><li><a href="<?php echo $baseUrl; ?>/악세사리/">악세사리</a></li></ul></div><div class="footer-links"><h4>고객지원</h4><ul><li><a href="<?php echo $baseUrl; ?>/질문과-답변/">질문과 답변</a></li><li><a href="<?php echo $baseUrl; ?>/a-s-지원/">A/S 서비스 지원</a></li><li><a href="<?php echo $baseUrl; ?>/빠른상담/">빠른 상담</a></li></ul></div><div class="footer-contact"><h4>연락처</h4><div class="contact-item"><i class="fas fa-phone"></i><div><span class="label">고객센터</span><a href="tel:1661-9038" class="value">1661-9038</a></div></div></div></div></div></div><div class="footer-bottom"><div class="container"><div class="footer-info"><p>러블리키친 총판 대표이사 성정호 ｜ 사업자등록번호 306-08-91986</p></div><div class="footer-copyright"><p>&copy; 2024 LOVELY KITCHEN. All Rights Reserved.</p></div></div></div></footer>
+    <footer class="footer"><div class="footer-top"><div class="container"><div class="footer-grid"><div class="footer-brand"><a href="<?php echo $baseUrl; ?>/" class="footer-logo"><img src="/수정/fhrh.png" alt="Lovely Kitchen"></a><p class="footer-tagline">완벽한 분쇄, 차원이 다른 프리미엄</p></div><div class="footer-links"><h4>제품</h4><ul><li><a href="<?php echo $baseUrl; ?>/products.html">음식물처리기</a></li><li><a href="<?php echo $baseUrl; ?>/싱크볼/">아콴테 싱크볼</a></li><li><a href="<?php echo $baseUrl; ?>/악세사리/">악세사리</a></li></ul></div><div class="footer-links"><h4>고객지원</h4><ul><li><a href="<?php echo $baseUrl; ?>/질문과-답변/">질문과 답변</a></li><li><a href="<?php echo $baseUrl; ?>/a-s-지원/">A/S 서비스 지원</a></li><li><a href="<?php echo $baseUrl; ?>/빠른상담/">빠른 상담</a></li></ul></div><div class="footer-contact"><h4>연락처</h4><div class="contact-item"><i class="fas fa-phone"></i><div><span class="label">고객센터</span><a href="tel:1661-9038" class="value">1661-9038</a></div></div></div></div></div></div><div class="footer-bottom"><div class="container"><div class="footer-info"><p>러블리키친 총판 대표이사 성정호 ｜ 사업자등록번호 306-08-91986</p></div><div class="footer-copyright"><p>&copy; 2024 LOVELY KITCHEN. All Rights Reserved.</p></div></div></div></footer>
 
     <!-- Review Detail Modal -->
     <div class="review-modal-overlay" id="reviewModalOverlay"></div>
@@ -267,7 +267,7 @@ function generatePageHtml($type, $cfg, $reviews, $currentPage, $totalPages) {
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="css/admin.css?v=2">
-    <link rel="icon" type="image/png" href="http://115.68.223.124/lovelykitchen/수정/fhrh.png">
+    <link rel="icon" type="image/png" href="/수정/fhrh.png">
 </head>
 <body>
     <div class="admin-wrapper">
@@ -275,7 +275,7 @@ function generatePageHtml($type, $cfg, $reviews, $currentPage, $totalPages) {
         <aside class="sidebar">
             <div class="sidebar-header">
                 <a href="dashboard.php" class="sidebar-logo">
-                    <img src="http://115.68.223.124/lovelykitchen/수정/fhrh.png" alt="러블리키친">
+                    <img src="/수정/fhrh.png" alt="러블리키친">
                 </a>
                 <span class="sidebar-title">관리자</span>
             </div>

@@ -5,7 +5,7 @@
 
 // CORS 헤더 설정 (같은 도메인에서만 허용)
 header('Content-Type: application/json; charset=utf-8');
-header('Access-Control-Allow-Origin: http://115.68.223.124');
+header('Access-Control-Allow-Origin: https://lkitchen.co.kr');
 header('Access-Control-Allow-Methods: POST');
 header('Access-Control-Allow-Headers: Content-Type');
 

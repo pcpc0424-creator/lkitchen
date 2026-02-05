@@ -116,8 +116,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
 // 새 문의 수 계산 (사이드바용)
 $inquiries = readJsonData('inquiries.json');
+$consultations = readJsonData('consultations.json');
 $newInquiries = array_filter($inquiries, function($inquiry) {
     return $inquiry['status'] === 'new';
+});
+
+// 새 상담 수 계산
+$newConsultations = array_filter($consultations, function($consultation) {
+    return $consultation['status'] === 'new';
 });
 ?>
 <!DOCTYPE html>
@@ -131,7 +137,7 @@ $newInquiries = array_filter($inquiries, function($inquiry) {
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="css/admin.css?v=2">
-    <link rel="icon" type="image/png" href="http://115.68.223.124/lovelykitchen/수정/fhrh.png">
+    <link rel="icon" type="image/png" href="/수정/fhrh.png">
     <style>
         .special-tabs {
             display: flex;
@@ -319,7 +325,7 @@ $newInquiries = array_filter($inquiries, function($inquiry) {
         <aside class="sidebar">
             <div class="sidebar-header">
                 <a href="dashboard.php" class="sidebar-logo">
-                    <img src="http://115.68.223.124/lovelykitchen/수정/fhrh.png" alt="러블리키친">
+                    <img src="/수정/fhrh.png" alt="러블리키친">
                 </a>
                 <span class="sidebar-title">관리자</span>
             </div>
@@ -369,6 +375,12 @@ $newInquiries = array_filter($inquiries, function($inquiry) {
                             <?php if (count($newInquiries) > 0): ?>
                             <span class="nav-badge"><?php echo count($newInquiries); ?></span>
                             <?php endif; ?>
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="consultations.php" class="nav-link">
+                            <i class="fas fa-headset"></i>
+                            <span>상담 신청</span>
                         </a>
                     </li>
                     <li class="nav-item active">

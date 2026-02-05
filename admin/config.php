@@ -8,7 +8,7 @@ session_start();
 
 // 기본 설정
 define('SITE_NAME', '러블리키친 관리자');
-define('SITE_URL', 'http://115.68.223.124/lovelykitchen');
+define('SITE_URL', 'https://lkitchen.co.kr');
 define('ADMIN_URL', SITE_URL . '/admin');
 define('ROOT_PATH', dirname(__DIR__));
 define('ADMIN_PATH', __DIR__);

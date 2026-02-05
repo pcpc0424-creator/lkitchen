@@ -40,7 +40,7 @@ $badges = ['COMPACT', 'BEST', 'WIDE', 'FLAGSHIP'];
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
     <link rel="stylesheet" href="../css/style.css">
     <link rel="stylesheet" href="../css/pages.css">
-    <link rel="icon" type="image/png" href="http://115.68.223.124/lovelykitchen/수정/fhrh.png">
+    <link rel="icon" type="image/png" href="/수정/fhrh.png">
     <style>
         .sink-hero {
             position: relative;
@@ -260,12 +260,12 @@ $badges = ['COMPACT', 'BEST', 'WIDE', 'FLAGSHIP'];
     </style>
 </head>
 <body>
-    <div class="preloader" id="preloader"><div class="preloader-inner"><div class="preloader-logo"><img src="http://115.68.223.124/lovelykitchen/수정/fhrh.png" alt="Logo"></div><div class="preloader-progress"><div class="preloader-bar"></div></div></div></div>
+    <div class="preloader" id="preloader"><div class="preloader-inner"><div class="preloader-logo"><img src="/수정/fhrh.png" alt="Logo"></div><div class="preloader-progress"><div class="preloader-bar"></div></div></div></div>
     <div class="scroll-progress" id="scrollProgress"></div>
 
     <header class="header scrolled" id="header">
         <div class="header-container">
-            <a href="<?php echo SITE_URL; ?>/" class="logo"><img src="http://115.68.223.124/lovelykitchen/수정/fhrh.png" alt="Lovely Kitchen" class="logo-img"></a>
+            <a href="<?php echo SITE_URL; ?>/" class="logo"><img src="/수정/fhrh.png" alt="Lovely Kitchen" class="logo-img"></a>
             <nav class="nav-desktop">
                 <ul class="nav-menu">
                     <li><a href="<?php echo SITE_URL; ?>/회사소개/" class="nav-link">회사소개</a></li>
@@ -284,7 +284,7 @@ $badges = ['COMPACT', 'BEST', 'WIDE', 'FLAGSHIP'];
         </div>
     </header>
 
-    <div class="mobile-nav" id="mobileNav"><div class="mobile-nav-header"><img src="http://115.68.223.124/lovelykitchen/수정/fhrh.png" alt="Logo" class="mobile-logo"><button class="mobile-close" id="mobileClose"><i class="fas fa-times"></i></button></div><nav class="mobile-nav-content"><ul class="mobile-menu"><li><a href="<?php echo SITE_URL; ?>/회사소개/">회사소개</a></li><li><a href="<?php echo SITE_URL; ?>/친환경제품/">친환경</a></li><li class="has-submenu"><a href="#">제품 <i class="fas fa-plus"></i></a><ul class="submenu"><li><a href="<?php echo SITE_URL; ?>/products.php">음식물처리기</a></li><li><a href="<?php echo SITE_URL; ?>/싱크볼/">아콴테 싱크볼</a></li><li><a href="<?php echo SITE_URL; ?>/악세사리/">악세사리</a></li></ul></li><li class="has-submenu"><a href="#">갤러리 <i class="fas fa-plus"></i></a><ul class="submenu"><li><a href="<?php echo SITE_URL; ?>/사진갤러리/">음식물처리기 갤러리</a></li><li><a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/">아콴테 싱크볼 갤러리</a></li></ul></li><li class="has-submenu"><a href="#">구매후기 <i class="fas fa-plus"></i></a><ul class="submenu"><li><a href="<?php echo SITE_URL; ?>/음식물처리기-후기/">음식물처리기 후기</a></li><li><a href="<?php echo SITE_URL; ?>/싱크볼-후기/">싱크볼 후기</a></li></ul></li><li class="has-submenu"><a href="#">고객지원 <i class="fas fa-plus"></i></a><ul class="submenu"><li><a href="<?php echo SITE_URL; ?>/질문과-답변/">질문과 답변</a></li><li><a href="<?php echo SITE_URL; ?>/a-s-지원/">A/S 서비스 지원</a></li></ul></li></ul><div class="mobile-contact"><a href="tel:1661-9038" class="mobile-phone"><i class="fas fa-phone"></i> 1661-9038</a><a href="<?php echo SITE_URL; ?>/빠른상담/" class="mobile-consult-btn">무료 상담 신청</a></div></nav></div>
+    <div class="mobile-nav" id="mobileNav"><div class="mobile-nav-header"><img src="/수정/fhrh.png" alt="Logo" class="mobile-logo"><button class="mobile-close" id="mobileClose"><i class="fas fa-times"></i></button></div><nav class="mobile-nav-content"><ul class="mobile-menu"><li><a href="<?php echo SITE_URL; ?>/회사소개/">회사소개</a></li><li><a href="<?php echo SITE_URL; ?>/친환경제품/">친환경</a></li><li class="has-submenu"><a href="#">제품 <i class="fas fa-plus"></i></a><ul class="submenu"><li><a href="<?php echo SITE_URL; ?>/products.php">음식물처리기</a></li><li><a href="<?php echo SITE_URL; ?>/싱크볼/">아콴테 싱크볼</a></li><li><a href="<?php echo SITE_URL; ?>/악세사리/">악세사리</a></li></ul></li><li class="has-submenu"><a href="#">갤러리 <i class="fas fa-plus"></i></a><ul class="submenu"><li><a href="<?php echo SITE_URL; ?>/사진갤러리/">음식물처리기 갤러리</a></li><li><a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/">아콴테 싱크볼 갤러리</a></li></ul></li><li class="has-submenu"><a href="#">구매후기 <i class="fas fa-plus"></i></a><ul class="submenu"><li><a href="<?php echo SITE_URL; ?>/음식물처리기-후기/">음식물처리기 후기</a></li><li><a href="<?php echo SITE_URL; ?>/싱크볼-후기/">싱크볼 후기</a></li></ul></li><li class="has-submenu"><a href="#">고객지원 <i class="fas fa-plus"></i></a><ul class="submenu"><li><a href="<?php echo SITE_URL; ?>/질문과-답변/">질문과 답변</a></li><li><a href="<?php echo SITE_URL; ?>/a-s-지원/">A/S 서비스 지원</a></li></ul></li></ul><div class="mobile-contact"><a href="tel:1661-9038" class="mobile-phone"><i class="fas fa-phone"></i> 1661-9038</a><a href="<?php echo SITE_URL; ?>/빠른상담/" class="mobile-consult-btn">무료 상담 신청</a></div></nav></div>
     <div class="mobile-overlay" id="mobileOverlay"></div>
 
     <main>
@@ -351,6 +351,12 @@ $badges = ['COMPACT', 'BEST', 'WIDE', 'FLAGSHIP'];
                     <p class="section-desc">하부장 가로 사이즈에 맞는 싱크볼을 선택하세요</p>
                 </div>
 
+                <?php if (!empty($settings['sinkbowl_calc_image'])): ?>
+                <div style="text-align: center; margin-bottom: 40px;" data-aos="fade-up">
+                    <img src="<?php echo e($settings['sinkbowl_calc_image']); ?>" alt="싱크볼 사이즈 계산식" style="max-width: 100%; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.08);">
+                </div>
+                <?php endif; ?>
+
                 <table class="size-guide-table" data-aos="fade-up">
                     <thead>
                         <tr>
@@ -407,7 +413,7 @@ $badges = ['COMPACT', 'BEST', 'WIDE', 'FLAGSHIP'];
         </section>
     </main>
 
-    <footer class="footer"><div class="footer-top"><div class="container"><div class="footer-grid"><div class="footer-brand"><a href="<?php echo SITE_URL; ?>/" class="footer-logo"><img src="http://115.68.223.124/lovelykitchen/수정/fhrh.png" alt="Lovely Kitchen"></a><p class="footer-tagline">완벽한 분쇄, 차원이 다른 프리미엄</p></div><div class="footer-links"><h4>제품</h4><ul><li><a href="<?php echo SITE_URL; ?>/products.php">음식물처리기</a></li><li><a href="<?php echo SITE_URL; ?>/싱크볼/">아콴테 싱크볼</a></li><li><a href="<?php echo SITE_URL; ?>/악세사리/">악세사리</a></li></ul></div><div class="footer-links"><h4>고객지원</h4><ul><li><a href="<?php echo SITE_URL; ?>/질문과-답변/">질문과 답변</a></li><li><a href="<?php echo SITE_URL; ?>/a-s-지원/">A/S 서비스 지원</a></li><li><a href="<?php echo SITE_URL; ?>/빠른상담/">빠른 상담</a></li></ul></div><div class="footer-contact"><h4>연락처</h4><div class="contact-item"><i class="fas fa-phone"></i><div><span class="label">고객센터</span><a href="tel:1661-9038" class="value">1661-9038</a></div></div></div></div></div></div><div class="footer-bottom"><div class="container"><div class="footer-info"><p>러블리키친 총판 대표이사 성정호 ｜ 사업자등록번호 306-08-91986</p></div><div class="footer-copyright"><p>&copy; 2024 LOVELY KITCHEN. All Rights Reserved.</p></div></div></div></footer>
+    <footer class="footer"><div class="footer-top"><div class="container"><div class="footer-grid"><div class="footer-brand"><a href="<?php echo SITE_URL; ?>/" class="footer-logo"><img src="/수정/fhrh.png" alt="Lovely Kitchen"></a><p class="footer-tagline">완벽한 분쇄, 차원이 다른 프리미엄</p></div><div class="footer-links"><h4>제품</h4><ul><li><a href="<?php echo SITE_URL; ?>/products.php">음식물처리기</a></li><li><a href="<?php echo SITE_URL; ?>/싱크볼/">아콴테 싱크볼</a></li><li><a href="<?php echo SITE_URL; ?>/악세사리/">악세사리</a></li></ul></div><div class="footer-links"><h4>고객지원</h4><ul><li><a href="<?php echo SITE_URL; ?>/질문과-답변/">질문과 답변</a></li><li><a href="<?php echo SITE_URL; ?>/a-s-지원/">A/S 서비스 지원</a></li><li><a href="<?php echo SITE_URL; ?>/빠른상담/">빠른 상담</a></li></ul></div><div class="footer-contact"><h4>연락처</h4><div class="contact-item"><i class="fas fa-phone"></i><div><span class="label">고객센터</span><a href="tel:1661-9038" class="value">1661-9038</a></div></div></div></div></div></div><div class="footer-bottom"><div class="container"><div class="footer-info"><p>러블리키친 총판 대표이사 성정호 ｜ 사업자등록번호 306-08-91986</p></div><div class="footer-copyright"><p>&copy; 2024 LOVELY KITCHEN. All Rights Reserved.</p></div></div></div></footer>
 
     <div class="phone-inquiry-container" id="phoneInquiry">
         <button class="close-btn" onclick="document.getElementById('phoneInquiry').classList.add('hidden');">&times;</button>

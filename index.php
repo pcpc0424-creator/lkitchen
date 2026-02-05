@@ -27,14 +27,14 @@ require_once __DIR__ . '/includes/config.php';
     <link rel="stylesheet" href="css/style.css?v=20260129a">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="http://115.68.223.124/lovelykitchen/수정/fhrh.png">
+    <link rel="icon" type="image/png" href="/수정/fhrh.png">
 </head>
 <body>
     <!-- Preloader -->
     <div class="preloader" id="preloader">
         <div class="preloader-inner">
             <div class="preloader-logo">
-                <img src="http://115.68.223.124/lovelykitchen/수정/fhrh.png" alt="Logo">
+                <img src="/수정/fhrh.png" alt="Logo">
             </div>
             <div class="preloader-progress">
                 <div class="preloader-bar"></div>
@@ -53,7 +53,7 @@ require_once __DIR__ . '/includes/config.php';
     <header class="header" id="header">
         <div class="header-container">
             <a href="<?php echo SITE_URL; ?>/" class="logo">
-                <img src="http://115.68.223.124/lovelykitchen/수정/fhrh.png" alt="Lovely Kitchen" class="logo-img">
+                <img src="/수정/fhrh.png" alt="Lovely Kitchen" class="logo-img">
             </a>
 
             <nav class="nav-desktop">
@@ -113,7 +113,7 @@ require_once __DIR__ . '/includes/config.php';
     <!-- Mobile Navigation -->
     <div class="mobile-nav" id="mobileNav">
         <div class="mobile-nav-header">
-            <img src="http://115.68.223.124/lovelykitchen/수정/fhrh.png" alt="Logo" class="mobile-logo">
+            <img src="/수정/fhrh.png" alt="Logo" class="mobile-logo">
             <button class="mobile-close" id="mobileClose">
                 <i class="fas fa-times"></i>
             </button>
@@ -282,8 +282,12 @@ require_once __DIR__ . '/includes/config.php';
                         </a>
                     </div>
                     <div class="company-intro-image" data-aos="fade-left">
-                        <img src="http://115.68.223.124/lovelykitchen/수정/products-lineup.png" alt="러블리키친 음식물처리기">
+                        <img src="/제목을 입력해주세요. (1).png" alt="러블리키친 음식물처리기" class="products-lineup-img">
                     </div>
+                    <style>
+                        .products-lineup-img { transform: scale(1.2); }
+                        @media (max-width: 768px) { .products-lineup-img { transform: scale(1.0); } }
+                    </style>
                 </div>
             </div>
         </section>
@@ -623,6 +627,12 @@ require_once __DIR__ . '/includes/config.php';
                             <i class="fas fa-expand"></i>
                         </div>
                     </a>
+                    <a href="<?php echo SITE_URL; ?>/사진갤러리/" class="gallery-item">
+                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/04/1-100.jpg" alt="음식물처리기 시공 사진" loading="lazy">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                    </a>
                 </div>
 
                 <div class="gallery-cta" data-aos="fade-up">
@@ -655,6 +665,30 @@ require_once __DIR__ . '/includes/config.php';
                     </a>
                     <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" style="flex: 0 0 calc(25% - 20px); border-radius: 12px; overflow: hidden;">
                         <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/3-2-2048x1536.jpg" alt="아콴테 싱크볼 시공 사진" style="width: 100%; height: auto; display: block;" loading="lazy">
+                    </a>
+                    <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" style="flex: 0 0 calc(25% - 20px); border-radius: 12px; overflow: hidden;">
+                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/0-1-2048x1536.jpg" alt="아콴테 싱크볼 시공 사진" style="width: 100%; height: auto; display: block;" loading="lazy">
+                    </a>
+                    <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" style="flex: 0 0 calc(25% - 20px); border-radius: 12px; overflow: hidden;">
+                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/1-2-2048x1536.jpg" alt="아콴테 싱크볼 시공 사진" style="width: 100%; height: auto; display: block;" loading="lazy">
+                    </a>
+                    <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" style="flex: 0 0 calc(25% - 20px); border-radius: 12px; overflow: hidden;">
+                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/2-2-2048x1536.jpg" alt="아콴테 싱크볼 시공 사진" style="width: 100%; height: auto; display: block;" loading="lazy">
+                    </a>
+                    <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" style="flex: 0 0 calc(25% - 20px); border-radius: 12px; overflow: hidden;">
+                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/1-3-2048x1536.jpg" alt="아콴테 싱크볼 시공 사진" style="width: 100%; height: auto; display: block;" loading="lazy">
+                    </a>
+                    <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" style="flex: 0 0 calc(25% - 20px); border-radius: 12px; overflow: hidden;">
+                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/2-3-2048x1536.jpg" alt="아콴테 싱크볼 시공 사진" style="width: 100%; height: auto; display: block;" loading="lazy">
+                    </a>
+                    <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" style="flex: 0 0 calc(25% - 20px); border-radius: 12px; overflow: hidden;">
+                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/3-3-2048x1536.jpg" alt="아콴테 싱크볼 시공 사진" style="width: 100%; height: auto; display: block;" loading="lazy">
+                    </a>
+                    <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" style="flex: 0 0 calc(25% - 20px); border-radius: 12px; overflow: hidden;">
+                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/3-4-2048x1536.jpg" alt="아콴테 싱크볼 시공 사진" style="width: 100%; height: auto; display: block;" loading="lazy">
+                    </a>
+                    <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" style="flex: 0 0 calc(25% - 20px); border-radius: 12px; overflow: hidden;">
+                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/0-2-2048x1536.jpg" alt="아콴테 싱크볼 시공 사진" style="width: 100%; height: auto; display: block;" loading="lazy">
                     </a>
                 </div>
 
@@ -940,7 +974,7 @@ require_once __DIR__ . '/includes/config.php';
                 <div class="footer-grid">
                     <div class="footer-brand">
                         <a href="<?php echo SITE_URL; ?>/" class="footer-logo">
-                            <img src="http://115.68.223.124/lovelykitchen/수정/fhrh.png" alt="Lovely Kitchen">
+                            <img src="/수정/fhrh.png" alt="Lovely Kitchen">
                         </a>
                         <p class="footer-tagline">완벽한 분쇄, 차원이 다른 프리미엄</p>
                         <div class="footer-social">

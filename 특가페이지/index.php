@@ -44,7 +44,7 @@ $cta = $specialData['cta'] ?? [];
     <link rel="stylesheet" href="../css/pages.css">
 
     <!-- Favicon -->
-    <link rel="icon" type="image/png" href="http://115.68.223.124/lovelykitchen/수정/fhrh.png">
+    <link rel="icon" type="image/png" href="/수정/fhrh.png">
 
     <style>
         /* Special Deals Page Styles */
@@ -724,7 +724,7 @@ $cta = $specialData['cta'] ?? [];
     <div class="preloader" id="preloader">
         <div class="preloader-inner">
             <div class="preloader-logo">
-                <img src="http://115.68.223.124/lovelykitchen/수정/fhrh.png" alt="Logo">
+                <img src="/수정/fhrh.png" alt="Logo">
             </div>
             <div class="preloader-progress">
                 <div class="preloader-bar"></div>
@@ -743,7 +743,7 @@ $cta = $specialData['cta'] ?? [];
     <header class="header scrolled" id="header">
         <div class="header-container">
             <a href="<?php echo SITE_URL; ?>/" class="logo">
-                <img src="http://115.68.223.124/lovelykitchen/수정/fhrh.png" alt="Lovely Kitchen" class="logo-img">
+                <img src="/수정/fhrh.png" alt="Lovely Kitchen" class="logo-img">
             </a>
 
             <nav class="nav-desktop">
@@ -803,7 +803,7 @@ $cta = $specialData['cta'] ?? [];
     <!-- Mobile Navigation -->
     <div class="mobile-nav" id="mobileNav">
         <div class="mobile-nav-header">
-            <img src="http://115.68.223.124/lovelykitchen/수정/fhrh.png" alt="Logo" class="mobile-logo">
+            <img src="/수정/fhrh.png" alt="Logo" class="mobile-logo">
             <button class="mobile-close" id="mobileClose">
                 <i class="fas fa-times"></i>
             </button>
@@ -1035,7 +1035,7 @@ $cta = $specialData['cta'] ?? [];
                 <div class="footer-grid">
                     <div class="footer-brand">
                         <a href="<?php echo SITE_URL; ?>/" class="footer-logo">
-                            <img src="http://115.68.223.124/lovelykitchen/수정/fhrh.png" alt="Lovely Kitchen">
+                            <img src="/수정/fhrh.png" alt="Lovely Kitchen">
                         </a>
                         <p class="footer-tagline">완벽한 분쇄, 차원이 다른 프리미엄</p>
                         <div class="footer-social">

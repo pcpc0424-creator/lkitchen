@@ -4,7 +4,7 @@
  */
 
 // 기본 설정
-define('SITE_URL', 'http://115.68.223.124/lovelykitchen');
+define('SITE_URL', 'https://lkitchen.co.kr');
 define('ADMIN_DATA_PATH', dirname(__DIR__) . '/admin/data');
 
 // 시간대 설정
