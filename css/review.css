@@ -24,6 +24,10 @@
     overflow: hidden;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
     transition: all 0.3s ease;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 340px;
 }
 
 .review-item:hover {
@@ -50,9 +54,45 @@
     transform: scale(1.05);
 }
 
+/* Review Item without Image */
+.review-item.no-image {
+    background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+    position: relative;
+}
+
+.review-item.no-image::before {
+    content: '\f075';
+    font-family: 'Font Awesome 6 Free';
+    font-weight: 900;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 2.5rem;
+    color: rgba(59, 130, 246, 0.1);
+}
+
+.review-item.no-image .review-content {
+    padding: 30px 25px;
+    height: 100%;
+}
+
+.review-item.no-image .review-title {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    -webkit-line-clamp: 2;
+}
+
+.review-item.no-image .review-text {
+    -webkit-line-clamp: 8;
+    line-height: 1.8;
+}
+
 /* Review Content */
 .review-content {
     padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
 }
 
 .review-title {
@@ -76,12 +116,16 @@
     -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
     overflow: hidden;
+    flex: 1;
 }
 
 .review-author {
     display: inline-block;
     font-size: 0.85rem;
     color: #999;
+    margin-top: auto;
+    padding-top: 10px;
+    border-top: 1px solid #f0f0f0;
 }
 
 /* Review Pagination */
@@ -205,6 +249,10 @@
         gap: 20px;
     }
 
+    .review-item {
+        min-height: auto;
+    }
+
     .review-thumb {
         height: 220px;
     }
@@ -219,7 +267,21 @@
 
     .review-text {
         font-size: 0.88rem;
-        -webkit-line-clamp: 3;
+        -webkit-line-clamp: 4;
+    }
+
+    .review-item.no-image .review-content {
+        padding: 25px 20px;
+    }
+
+    .review-item.no-image .review-text {
+        -webkit-line-clamp: 5;
+    }
+
+    .review-item.no-image::before {
+        font-size: 2rem;
+        top: 15px;
+        right: 15px;
     }
 
     .review-pagination {

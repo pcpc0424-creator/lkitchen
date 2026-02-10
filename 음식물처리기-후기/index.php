@@ -75,25 +75,16 @@ $currentReviews = array_slice($reviews, $offset, $perPage);
                 <?php else: ?>
                 <div class="review-grid-new">
                     <?php foreach ($currentReviews as $review): ?>
-                    <div class="review-item">
+                    <div class="review-item <?php echo empty($review['images']) ? 'no-image' : ''; ?>">
+                        <?php if (!empty($review['images']) && !empty($review['images'][0])): ?>
                         <div class="review-thumb">
                             <?php
-                            $imagePath = '';
-                            if (!empty($review['images']) && !empty($review['images'][0])) {
-                                $img = $review['images'][0];
-                                // 외부 URL인 경우 그대로 사용
-                                if (strpos($img, 'http') === 0) {
-                                    $imagePath = $img;
-                                } else {
-                                    // 로컬 파일인 경우 pototo 폴더 경로 추가
-                                    $imagePath = '../pototo/' . rawurlencode($img);
-                                }
-                            } else {
-                                $imagePath = 'https://via.placeholder.com/400x300?text=No+Image';
-                            }
+                            $img = $review['images'][0];
+                            $imagePath = (strpos($img, 'http') === 0) ? $img : '../pototo/' . rawurlencode($img);
                             ?>
                             <img src="<?php echo e($imagePath); ?>" alt="후기 이미지">
                         </div>
+                        <?php endif; ?>
                         <div class="review-content">
                             <h3 class="review-title"><?php echo e($review['title'] ?? ''); ?></h3>
                             <p class="review-text"><?php echo e($review['content'] ?? ''); ?></p>
@@ -150,7 +141,7 @@ $currentReviews = array_slice($reviews, $offset, $perPage);
             <i class="fas fa-times"></i>
         </button>
         <div class="review-modal-content">
-            <div class="review-modal-image">
+            <div class="review-modal-image" id="modalImageWrap">
                 <img id="modalImage" src="" alt="후기 이미지">
             </div>
             <div class="review-modal-body">
@@ -176,6 +167,7 @@ $currentReviews = array_slice($reviews, $offset, $perPage);
             const modal = document.getElementById('reviewModal');
             const modalOverlay = document.getElementById('reviewModalOverlay');
             const modalClose = document.getElementById('reviewModalClose');
+            const modalImageWrap = document.getElementById('modalImageWrap');
             const modalImage = document.getElementById('modalImage');
             const modalTitle = document.getElementById('modalTitle');
             const modalText = document.getElementById('modalText');
@@ -189,11 +181,19 @@ $currentReviews = array_slice($reviews, $offset, $perPage);
                     const text = this.querySelector('.review-text');
                     const author = this.querySelector('.review-author');
 
-                    modalImage.src = img.src;
-                    modalTitle.textContent = title.textContent;
-                    modalText.textContent = text.textContent;
-                    modalAuthor.textContent = author.textContent;
-                    modalAvatar.textContent = author.textContent.charAt(0);
+                    // 이미지가 있으면 표시, 없으면 숨김
+                    if (img) {
+                        modalImage.src = img.src;
+                        modalImageWrap.style.display = 'block';
+                    } else {
+                        modalImage.src = '';
+                        modalImageWrap.style.display = 'none';
+                    }
+
+                    modalTitle.textContent = title ? title.textContent : '';
+                    modalText.textContent = text ? text.textContent : '';
+                    modalAuthor.textContent = author ? author.textContent : '';
+                    modalAvatar.textContent = author ? author.textContent.charAt(0) : '';
 
                     modal.classList.add('active');
                     modalOverlay.classList.add('active');

@@ -653,42 +653,60 @@ require_once __DIR__ . '/includes/config.php';
                     <p class="section-desc">프리미엄 아콴테 싱크볼 시공 사례를 확인해보세요</p>
                 </a>
 
-                <div style="display: flex; flex-wrap: wrap; gap: 20px; justify-content: center;" data-aos="fade-up" data-aos-delay="100">
-                    <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" style="flex: 0 0 calc(25% - 20px); border-radius: 12px; overflow: hidden;">
-                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/0-2048x1536.jpg" alt="아콴테 싱크볼 시공 사진" style="width: 100%; height: auto; display: block;" loading="lazy">
+                <div class="gallery-grid" data-aos="fade-up" data-aos-delay="100">
+                    <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" class="gallery-item large">
+                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/0-2048x1536.jpg" alt="아콴테 싱크볼 시공 사진" loading="lazy">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-expand"></i>
+                        </div>
                     </a>
-                    <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" style="flex: 0 0 calc(25% - 20px); border-radius: 12px; overflow: hidden;">
-                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/1-2048x1536.jpg" alt="아콴테 싱크볼 시공 사진" style="width: 100%; height: auto; display: block;" loading="lazy">
+                    <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" class="gallery-item">
+                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/1-2048x1536.jpg" alt="아콴테 싱크볼 시공 사진" loading="lazy">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-expand"></i>
+                        </div>
                     </a>
-                    <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" style="flex: 0 0 calc(25% - 20px); border-radius: 12px; overflow: hidden;">
-                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/3-2048x1536.jpg" alt="아콴테 싱크볼 시공 사진" style="width: 100%; height: auto; display: block;" loading="lazy">
+                    <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" class="gallery-item">
+                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/3-2048x1536.jpg" alt="아콴테 싱크볼 시공 사진" loading="lazy">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-expand"></i>
+                        </div>
                     </a>
-                    <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" style="flex: 0 0 calc(25% - 20px); border-radius: 12px; overflow: hidden;">
-                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/3-2-2048x1536.jpg" alt="아콴테 싱크볼 시공 사진" style="width: 100%; height: auto; display: block;" loading="lazy">
+                    <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" class="gallery-item">
+                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/3-2-2048x1536.jpg" alt="아콴테 싱크볼 시공 사진" loading="lazy">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-expand"></i>
+                        </div>
                     </a>
-                    <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" style="flex: 0 0 calc(25% - 20px); border-radius: 12px; overflow: hidden;">
-                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/0-1-2048x1536.jpg" alt="아콴테 싱크볼 시공 사진" style="width: 100%; height: auto; display: block;" loading="lazy">
+                    <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" class="gallery-item">
+                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/0-1-2048x1536.jpg" alt="아콴테 싱크볼 시공 사진" loading="lazy">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-expand"></i>
+                        </div>
                     </a>
-                    <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" style="flex: 0 0 calc(25% - 20px); border-radius: 12px; overflow: hidden;">
-                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/1-2-2048x1536.jpg" alt="아콴테 싱크볼 시공 사진" style="width: 100%; height: auto; display: block;" loading="lazy">
+                    <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" class="gallery-item tall">
+                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/1-2-2048x1536.jpg" alt="아콴테 싱크볼 시공 사진" loading="lazy">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-expand"></i>
+                        </div>
                     </a>
-                    <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" style="flex: 0 0 calc(25% - 20px); border-radius: 12px; overflow: hidden;">
-                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/2-2-2048x1536.jpg" alt="아콴테 싱크볼 시공 사진" style="width: 100%; height: auto; display: block;" loading="lazy">
+                    <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" class="gallery-item">
+                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/2-2-2048x1536.jpg" alt="아콴테 싱크볼 시공 사진" loading="lazy">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-expand"></i>
+                        </div>
                     </a>
-                    <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" style="flex: 0 0 calc(25% - 20px); border-radius: 12px; overflow: hidden;">
-                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/1-3-2048x1536.jpg" alt="아콴테 싱크볼 시공 사진" style="width: 100%; height: auto; display: block;" loading="lazy">
+                    <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" class="gallery-item">
+                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/1-3-2048x1536.jpg" alt="아콴테 싱크볼 시공 사진" loading="lazy">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-expand"></i>
+                        </div>
                     </a>
-                    <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" style="flex: 0 0 calc(25% - 20px); border-radius: 12px; overflow: hidden;">
-                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/2-3-2048x1536.jpg" alt="아콴테 싱크볼 시공 사진" style="width: 100%; height: auto; display: block;" loading="lazy">
-                    </a>
-                    <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" style="flex: 0 0 calc(25% - 20px); border-radius: 12px; overflow: hidden;">
-                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/3-3-2048x1536.jpg" alt="아콴테 싱크볼 시공 사진" style="width: 100%; height: auto; display: block;" loading="lazy">
-                    </a>
-                    <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" style="flex: 0 0 calc(25% - 20px); border-radius: 12px; overflow: hidden;">
-                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/3-4-2048x1536.jpg" alt="아콴테 싱크볼 시공 사진" style="width: 100%; height: auto; display: block;" loading="lazy">
-                    </a>
-                    <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" style="flex: 0 0 calc(25% - 20px); border-radius: 12px; overflow: hidden;">
-                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/0-2-2048x1536.jpg" alt="아콴테 싱크볼 시공 사진" style="width: 100%; height: auto; display: block;" loading="lazy">
+                    <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" class="gallery-item">
+                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/2-3-2048x1536.jpg" alt="아콴테 싱크볼 시공 사진" loading="lazy">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-expand"></i>
+                        </div>
                     </a>
                 </div>
 
