@@ -5,11 +5,18 @@
 require_once 'config.php';
 checkLogin();
 
-$type = $_GET['type'] ?? 'food';
-$action = $_GET['action'] ?? 'list';
+$type = $_POST['type'] ?? $_GET['type'] ?? 'food';
+// type 값 정규화 (sink 또는 food만 허용)
+$type = ($type === 'sink') ? 'sink' : 'food';
+$action = $_POST['action'] ?? $_GET['action'] ?? 'list';
+
+// 디버깅: POST 데이터 로그
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    error_log("Gallery POST - type: " . ($_POST['type'] ?? 'NOT SET') . ", action: " . ($_POST['action'] ?? 'NOT SET') . ", final type: " . $type);
+}
 
 // 갤러리 데이터 파일
-$galleryFile = $type === 'food' ? 'food_gallery.json' : 'sink_gallery.json';
+$galleryFile = ($type === 'sink') ? 'sink_gallery.json' : 'food_gallery.json';
 $galleryData = readJsonData($galleryFile);
 
 // 이미지 추가 처리
@@ -33,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $action === 'add') {
             array_unshift($galleryData, $newImage);
             writeJsonData($galleryFile, $galleryData);
 
-            header('Location: gallery.php?type=' . $type . '&success=1');
+            header('Location: gallery.php?type=' . urlencode($type) . '&success=1');
             exit;
         }
     }
@@ -121,7 +128,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $action === 'upload') {
             if (!empty($errors)) {
                 $successMsg .= ' (일부 오류 발생)';
             }
-            header('Location: gallery.php?type=' . $type . '&uploaded=' . $uploaded);
+            header('Location: gallery.php?type=' . urlencode($type) . '&uploaded=' . $uploaded);
+            exit;
+        } else {
+            // 업로드 실패해도 올바른 탭 유지
+            header('Location: gallery.php?type=' . urlencode($type) . '&error=upload');
             exit;
         }
     }
@@ -136,7 +147,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && $action === 'delete') {
     $galleryData = array_values($galleryData);
     writeJsonData($galleryFile, $galleryData);
 
-    header('Location: gallery.php?type=' . $type . '&deleted=1');
+    header('Location: gallery.php?type=' . urlencode($type) . '&deleted=1');
     exit;
 }
 
@@ -450,8 +461,10 @@ $pageTitle = $type === 'food' ? '음식물처리기 갤러리' : '싱크볼 갤�
                 <!-- 이미지 추가 폼 -->
                 <div class="add-form">
                     <h3 style="margin-bottom: 16px;"><i class="fas fa-plus-circle"></i> 새 이미지 추가</h3>
-                    <form method="POST" action="gallery.php?type=<?php echo $type; ?>&action=add">
+                    <form method="POST" action="gallery.php">
                         <input type="hidden" name="csrf_token" value="<?php echo generateCsrfToken(); ?>">
+                        <input type="hidden" name="type" value="<?php echo $type; ?>">
+                        <input type="hidden" name="action" value="add">
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="image_url">이미지 URL *</label>
@@ -471,8 +484,10 @@ $pageTitle = $type === 'food' ? '음식물처리기 갤러리' : '싱크볼 갤�
                 <!-- 파일 업로드 폼 -->
                 <div class="add-form">
                     <h3 style="margin-bottom: 16px;"><i class="fas fa-cloud-upload-alt"></i> 이미지 파일 업로드</h3>
-                    <form method="POST" action="gallery.php?type=<?php echo $type; ?>&action=upload" enctype="multipart/form-data" id="uploadForm">
+                    <form method="POST" action="gallery.php" enctype="multipart/form-data" id="uploadForm">
                         <input type="hidden" name="csrf_token" value="<?php echo generateCsrfToken(); ?>">
+                        <input type="hidden" name="type" value="<?php echo $type; ?>">
+                        <input type="hidden" name="action" value="upload">
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="upload_description">설명 (선택, 모든 이미지에 적용)</label>
@@ -510,8 +525,10 @@ $pageTitle = $type === 'food' ? '음식물처리기 갤러리' : '싱크볼 갤�
                                 <div class="item-desc"><?php echo sanitize($image['description'] ?? '설명 없음'); ?></div>
                                 <div class="item-date"><?php echo $image['created_at'] ?? '-'; ?></div>
                             </div>
-                            <form method="POST" action="gallery.php?type=<?php echo $type; ?>&action=delete" style="display: inline;">
+                            <form method="POST" action="gallery.php" style="display: inline;">
                                 <input type="hidden" name="id" value="<?php echo $image['id']; ?>">
+                                <input type="hidden" name="type" value="<?php echo $type; ?>">
+                                <input type="hidden" name="action" value="delete">
                                 <button type="submit" class="delete-btn" onclick="return confirm('정말 삭제하시겠습니까?')">
                                     <i class="fas fa-times"></i>
                                 </button>
@@ -528,6 +545,15 @@ $pageTitle = $type === 'food' ? '음식물처리기 갤러리' : '싱크볼 갤�
     <script src="js/admin.js"></script>
     <script>
     (function() {
+        // URL에서 현재 type 가져오기
+        const urlParams = new URLSearchParams(window.location.search);
+        const currentType = urlParams.get('type') || 'food';
+
+        // 모든 폼의 type hidden input 업데이트
+        document.querySelectorAll('input[name="type"]').forEach(input => {
+            input.value = currentType;
+        });
+
         const dropZone = document.getElementById('dropZone');
         const fileInput = document.getElementById('galleryFiles');
         const filePreview = document.getElementById('filePreview');

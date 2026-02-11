@@ -17,6 +17,22 @@ document.addEventListener('DOMContentLoaded', function() {
     const tabBtns = document.querySelectorAll('.tab-btn');
     const tabContents = document.querySelectorAll('.tab-content');
 
+    // URL 파라미터에서 type 읽기
+    const urlParams = new URLSearchParams(window.location.search);
+    const typeFromUrl = urlParams.get('type');
+
+    // URL에 type이 있으면 해당 탭 활성화
+    if (typeFromUrl && tabBtns.length > 0) {
+        tabBtns.forEach(b => b.classList.remove('active'));
+        tabContents.forEach(c => c.classList.remove('active'));
+
+        const targetBtn = document.querySelector(`.tab-btn[data-tab="${typeFromUrl}"]`);
+        const targetContent = document.getElementById('tab-' + typeFromUrl);
+
+        if (targetBtn) targetBtn.classList.add('active');
+        if (targetContent) targetContent.classList.add('active');
+    }
+
     tabBtns.forEach(btn => {
         btn.addEventListener('click', function() {
             const tabId = this.dataset.tab;
@@ -116,8 +132,10 @@ function handleFiles(files, type) {
             const response = JSON.parse(xhr.responseText);
             if (response.success) {
                 showToast(response.message, 'success');
-                // 페이지 새로고침으로 이미지 목록 갱신
-                setTimeout(() => location.reload(), 1000);
+                // 현재 탭 유지하면서 페이지 새로고침
+                setTimeout(() => {
+                    window.location.href = 'images.php?type=' + type;
+                }, 1000);
             } else {
                 showToast(response.message, 'error');
             }
