@@ -225,27 +225,6 @@ $badges = ['COMPACT', 'BEST', 'WIDE', 'FLAGSHIP'];
             background: #f8fafc;
         }
 
-        .sink-gallery {
-            padding: 80px 0;
-            background: #f7fafc;
-        }
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 15px;
-            margin-top: 40px;
-        }
-        .gallery-grid img {
-            width: 100%;
-            aspect-ratio: 1;
-            object-fit: cover;
-            border-radius: 12px;
-            transition: transform 0.3s ease;
-        }
-        .gallery-grid img:hover {
-            transform: scale(1.05);
-        }
-
         @media (max-width: 768px) {
             .sink-hero h1 { font-size: 1.5rem; word-break: keep-all; line-height: 1.4; padding: 0 15px; }
             .sink-hero p { font-size: 0.9rem; word-break: keep-all; line-height: 1.6; padding: 0 20px; }
@@ -253,7 +232,6 @@ $badges = ['COMPACT', 'BEST', 'WIDE', 'FLAGSHIP'];
             .sink-card-info { padding: 25px; }
             .sink-card h3 { font-size: 1.3rem; word-break: keep-all; }
             .sink-specs ul { grid-template-columns: 1fr; }
-            .gallery-grid { grid-template-columns: repeat(2, 1fr); }
             .size-guide-table { font-size: 0.85rem; }
             .size-guide-table th, .size-guide-table td { padding: 10px 8px; }
         }
@@ -353,7 +331,7 @@ $badges = ['COMPACT', 'BEST', 'WIDE', 'FLAGSHIP'];
 
                 <?php if (!empty($settings['sinkbowl_calc_image'])): ?>
                 <div style="text-align: center; margin-bottom: 40px;" data-aos="fade-up">
-                    <img src="<?php echo e($settings['sinkbowl_calc_image']); ?>" alt="싱크볼 사이즈 계산식" style="max-width: 100%; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.08);">
+                    <img src="<?php echo e($settings['sinkbowl_calc_image']); ?>" alt="싱크볼 사이즈 계산식" style="display: block; max-width: 800px; width: 100%; margin: 0 auto; border-radius: 12px; box-shadow: 0 5px 20px rgba(0,0,0,0.08);">
                 </div>
                 <?php endif; ?>
 
@@ -385,29 +363,76 @@ $badges = ['COMPACT', 'BEST', 'WIDE', 'FLAGSHIP'];
             </div>
         </section>
 
-        <section class="sink-gallery">
+        <section class="gallery-section sinkbowl-gallery">
             <div class="container">
-                <div class="section-header" data-aos="fade-up">
+                <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" class="section-header section-header-link" data-aos="fade-up">
                     <span class="section-tag">INSTALLATION GALLERY</span>
                     <h2 class="section-title">시공 스토리</h2>
                     <p class="section-desc">아콴테 싱크볼 설치 사례를 확인해보세요</p>
+                </a>
+
+                <div class="gallery-grid" data-aos="fade-up" data-aos-delay="100">
+                    <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" class="gallery-item large">
+                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/0-2048x1536.jpg" alt="아콴테 싱크볼 시공 사진" loading="lazy">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                    </a>
+                    <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" class="gallery-item">
+                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/1-2048x1536.jpg" alt="아콴테 싱크볼 시공 사진" loading="lazy">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                    </a>
+                    <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" class="gallery-item">
+                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/3-2048x1536.jpg" alt="아콴테 싱크볼 시공 사진" loading="lazy">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                    </a>
+                    <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" class="gallery-item">
+                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/3-2-2048x1536.jpg" alt="아콴테 싱크볼 시공 사진" loading="lazy">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                    </a>
+                    <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" class="gallery-item">
+                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/0-1-2048x1536.jpg" alt="아콴테 싱크볼 시공 사진" loading="lazy">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                    </a>
+                    <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" class="gallery-item tall">
+                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/1-2-2048x1536.jpg" alt="아콴테 싱크볼 시공 사진" loading="lazy">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                    </a>
+                    <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" class="gallery-item">
+                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/2-2-2048x1536.jpg" alt="아콴테 싱크볼 시공 사진" loading="lazy">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                    </a>
+                    <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" class="gallery-item">
+                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/1-3-2048x1536.jpg" alt="아콴테 싱크볼 시공 사진" loading="lazy">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                    </a>
+                    <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" class="gallery-item">
+                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/2-3-2048x1536.jpg" alt="아콴테 싱크볼 시공 사진" loading="lazy">
+                        <div class="gallery-overlay">
+                            <i class="fas fa-expand"></i>
+                        </div>
+                    </a>
                 </div>
 
-                <div class="gallery-grid" data-aos="fade-up">
-                    <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/0-2048x1536.jpg" alt="싱크볼 시공 사진" loading="lazy">
-                    <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/1-2048x1536.jpg" alt="싱크볼 시공 사진" loading="lazy">
-                    <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/3-2048x1536.jpg" alt="싱크볼 시공 사진" loading="lazy">
-                    <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/3-2-2048x1536.jpg" alt="싱크볼 시공 사진" loading="lazy">
-                    <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/0-1-2048x1536.jpg" alt="싱크볼 시공 사진" loading="lazy">
-                </div>
-
-                <div class="cta-box" data-aos="fade-up" style="margin-top: 60px;">
-                    <h3>아콴테 싱크볼이 궁금하신가요?</h3>
-                    <p>지금 바로 상담받고 특별한 혜택을 받아보세요.</p>
-                    <div class="cta-box-buttons">
-                        <a href="<?php echo SITE_URL; ?>/빠른상담/" class="btn-primary"><span>상담 신청</span><i class="fas fa-arrow-right"></i></a>
-                        <a href="tel:1661-9038" class="btn-secondary"><i class="fas fa-phone"></i><span>1661-9038</span></a>
-                    </div>
+                <div class="gallery-cta" data-aos="fade-up">
+                    <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" class="btn-outline">
+                        <span>더 많은 싱크볼 시공사례 보기</span>
+                        <i class="fas fa-arrow-right"></i>
+                    </a>
                 </div>
             </div>
         </section>

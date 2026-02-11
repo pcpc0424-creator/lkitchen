@@ -142,8 +142,16 @@ function initializeReviewImageUpload() {
     const fileInput = document.getElementById('fileInput');
     const previewList = document.getElementById('previewList');
     const imagesInput = document.getElementById('imagesInput');
+    const reviewForm = document.getElementById('reviewForm');
 
     if (!dropZone) return;
+
+    // 폼 제출 전 이미지 입력값 업데이트
+    if (reviewForm) {
+        reviewForm.addEventListener('submit', function(e) {
+            updateImagesInput();
+        });
+    }
 
     // 클릭 시 파일 선택
     dropZone.addEventListener('click', () => fileInput.click());

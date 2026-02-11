@@ -47,7 +47,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         // 기존 데이터 업데이트 또는 새로 추가
         $found = false;
         foreach ($reviews as $key => $review) {
-            if ($review['id'] === $reviewData['id']) {
+            if ($review['id'] == $reviewData['id']) {
                 $reviews[$key] = $reviewData;
                 $found = true;
                 break;
