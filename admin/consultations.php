@@ -37,10 +37,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     }
 }
 
-// 새 상담 수 계산
+// 출처별 분류
+$allSources = [];
+foreach ($inquiries as $inquiry) {
+    $src = $inquiry['source'] ?? '일반';
+    if (!isset($allSources[$src])) {
+        $allSources[$src] = 0;
+    }
+    $allSources[$src]++;
+}
+
+// 필터 처리
+$filterSource = $_GET['source'] ?? 'all';
+if ($filterSource !== 'all') {
+    $inquiries = array_filter($inquiries, function($inquiry) use ($filterSource) {
+        return ($inquiry['source'] ?? '일반') === $filterSource;
+    });
+}
+
+// 새 상담 수 계산 (필터 적용 후)
 $newInquiries = array_filter($inquiries, function($inquiry) {
     return $inquiry['status'] === 'new';
 });
+
+// 전체 새 상담 수 (배지용)
+$allNewCount = count(array_filter(readJsonData('consultations.json'), function($inquiry) {
+    return $inquiry['status'] === 'new';
+}));
 
 // 역순 정렬 (최신순)
 $inquiries = array_reverse($inquiries);
@@ -57,6 +80,48 @@ $inquiries = array_reverse($inquiries);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="css/admin.css?v=2">
     <link rel="icon" type="image/png" href="/수정/fhrh.png">
+    <style>
+        .source-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .source-general {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        .source-special {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+        .filter-tab:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .quote-detail-section {
+            background: #f0f9ff;
+            border: 1px solid #bae6fd;
+            border-radius: 10px;
+            padding: 15px;
+            margin-top: 10px;
+        }
+        .quote-detail-section h5 {
+            color: #0284c7;
+            font-size: 0.85rem;
+            margin: 0 0 10px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .quote-detail-item {
+            font-size: 0.85rem;
+            color: #334155;
+            padding: 4px 0;
+        }
+    </style>
 </head>
 <body>
     <div class="admin-wrapper">
@@ -117,8 +182,8 @@ $inquiries = array_reverse($inquiries);
                         <a href="consultations.php" class="nav-link">
                             <i class="fas fa-headset"></i>
                             <span>상담 신청</span>
-                            <?php if (count($newInquiries) > 0): ?>
-                            <span class="nav-badge"><?php echo count($newInquiries); ?></span>
+                            <?php if ($allNewCount > 0): ?>
+                            <span class="nav-badge"><?php echo $allNewCount; ?></span>
                             <?php endif; ?>
                         </a>
                     </li>
@@ -180,6 +245,22 @@ $inquiries = array_reverse($inquiries);
                 </div>
                 <?php endif; ?>
 
+                <!-- 출처별 필터 탭 -->
+                <div class="filter-tabs" style="margin-bottom: 20px; display:flex; flex-wrap:wrap; gap:10px;">
+                    <a href="?source=all" class="filter-tab <?php echo $filterSource === 'all' ? 'active' : ''; ?>" style="display:inline-flex; align-items:center; gap:8px; padding:10px 20px; border-radius:25px; text-decoration:none; font-weight:500; font-size:0.9rem; transition:all 0.3s; <?php echo $filterSource === 'all' ? 'background:linear-gradient(135deg, #8b5cf6, #7c3aed); color:#fff; box-shadow:0 4px 15px rgba(139,92,246,0.3);' : 'background:#fff; color:#64748b; border:1px solid #e2e8f0;'; ?>">
+                        <i class="fas fa-list"></i>
+                        <span>전체</span>
+                        <span style="background:<?php echo $filterSource === 'all' ? 'rgba(255,255,255,0.25)' : '#f1f5f9'; ?>; padding:2px 8px; border-radius:12px; font-size:0.8rem;"><?php echo array_sum($allSources); ?></span>
+                    </a>
+                    <?php foreach ($allSources as $sourceName => $sourceCount): ?>
+                    <a href="?source=<?php echo urlencode($sourceName); ?>" class="filter-tab <?php echo $filterSource === $sourceName ? 'active' : ''; ?>" style="display:inline-flex; align-items:center; gap:8px; padding:10px 20px; border-radius:25px; text-decoration:none; font-weight:500; font-size:0.9rem; transition:all 0.3s; <?php echo $filterSource === $sourceName ? 'background:linear-gradient(135deg, ' . ($sourceName === '일반' ? '#10b981, #059669' : '#0ea5e9, #0284c7') . '); color:#fff; box-shadow:0 4px 15px rgba(14,165,233,0.3);' : 'background:#fff; color:#64748b; border:1px solid #e2e8f0;'; ?>">
+                        <i class="fas <?php echo $sourceName === '일반' ? 'fa-globe' : 'fa-tag'; ?>"></i>
+                        <span><?php echo sanitize($sourceName); ?></span>
+                        <span style="background:<?php echo $filterSource === $sourceName ? 'rgba(255,255,255,0.25)' : '#f1f5f9'; ?>; padding:2px 8px; border-radius:12px; font-size:0.8rem;"><?php echo $sourceCount; ?></span>
+                    </a>
+                    <?php endforeach; ?>
+                </div>
+
                 <!-- 통계 -->
                 <div class="stats-grid" style="margin-bottom: 30px;">
                     <div class="stat-card">
@@ -188,7 +269,7 @@ $inquiries = array_reverse($inquiries);
                         </div>
                         <div class="stat-info">
                             <span class="stat-value"><?php echo count($inquiries); ?></span>
-                            <span class="stat-label">전체 상담</span>
+                            <span class="stat-label"><?php echo $filterSource === 'all' ? '전체 상담' : sanitize($filterSource) . ' 상담'; ?></span>
                         </div>
                     </div>
                     <div class="stat-card">
@@ -210,6 +291,7 @@ $inquiries = array_reverse($inquiries);
                             <thead>
                                 <tr>
                                     <th>번호</th>
+                                    <th>출처</th>
                                     <th>성함</th>
                                     <th>관심제품</th>
                                     <th>연락처</th>
@@ -222,12 +304,18 @@ $inquiries = array_reverse($inquiries);
                             <tbody>
                                 <?php if (empty($inquiries)): ?>
                                 <tr>
-                                    <td colspan="8" class="empty-message">접수된 상담 신청이 없습니다.</td>
+                                    <td colspan="9" class="empty-message">접수된 상담 신청이 없습니다.</td>
                                 </tr>
                                 <?php else: ?>
                                 <?php foreach ($inquiries as $inquiry): ?>
+                                <?php $inquirySource = $inquiry['source'] ?? '일반'; ?>
                                 <tr class="<?php echo $inquiry['status'] === 'new' ? 'row-new' : ''; ?>">
                                     <td data-label="번호"><?php echo $inquiry['id']; ?></td>
+                                    <td data-label="출처">
+                                        <span class="source-badge <?php echo $inquirySource === '일반' ? 'source-general' : 'source-special'; ?>">
+                                            <?php echo sanitize($inquirySource); ?>
+                                        </span>
+                                    </td>
                                     <td data-label="성함"><strong><?php echo sanitize($inquiry['name']); ?></strong></td>
                                     <td data-label="관심제품"><?php echo sanitize($inquiry['product']); ?></td>
                                     <td data-label="연락처">
@@ -297,9 +385,18 @@ $inquiries = array_reverse($inquiries);
     <script>
     function showDetail(inquiry) {
         const content = document.getElementById('detailContent');
-        document.getElementById('modalSubtitle').textContent = '접수번호 #' + inquiry.id + ' | ' + inquiry.created_at;
+        const source = inquiry.source || '일반';
+        document.getElementById('modalSubtitle').textContent = '접수번호 #' + inquiry.id + ' | ' + inquiry.created_at + ' | ' + source;
 
         let html = '';
+
+        // 출처 배지
+        if (source !== '일반') {
+            html += '<div style="background:linear-gradient(135deg, #0ea5e9, #0284c7); color:#fff; padding:12px 16px; border-radius:10px; margin-bottom:15px; display:flex; align-items:center; gap:10px;">';
+            html += '<i class="fas fa-tag"></i>';
+            html += '<span style="font-weight:600;">' + escapeHtml(source) + '</span>';
+            html += '</div>';
+        }
 
         // 고객 정보 섹션
         html += '<div style="background:#fff; border-radius:12px; padding:20px; margin-bottom:15px; box-shadow:0 2px 8px rgba(0,0,0,0.08);">';
@@ -308,6 +405,9 @@ $inquiries = array_reverse($inquiries);
         html += '<div><label style="font-size:0.75rem; color:#666; display:block; margin-bottom:4px;">성함</label><div style="font-size:1.1rem; font-weight:600; color:#1f2937;">' + escapeHtml(inquiry.name || '-') + '</div></div>';
         html += '<div><label style="font-size:0.75rem; color:#666; display:block; margin-bottom:4px;">연락처</label><div style="font-size:1.1rem; font-weight:600; color:#1f2937;"><a href="tel:' + inquiry.phone + '" style="color:#8b5cf6; text-decoration:none;">' + escapeHtml(inquiry.phone || '-') + '</a></div></div>';
         html += '</div>';
+        if (inquiry.callTime) {
+            html += '<div style="margin-bottom:15px;"><label style="font-size:0.75rem; color:#666; display:block; margin-bottom:4px;"><i class="fas fa-phone-alt" style="margin-right:4px;"></i>통화 가능 시간</label><div style="font-size:0.95rem; color:#1f2937; background:#fef3c7; padding:10px 12px; border-radius:8px; border-left:3px solid #f59e0b;"><i class="fas fa-clock" style="color:#f59e0b; margin-right:6px;"></i>' + escapeHtml(inquiry.callTime) + '</div></div>';
+        }
         html += '<div><label style="font-size:0.75rem; color:#666; display:block; margin-bottom:4px;"><i class="fas fa-calendar-alt" style="margin-right:4px;"></i>접수일시</label><div style="font-size:0.95rem; color:#1f2937; background:#f0f9ff; padding:10px 12px; border-radius:8px; border-left:3px solid #3b82f6;"><i class="fas fa-clock" style="color:#3b82f6; margin-right:6px;"></i>' + escapeHtml(inquiry.created_at || '-') + '</div></div>';
         html += '</div>';
 
@@ -355,6 +455,56 @@ $inquiries = array_reverse($inquiries);
             }
 
             html += '</div></div>';
+        }
+
+        // 견적 데이터 (특가 페이지)
+        if (inquiry.quoteData) {
+            try {
+                const quote = typeof inquiry.quoteData === 'string' ? JSON.parse(inquiry.quoteData) : inquiry.quoteData;
+                if (quote && (quote.sinkbowl || quote.faucet || quote.total)) {
+                    html += '<div style="background:#fff; border-radius:12px; padding:20px; margin-bottom:15px; box-shadow:0 2px 8px rgba(0,0,0,0.08);">';
+                    html += '<h4 style="margin:0 0 15px; color:#1e3a5f; font-size:0.95rem; display:flex; align-items:center; gap:8px;"><i class="fas fa-calculator" style="color:#0ea5e9;"></i> 견적 상세</h4>';
+
+                    html += '<div class="quote-detail-section">';
+                    if (quote.sinkbowl) {
+                        html += '<div class="quote-detail-item"><strong>싱크볼:</strong> ' + escapeHtml(quote.sinkbowl) + ' (' + (quote.sinkbowlPrice || 0).toLocaleString() + '원)</div>';
+                    }
+                    if (quote.faucet) {
+                        html += '<div class="quote-detail-item"><strong>수전:</strong> ' + escapeHtml(quote.faucet) + ' (' + (quote.faucetPrice || 0).toLocaleString() + '원)</div>';
+                    }
+                    if (quote.options && quote.options.length > 0) {
+                        html += '<div class="quote-detail-item"><strong>추가옵션:</strong> ' + quote.options.join(', ') + '</div>';
+                    }
+                    if (quote.events) {
+                        let eventList = [];
+                        if (quote.events.multitrap) eventList.push('시공 인증샷 이벤트');
+                        if (quote.events.dispenser) eventList.push('리뷰 이벤트');
+                        if (eventList.length > 0) {
+                            html += '<div class="quote-detail-item"><strong>이벤트 참여:</strong> ' + eventList.join(', ') + '</div>';
+                        }
+                    }
+                    if (quote.install) {
+                        let installList = [];
+                        if (quote.install.purifier) installList.push('정수기 이동');
+                        if (quote.install.dishwasher) installList.push('식기세척기 연결');
+                        if (quote.install.backdrop) installList.push('뒤턱/젠다이 시공');
+                        if (installList.length > 0) {
+                            html += '<div class="quote-detail-item"><strong>설치환경:</strong> ' + installList.join(', ') + '</div>';
+                        }
+                    }
+                    if (quote.asWarning) {
+                        html += '<div class="quote-detail-item" style="color:#ef4444;"><i class="fas fa-exclamation-triangle"></i> 타사 수전 AS 불가 동의</div>';
+                    }
+                    html += '<div style="margin-top:12px; padding-top:12px; border-top:1px dashed #bae6fd; font-size:1.1rem; font-weight:700; color:#0284c7;">';
+                    html += '<i class="fas fa-won-sign"></i> 총 예상 견적: ' + (quote.total || 0).toLocaleString() + '원';
+                    html += '</div>';
+                    html += '</div>';
+
+                    html += '</div>';
+                }
+            } catch (e) {
+                console.log('Quote data parse error:', e);
+            }
         }
 
         // 추가 문의사항

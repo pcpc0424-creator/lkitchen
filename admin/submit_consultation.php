@@ -44,7 +44,10 @@ if (is_array($productRaw)) {
 $phone = trim($_POST['phone'] ?? '');
 $address = trim($_POST['address'] ?? '');
 $daytime = trim($_POST['daytime'] ?? '');
+$callTime = trim($_POST['callTime'] ?? '');
 $sinkInfo = trim($_POST['sinkInfo'] ?? '');
+$quoteData = trim($_POST['quoteData'] ?? '');
+$source = trim($_POST['source'] ?? '일반');
 $message = trim($_POST['message'] ?? '');
 
 // 유효성 검사
@@ -179,13 +182,19 @@ function writeConsultations($data) {
 }
 
 // CoolSMS 문자 발송 함수
-function sendSmsNotification($name, $product, $phone, $address = '') {
+function sendSmsNotification($name, $product, $phone, $address = '', $source = '일반') {
     $apiKey = COOLSMS_API_KEY;
     $apiSecret = COOLSMS_API_SECRET;
     $receiver = COOLSMS_RECEIVER;
 
     // 메시지 내용 (90바이트 초과 시 LMS 자동 전환)
-    $message = "[러블리키친 상담신청]\n";
+    // 특가 페이지 구분
+    if ($source !== '일반') {
+        $message = "[러블리키친 특가 상담]\n";
+        $message .= "출처: {$source}\n";
+    } else {
+        $message = "[러블리키친 상담신청]\n";
+    }
     $message .= "성함: {$name}\n";
     $message .= "모델: {$product}\n";
     $message .= "연락처: {$phone}";
@@ -258,7 +267,10 @@ $newConsultation = [
     'phone' => sanitize($phone),
     'address' => sanitize($address),
     'daytime' => sanitize($daytime),
+    'callTime' => sanitize($callTime),
     'sinkInfo' => sanitize($sinkInfo),
+    'quoteData' => $quoteData, // JSON 문자열 그대로 저장
+    'source' => sanitize($source), // 일반, 특가-싱크볼 등
     'message' => sanitize($message),
     'photo_countertop' => $photoCountertop,
     'photo_cabinet' => $photoCabinet,
@@ -275,7 +287,7 @@ $consultations[] = $newConsultation;
 // 파일에 저장
 if (writeConsultations($consultations)) {
     // SMS 알림 발송 (실패해도 상담 접수는 성공 처리)
-    sendSmsNotification($name, $product, $phone, $address);
+    sendSmsNotification($name, $product, $phone, $address, $source);
 
     echo json_encode(['success' => true, 'message' => '상담 신청이 성공적으로 접수되었습니다.'], JSON_UNESCAPED_UNICODE);
 } else {

@@ -38,10 +38,33 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['action'])) {
     }
 }
 
-// 새 문의 수 계산
+// 출처별 분류
+$allSources = [];
+foreach ($inquiries as $inquiry) {
+    $src = $inquiry['source'] ?? '일반';
+    if (!isset($allSources[$src])) {
+        $allSources[$src] = 0;
+    }
+    $allSources[$src]++;
+}
+
+// 필터 처리
+$filterSource = $_GET['source'] ?? 'all';
+if ($filterSource !== 'all') {
+    $inquiries = array_filter($inquiries, function($inquiry) use ($filterSource) {
+        return ($inquiry['source'] ?? '일반') === $filterSource;
+    });
+}
+
+// 새 문의 수 계산 (필터 적용 후)
 $newInquiries = array_filter($inquiries, function($inquiry) {
     return $inquiry['status'] === 'new';
 });
+
+// 전체 새 문의 수 (배지용)
+$allNewCount = count(array_filter(readJsonData('inquiries.json'), function($inquiry) {
+    return $inquiry['status'] === 'new';
+}));
 
 // 새 상담 수 계산
 $newConsultations = array_filter($consultations, function($consultation) {
@@ -63,6 +86,28 @@ $inquiries = array_reverse($inquiries);
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link rel="stylesheet" href="css/admin.css?v=2">
     <link rel="icon" type="image/png" href="/수정/fhrh.png">
+    <style>
+        .source-badge {
+            display: inline-block;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .source-general {
+            background: #d1fae5;
+            color: #065f46;
+        }
+        .source-special {
+            background: #dbeafe;
+            color: #1e40af;
+        }
+        .filter-tab:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+    </style>
 </head>
 <body>
     <div class="admin-wrapper">
@@ -117,8 +162,8 @@ $inquiries = array_reverse($inquiries);
                         <a href="inquiries.php" class="nav-link">
                             <i class="fas fa-envelope"></i>
                             <span>문의 관리</span>
-                            <?php if (count($newInquiries) > 0): ?>
-                            <span class="nav-badge"><?php echo count($newInquiries); ?></span>
+                            <?php if ($allNewCount > 0): ?>
+                            <span class="nav-badge"><?php echo $allNewCount; ?></span>
                             <?php endif; ?>
                         </a>
                     </li>
@@ -186,6 +231,22 @@ $inquiries = array_reverse($inquiries);
                 </div>
                 <?php endif; ?>
 
+                <!-- 출처별 필터 탭 -->
+                <div class="filter-tabs" style="margin-bottom: 20px; display:flex; flex-wrap:wrap; gap:10px;">
+                    <a href="?source=all" class="filter-tab <?php echo $filterSource === 'all' ? 'active' : ''; ?>" style="display:inline-flex; align-items:center; gap:8px; padding:10px 20px; border-radius:25px; text-decoration:none; font-weight:500; font-size:0.9rem; transition:all 0.3s; <?php echo $filterSource === 'all' ? 'background:linear-gradient(135deg, #3b82f6, #2563eb); color:#fff; box-shadow:0 4px 15px rgba(59,130,246,0.3);' : 'background:#fff; color:#64748b; border:1px solid #e2e8f0;'; ?>">
+                        <i class="fas fa-list"></i>
+                        <span>전체</span>
+                        <span style="background:<?php echo $filterSource === 'all' ? 'rgba(255,255,255,0.25)' : '#f1f5f9'; ?>; padding:2px 8px; border-radius:12px; font-size:0.8rem;"><?php echo array_sum($allSources); ?></span>
+                    </a>
+                    <?php foreach ($allSources as $sourceName => $sourceCount): ?>
+                    <a href="?source=<?php echo urlencode($sourceName); ?>" class="filter-tab <?php echo $filterSource === $sourceName ? 'active' : ''; ?>" style="display:inline-flex; align-items:center; gap:8px; padding:10px 20px; border-radius:25px; text-decoration:none; font-weight:500; font-size:0.9rem; transition:all 0.3s; <?php echo $filterSource === $sourceName ? 'background:linear-gradient(135deg, ' . ($sourceName === '일반' ? '#10b981, #059669' : '#0ea5e9, #0284c7') . '); color:#fff; box-shadow:0 4px 15px rgba(14,165,233,0.3);' : 'background:#fff; color:#64748b; border:1px solid #e2e8f0;'; ?>">
+                        <i class="fas <?php echo $sourceName === '일반' ? 'fa-globe' : 'fa-tag'; ?>"></i>
+                        <span><?php echo sanitize($sourceName); ?></span>
+                        <span style="background:<?php echo $filterSource === $sourceName ? 'rgba(255,255,255,0.25)' : '#f1f5f9'; ?>; padding:2px 8px; border-radius:12px; font-size:0.8rem;"><?php echo $sourceCount; ?></span>
+                    </a>
+                    <?php endforeach; ?>
+                </div>
+
                 <!-- 통계 -->
                 <div class="stats-grid" style="margin-bottom: 30px;">
                     <div class="stat-card">
@@ -194,7 +255,7 @@ $inquiries = array_reverse($inquiries);
                         </div>
                         <div class="stat-info">
                             <span class="stat-value"><?php echo count($inquiries); ?></span>
-                            <span class="stat-label">전체 문의</span>
+                            <span class="stat-label"><?php echo $filterSource === 'all' ? '전체 문의' : sanitize($filterSource) . ' 문의'; ?></span>
                         </div>
                     </div>
                     <div class="stat-card">
@@ -216,6 +277,7 @@ $inquiries = array_reverse($inquiries);
                             <thead>
                                 <tr>
                                     <th>번호</th>
+                                    <th>출처</th>
                                     <th>성함</th>
                                     <th>희망모델</th>
                                     <th>연락처</th>
@@ -228,12 +290,18 @@ $inquiries = array_reverse($inquiries);
                             <tbody>
                                 <?php if (empty($inquiries)): ?>
                                 <tr>
-                                    <td colspan="8" class="empty-message">접수된 문의가 없습니다.</td>
+                                    <td colspan="9" class="empty-message">접수된 문의가 없습니다.</td>
                                 </tr>
                                 <?php else: ?>
                                 <?php foreach ($inquiries as $inquiry): ?>
+                                <?php $inquirySource = $inquiry['source'] ?? '일반'; ?>
                                 <tr class="<?php echo $inquiry['status'] === 'new' ? 'row-new' : ''; ?>">
                                     <td data-label="번호"><?php echo $inquiry['id']; ?></td>
+                                    <td data-label="출처">
+                                        <span class="source-badge <?php echo $inquirySource === '일반' ? 'source-general' : 'source-special'; ?>">
+                                            <?php echo sanitize($inquirySource); ?>
+                                        </span>
+                                    </td>
                                     <td data-label="성함"><strong><?php echo sanitize($inquiry['name']); ?></strong></td>
                                     <td data-label="희망모델"><?php echo sanitize($inquiry['product']); ?></td>
                                     <td data-label="연락처">
@@ -302,22 +370,35 @@ $inquiries = array_reverse($inquiries);
     <script>
     function showDetail(inquiry) {
         const content = document.getElementById('detailContent');
-        let html = '<table style="width:100%; border-collapse:collapse;">';
+        const source = inquiry.source || '일반';
+        let html = '';
+
+        // 출처 배지 (특가인 경우)
+        if (source !== '일반') {
+            html += '<div style="background:linear-gradient(135deg, #0ea5e9, #0284c7); color:#fff; padding:10px 15px; border-radius:8px; margin-bottom:15px; display:inline-flex; align-items:center; gap:8px; font-weight:600;">';
+            html += '<i class="fas fa-tag"></i> ' + escapeHtml(source);
+            html += '</div>';
+        }
+
+        html += '<table style="width:100%; border-collapse:collapse;">';
 
         const fields = [
             {key: 'id', label: '문의번호'},
+            {key: 'source', label: '출처'},
             {key: 'name', label: '성함'},
             {key: 'product', label: '관심제품'},
             {key: 'phone', label: '연락처'},
             {key: 'address', label: '주소'},
-            {key: 'daytime', label: '통화가능시간'},
+            {key: 'callTime', label: '통화가능시간'},
+            {key: 'daytime', label: '낮시간설치'},
             {key: 'sinkInfo', label: '싱크대정보'},
             {key: 'message', label: '문의메시지'},
             {key: 'created_at', label: '접수일시'}
         ];
 
         fields.forEach(function(field) {
-            const value = inquiry[field.key] || '-';
+            let value = inquiry[field.key] || '-';
+            if (field.key === 'source' && !inquiry[field.key]) value = '일반';
             html += '<tr style="border-bottom:1px solid #eee;">';
             html += '<td style="padding:12px 10px; font-weight:600; color:#374151; width:100px; vertical-align:top;">' + field.label + '</td>';
             html += '<td style="padding:12px 10px; color:#1f2937;">' + escapeHtml(value) + '</td>';

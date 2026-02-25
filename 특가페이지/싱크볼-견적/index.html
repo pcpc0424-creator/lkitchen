@@ -1,0 +1,2063 @@
+<!DOCTYPE html>
+<html lang="ko-KR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>싱크볼 견적 계산기 | 러블리키친 - 신축 아파트 특판</title>
+    <meta name="description" content="러블리키친 싱크볼 견적 계산기 - 신축 아파트 특판 전용 아콴테 프리미엄 싱크볼 견적을 간편하게 계산하세요">
+    <meta name="keywords" content="러블리키친, 싱크볼, 견적, 아콴테, 신축아파트, 특판">
+
+    <!-- Preconnect -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+
+    <!-- Libraries -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="/수정/fhrh.png">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --primary: #0ea5e9;
+            --primary-dark: #0284c7;
+            --accent: #ef4444;
+            --accent-dark: #dc2626;
+            --purple: #8b5cf6;
+            --green: #10b981;
+            --navy: #051535;
+            --gray-50: #f8fafc;
+            --gray-100: #f1f5f9;
+            --gray-200: #e2e8f0;
+            --gray-300: #cbd5e1;
+            --gray-400: #94a3b8;
+            --gray-500: #64748b;
+            --gray-600: #475569;
+            --gray-700: #334155;
+            --gray-800: #1e293b;
+        }
+
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background: var(--gray-50);
+            color: var(--gray-800);
+            line-height: 1.6;
+            padding-bottom: 160px;
+        }
+
+        /* Header */
+        .calc-header {
+            background: linear-gradient(135deg, var(--navy) 0%, #0a2558 100%);
+            padding: 20px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .calc-header-inner {
+            max-width: 600px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .calc-header a {
+            color: #fff;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.9rem;
+        }
+
+        .calc-header img {
+            height: 32px;
+        }
+
+        .reset-btn {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.2);
+            color: #fff;
+            padding: 8px 16px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 0.85rem;
+            transition: all 0.3s;
+        }
+
+        .reset-btn:hover {
+            background: rgba(255,255,255,0.2);
+        }
+
+        /* Title Section */
+        .calc-title {
+            background: linear-gradient(135deg, var(--navy) 0%, #0a2558 100%);
+            padding: 30px 20px 50px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .calc-title h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .calc-title p {
+            font-size: 0.95rem;
+            opacity: 0.8;
+        }
+
+        /* Main Content */
+        .calc-container {
+            max-width: 600px;
+            margin: -30px auto 0;
+            padding: 0 15px;
+        }
+
+        /* Section Styles */
+        .calc-section {
+            background: #fff;
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .section-number {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 0.9rem;
+        }
+
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: var(--gray-800);
+        }
+
+        .section-note {
+            background: var(--gray-100);
+            border-radius: 10px;
+            padding: 12px 15px;
+            font-size: 0.85rem;
+            color: var(--gray-600);
+            margin-top: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .section-note i {
+            color: var(--primary);
+            margin-top: 2px;
+        }
+
+        /* Option Cards */
+        .option-grid {
+            display: grid;
+            gap: 12px;
+        }
+
+        .option-grid.cols-3 {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+        .option-grid.cols-2 {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media (max-width: 500px) {
+            .option-grid.cols-3 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        .option-card {
+            border: 2px solid var(--gray-200);
+            border-radius: 12px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            position: relative;
+        }
+
+        .option-card:hover {
+            border-color: var(--primary);
+            background: rgba(14, 165, 233, 0.03);
+        }
+
+        .option-card.selected {
+            border-color: var(--primary);
+            background: rgba(14, 165, 233, 0.08);
+        }
+
+        .option-card.special {
+            border-color: #f472b6;
+            background: linear-gradient(135deg, rgba(244, 114, 182, 0.05) 0%, rgba(236, 72, 153, 0.08) 100%);
+        }
+
+        .option-card.special.selected {
+            background: linear-gradient(135deg, rgba(244, 114, 182, 0.15) 0%, rgba(236, 72, 153, 0.2) 100%);
+        }
+
+        .option-card .special-badge {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 12px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.1); }
+        }
+
+        .option-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--gray-800);
+            margin-bottom: 5px;
+        }
+
+        .option-price {
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .option-desc {
+            font-size: 0.75rem;
+            color: var(--gray-500);
+            margin-top: 5px;
+        }
+
+        /* Faucet Cards with Video */
+        .faucet-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+        }
+
+        @media (max-width: 400px) {
+            .faucet-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .faucet-card {
+            border: 2px solid var(--gray-200);
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.3s;
+            position: relative;
+        }
+
+        .faucet-card:hover {
+            border-color: var(--primary);
+        }
+
+        .faucet-card.selected {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(14, 165, 233, 0.2);
+        }
+
+        .faucet-card.special {
+            border-color: #f472b6;
+        }
+
+        .faucet-card.special .special-badge {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            background: linear-gradient(135deg, #ec4899 0%, #db2777 100%);
+            color: #fff;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 4px 10px;
+            border-radius: 12px;
+            z-index: 2;
+        }
+
+        .faucet-card.warning {
+            border-color: var(--accent);
+        }
+
+        .faucet-media {
+            height: 120px;
+            background: var(--gray-100);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .faucet-media video,
+        .faucet-media img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .faucet-media .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 40px;
+            height: 40px;
+            background: rgba(0,0,0,0.5);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #fff;
+            opacity: 0;
+            transition: opacity 0.3s;
+            pointer-events: none;
+        }
+
+        .faucet-card:hover .play-icon {
+            opacity: 1;
+        }
+
+        .faucet-info {
+            padding: 12px;
+            text-align: center;
+        }
+
+        .faucet-name {
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--gray-800);
+            margin-bottom: 4px;
+        }
+
+        .faucet-price {
+            font-size: 0.85rem;
+            color: var(--primary);
+            font-weight: 500;
+        }
+
+        .faucet-warning {
+            font-size: 0.75rem;
+            color: var(--accent);
+            margin-top: 4px;
+        }
+
+        /* Checkbox Options */
+        .checkbox-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .checkbox-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 15px;
+            border: 2px solid var(--gray-200);
+            border-radius: 12px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .checkbox-item:hover {
+            border-color: var(--primary);
+        }
+
+        .checkbox-item.checked {
+            border-color: var(--primary);
+            background: rgba(14, 165, 233, 0.05);
+        }
+
+        .checkbox-item.event {
+            border-color: var(--purple);
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.05) 0%, rgba(124, 58, 237, 0.08) 100%);
+        }
+
+        .checkbox-item.event.checked {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.1) 0%, rgba(124, 58, 237, 0.15) 100%);
+        }
+
+        .checkbox-box {
+            width: 22px;
+            height: 22px;
+            border: 2px solid var(--gray-300);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.3s;
+        }
+
+        .checkbox-item.checked .checkbox-box {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: #fff;
+        }
+
+        .checkbox-item.event.checked .checkbox-box {
+            background: var(--purple);
+            border-color: var(--purple);
+        }
+
+        .checkbox-content {
+            flex: 1;
+        }
+
+        .checkbox-label {
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: var(--gray-800);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .checkbox-label .price {
+            color: var(--primary);
+            font-size: 0.85rem;
+        }
+
+        .checkbox-label .event-badge {
+            background: var(--purple);
+            color: #fff;
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 10px;
+        }
+
+        .checkbox-label .free-badge {
+            background: var(--green);
+            color: #fff;
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 10px;
+        }
+
+        .checkbox-desc {
+            font-size: 0.8rem;
+            color: var(--gray-500);
+            margin-top: 5px;
+        }
+
+        /* Event Section */
+        .event-section {
+            background: linear-gradient(135deg, rgba(139, 92, 246, 0.08) 0%, rgba(124, 58, 237, 0.12) 100%);
+            border: 2px solid var(--purple);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 20px;
+        }
+
+        .event-section .section-number {
+            background: linear-gradient(135deg, var(--purple) 0%, #7c3aed 100%);
+        }
+
+        .event-grid {
+            display: grid;
+            gap: 12px;
+        }
+
+        .event-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 15px;
+            background: rgba(255,255,255,0.8);
+            border-radius: 10px;
+            cursor: pointer;
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+
+        .event-item:hover {
+            background: #fff;
+            border-color: rgba(139, 92, 246, 0.3);
+        }
+
+        .event-item.checked {
+            background: #fff;
+            border-color: var(--purple);
+            box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+        }
+
+        .event-item .checkbox-box {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--gray-300);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            transition: all 0.3s;
+            color: transparent;
+        }
+
+        .event-item.checked .checkbox-box {
+            background: var(--purple);
+            border-color: var(--purple);
+            color: #fff;
+            transform: scale(1.1);
+        }
+
+        .event-icon {
+            width: 36px;
+            height: 36px;
+            background: var(--gray-300);
+            color: var(--gray-500);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s;
+        }
+
+        .event-item.checked .event-icon {
+            background: var(--purple);
+            color: #fff;
+        }
+
+        .event-text {
+            flex: 1;
+        }
+
+        .event-text strong {
+            display: block;
+            font-size: 0.9rem;
+            color: var(--gray-800);
+        }
+
+        .event-text span {
+            font-size: 0.8rem;
+            color: var(--purple);
+        }
+
+        /* Installation Section */
+        .install-item {
+            padding: 15px;
+            border: 2px solid var(--gray-200);
+            border-radius: 12px;
+            margin-bottom: 12px;
+        }
+
+        .install-item:last-child {
+            margin-bottom: 0;
+        }
+
+        .install-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+
+        .install-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .install-title i {
+            color: var(--primary);
+        }
+
+        .install-title span {
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+
+        .install-toggle {
+            width: 50px;
+            height: 28px;
+            background: var(--gray-300);
+            border-radius: 14px;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .install-toggle::after {
+            content: '';
+            position: absolute;
+            top: 3px;
+            left: 3px;
+            width: 22px;
+            height: 22px;
+            background: #fff;
+            border-radius: 50%;
+            transition: all 0.3s;
+        }
+
+        .install-item.active .install-toggle {
+            background: var(--primary);
+        }
+
+        .install-item.active .install-toggle::after {
+            left: 25px;
+        }
+
+        .install-details {
+            margin-top: 12px;
+            padding-top: 12px;
+            border-top: 1px solid var(--gray-200);
+            display: none;
+        }
+
+        .install-item.active .install-details {
+            display: block;
+        }
+
+        .install-price {
+            font-size: 0.9rem;
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .install-note {
+            font-size: 0.8rem;
+            color: var(--gray-500);
+            line-height: 1.5;
+        }
+
+        .install-sub {
+            background: var(--gray-100);
+            border-radius: 8px;
+            padding: 10px 12px;
+            margin-top: 10px;
+            font-size: 0.85rem;
+            color: var(--gray-600);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .install-sub i {
+            color: var(--green);
+        }
+
+        /* Sticky Footer */
+        .sticky-footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #fff;
+            border-top: 1px solid var(--gray-200);
+            padding: 15px 20px;
+            z-index: 100;
+            box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
+        }
+
+        .footer-inner {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .total-price {
+            text-align: center;
+            margin-bottom: 12px;
+        }
+
+        .total-label {
+            font-size: 0.85rem;
+            color: var(--gray-500);
+        }
+
+        .total-value {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--primary);
+        }
+
+        .total-value span {
+            font-size: 1rem;
+            font-weight: 500;
+        }
+
+        .footer-buttons {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+        }
+
+        .footer-btn {
+            padding: 14px 20px;
+            border-radius: 12px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+
+        .footer-btn.primary {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: #fff;
+        }
+
+        .footer-btn.secondary {
+            background: var(--gray-100);
+            color: var(--gray-700);
+        }
+
+        .footer-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.5);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background: #fff;
+            border-radius: 20px;
+            max-width: 400px;
+            width: 100%;
+            padding: 30px;
+            text-align: center;
+            animation: modalIn 0.3s ease;
+        }
+
+        @keyframes modalIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .modal-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 1.5rem;
+        }
+
+        .modal-icon.warning {
+            background: rgba(239, 68, 68, 0.1);
+            color: var(--accent);
+        }
+
+        .modal-icon.success {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--green);
+        }
+
+        .modal h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--gray-800);
+            margin-bottom: 10px;
+        }
+
+        .modal p {
+            font-size: 0.9rem;
+            color: var(--gray-600);
+            line-height: 1.6;
+            margin-bottom: 25px;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 10px;
+        }
+
+        .modal-btn {
+            flex: 1;
+            padding: 12px;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            border: none;
+            transition: all 0.3s;
+        }
+
+        .modal-btn.cancel {
+            background: var(--gray-100);
+            color: var(--gray-600);
+        }
+
+        .modal-btn.confirm {
+            background: var(--accent);
+            color: #fff;
+        }
+
+        .modal-btn.success {
+            background: var(--primary);
+            color: #fff;
+        }
+
+        /* Result Section */
+        .result-section {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 16px;
+            padding: 25px;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .result-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 20px;
+        }
+
+        .result-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .result-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+
+        .result-list {
+            background: rgba(255,255,255,0.1);
+            border-radius: 12px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .result-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 8px 0;
+            font-size: 0.9rem;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+        }
+
+        .result-item:last-child {
+            border-bottom: none;
+        }
+
+        .result-item .label {
+            opacity: 0.9;
+        }
+
+        .result-item .value {
+            font-weight: 600;
+        }
+
+        .result-warning {
+            background: rgba(239, 68, 68, 0.9);
+            border-radius: 8px;
+            padding: 10px 15px;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .result-total {
+            text-align: center;
+            padding-top: 15px;
+            border-top: 2px solid rgba(255,255,255,0.2);
+        }
+
+        .result-total-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+            margin-bottom: 5px;
+        }
+
+        .result-total-value {
+            font-size: 2rem;
+            font-weight: 800;
+        }
+
+        /* Dimension Calculator */
+        .dimension-calc {
+            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+            border: 2px solid var(--primary);
+            border-radius: 12px;
+            margin-bottom: 20px;
+            overflow: hidden;
+        }
+
+        .dimension-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px;
+            cursor: pointer;
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+
+        .dimension-header i:first-child {
+            font-size: 1.1rem;
+        }
+
+        .dimension-header span {
+            flex: 1;
+        }
+
+        .dimension-toggle {
+            background: var(--primary);
+            color: #fff;
+            border: none;
+            width: 28px;
+            height: 28px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .dimension-toggle.open {
+            transform: rotate(180deg);
+        }
+
+        .dimension-body {
+            padding: 0 15px 15px;
+        }
+
+        .dimension-guide {
+            background: #fff;
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+
+        .dimension-guide img {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 12px;
+        }
+
+        .dimension-guide-text p {
+            font-size: 0.85rem;
+            color: var(--gray-600);
+            margin-bottom: 6px;
+            line-height: 1.5;
+        }
+
+        .dimension-guide-text p strong {
+            color: var(--gray-800);
+        }
+
+        .dimension-inputs {
+            background: #fff;
+            border-radius: 10px;
+            padding: 15px;
+        }
+
+        .dimension-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .dimension-row:last-child {
+            margin-bottom: 0;
+        }
+
+        .dimension-input label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--gray-600);
+            margin-bottom: 6px;
+        }
+
+        .dimension-input .input-wrap {
+            display: flex;
+            align-items: center;
+            border: 2px solid var(--gray-200);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .dimension-input input {
+            flex: 1;
+            border: none;
+            padding: 10px 12px;
+            font-size: 1rem;
+            outline: none;
+            width: 100%;
+        }
+
+        .dimension-input input:focus {
+            background: rgba(14, 165, 233, 0.05);
+        }
+
+        .dimension-input .input-wrap span {
+            padding: 0 12px;
+            background: var(--gray-100);
+            color: var(--gray-500);
+            font-size: 0.85rem;
+        }
+
+        .dimension-result {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            border-radius: 12px;
+            padding: 20px;
+            margin-top: 15px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .recommend-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255,255,255,0.2);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 10px;
+        }
+
+        .recommend-model {
+            font-size: 2rem;
+            font-weight: 800;
+            margin-bottom: 8px;
+        }
+
+        .recommend-reason {
+            font-size: 0.85rem;
+            opacity: 0.9;
+            margin-bottom: 15px;
+        }
+
+        .recommend-apply {
+            background: #fff;
+            color: var(--primary-dark);
+            border: none;
+            padding: 12px 24px;
+            border-radius: 10px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+
+        .recommend-apply:hover {
+            transform: scale(1.05);
+        }
+
+        /* Free Gift Banner */
+        .free-gift-banner {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            border-radius: 12px;
+            padding: 15px 20px;
+            margin-bottom: 20px;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .free-gift-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+        }
+
+        .free-gift-text {
+            flex: 1;
+        }
+
+        .free-gift-text strong {
+            display: block;
+            font-size: 1rem;
+            margin-bottom: 4px;
+        }
+
+        .free-gift-text span {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="calc-header">
+        <div class="calc-header-inner">
+            <a href="/특가페이지/">
+                <i class="fas fa-arrow-left"></i>
+                <img src="/수정/fhrh.png" alt="Lovely Kitchen">
+            </a>
+            <button class="reset-btn" onclick="resetCalculator()">
+                <i class="fas fa-redo"></i> 초기화
+            </button>
+        </div>
+    </header>
+
+    <!-- Title -->
+    <section class="calc-title">
+        <h1>러블리키친 견적 계산기</h1>
+        <p>신축 아파트 특판 전용</p>
+    </section>
+
+    <!-- Main Content -->
+    <main class="calc-container">
+        <!-- 기본 증정 안내 -->
+        <div class="free-gift-banner">
+            <div class="free-gift-icon">
+                <i class="fas fa-gift"></i>
+            </div>
+            <div class="free-gift-text">
+                <strong>기본 증정: 건조바구니(중형)</strong>
+                <span>모든 싱크볼 구매 시 무료 증정됩니다</span>
+            </div>
+        </div>
+
+        <!-- 1. 싱크볼 선택 -->
+        <section class="calc-section">
+            <div class="section-header">
+                <div class="section-number">1</div>
+                <h2 class="section-title">싱크볼 선택</h2>
+            </div>
+
+            <!-- 치수 자동 추천 -->
+            <div class="dimension-calc">
+                <div class="dimension-header">
+                    <i class="fas fa-ruler-combined"></i>
+                    <span>치수 입력으로 자동 추천받기</span>
+                    <button class="dimension-toggle" onclick="toggleDimensionCalc()">
+                        <i class="fas fa-chevron-down"></i>
+                    </button>
+                </div>
+                <div class="dimension-body" id="dimensionBody" style="display:none;">
+                    <div class="dimension-guide">
+                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/09/sinkbowl-measure-guide.png" alt="실측 안내" onerror="this.style.display='none'">
+                        <div class="dimension-guide-text">
+                            <p><strong>타공 사이즈</strong>: 싱크대 상판에 뚫린 구멍의 가로/세로</p>
+                            <p><strong>상판 세로</strong>: 싱크대 상판의 세로 길이</p>
+                            <p><strong>하부장 가로</strong>: 싱크대 아래 수납장 내부 가로 길이</p>
+                        </div>
+                    </div>
+                    <div class="dimension-inputs">
+                        <div class="dimension-row">
+                            <div class="dimension-input">
+                                <label>타공 가로</label>
+                                <div class="input-wrap">
+                                    <input type="number" id="dimWidth" placeholder="예: 800" oninput="calculateRecommend()">
+                                    <span>mm</span>
+                                </div>
+                            </div>
+                            <div class="dimension-input">
+                                <label>타공 세로</label>
+                                <div class="input-wrap">
+                                    <input type="number" id="dimDepth" placeholder="예: 450" oninput="calculateRecommend()">
+                                    <span>mm</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="dimension-row">
+                            <div class="dimension-input">
+                                <label>상판 세로</label>
+                                <div class="input-wrap">
+                                    <input type="number" id="dimTop" placeholder="예: 600" oninput="calculateRecommend()">
+                                    <span>mm</span>
+                                </div>
+                            </div>
+                            <div class="dimension-input">
+                                <label>하부장 가로</label>
+                                <div class="input-wrap">
+                                    <input type="number" id="dimCabinet" placeholder="예: 900" oninput="calculateRecommend()">
+                                    <span>mm</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="dimension-result" id="dimensionResult" style="display:none;">
+                        <div class="recommend-badge">
+                            <i class="fas fa-magic"></i>
+                            <span>추천 모델</span>
+                        </div>
+                        <div class="recommend-model" id="recommendModel">AQ900</div>
+                        <div class="recommend-reason" id="recommendReason">입력하신 치수에 가장 적합한 모델입니다.</div>
+                        <button class="recommend-apply" onclick="applyRecommend()">
+                            <i class="fas fa-check"></i> 추천 모델 선택하기
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="option-grid cols-3" id="sinkbowlOptions">
+                <div class="option-card" data-value="AQ860" data-price="380000" onclick="selectSinkbowl(this)">
+                    <div class="option-name">AQ860</div>
+                    <div class="option-price">380,000원</div>
+                    <div class="option-desc">860mm</div>
+                </div>
+                <div class="option-card" data-value="AQ900" data-price="400000" onclick="selectSinkbowl(this)">
+                    <div class="option-name">AQ900</div>
+                    <div class="option-price">400,000원</div>
+                    <div class="option-desc">900mm</div>
+                </div>
+                <div class="option-card" data-value="AQ980" data-price="420000" onclick="selectSinkbowl(this)">
+                    <div class="option-name">AQ980</div>
+                    <div class="option-price">420,000원</div>
+                    <div class="option-desc">980mm</div>
+                </div>
+            </div>
+            <div class="section-note">
+                <i class="fas fa-info-circle"></i>
+                <span>치수 계산이 어려우신가요? 위 자동 추천 기능을 이용하시거나, 상담원에게 문의해 주세요.</span>
+            </div>
+        </section>
+
+        <!-- 2. 수전 선택 -->
+        <section class="calc-section">
+            <div class="section-header">
+                <div class="section-number">2</div>
+                <h2 class="section-title">수전 선택</h2>
+            </div>
+            <div class="faucet-grid" id="faucetOptions">
+                <div class="faucet-card" data-value="듀얼폭포수" data-price="100000" onclick="selectFaucet(this)">
+                    <div class="faucet-media">
+                        <video src="media/f1.mp4" muted loop playsinline></video>
+                        <div class="play-icon"><i class="fas fa-play"></i></div>
+                    </div>
+                    <div class="faucet-info">
+                        <div class="faucet-name">듀얼폭포수</div>
+                        <div class="faucet-price">100,000원</div>
+                    </div>
+                </div>
+                <div class="faucet-card" data-value="와이드플로우" data-price="190000" onclick="selectFaucet(this)">
+                    <div class="faucet-media">
+                        <video src="media/f2.mp4" muted loop playsinline></video>
+                        <div class="play-icon"><i class="fas fa-play"></i></div>
+                    </div>
+                    <div class="faucet-info">
+                        <div class="faucet-name">와이드플로우</div>
+                        <div class="faucet-price">190,000원</div>
+                    </div>
+                </div>
+                <div class="faucet-card" data-value="와이드플로우 듀오" data-price="200000" onclick="selectFaucet(this)">
+                    <div class="faucet-media" style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;background:linear-gradient(135deg, #c7d2fe 0%, #a5b4fc 100%);">
+                        <i class="fas fa-grip-lines-vertical" style="font-size:2.5rem;color:#4f46e5;"></i>
+                        <span style="font-size:0.75rem;color:#4f46e5;font-weight:500;">듀얼 토출</span>
+                    </div>
+                    <div class="faucet-info">
+                        <div class="faucet-name">와이드플로우 듀오</div>
+                        <div class="faucet-price">200,000원</div>
+                    </div>
+                </div>
+                <div class="faucet-card special" data-value="모르페" data-price="190000" onclick="selectFaucet(this)">
+                    <span class="special-badge">특가!</span>
+                    <div class="faucet-media">
+                        <video src="media/f4.mp4" muted loop playsinline></video>
+                        <div class="play-icon"><i class="fas fa-play"></i></div>
+                    </div>
+                    <div class="faucet-info">
+                        <div class="faucet-name">모르페</div>
+                        <div class="faucet-price">190,000원</div>
+                    </div>
+                </div>
+                <div class="faucet-card warning" data-value="타사 수전 장착" data-price="30000" data-warning="true" onclick="selectFaucet(this)">
+                    <div class="faucet-media" style="display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;background:linear-gradient(135deg, #fef2f2 0%, #fee2e2 100%);">
+                        <i class="fas fa-wrench" style="font-size:2.5rem;color:#94a3b8;"></i>
+                        <span style="font-size:0.75rem;color:#94a3b8;font-weight:500;">장착만 진행</span>
+                    </div>
+                    <div class="faucet-info">
+                        <div class="faucet-name">타사 수전 장착</div>
+                        <div class="faucet-price">30,000원</div>
+                        <div class="faucet-warning">AS불가</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. 이벤트 참여 -->
+        <section class="event-section">
+            <div class="section-header">
+                <div class="section-number"><i class="fas fa-gift"></i></div>
+                <h2 class="section-title">이벤트 참여</h2>
+            </div>
+            <div class="event-grid">
+                <div class="event-item" data-event="multitrap" onclick="toggleEvent(this)">
+                    <div class="checkbox-box"><i class="fas fa-check"></i></div>
+                    <div class="event-icon"><i class="fas fa-camera"></i></div>
+                    <div class="event-text">
+                        <strong>시공 인증샷 이벤트 참여</strong>
+                        <span>멀티트랩 무료 증정</span>
+                    </div>
+                </div>
+                <div class="event-item" data-event="dispenser" onclick="toggleEvent(this)">
+                    <div class="checkbox-box"><i class="fas fa-check"></i></div>
+                    <div class="event-icon"><i class="fab fa-instagram"></i></div>
+                    <div class="event-text">
+                        <strong>인스타그램 & 입주민 커뮤니티 리뷰 이벤트 참여</strong>
+                        <span>세제 디스펜서 무료 증정</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. 추가 옵션 -->
+        <section class="calc-section">
+            <div class="section-header">
+                <div class="section-number">3</div>
+                <h2 class="section-title">추가 옵션</h2>
+            </div>
+            <div class="checkbox-list" id="additionalOptions">
+                <div class="checkbox-item" data-value="올스텐 배수구" data-price="50000" onclick="toggleOption(this)">
+                    <div class="checkbox-box"><i class="fas fa-check"></i></div>
+                    <div class="checkbox-content">
+                        <div class="checkbox-label">
+                            올스텐 배수구
+                            <span class="price">+50,000원</span>
+                        </div>
+                        <div class="checkbox-desc">프리미엄 스테인리스 배수구</div>
+                    </div>
+                </div>
+                <div class="checkbox-item" data-value="컵워셔" data-price="50000" onclick="toggleOption(this)">
+                    <div class="checkbox-box"><i class="fas fa-check"></i></div>
+                    <div class="checkbox-content">
+                        <div class="checkbox-label">
+                            컵워셔
+                            <span class="price">+50,000원</span>
+                        </div>
+                        <div class="checkbox-desc">컵 세척을 위한 스프레이 장치</div>
+                    </div>
+                </div>
+                <div class="checkbox-item" data-value="건조바구니(소형)" data-price="16000" onclick="toggleOption(this)">
+                    <div class="checkbox-box"><i class="fas fa-check"></i></div>
+                    <div class="checkbox-content">
+                        <div class="checkbox-label">
+                            건조바구니(소형)
+                            <span class="price">+16,000원</span>
+                        </div>
+                        <div class="checkbox-desc">추가 건조바구니가 필요하신 분께 추천</div>
+                    </div>
+                </div>
+                <div class="checkbox-item" data-value="세제 디스펜서" data-price="20000" data-event-free="dispenser" onclick="toggleOption(this)">
+                    <div class="checkbox-box"><i class="fas fa-check"></i></div>
+                    <div class="checkbox-content">
+                        <div class="checkbox-label">
+                            세제 디스펜서
+                            <span class="price">+20,000원</span>
+                            <span class="event-badge" style="display:none;">이벤트 무료</span>
+                        </div>
+                        <div class="checkbox-desc">리뷰 이벤트 참여 시 무료</div>
+                    </div>
+                </div>
+                <div class="checkbox-item" data-value="멀티트랩" data-price="20000" data-event-free="multitrap" onclick="toggleOption(this)">
+                    <div class="checkbox-box"><i class="fas fa-check"></i></div>
+                    <div class="checkbox-content">
+                        <div class="checkbox-label">
+                            멀티트랩
+                            <span class="price">+20,000원</span>
+                            <span class="event-badge" style="display:none;">이벤트 무료</span>
+                        </div>
+                        <div class="checkbox-desc">인증샷 이벤트 참여 시 무료 / 식세기 연결 시 권장</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. 설치 환경 -->
+        <section class="calc-section">
+            <div class="section-header">
+                <div class="section-number">4</div>
+                <h2 class="section-title">설치 환경</h2>
+            </div>
+
+            <div class="install-item" data-value="정수기 이동" data-price="30000" id="purifierInstall">
+                <div class="install-header" onclick="toggleInstall(this.parentElement)">
+                    <div class="install-title">
+                        <i class="fas fa-tint"></i>
+                        <span>정수기 이동</span>
+                    </div>
+                    <div class="install-toggle"></div>
+                </div>
+                <div class="install-details">
+                    <div class="install-price">+30,000원</div>
+                    <div class="install-note">3mm에 가까운 싱크볼에 구멍을 뚫는 작업이다 보니 추가 시간이 소요되며, 이에 따른 시공비가 발생됩니다.</div>
+                </div>
+            </div>
+
+            <div class="install-item" data-value="식세기 연결" data-price="0" id="dishwasherInstall">
+                <div class="install-header" onclick="toggleInstall(this.parentElement)">
+                    <div class="install-title">
+                        <i class="fas fa-utensils"></i>
+                        <span>식기세척기 연결</span>
+                    </div>
+                    <div class="install-toggle"></div>
+                </div>
+                <div class="install-details">
+                    <div class="install-sub">
+                        <i class="fas fa-check-circle"></i>
+                        <span>기존 연결 관 재연결 (무상 서비스)</span>
+                    </div>
+                    <div class="install-note" style="margin-top:10px;">
+                        <i class="fas fa-lightbulb" style="color:#f59e0b;"></i>
+                        식기세척기 사용 시 멀티트랩 설치를 권장합니다.
+                    </div>
+                </div>
+            </div>
+
+            <div class="install-item" data-value="뒤턱/젠다이 시공" data-price="50000" id="backdropInstall">
+                <div class="install-header" onclick="toggleInstall(this.parentElement)">
+                    <div class="install-title">
+                        <i class="fas fa-ruler-vertical"></i>
+                        <span>뒤턱/젠다이 시공</span>
+                    </div>
+                    <div class="install-toggle"></div>
+                </div>
+                <div class="install-details">
+                    <div class="install-price">+50,000원</div>
+                    <div class="install-note">간혹 싱크가 걸려 인입이 안 되는 경우에만 진행됩니다. 1시간 정도 소요되는 기술력이 필요한 시공으로, 현장에서만 시공 여부 확인이 가능한 점 양해 부탁드립니다.</div>
+                    <div class="section-note" style="margin-top:10px;">
+                        <i class="fas fa-question-circle"></i>
+                        <span>뒤턱이 있는 경우 체크해 주세요.</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Result Preview -->
+        <section class="result-section" id="resultSection">
+            <div class="result-header">
+                <div class="result-icon"><i class="fas fa-receipt"></i></div>
+                <h3 class="result-title">아콴테 싱크볼 교체 예상 견적</h3>
+            </div>
+            <div class="result-list" id="resultList">
+                <div class="result-item">
+                    <span class="label">선택된 항목이 없습니다</span>
+                </div>
+            </div>
+            <div class="result-warning" id="asWarning" style="display:none;">
+                <i class="fas fa-exclamation-triangle"></i>
+                <span>누수 발생 시 AS 불가에 동의하셨습니다</span>
+            </div>
+            <div class="result-total">
+                <div class="result-total-label">총 예상 견적</div>
+                <div class="result-total-value" id="resultTotal">0원</div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Sticky Footer -->
+    <footer class="sticky-footer">
+        <div class="footer-inner">
+            <div class="total-price">
+                <div class="total-label">예상 견적</div>
+                <div class="total-value"><span id="totalPrice">0</span><span>원</span></div>
+            </div>
+            <div class="footer-buttons">
+                <button class="footer-btn secondary" onclick="copyQuote()">
+                    <i class="fas fa-copy"></i>
+                    견적 복사
+                </button>
+                <button class="footer-btn primary" onclick="requestConsultation()">
+                    <i class="fas fa-comment-dots"></i>
+                    상담 신청
+                </button>
+            </div>
+        </div>
+    </footer>
+
+    <!-- AS Warning Modal -->
+    <div class="modal-overlay" id="asModal">
+        <div class="modal">
+            <div class="modal-icon warning">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <h3>AS 불가 안내</h3>
+            <p>타사 수전 장착 선택 시 누수 발생에 대한 AS가 불가합니다.<br><br>이에 동의하시겠습니까?</p>
+            <div class="modal-buttons">
+                <button class="modal-btn cancel" onclick="closeModal('asModal'); cancelFaucetSelection();">취소</button>
+                <button class="modal-btn confirm" onclick="closeModal('asModal'); confirmAsWarning();">동의</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Copy Success Modal -->
+    <div class="modal-overlay" id="copyModal">
+        <div class="modal">
+            <div class="modal-icon success">
+                <i class="fas fa-check"></i>
+            </div>
+            <h3>복사 완료!</h3>
+            <p>견적이 클립보드에 복사되었습니다.<br>메모장이나 메신저에 붙여넣기 하세요.</p>
+            <div class="modal-buttons">
+                <button class="modal-btn success" onclick="closeModal('copyModal')">확인</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Consultation Modal -->
+    <div class="modal-overlay" id="consultModal">
+        <div class="modal">
+            <div class="modal-icon success">
+                <i class="fas fa-paper-plane"></i>
+            </div>
+            <h3>상담 신청</h3>
+            <p>견적 내용과 함께 상담 신청 페이지로 이동합니다.</p>
+            <div class="modal-buttons">
+                <button class="modal-btn cancel" onclick="closeModal('consultModal')">취소</button>
+                <button class="modal-btn success" onclick="goToConsultation()">상담 신청하기</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Reset Modal -->
+    <div class="modal-overlay" id="resetModal">
+        <div class="modal">
+            <div class="modal-icon warning">
+                <i class="fas fa-redo"></i>
+            </div>
+            <h3>초기화</h3>
+            <p>모든 선택 항목이 초기화됩니다.<br>계속하시겠습니까?</p>
+            <div class="modal-buttons">
+                <button class="modal-btn cancel" onclick="closeModal('resetModal')">취소</button>
+                <button class="modal-btn confirm" onclick="confirmReset()">초기화</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // State
+        let state = {
+            sinkbowl: null,
+            sinkbowlPrice: 0,
+            faucet: null,
+            faucetPrice: 0,
+            asWarning: false,
+            events: {
+                multitrap: false,
+                dispenser: false
+            },
+            options: [],
+            optionPrices: {},
+            install: {
+                purifier: false,
+                dishwasher: false,
+                backdrop: false
+            }
+        };
+
+        // Select Sinkbowl
+        function selectSinkbowl(element) {
+            document.querySelectorAll('#sinkbowlOptions .option-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            element.classList.add('selected');
+            state.sinkbowl = element.dataset.value;
+            state.sinkbowlPrice = parseInt(element.dataset.price);
+            updateTotal();
+        }
+
+        // Select Faucet
+        function selectFaucet(element) {
+            const isWarning = element.dataset.warning === 'true';
+
+            if (isWarning && !state.asWarning) {
+                // Store pending selection
+                window.pendingFaucet = element;
+                openModal('asModal');
+                return;
+            }
+
+            document.querySelectorAll('#faucetOptions .faucet-card').forEach(card => {
+                card.classList.remove('selected');
+            });
+            element.classList.add('selected');
+            state.faucet = element.dataset.value;
+            state.faucetPrice = parseInt(element.dataset.price);
+
+            // Reset AS warning if not warning faucet
+            if (!isWarning) {
+                state.asWarning = false;
+            }
+
+            updateTotal();
+        }
+
+        function confirmAsWarning() {
+            state.asWarning = true;
+            if (window.pendingFaucet) {
+                document.querySelectorAll('#faucetOptions .faucet-card').forEach(card => {
+                    card.classList.remove('selected');
+                });
+                window.pendingFaucet.classList.add('selected');
+                state.faucet = window.pendingFaucet.dataset.value;
+                state.faucetPrice = parseInt(window.pendingFaucet.dataset.price);
+                window.pendingFaucet = null;
+            }
+            updateTotal();
+        }
+
+        function cancelFaucetSelection() {
+            window.pendingFaucet = null;
+        }
+
+        // Toggle Event
+        function toggleEvent(element) {
+            element.classList.toggle('checked');
+            const eventType = element.dataset.event;
+            state.events[eventType] = element.classList.contains('checked');
+
+            // Update option badges
+            updateOptionBadges();
+            updateTotal();
+        }
+
+        function updateOptionBadges() {
+            document.querySelectorAll('#additionalOptions .checkbox-item').forEach(item => {
+                const eventFree = item.dataset.eventFree;
+                if (eventFree && state.events[eventFree]) {
+                    item.querySelector('.event-badge').style.display = 'inline';
+                    item.querySelector('.price').style.display = 'none';
+                    item.classList.add('event');
+                } else if (eventFree) {
+                    item.querySelector('.event-badge').style.display = 'none';
+                    item.querySelector('.price').style.display = 'inline';
+                    item.classList.remove('event');
+                }
+            });
+        }
+
+        // Toggle Option
+        function toggleOption(element) {
+            element.classList.toggle('checked');
+            const value = element.dataset.value;
+            const price = parseInt(element.dataset.price);
+            const eventFree = element.dataset.eventFree;
+
+            if (element.classList.contains('checked')) {
+                state.options.push(value);
+                state.optionPrices[value] = (eventFree && state.events[eventFree]) ? 0 : price;
+            } else {
+                state.options = state.options.filter(opt => opt !== value);
+                delete state.optionPrices[value];
+            }
+
+            updateTotal();
+        }
+
+        // Toggle Install
+        function toggleInstall(element) {
+            element.classList.toggle('active');
+            const id = element.id;
+
+            if (id === 'purifierInstall') {
+                state.install.purifier = element.classList.contains('active');
+            } else if (id === 'dishwasherInstall') {
+                state.install.dishwasher = element.classList.contains('active');
+            } else if (id === 'backdropInstall') {
+                state.install.backdrop = element.classList.contains('active');
+            }
+
+            updateTotal();
+        }
+
+        // Calculate Total
+        function calculateTotal() {
+            let total = 0;
+
+            total += state.sinkbowlPrice;
+            total += state.faucetPrice;
+
+            Object.values(state.optionPrices).forEach(price => {
+                total += price;
+            });
+
+            if (state.install.purifier) total += 30000;
+            if (state.install.backdrop) total += 50000;
+
+            return total;
+        }
+
+        // Update Total Display
+        function updateTotal() {
+            const total = calculateTotal();
+            document.getElementById('totalPrice').textContent = total.toLocaleString();
+            document.getElementById('resultTotal').textContent = total.toLocaleString() + '원';
+
+            // Update result list
+            updateResultList();
+
+            // Update AS warning
+            document.getElementById('asWarning').style.display = state.asWarning ? 'flex' : 'none';
+        }
+
+        // Update Result List
+        function updateResultList() {
+            const resultList = document.getElementById('resultList');
+            let html = '';
+
+            if (state.sinkbowl) {
+                html += `<div class="result-item"><span class="label">싱크볼</span><span class="value">${state.sinkbowl}</span></div>`;
+                html += `<div class="result-item"><span class="label">건조바구니(중형)</span><span class="value" style="color:#10b981;">(기본 증정)</span></div>`;
+            }
+
+            if (state.faucet) {
+                html += `<div class="result-item"><span class="label">수전</span><span class="value">${state.faucet}</span></div>`;
+            }
+
+            state.options.forEach(opt => {
+                const price = state.optionPrices[opt];
+                const priceText = price === 0 ? '(이벤트 무료)' : `(+${price.toLocaleString()}원)`;
+                html += `<div class="result-item"><span class="label">${opt}</span><span class="value">${priceText}</span></div>`;
+            });
+
+            if (state.install.purifier) {
+                html += `<div class="result-item"><span class="label">정수기 이동</span><span class="value">(+30,000원)</span></div>`;
+            }
+
+            if (state.install.dishwasher) {
+                html += `<div class="result-item"><span class="label">식기세척기 연결</span><span class="value">(무상 서비스)</span></div>`;
+            }
+
+            if (state.install.backdrop) {
+                html += `<div class="result-item"><span class="label">뒤턱/젠다이 시공</span><span class="value">(+50,000원)</span></div>`;
+            }
+
+            // Events
+            if (state.events.multitrap) {
+                html += `<div class="result-item"><span class="label">인증샷 이벤트</span><span class="value">참여</span></div>`;
+            }
+            if (state.events.dispenser) {
+                html += `<div class="result-item"><span class="label">리뷰 이벤트</span><span class="value">참여</span></div>`;
+            }
+
+            if (html === '') {
+                html = '<div class="result-item"><span class="label">선택된 항목이 없습니다</span></div>';
+            }
+
+            resultList.innerHTML = html;
+        }
+
+        // Generate Quote Text
+        function generateQuote() {
+            let lines = ['[아콴테 싱크볼 교체 예상 견적]', ''];
+
+            if (state.sinkbowl) {
+                lines.push(`▪ ${state.sinkbowl}`);
+                lines.push(`▪ 건조바구니(중형) - 기본 증정`);
+            }
+
+            if (state.faucet) {
+                lines.push(`▪ ${state.faucet}`);
+            }
+
+            state.options.forEach(opt => {
+                lines.push(`▪ ${opt}`);
+            });
+
+            if (state.install.purifier) {
+                lines.push('▪ 정수기 이동');
+            }
+
+            if (state.install.dishwasher) {
+                lines.push('▪ 식기세척기 연결');
+            }
+
+            if (state.install.backdrop) {
+                lines.push('▪ 뒤턱/젠다이 시공');
+            }
+
+            if (state.events.multitrap) {
+                lines.push('▪ 시공 인증샷 이벤트 참여');
+            }
+
+            if (state.events.dispenser) {
+                lines.push('▪ 리뷰 이벤트 참여');
+            }
+
+            lines.push('');
+            lines.push(`💰 총 예상 견적: ${calculateTotal().toLocaleString()}원`);
+
+            if (state.asWarning) {
+                lines.push('');
+                lines.push('⚠️ 누수 발생 시 AS 불가에 동의하셨습니다');
+            }
+
+            return lines.join('\n');
+        }
+
+        // Copy Quote
+        function copyQuote() {
+            const quote = generateQuote();
+
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(quote).then(() => {
+                    openModal('copyModal');
+                });
+            } else {
+                // Fallback
+                const textarea = document.createElement('textarea');
+                textarea.value = quote;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                openModal('copyModal');
+            }
+        }
+
+        // Request Consultation
+        function requestConsultation() {
+            const quote = generateQuote();
+
+            if (navigator.clipboard) {
+                navigator.clipboard.writeText(quote).then(() => {
+                    openModal('consultModal');
+                });
+            } else {
+                const textarea = document.createElement('textarea');
+                textarea.value = quote;
+                document.body.appendChild(textarea);
+                textarea.select();
+                document.execCommand('copy');
+                document.body.removeChild(textarea);
+                openModal('consultModal');
+            }
+        }
+
+        // Go to Consultation Page
+        function goToConsultation() {
+            // Save quote data to localStorage
+            const quoteData = {
+                sinkbowl: state.sinkbowl,
+                sinkbowlPrice: state.sinkbowlPrice,
+                faucet: state.faucet,
+                faucetPrice: state.faucetPrice,
+                options: state.options,
+                optionPrices: state.optionPrices,
+                events: state.events,
+                install: state.install,
+                asWarning: state.asWarning,
+                total: calculateTotal()
+            };
+            localStorage.setItem('sinkbowlQuote', JSON.stringify(quoteData));
+
+            closeModal('consultModal');
+            window.location.href = '상담/';
+        }
+
+        // Reset Calculator
+        function resetCalculator() {
+            openModal('resetModal');
+        }
+
+        function confirmReset() {
+            closeModal('resetModal');
+
+            // Reset state
+            state = {
+                sinkbowl: null,
+                sinkbowlPrice: 0,
+                faucet: null,
+                faucetPrice: 0,
+                asWarning: false,
+                events: {
+                    multitrap: false,
+                    dispenser: false
+                },
+                options: [],
+                optionPrices: {},
+                install: {
+                    purifier: false,
+                    dishwasher: false,
+                    backdrop: false
+                }
+            };
+
+            // Reset UI
+            document.querySelectorAll('.selected, .checked, .active').forEach(el => {
+                el.classList.remove('selected', 'checked', 'active');
+            });
+
+            updateOptionBadges();
+            updateTotal();
+        }
+
+        // Modal Functions
+        function openModal(id) {
+            document.getElementById(id).classList.add('active');
+        }
+
+        function closeModal(id) {
+            document.getElementById(id).classList.remove('active');
+        }
+
+        // Video Hover Play
+        document.querySelectorAll('.faucet-card video').forEach(video => {
+            const card = video.closest('.faucet-card');
+            let playPromise = null;
+
+            card.addEventListener('mouseenter', () => {
+                playPromise = video.play();
+            });
+
+            card.addEventListener('mouseleave', () => {
+                if (playPromise !== null) {
+                    playPromise.then(() => {
+                        video.pause();
+                        video.currentTime = 0;
+                    }).catch(() => {});
+                }
+            });
+
+            // Touch devices
+            card.addEventListener('touchstart', () => {
+                playPromise = video.play();
+            }, { passive: true });
+        });
+
+        // Dimension Calculator
+        let recommendedModel = null;
+
+        function toggleDimensionCalc() {
+            const body = document.getElementById('dimensionBody');
+            const toggle = document.querySelector('.dimension-toggle');
+
+            if (body.style.display === 'none') {
+                body.style.display = 'block';
+                toggle.classList.add('open');
+            } else {
+                body.style.display = 'none';
+                toggle.classList.remove('open');
+            }
+        }
+
+        function calculateRecommend() {
+            const width = parseInt(document.getElementById('dimWidth').value) || 0;
+            const depth = parseInt(document.getElementById('dimDepth').value) || 0;
+            const top = parseInt(document.getElementById('dimTop').value) || 0;
+            const cabinet = parseInt(document.getElementById('dimCabinet').value) || 0;
+
+            // 모든 값이 입력되었는지 확인
+            if (width === 0 || depth === 0) {
+                document.getElementById('dimensionResult').style.display = 'none';
+                return;
+            }
+
+            let model = null;
+            let reason = '';
+
+            // 싱크볼 사양
+            // AQ860: 860x480mm (타공 사이즈 기준)
+            // AQ900: 900x480mm
+            // AQ980: 980x480mm
+
+            // 타공 가로 기준으로 추천
+            if (width >= 950) {
+                model = 'AQ980';
+                reason = '타공 가로가 950mm 이상으로 AQ980이 적합합니다.';
+            } else if (width >= 880) {
+                model = 'AQ900';
+                reason = '타공 가로가 880-950mm 사이로 AQ900이 적합합니다.';
+            } else if (width >= 820) {
+                model = 'AQ860';
+                reason = '타공 가로가 820-880mm 사이로 AQ860이 적합합니다.';
+            } else {
+                model = 'AQ860';
+                reason = '타공 사이즈가 작아 가장 작은 AQ860을 추천합니다. 상담을 권장드립니다.';
+            }
+
+            // 하부장 가로 체크
+            if (cabinet > 0) {
+                if (model === 'AQ980' && cabinet < 1050) {
+                    model = 'AQ900';
+                    reason = '하부장 가로가 좁아 AQ900을 추천합니다.';
+                } else if (model === 'AQ900' && cabinet < 970) {
+                    model = 'AQ860';
+                    reason = '하부장 가로가 좁아 AQ860을 추천합니다.';
+                }
+            }
+
+            recommendedModel = model;
+            document.getElementById('recommendModel').textContent = model;
+            document.getElementById('recommendReason').textContent = reason;
+            document.getElementById('dimensionResult').style.display = 'block';
+        }
+
+        function applyRecommend() {
+            if (!recommendedModel) return;
+
+            const cards = document.querySelectorAll('#sinkbowlOptions .option-card');
+            cards.forEach(card => {
+                if (card.dataset.value === recommendedModel) {
+                    selectSinkbowl(card);
+                    // 스크롤 이동
+                    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }
+            });
+        }
+
+        // Initialize
+        updateTotal();
+    </script>
+</body>
+</html>

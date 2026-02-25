@@ -39,6 +39,8 @@ $address = trim($_POST['address'] ?? '');
 $daytime = trim($_POST['daytime'] ?? '');
 $sinkInfo = trim($_POST['sinkInfo'] ?? '');
 $message = trim($_POST['message'] ?? '');
+$source = trim($_POST['source'] ?? '일반');
+$callTime = trim($_POST['callTime'] ?? '');
 
 // 유효성 검사
 if (empty($name)) {
@@ -78,13 +80,18 @@ function writeInquiries($data) {
 }
 
 // CoolSMS 문자 발송 함수
-function sendSmsNotification($name, $product, $phone, $address = '') {
+function sendSmsNotification($name, $product, $phone, $address = '', $source = '일반') {
     $apiKey = COOLSMS_API_KEY;
     $apiSecret = COOLSMS_API_SECRET;
     $receiver = COOLSMS_RECEIVER;
 
     // 메시지 내용 (90바이트 초과 시 LMS 자동 전환)
-    $message = "[러블리키친 상담접수]\n";
+    if ($source !== '일반') {
+        $message = "[러블리키친 특가 문의]\n";
+        $message .= "출처: {$source}\n";
+    } else {
+        $message = "[러블리키친 문의접수]\n";
+    }
     $message .= "성함: {$name}\n";
     $message .= "모델: {$product}\n";
     $message .= "연락처: {$phone}";
@@ -153,8 +160,10 @@ $newInquiry = [
     'phone' => sanitize($phone),
     'address' => sanitize($address),
     'daytime' => sanitize($daytime),
+    'callTime' => sanitize($callTime),
     'sinkInfo' => sanitize($sinkInfo),
     'message' => sanitize($message),
+    'source' => sanitize($source), // 일반, 특가페이지 등
     'status' => 'new', // new, read, replied
     'created_at' => date('Y-m-d H:i:s'),
     'read_at' => null,
@@ -168,7 +177,7 @@ $inquiries[] = $newInquiry;
 // 파일에 저장
 if (writeInquiries($inquiries)) {
     // SMS 알림 발송 (실패해도 문의 접수는 성공 처리)
-    sendSmsNotification($name, $product, $phone, $address);
+    sendSmsNotification($name, $product, $phone, $address, $source);
 
     echo json_encode(['success' => true, 'message' => '문의가 성공적으로 접수되었습니다.'], JSON_UNESCAPED_UNICODE);
 } else {
