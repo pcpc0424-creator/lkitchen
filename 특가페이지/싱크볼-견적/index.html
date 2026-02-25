@@ -1158,6 +1158,19 @@
             font-size: 0.85rem;
             opacity: 0.9;
         }
+
+        /* Measure Guide Image */
+        .measure-guide {
+            margin: 20px 0;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+
+        .measure-guide img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -1262,6 +1275,11 @@
                         </button>
                     </div>
                 </div>
+            </div>
+
+            <!-- 실측 방법 안내 이미지 -->
+            <div class="measure-guide">
+                <img src="measure_guide.jpg" alt="실측 방법 안내" onerror="this.parentElement.innerHTML='<div style=\'padding:40px;text-align:center;color:#94a3b8;background:#f1f5f9;border-radius:12px;\'><i class=\'fas fa-image\' style=\'font-size:2rem;margin-bottom:10px;display:block;\'></i>measure_guide.jpg 파일을 폴더에 넣어주세요</div>'">
             </div>
 
             <div class="option-grid cols-3" id="sinkbowlOptions">
