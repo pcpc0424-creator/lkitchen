@@ -936,76 +936,68 @@
 
         /* Dimension Calculator */
         .dimension-calc {
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-            border: 2px solid var(--primary);
+            background: #fff;
+            border: 2px solid var(--gray-200);
             border-radius: 12px;
             margin-bottom: 20px;
             overflow: hidden;
         }
 
+        .dimension-calc.active {
+            border-color: var(--primary);
+        }
+
         .dimension-header {
             display: flex;
-            align-items: center;
-            gap: 10px;
+            align-items: flex-start;
+            gap: 12px;
             padding: 15px;
             cursor: pointer;
-            font-weight: 600;
-            color: var(--primary-dark);
         }
 
-        .dimension-header i:first-child {
-            font-size: 1.1rem;
+        .dimension-check {
+            width: 24px;
+            height: 24px;
+            border: 2px solid var(--gray-300);
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: transparent;
+            transition: all 0.3s;
+            margin-top: 2px;
         }
 
-        .dimension-header span {
+        .dimension-calc.active .dimension-check {
+            background: var(--primary);
+            border-color: var(--primary);
+            color: #fff;
+        }
+
+        .dimension-header-text {
             flex: 1;
         }
 
-        .dimension-toggle {
-            background: var(--primary);
-            color: #fff;
-            border: none;
-            width: 28px;
-            height: 28px;
-            border-radius: 50%;
-            cursor: pointer;
-            transition: transform 0.3s;
+        .dimension-header-text strong {
+            display: block;
+            font-size: 0.95rem;
+            color: var(--gray-800);
+            margin-bottom: 4px;
         }
 
-        .dimension-toggle.open {
-            transform: rotate(180deg);
+        .dimension-header-text span {
+            font-size: 0.8rem;
+            color: var(--gray-500);
+            line-height: 1.5;
         }
 
         .dimension-body {
             padding: 0 15px 15px;
         }
 
-        .dimension-guide {
-            background: #fff;
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 15px;
-        }
-
-        .dimension-guide img {
-            width: 100%;
-            border-radius: 8px;
-            margin-bottom: 12px;
-        }
-
-        .dimension-guide-text p {
-            font-size: 0.85rem;
-            color: var(--gray-600);
-            margin-bottom: 6px;
-            line-height: 1.5;
-        }
-
-        .dimension-guide-text p strong {
-            color: var(--gray-800);
-        }
-
         .dimension-inputs {
-            background: #fff;
+            background: var(--gray-50);
             border-radius: 10px;
             padding: 15px;
         }
@@ -1032,29 +1024,53 @@
         .dimension-input .input-wrap {
             display: flex;
             align-items: center;
+            background: #fff;
             border: 2px solid var(--gray-200);
             border-radius: 8px;
             overflow: hidden;
         }
 
+        .dimension-input .input-wrap:focus-within {
+            border-color: var(--primary);
+        }
+
         .dimension-input input {
             flex: 1;
             border: none;
-            padding: 10px 12px;
+            padding: 12px;
             font-size: 1rem;
             outline: none;
             width: 100%;
-        }
-
-        .dimension-input input:focus {
-            background: rgba(14, 165, 233, 0.05);
+            background: transparent;
         }
 
         .dimension-input .input-wrap span {
             padding: 0 12px;
-            background: var(--gray-100);
-            color: var(--gray-500);
+            color: var(--gray-400);
             font-size: 0.85rem;
+        }
+
+        .dimension-calc-btn {
+            width: 100%;
+            padding: 14px;
+            margin-top: 15px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+
+        .dimension-calc-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(14, 165, 233, 0.3);
         }
 
         .dimension-result {
@@ -1184,37 +1200,31 @@
                 <h2 class="section-title">싱크볼 선택</h2>
             </div>
 
-            <!-- 치수 자동 추천 -->
+            <!-- 치수 입력 및 자동 추천 -->
             <div class="dimension-calc">
-                <div class="dimension-header">
-                    <i class="fas fa-ruler-combined"></i>
-                    <span>치수 입력으로 자동 추천받기</span>
-                    <button class="dimension-toggle" onclick="toggleDimensionCalc()">
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
+                <div class="dimension-header" onclick="toggleDimensionCalc()">
+                    <div class="dimension-check">
+                        <i class="fas fa-check"></i>
+                    </div>
+                    <div class="dimension-header-text">
+                        <strong>치수 입력 및 자동 추천</strong>
+                        <span>정확히 모르셔도 괜찮아요! 대략적인 수치만 적어주시거나 비워두시면, 상담 시 전문가가 쉽게 확인하는 법을 알려드립니다.</span>
+                    </div>
                 </div>
                 <div class="dimension-body" id="dimensionBody" style="display:none;">
-                    <div class="dimension-guide">
-                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/09/sinkbowl-measure-guide.png" alt="실측 안내" onerror="this.style.display='none'">
-                        <div class="dimension-guide-text">
-                            <p><strong>타공 사이즈</strong>: 싱크대 상판에 뚫린 구멍의 가로/세로</p>
-                            <p><strong>상판 세로</strong>: 싱크대 상판의 세로 길이</p>
-                            <p><strong>하부장 가로</strong>: 싱크대 아래 수납장 내부 가로 길이</p>
-                        </div>
-                    </div>
                     <div class="dimension-inputs">
                         <div class="dimension-row">
                             <div class="dimension-input">
                                 <label>타공 가로</label>
                                 <div class="input-wrap">
-                                    <input type="number" id="dimWidth" placeholder="예: 800" oninput="calculateRecommend()">
+                                    <input type="number" id="dimWidth" placeholder="">
                                     <span>mm</span>
                                 </div>
                             </div>
                             <div class="dimension-input">
                                 <label>타공 세로</label>
                                 <div class="input-wrap">
-                                    <input type="number" id="dimDepth" placeholder="예: 450" oninput="calculateRecommend()">
+                                    <input type="number" id="dimDepth" placeholder="">
                                     <span>mm</span>
                                 </div>
                             </div>
@@ -1223,19 +1233,23 @@
                             <div class="dimension-input">
                                 <label>상판 세로</label>
                                 <div class="input-wrap">
-                                    <input type="number" id="dimTop" placeholder="예: 600" oninput="calculateRecommend()">
+                                    <input type="number" id="dimTop" placeholder="">
                                     <span>mm</span>
                                 </div>
                             </div>
                             <div class="dimension-input">
                                 <label>하부장 가로</label>
                                 <div class="input-wrap">
-                                    <input type="number" id="dimCabinet" placeholder="예: 900" oninput="calculateRecommend()">
+                                    <input type="number" id="dimCabinet" placeholder="">
                                     <span>mm</span>
                                 </div>
                             </div>
                         </div>
                     </div>
+                    <button class="dimension-calc-btn" onclick="calculateRecommend()">
+                        <i class="fas fa-calculator"></i>
+                        사이즈 자동 계산하기
+                    </button>
                     <div class="dimension-result" id="dimensionResult" style="display:none;">
                         <div class="recommend-badge">
                             <i class="fas fa-magic"></i>
@@ -1979,15 +1993,15 @@
         let recommendedModel = null;
 
         function toggleDimensionCalc() {
+            const calc = document.querySelector('.dimension-calc');
             const body = document.getElementById('dimensionBody');
-            const toggle = document.querySelector('.dimension-toggle');
 
             if (body.style.display === 'none') {
                 body.style.display = 'block';
-                toggle.classList.add('open');
+                calc.classList.add('active');
             } else {
                 body.style.display = 'none';
-                toggle.classList.remove('open');
+                calc.classList.remove('active');
             }
         }
 
