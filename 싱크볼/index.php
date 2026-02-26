@@ -24,7 +24,7 @@ $calcRules = $settings['sinkbowl_calc_rules'] ?? [
 ];
 
 // 뱃지 매핑
-$badges = ['COMPACT', 'BEST', 'WIDE', 'FLAGSHIP'];
+$badges = ['BASIC', 'BEST', 'WIDE', 'FLAGSHIP'];
 ?>
 <!DOCTYPE html>
 <html lang="ko-KR">

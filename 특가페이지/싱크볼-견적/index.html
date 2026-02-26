@@ -2024,55 +2024,88 @@
         }
 
         function calculateRecommend() {
-            const width = parseInt(document.getElementById('dimWidth').value) || 0;
-            const depth = parseInt(document.getElementById('dimDepth').value) || 0;
-            const top = parseInt(document.getElementById('dimTop').value) || 0;
-            const cabinet = parseInt(document.getElementById('dimCabinet').value) || 0;
+            const width = parseInt(document.getElementById('dimWidth').value) || 0;  // 타공 가로
+            const depth = parseInt(document.getElementById('dimDepth').value) || 0;  // 타공 세로
+            const top = parseInt(document.getElementById('dimTop').value) || 0;      // 상판 세로
+            const cabinet = parseInt(document.getElementById('dimCabinet').value) || 0;  // 하부장 가로
 
-            // 모든 값이 입력되었는지 확인
-            if (width === 0 || depth === 0) {
+            // 최소한 타공 가로와 하부장 가로가 입력되어야 함
+            if (width === 0 && cabinet === 0) {
                 document.getElementById('dimensionResult').style.display = 'none';
                 return;
             }
 
             let model = null;
             let reason = '';
+            let isError = false;
 
-            // 싱크볼 사양
-            // AQ860: 860x480mm (타공 사이즈 기준)
-            // AQ900: 900x480mm
-            // AQ980: 980x480mm
-
-            // 타공 가로 기준으로 추천
-            if (width >= 950) {
-                model = 'AQ980';
-                reason = '타공 가로가 950mm 이상으로 AQ980이 적합합니다.';
-            } else if (width >= 880) {
-                model = 'AQ900';
-                reason = '타공 가로가 880-950mm 사이로 AQ900이 적합합니다.';
-            } else if (width >= 820) {
-                model = 'AQ860';
-                reason = '타공 가로가 820-880mm 사이로 AQ860이 적합합니다.';
-            } else {
-                model = 'AQ860';
-                reason = '타공 사이즈가 작아 가장 작은 AQ860을 추천합니다. 상담을 권장드립니다.';
+            // 상판세로 < 580 = 상담 필요
+            if (top > 0 && top < 580) {
+                model = '상담 필요';
+                reason = '상판 세로가 580mm 미만으로 전문 상담이 필요합니다.';
+                isError = true;
             }
-
-            // 하부장 가로 체크
-            if (cabinet > 0) {
-                if (model === 'AQ980' && cabinet < 1050) {
-                    model = 'AQ900';
-                    reason = '하부장 가로가 좁아 AQ900을 추천합니다.';
-                } else if (model === 'AQ900' && cabinet < 970) {
+            // 하부장가로 <= 790 OR 타공가로 > 965 OR 타공세로 > 515 = 시공 불가
+            else if ((cabinet > 0 && cabinet <= 790) || (width > 0 && width > 965) || (depth > 0 && depth > 515)) {
+                model = '시공 불가';
+                if (cabinet > 0 && cabinet <= 790) {
+                    reason = '하부장 가로가 790mm 이하로 시공이 어렵습니다.';
+                } else if (width > 965) {
+                    reason = '타공 가로가 965mm 초과로 시공이 어렵습니다.';
+                } else {
+                    reason = '타공 세로가 515mm 초과로 시공이 어렵습니다.';
+                }
+                isError = true;
+            }
+            // 하부장가로 > 940, 타공가로 <= 965 = 980
+            else if (cabinet > 940 && (width === 0 || width <= 965)) {
+                model = 'AQ980';
+                reason = '하부장 가로 940mm 초과, 타공 가로 965mm 이하로 AQ980이 적합합니다.';
+            }
+            // 하부장가로 > 850, 타공가로 <= 885 = 900
+            else if (cabinet > 850 && (width === 0 || width <= 885)) {
+                model = 'AQ900';
+                reason = '하부장 가로 850mm 초과, 타공 가로 885mm 이하로 AQ900이 적합합니다.';
+            }
+            // 하부장가로 > 790, 타공가로 <= 845 = 860
+            else if (cabinet > 790 && (width === 0 || width <= 845)) {
+                model = 'AQ860';
+                reason = '하부장 가로 790mm 초과, 타공 가로 845mm 이하로 AQ860이 적합합니다.';
+            }
+            // 타공 가로만 입력된 경우
+            else if (width > 0 && cabinet === 0) {
+                if (width <= 845) {
                     model = 'AQ860';
-                    reason = '하부장 가로가 좁아 AQ860을 추천합니다.';
+                    reason = '타공 가로 845mm 이하로 AQ860이 적합합니다.';
+                } else if (width <= 885) {
+                    model = 'AQ900';
+                    reason = '타공 가로 885mm 이하로 AQ900이 적합합니다.';
+                } else if (width <= 965) {
+                    model = 'AQ980';
+                    reason = '타공 가로 965mm 이하로 AQ980이 적합합니다.';
                 }
             }
+            // 그 외 케이스
+            else {
+                model = '상담 필요';
+                reason = '입력하신 치수로는 정확한 추천이 어렵습니다. 상담을 권장드립니다.';
+                isError = true;
+            }
 
-            recommendedModel = model;
+            recommendedModel = isError ? null : model;
             document.getElementById('recommendModel').textContent = model;
             document.getElementById('recommendReason').textContent = reason;
             document.getElementById('dimensionResult').style.display = 'block';
+
+            // 에러 상태일 때 스타일 변경
+            const resultDiv = document.getElementById('dimensionResult');
+            if (isError) {
+                resultDiv.style.background = 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)';
+                document.querySelector('.recommend-apply').style.display = 'none';
+            } else {
+                resultDiv.style.background = 'linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%)';
+                document.querySelector('.recommend-apply').style.display = 'inline-block';
+            }
         }
 
         function applyRecommend() {
