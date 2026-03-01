@@ -204,7 +204,7 @@
                             <p class="original-price" style="font-size: 1rem; color: #94a3b8; text-decoration: line-through; margin-bottom: 5px;">소비자가 650,000원</p>
                             <div class="price-main">
                                 <span class="sale-label" style="color: #ef4444; font-weight: 600; font-size: 0.9rem;">특별행사가</span>
-                                <span class="price-value" style="color: #ef4444;">450,000</span>
+                                <span class="price-value" style="color: #ef4444;">480,000</span>
                                 <span class="price-unit">원</span>
                             </div>
                             <div class="price-benefits">
@@ -244,7 +244,7 @@
                                 <li><i class="fas fa-check-circle"></i> 엠보싱 처리로 스크래치 방지</li>
                                 <li><i class="fas fa-check-circle"></i> 특수 나노코팅으로 위생적 관리</li>
                                 <li><i class="fas fa-check-circle"></i> 소음 저감 시스템</li>
-                                <li><i class="fas fa-check-circle"></i> 프리미엄 스테인리스 배수구 포함</li>
+                                <li><i class="fas fa-check-circle"></i> 아콴테 듀얼 폭포수 수전 포함</li>
                             </ul>
                         </div>
 
@@ -260,6 +260,13 @@
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- Product Features Image -->
+        <section class="product-features-image" style="padding: 60px 0; background: #f8fafc;">
+            <div class="container">
+                <img src="/images/faucet-option.png" alt="AQ-860NE 제품 상세" style="width: 100%; max-width: 800px; display: block; margin: 0 auto;">
             </div>
         </section>
 
@@ -279,17 +286,10 @@
                             <tr><th>재질</th><td>SUS304 스테인리스 스틸</td></tr>
                             <tr><th>표면처리</th><td>엠보싱 + 나노코팅</td></tr>
                             <tr><th>배수구</th><td>별도 구매</td></tr>
-                            <tr><th>수전</th><td>별도 구매</td></tr>
+                            <tr><th>수전</th><td>폭포수 수전 포함</td></tr>
                         </tbody>
                     </table>
                 </div>
-            </div>
-        </section>
-
-        <!-- Product Features Image -->
-        <section class="product-features-image" style="padding: 60px 0; background: #f8fafc;">
-            <div class="container">
-                <img src="/images/faucet-option.png" alt="AQ-860NE 제품 상세" style="width: 100%; max-width: 800px; display: block; margin: 0 auto;">
             </div>
         </section>
 
@@ -427,10 +427,26 @@
         </div>
     </footer>
 
-    <div class="phone-inquiry-container" id="phoneInquiry">
-        <button class="close-btn" onclick="document.getElementById('phoneInquiry').classList.add('hidden');">&times;</button>
-        <a href="tel:010-2464-4987" class="phone-inquiry-float"><img src="https://lkitchen.co.kr/wp-content/uploads/2025/10/전화문의.png" alt="전화문의" width="222" height="202"></a>
-    </div>
+    <a href="tel:010-2464-4987" class="phone-float-btn">
+        <div class="phone-float-icon"><i class="fas fa-phone"></i></div>
+        <div class="phone-float-text">
+            <span class="phone-float-title">전화문의</span>
+            <span class="phone-float-label">문의가능 시간</span>
+            <span class="phone-float-time">월~금 10:00~20:00</span>
+            <span class="phone-float-number">010-2464-4987</span>
+        </div>
+    </a>
+    <style>
+        .phone-float-btn { position: fixed; bottom: 30px; right: 30px; display: flex; align-items: center; gap: 15px; background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%); color: #fff; padding: 20px 28px; border-radius: 20px; text-decoration: none; box-shadow: 0 8px 30px rgba(239, 68, 68, 0.5); z-index: 9999; transition: all 0.3s ease; }
+        .phone-float-btn:hover { transform: translateY(-5px); box-shadow: 0 15px 40px rgba(239, 68, 68, 0.6); }
+        .phone-float-icon { width: 50px; height: 50px; background: rgba(255,255,255,0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.4rem; }
+        .phone-float-text { display: flex; flex-direction: column; gap: 3px; }
+        .phone-float-title { font-size: 1.1rem; font-weight: 700; }
+        .phone-float-label { font-size: 0.75rem; opacity: 0.8; margin-top: 2px; }
+        .phone-float-time { font-size: 0.8rem; font-weight: 500; }
+        .phone-float-number { font-size: 1.1rem; font-weight: 700; letter-spacing: 0.5px; margin-top: 2px; }
+        @media (max-width: 768px) { .phone-float-btn { bottom: 20px; right: 20px; padding: 15px 20px; gap: 12px; } .phone-float-icon { width: 40px; height: 40px; font-size: 1.1rem; } .phone-float-title { font-size: 0.95rem; } .phone-float-label { font-size: 0.65rem; } .phone-float-time { font-size: 0.7rem; } .phone-float-number { font-size: 0.95rem; } }
+    </style>
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>

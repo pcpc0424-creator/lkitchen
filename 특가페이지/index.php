@@ -435,10 +435,13 @@ require_once __DIR__ . '/../includes/config.php';
             </a>
 
             <!-- 싱크볼 카드 -->
-            <div class="select-card select-card-multi" data-aos="fade-up" data-aos-delay="200">
+            <a href="sinkbowl.php" class="select-card" data-aos="fade-up" data-aos-delay="200">
                 <div class="select-card-badge sinkbowl">SINKBOWL</div>
                 <div class="select-card-image">
                     <img src="https://lkitchen.co.kr/wp-content/uploads/2025/09/8H2A9623-1024x683.jpg" alt="아콴테 싱크볼">
+                    <span class="calculator-link" onclick="event.preventDefault(); event.stopPropagation(); window.location.href='싱크볼-견적/';">
+                        <i class="fas fa-calculator"></i> 견적 계산기
+                    </span>
                 </div>
                 <div class="select-card-content">
                     <div class="select-card-icon sinkbowl">
@@ -451,18 +454,12 @@ require_once __DIR__ . '/../includes/config.php';
                         <span class="select-card-feature sinkbowl">AQ-900NE</span>
                         <span class="select-card-feature sinkbowl">AQ-980NE</span>
                     </div>
-                    <div class="select-card-btns">
-                        <a href="/싱크볼/" class="select-card-btn sinkbowl">
-                            제품 보러가기
-                            <i class="fas fa-arrow-right"></i>
-                        </a>
-                        <a href="싱크볼-견적/" class="select-card-btn sinkbowl-outline">
-                            견적 계산기
-                            <i class="fas fa-calculator"></i>
-                        </a>
+                    <div class="select-card-btn sinkbowl">
+                        제품 보러가기
+                        <i class="fas fa-arrow-right"></i>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
     </main>
 

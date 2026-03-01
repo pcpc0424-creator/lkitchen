@@ -2029,7 +2029,7 @@
             const top = parseInt(document.getElementById('dimTop').value) || 0;      // 상판 세로
             const cabinet = parseInt(document.getElementById('dimCabinet').value) || 0;  // 하부장 가로
 
-            // 최소한 타공 가로와 하부장 가로가 입력되어야 함
+            // 최소한 타공 가로 또는 하부장 가로가 입력되어야 함
             if (width === 0 && cabinet === 0) {
                 document.getElementById('dimensionResult').style.display = 'none';
                 return;
@@ -2057,38 +2057,58 @@
                 }
                 isError = true;
             }
-            // 하부장가로 > 940, 타공가로 <= 965 = 980
-            else if (cabinet > 940 && (width === 0 || width <= 965)) {
-                model = 'AQ980';
-                reason = '하부장 가로 940mm 초과, 타공 가로 965mm 이하로 AQ980이 적합합니다.';
-            }
-            // 하부장가로 > 850, 타공가로 <= 885 = 900
-            else if (cabinet > 850 && (width === 0 || width <= 885)) {
-                model = 'AQ900';
-                reason = '하부장 가로 850mm 초과, 타공 가로 885mm 이하로 AQ900이 적합합니다.';
-            }
-            // 하부장가로 > 790, 타공가로 <= 845 = 860
-            else if (cabinet > 790 && (width === 0 || width <= 845)) {
-                model = 'AQ860';
-                reason = '하부장 가로 790mm 초과, 타공 가로 845mm 이하로 AQ860이 적합합니다.';
-            }
-            // 타공 가로만 입력된 경우
-            else if (width > 0 && cabinet === 0) {
-                if (width <= 845) {
-                    model = 'AQ860';
-                    reason = '타공 가로 845mm 이하로 AQ860이 적합합니다.';
-                } else if (width <= 885) {
-                    model = 'AQ900';
-                    reason = '타공 가로 885mm 이하로 AQ900이 적합합니다.';
-                } else if (width <= 965) {
-                    model = 'AQ980';
-                    reason = '타공 가로 965mm 이하로 AQ980이 적합합니다.';
+            // 정상 추천 로직
+            else {
+                // 둘 다 입력된 경우 - AND 조건으로 체크
+                if (width > 0 && cabinet > 0) {
+                    // 하부장가로 > 940 AND 타공가로 <= 965 = 980
+                    if (cabinet > 940 && width <= 965) {
+                        model = 'AQ980';
+                        reason = '하부장 가로 940mm 초과, 타공 가로 965mm 이하로 AQ980이 적합합니다.';
+                    }
+                    // 하부장가로 > 850 AND 타공가로 <= 885 = 900
+                    else if (cabinet > 850 && width <= 885) {
+                        model = 'AQ900';
+                        reason = '하부장 가로 850mm 초과, 타공 가로 885mm 이하로 AQ900이 적합합니다.';
+                    }
+                    // 하부장가로 > 790 AND 타공가로 <= 845 = 860
+                    else if (cabinet > 790 && width <= 845) {
+                        model = 'AQ860';
+                        reason = '하부장 가로 790mm 초과, 타공 가로 845mm 이하로 AQ860이 적합합니다.';
+                    }
+                }
+                // 타공 가로만 입력된 경우
+                else if (width > 0 && cabinet === 0) {
+                    if (width <= 845) {
+                        model = 'AQ860';
+                        reason = '타공 가로 845mm 이하로 AQ860이 적합합니다.';
+                    } else if (width <= 885) {
+                        model = 'AQ900';
+                        reason = '타공 가로 885mm 이하로 AQ900이 적합합니다.';
+                    } else if (width <= 965) {
+                        model = 'AQ980';
+                        reason = '타공 가로 965mm 이하로 AQ980이 적합합니다.';
+                    }
+                }
+                // 하부장 가로만 입력된 경우
+                else if (cabinet > 0 && width === 0) {
+                    if (cabinet > 940) {
+                        model = 'AQ980';
+                        reason = '하부장 가로 940mm 초과로 AQ980이 적합합니다.';
+                    } else if (cabinet > 850) {
+                        model = 'AQ900';
+                        reason = '하부장 가로 850mm 초과로 AQ900이 적합합니다.';
+                    } else if (cabinet > 790) {
+                        model = 'AQ860';
+                        reason = '하부장 가로 790mm 초과로 AQ860이 적합합니다.';
+                    }
                 }
             }
-            // 그 외 케이스
-            else {
+
+            // 모델이 결정되지 않은 경우
+            if (!model && !isError) {
                 model = '상담 필요';
-                reason = '입력하신 치수로는 정확한 추천이 어렵습니다. 상담을 권장드립니다.';
+                reason = '입력하신 치수 조합으로는 적합한 모델이 없습니다. 전문 상담을 권장드립니다.';
                 isError = true;
             }
 
