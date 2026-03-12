@@ -1042,6 +1042,133 @@
     </div>
     <div class="popup-overlay" id="popupOverlay"></div>
 
+    <!-- Site Moving Modal -->
+    <div class="site-moving-modal" id="siteMovingModal">
+        <div class="site-moving-overlay"></div>
+        <div class="site-moving-content">
+            <div class="site-moving-icon">
+                <i class="fas fa-truck-moving"></i>
+            </div>
+            <h2 class="site-moving-title">사이트 이사중</h2>
+            <p class="site-moving-desc">
+                더 나은 서비스를 위해 사이트를 이전하고 있습니다.<br>
+                일부 기능이 정상적으로 작동하지 않을 수 있습니다.
+            </p>
+            <p class="site-moving-contact">
+                문의사항은 <a href="tel:1661-9038">1661-9038</a>로 연락주세요.
+            </p>
+            <button class="site-moving-close" onclick="document.getElementById('siteMovingModal').style.display='none';">
+                확인
+            </button>
+        </div>
+    </div>
+    <style>
+        .site-moving-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .site-moving-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+        }
+        .site-moving-content {
+            position: relative;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border-radius: 24px;
+            padding: 50px 60px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: modalSlideIn 0.4s ease-out;
+        }
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        .site-moving-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 25px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .site-moving-icon i {
+            font-size: 36px;
+            color: white;
+        }
+        .site-moving-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        .site-moving-desc {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+        .site-moving-contact {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 30px;
+        }
+        .site-moving-contact a {
+            color: #667eea;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .site-moving-close {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 50px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .site-moving-close:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+        @media (max-width: 768px) {
+            .site-moving-content {
+                padding: 40px 30px;
+            }
+            .site-moving-title {
+                font-size: 26px;
+            }
+            .site-moving-desc {
+                font-size: 14px;
+            }
+        }
+    </style>
+
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
