@@ -40,7 +40,7 @@ function getSiteSettings() {
         'address' => '서울시 서초구 반포대로22길 35, 2층 2002호',
         'email' => '',
         'footer_text' => '© 2024 LOVELY KITCHEN. All Rights Reserved.',
-        'phone_image_url' => 'https://lkitchen.co.kr/wp-content/uploads/2025/10/전화문의.png'
+        'phone_image_url' => '/qordjq/floating-box.png'
     ];
 
     return array_merge($defaults, $settings);

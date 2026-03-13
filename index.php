@@ -166,17 +166,17 @@ require_once __DIR__ . '/includes/config.php';
         <!-- Sinkbowl Banner (Mobile: 헤더 바로 아래) -->
         <section class="promo-banner-section">
             <a href="<?php echo SITE_URL; ?>/싱크볼/" class="promo-banner-link">
-                <img src="https://lkitchen.co.kr/wp-content/uploads/2025/09/22222.png" alt="아콴테 프리미엄 사각싱크볼" class="promo-banner-img">
+                <img src="/images/banners/sinkbowl-banner.png" alt="아콴테 프리미엄 사각싱크볼" class="promo-banner-img">
             </a>
         </section>
 
         <!-- Hero Section -->
         <section class="hero">
             <div class="hero-bg">
-                <div class="hero-slide active" style="background-image: url('https://lkitchen.co.kr/wp-content/uploads/2025/03/KakaoTalk_20250316_152140022_29-1.png')"></div>
-                <div class="hero-slide" style="background-image: url('https://lkitchen.co.kr/wp-content/uploads/2025/03/KakaoTalk_20250316_152140022_26-1-1-1.png')"></div>
-                <div class="hero-slide" style="background-image: url('https://lkitchen.co.kr/wp-content/uploads/2025/03/KakaoTalk_20250316_152140022_24-1.png')"></div>
-                <div class="hero-slide" style="background-image: url('https://lkitchen.co.kr/wp-content/uploads/2025/03/KakaoTalk_20250316_152140022_27-1-1.png')"></div>
+                <div class="hero-slide active" style="background-image: url('/images/hero/hero-bg-1.jpg')"></div>
+                <div class="hero-slide" style="background-image: url('/images/hero/hero-bg-2.jpg')"></div>
+                <div class="hero-slide" style="background-image: url('/images/hero/hero-bg-3.jpg')"></div>
+                <div class="hero-slide" style="background-image: url('/images/hero/hero-bg-4.jpg')"></div>
             </div>
             <div class="hero-overlay"></div>
 
@@ -243,10 +243,7 @@ require_once __DIR__ . '/includes/config.php';
         <!-- Review Banner -->
         <section class="review-banner-section">
             <a href="<?php echo SITE_URL; ?>/음식물처리기-후기/" class="review-banner-link">
-                <picture>
-                    <source media="(max-width: 768px)" srcset="<?php echo SITE_URL; ?>/images/review-banner-mobile.png">
-                    <img src="https://lkitchen.co.kr/wp-content/uploads/2025/10/피시-003.png" alt="고객 솔직 리뷰 모음.zip" class="review-banner-img">
-                </picture>
+                <img src="/images/banners/review-banner.png" alt="고객 솔직 리뷰 모음.zip" class="review-banner-img">
             </a>
         </section>
 
@@ -337,13 +334,13 @@ require_once __DIR__ . '/includes/config.php';
                             <div class="product-carousel swiper">
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide">
-                                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/03/Frame-97-1.png" alt="LK-750A">
+                                        <img src="/images/products/lk-750a-1.png" alt="LK-750A">
                                     </div>
                                     <div class="swiper-slide">
-                                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/03/Frame-47.png" alt="LK-750A">
+                                        <img src="/images/products/lk-750a-2.png" alt="LK-750A">
                                     </div>
                                     <div class="swiper-slide">
-                                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/03/Frame-101.png" alt="LK-750A">
+                                        <img src="/images/products/lk-750a-3.png" alt="LK-750A">
                                     </div>
                                 </div>
                                 <div class="swiper-pagination"></div>
@@ -379,13 +376,13 @@ require_once __DIR__ . '/includes/config.php';
                             <div class="product-carousel swiper">
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide">
-                                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/03/Frame-99.png" alt="LK-900A">
+                                        <img src="/images/products/lk-900a-1.png" alt="LK-900A">
                                     </div>
                                     <div class="swiper-slide">
-                                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/03/Frame-50.png" alt="LK-900A">
+                                        <img src="/images/products/lk-900a-2.png" alt="LK-900A">
                                     </div>
                                     <div class="swiper-slide">
-                                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/03/Frame-103.png" alt="LK-900A">
+                                        <img src="/images/products/lk-900a-3.png" alt="LK-900A">
                                     </div>
                                 </div>
                                 <div class="swiper-pagination"></div>
@@ -422,13 +419,13 @@ require_once __DIR__ . '/includes/config.php';
                             <div class="product-carousel swiper">
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide">
-                                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/03/Frame-98-1.png" alt="LK-1000A">
+                                        <img src="/images/products/lk-1000a-1.png" alt="LK-1000A">
                                     </div>
                                     <div class="swiper-slide">
-                                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/03/Frame-49.png" alt="LK-1000A">
+                                        <img src="/images/products/lk-1000a-2.png" alt="LK-1000A">
                                     </div>
                                     <div class="swiper-slide">
-                                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/03/Frame-102-1-1.png" alt="LK-1000A">
+                                        <img src="/images/products/lk-1000a-3.png" alt="LK-1000A">
                                     </div>
                                 </div>
                                 <div class="swiper-pagination"></div>
@@ -465,13 +462,13 @@ require_once __DIR__ . '/includes/config.php';
                             <div class="product-carousel swiper">
                                 <div class="swiper-wrapper">
                                     <div class="swiper-slide">
-                                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/03/Frame-100.png" alt="LK-1000B">
+                                        <img src="/images/products/lk-1000b-1.png" alt="LK-1000B">
                                     </div>
                                     <div class="swiper-slide">
-                                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/03/Frame-51.png" alt="LK-1000B">
+                                        <img src="/images/products/lk-1000b-2.png" alt="LK-1000B">
                                     </div>
                                     <div class="swiper-slide">
-                                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/03/Frame-104.png" alt="LK-1000B">
+                                        <img src="/images/products/lk-1000b-3.png" alt="LK-1000B">
                                     </div>
                                 </div>
                                 <div class="swiper-pagination"></div>
@@ -558,7 +555,7 @@ require_once __DIR__ . '/includes/config.php';
                     <div class="innovation-visual" data-aos="fade-left">
                         <div class="innovation-image-wrapper">
                             <div class="innovation-glow"></div>
-                            <img src="https://lkitchen.co.kr/wp-content/uploads/2025/03/제목을-입력해주세요_-004-3.png" alt="4-Way LK 멀티트랩" class="innovation-image">
+                            <img src="/images/banners/multitrap.png" alt="4-Way LK 멀티트랩" class="innovation-image">
                             <div class="innovation-badge-floating">
                                 <span>특허</span>
                                 <span>기술</span>
@@ -580,55 +577,55 @@ require_once __DIR__ . '/includes/config.php';
 
                 <div class="gallery-grid" data-aos="fade-up" data-aos-delay="100">
                     <a href="<?php echo SITE_URL; ?>/사진갤러리/" class="gallery-item large">
-                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/04/1-96.jpg" alt="음식물처리기 시공 사진" loading="lazy">
+                        <img src="/images/gallery/food-disposer-1.jpg" alt="음식물처리기 시공 사진" loading="lazy">
                         <div class="gallery-overlay">
                             <i class="fas fa-expand"></i>
                         </div>
                     </a>
                     <a href="<?php echo SITE_URL; ?>/사진갤러리/" class="gallery-item">
-                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/04/1-38.jpg" alt="음식물처리기 시공 사진" loading="lazy">
+                        <img src="/images/gallery/food-disposer-2.jpg" alt="음식물처리기 시공 사진" loading="lazy">
                         <div class="gallery-overlay">
                             <i class="fas fa-expand"></i>
                         </div>
                     </a>
                     <a href="<?php echo SITE_URL; ?>/사진갤러리/" class="gallery-item">
-                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/04/1-49.jpg" alt="음식물처리기 시공 사진" loading="lazy">
+                        <img src="/images/gallery/food-disposer-3.jpg" alt="음식물처리기 시공 사진" loading="lazy">
                         <div class="gallery-overlay">
                             <i class="fas fa-expand"></i>
                         </div>
                     </a>
                     <a href="<?php echo SITE_URL; ?>/사진갤러리/" class="gallery-item">
-                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/04/1-59.jpg" alt="음식물처리기 시공 사진" loading="lazy">
+                        <img src="/images/gallery/food-disposer-4.jpg" alt="음식물처리기 시공 사진" loading="lazy">
                         <div class="gallery-overlay">
                             <i class="fas fa-expand"></i>
                         </div>
                     </a>
                     <a href="<?php echo SITE_URL; ?>/사진갤러리/" class="gallery-item">
-                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/04/1-75.jpg" alt="음식물처리기 시공 사진" loading="lazy">
+                        <img src="/images/gallery/food-disposer-5.jpg" alt="음식물처리기 시공 사진" loading="lazy">
                         <div class="gallery-overlay">
                             <i class="fas fa-expand"></i>
                         </div>
                     </a>
                     <a href="<?php echo SITE_URL; ?>/사진갤러리/" class="gallery-item tall">
-                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/04/1-110.jpg" alt="음식물처리기 시공 사진" loading="lazy">
+                        <img src="/images/gallery/food-disposer-6.jpg" alt="음식물처리기 시공 사진" loading="lazy">
                         <div class="gallery-overlay">
                             <i class="fas fa-expand"></i>
                         </div>
                     </a>
                     <a href="<?php echo SITE_URL; ?>/사진갤러리/" class="gallery-item">
-                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/04/1-89.jpg" alt="음식물처리기 시공 사진" loading="lazy">
+                        <img src="/images/gallery/food-disposer-7.jpg" alt="음식물처리기 시공 사진" loading="lazy">
                         <div class="gallery-overlay">
                             <i class="fas fa-expand"></i>
                         </div>
                     </a>
                     <a href="<?php echo SITE_URL; ?>/사진갤러리/" class="gallery-item">
-                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/04/1-94.jpg" alt="음식물처리기 시공 사진" loading="lazy">
+                        <img src="/images/gallery/food-disposer-8.jpg" alt="음식물처리기 시공 사진" loading="lazy">
                         <div class="gallery-overlay">
                             <i class="fas fa-expand"></i>
                         </div>
                     </a>
                     <a href="<?php echo SITE_URL; ?>/사진갤러리/" class="gallery-item">
-                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/04/1-100.jpg" alt="음식물처리기 시공 사진" loading="lazy">
+                        <img src="/images/gallery/food-disposer-9.jpg" alt="음식물처리기 시공 사진" loading="lazy">
                         <div class="gallery-overlay">
                             <i class="fas fa-expand"></i>
                         </div>
@@ -655,55 +652,55 @@ require_once __DIR__ . '/includes/config.php';
 
                 <div class="gallery-grid" data-aos="fade-up" data-aos-delay="100">
                     <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" class="gallery-item large">
-                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/0-2048x1536.jpg" alt="아콴테 싱크볼 시공 사진" loading="lazy">
+                        <img src="/images/gallery/sinkbowl-1.jpg" alt="아콴테 싱크볼 시공 사진" loading="lazy">
                         <div class="gallery-overlay">
                             <i class="fas fa-expand"></i>
                         </div>
                     </a>
                     <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" class="gallery-item">
-                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/1-2048x1536.jpg" alt="아콴테 싱크볼 시공 사진" loading="lazy">
+                        <img src="/images/gallery/sinkbowl-2.jpg" alt="아콴테 싱크볼 시공 사진" loading="lazy">
                         <div class="gallery-overlay">
                             <i class="fas fa-expand"></i>
                         </div>
                     </a>
                     <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" class="gallery-item">
-                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/3-2048x1536.jpg" alt="아콴테 싱크볼 시공 사진" loading="lazy">
+                        <img src="/images/gallery/sinkbowl-3.jpg" alt="아콴테 싱크볼 시공 사진" loading="lazy">
                         <div class="gallery-overlay">
                             <i class="fas fa-expand"></i>
                         </div>
                     </a>
                     <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" class="gallery-item">
-                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/3-2-2048x1536.jpg" alt="아콴테 싱크볼 시공 사진" loading="lazy">
+                        <img src="/images/gallery/sinkbowl-4.jpg" alt="아콴테 싱크볼 시공 사진" loading="lazy">
                         <div class="gallery-overlay">
                             <i class="fas fa-expand"></i>
                         </div>
                     </a>
                     <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" class="gallery-item">
-                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/0-1-2048x1536.jpg" alt="아콴테 싱크볼 시공 사진" loading="lazy">
+                        <img src="/images/gallery/sinkbowl-5.jpg" alt="아콴테 싱크볼 시공 사진" loading="lazy">
                         <div class="gallery-overlay">
                             <i class="fas fa-expand"></i>
                         </div>
                     </a>
                     <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" class="gallery-item tall">
-                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/1-2-2048x1536.jpg" alt="아콴테 싱크볼 시공 사진" loading="lazy">
+                        <img src="/images/gallery/sinkbowl-6.jpg" alt="아콴테 싱크볼 시공 사진" loading="lazy">
                         <div class="gallery-overlay">
                             <i class="fas fa-expand"></i>
                         </div>
                     </a>
                     <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" class="gallery-item">
-                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/2-2-2048x1536.jpg" alt="아콴테 싱크볼 시공 사진" loading="lazy">
+                        <img src="/images/gallery/sinkbowl-7.jpg" alt="아콴테 싱크볼 시공 사진" loading="lazy">
                         <div class="gallery-overlay">
                             <i class="fas fa-expand"></i>
                         </div>
                     </a>
                     <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" class="gallery-item">
-                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/1-3-2048x1536.jpg" alt="아콴테 싱크볼 시공 사진" loading="lazy">
+                        <img src="/images/gallery/sinkbowl-8.jpg" alt="아콴테 싱크볼 시공 사진" loading="lazy">
                         <div class="gallery-overlay">
                             <i class="fas fa-expand"></i>
                         </div>
                     </a>
                     <a href="<?php echo SITE_URL; ?>/사진갤러리/싱크볼/" class="gallery-item">
-                        <img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/2-3-2048x1536.jpg" alt="아콴테 싱크볼 시공 사진" loading="lazy">
+                        <img src="/images/gallery/sinkbowl-9.jpg" alt="아콴테 싱크볼 시공 사진" loading="lazy">
                         <div class="gallery-overlay">
                             <i class="fas fa-expand"></i>
                         </div>
@@ -1071,6 +1068,134 @@ require_once __DIR__ . '/includes/config.php';
         </div>
     </div>
     <div class="popup-overlay" id="popupOverlay"></div>
+
+    <!-- Site Moving Modal (비활성화)
+    <div class="site-moving-modal" id="siteMovingModal" style="display:none;">
+        <div class="site-moving-overlay"></div>
+        <div class="site-moving-content">
+            <div class="site-moving-icon">
+                <i class="fas fa-truck-moving"></i>
+            </div>
+            <h2 class="site-moving-title">사이트 이사중</h2>
+            <p class="site-moving-desc">
+                더 나은 서비스를 위해 사이트를 이전하고 있습니다.<br>
+                일부 기능이 정상적으로 작동하지 않을 수 있습니다.
+            </p>
+            <p class="site-moving-contact">
+                문의사항은 <a href="tel:1661-9038">1661-9038</a>로 연락주세요.
+            </p>
+            <button class="site-moving-close" onclick="document.getElementById('siteMovingModal').style.display='none';">
+                확인
+            </button>
+        </div>
+    </div>
+    <style>
+        .site-moving-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 99999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .site-moving-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+        }
+        .site-moving-content {
+            position: relative;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+            border-radius: 24px;
+            padding: 50px 60px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 25px 80px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            animation: modalSlideIn 0.4s ease-out;
+        }
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px) scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        .site-moving-icon {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto 25px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .site-moving-icon i {
+            font-size: 36px;
+            color: white;
+        }
+        .site-moving-title {
+            font-size: 32px;
+            font-weight: 700;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+        .site-moving-desc {
+            font-size: 16px;
+            color: rgba(255, 255, 255, 0.8);
+            line-height: 1.7;
+            margin-bottom: 15px;
+        }
+        .site-moving-contact {
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 30px;
+        }
+        .site-moving-contact a {
+            color: #667eea;
+            font-weight: 600;
+            text-decoration: none;
+        }
+        .site-moving-close {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 50px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .site-moving-close:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.4);
+        }
+        @media (max-width: 768px) {
+            .site-moving-content {
+                padding: 40px 30px;
+            }
+            .site-moving-title {
+                font-size: 26px;
+            }
+            .site-moving-desc {
+                font-size: 14px;
+            }
+        }
+    </style>
+    -->
 
     <!-- Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>

@@ -915,6 +915,12 @@ $cta = $specialData['cta'] ?? [];
         </div>
     </footer>
 
+    <!-- 플로팅 전화문의 버튼 -->
+    <div class="phone-inquiry-container" id="phoneInquiry">
+        <button class="close-btn" onclick="document.getElementById('phoneInquiry').classList.add('hidden');">&times;</button>
+        <a href="tel:1661-9038" class="phone-inquiry-float"><img decoding="async" src="/qordjq/floating-box.png" alt="전화문의" width="222" height="202"></a>
+    </div>
+
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="../js/main.js"></script>

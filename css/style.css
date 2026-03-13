@@ -3619,7 +3619,8 @@ ul, ol {
 
 .promo-banner-img {
     width: 100%;
-    height: auto;
+    height: 100px;
+    object-fit: cover;
     display: block;
 }
 
@@ -3627,13 +3628,12 @@ ul, ol {
 .review-banner-link {
     display: block;
     width: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
 }
 
 .review-banner-img {
     width: 100%;
-    height: auto;
+    height: 100px;
+    object-fit: cover;
     display: block;
 }
 
@@ -3746,4 +3746,9 @@ ul, ol {
 
 .phone-inquiry-container.hidden {
     display: none;
+}
+
+.phone-inquiry-float img {
+    border-radius: 28px;
+    display: block;
 }

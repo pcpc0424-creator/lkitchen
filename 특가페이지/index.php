@@ -413,7 +413,7 @@ require_once __DIR__ . '/../includes/config.php';
             <a href="disposer.php" class="select-card" data-aos="fade-up" data-aos-delay="100">
                 <div class="select-card-badge disposer">DISPOSER</div>
                 <div class="select-card-image">
-                    <img src="https://lkitchen.co.kr/wp-content/uploads/2025/03/Frame-98-1.png" alt="음식물처리기">
+                    <img src="/images/products/lk-1000a-1.png" alt="음식물처리기">
                 </div>
                 <div class="select-card-content">
                     <div class="select-card-icon disposer">
@@ -438,7 +438,7 @@ require_once __DIR__ . '/../includes/config.php';
             <a href="sinkbowl.php" class="select-card" data-aos="fade-up" data-aos-delay="200">
                 <div class="select-card-badge sinkbowl">SINKBOWL</div>
                 <div class="select-card-image">
-                    <img src="https://lkitchen.co.kr/wp-content/uploads/2025/09/8H2A9623-1024x683.jpg" alt="아콴테 싱크볼">
+                    <img src="/images/sinkbowl/aq-main-2.jpg" alt="아콴테 싱크볼">
                     <span class="calculator-link" onclick="event.preventDefault(); event.stopPropagation(); window.location.href='싱크볼-견적/';">
                         <i class="fas fa-calculator"></i> 견적 계산기
                     </span>
@@ -477,6 +477,12 @@ require_once __DIR__ . '/../includes/config.php';
         </div>
         <p>&copy; 2024 LOVELY KITCHEN. All Rights Reserved.</p>
     </footer>
+
+    <!-- 플로팅 전화문의 버튼 -->
+    <div class="phone-inquiry-container" id="phoneInquiry">
+        <button class="close-btn" onclick="document.getElementById('phoneInquiry').classList.add('hidden');">&times;</button>
+        <a href="tel:1661-9038" class="phone-inquiry-float"><img decoding="async" src="/qordjq/floating-box.png" alt="전화문의" width="222" height="202"></a>
+    </div>
 
     <!-- Scripts -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>

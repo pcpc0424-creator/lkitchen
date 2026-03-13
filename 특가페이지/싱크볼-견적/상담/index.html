@@ -395,6 +395,45 @@
             font-weight: 600;
             cursor: pointer;
         }
+
+        /* 플로팅 전화문의 버튼 */
+        .phone-inquiry-container {
+            position: fixed;
+            right: 10px;
+            bottom: 10px;
+            z-index: 9999;
+        }
+        .phone-inquiry-container .close-btn {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            width: 28px;
+            height: 28px;
+            background: #333;
+            color: #fff;
+            border: 2px solid #fff;
+            border-radius: 50%;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+            transition: all 0.2s ease;
+            z-index: 10000;
+        }
+        .phone-inquiry-container .close-btn:hover {
+            background: #e53e3e;
+            transform: scale(1.1);
+        }
+        .phone-inquiry-container.hidden {
+            display: none;
+        }
+        .phone-inquiry-float img {
+            border-radius: 28px;
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -623,5 +662,11 @@
         // Initialize
         loadQuote();
     </script>
+
+    <!-- 플로팅 전화문의 버튼 -->
+    <div class="phone-inquiry-container" id="phoneInquiry">
+        <button class="close-btn" onclick="document.getElementById('phoneInquiry').classList.add('hidden');">&times;</button>
+        <a href="tel:1661-9038" class="phone-inquiry-float"><img decoding="async" src="/qordjq/floating-box.png" alt="전화문의" width="222" height="202"></a>
+    </div>
 </body>
 </html>
