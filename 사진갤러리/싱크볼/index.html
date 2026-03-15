@@ -66,7 +66,7 @@
                     <p class="section-desc">아콴테 싱크볼과 함께하는 깨끗한 변화</p>
                 </div>
 
-                <div class="gallery-page-grid" data-aos="fade-up">
+                <div class="gallery-page-grid" data-aos="fade-up" id="galleryGrid">
                     <div class="gallery-page-item"><img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/0-2048x1536.jpg" alt="시공 사진" loading="lazy"></div>
                     <div class="gallery-page-item"><img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/1-2048x1536.jpg" alt="시공 사진" loading="lazy"></div>
                     <div class="gallery-page-item"><img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/3-2048x1536.jpg" alt="시공 사진" loading="lazy"></div>
@@ -94,6 +94,13 @@
                     <div class="gallery-page-item"><img src="https://lkitchen.co.kr/wp-content/uploads/2025/12/0-5.jpg" alt="시공 사진" loading="lazy"></div>
                 </div>
 
+                <div class="load-more-container" style="text-align: center; margin: 40px 0;">
+                    <button id="loadMoreBtn" class="btn-primary" style="padding: 15px 40px; font-size: 1rem;">
+                        <span>더보기</span> <i class="fas fa-chevron-down"></i>
+                    </button>
+                    <p id="imageCount" style="margin-top: 15px; color: #666; font-size: 0.9rem;"></p>
+                </div>
+
                 <div class="cta-box" data-aos="fade-up">
                     <h3>나도 러블리키친으로 바꾸고 싶다면?</h3>
                     <p>지금 바로 상담받고 특별한 혜택을 받아보세요.</p>
@@ -110,7 +117,7 @@
 
     <div class="phone-inquiry-container" id="phoneInquiry">
         <button class="close-btn" onclick="document.getElementById('phoneInquiry').classList.add('hidden');">&times;</button>
-        <a href="tel:1661-9038" class="phone-inquiry-float"><img decoding="async" src="/qordjq/floating-box.png" alt="전화문의" width="222" height="202"></a>
+        <a href="tel:1661-9038" class="phone-inquiry-float"><img decoding="async" src="/tnwjd/KakaoTalk_20260313_130929757_clean.png" alt="전화문의" width="222" height="202"></a>
     </div>
 
     <div class="lightbox" id="lightbox">
@@ -123,6 +130,36 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="../../js/main.js"></script>
     <script>
+        // 더보기 기능
+        (function() {
+            const ITEMS_PER_PAGE = 12;
+            const gallery = document.getElementById('galleryGrid');
+            const loadMoreBtn = document.getElementById('loadMoreBtn');
+            const imageCount = document.getElementById('imageCount');
+            const items = gallery.querySelectorAll('.gallery-page-item');
+            const total = items.length;
+            let shown = 0;
+
+            function showItems(count) {
+                for (let i = shown; i < Math.min(shown + count, total); i++) {
+                    items[i].style.display = '';
+                }
+                shown = Math.min(shown + count, total);
+                imageCount.textContent = shown + ' / ' + total + '개 사진';
+                if (shown >= total) {
+                    loadMoreBtn.style.display = 'none';
+                }
+            }
+
+            items.forEach(item => item.style.display = 'none');
+            showItems(ITEMS_PER_PAGE);
+
+            loadMoreBtn.addEventListener('click', function() {
+                showItems(ITEMS_PER_PAGE);
+            });
+        })();
+
+        // 라이트박스 기능
         const galleryItems=document.querySelectorAll('.gallery-page-item'),lightbox=document.getElementById('lightbox'),lightboxImg=document.getElementById('lightbox-img');let currentIndex=0,images=[];
         galleryItems.forEach((item,index)=>{const img=item.querySelector('img');if(img){images.push(img.src);item.addEventListener('click',()=>openLightbox(index))}});
         function openLightbox(index){currentIndex=index;lightboxImg.src=images[currentIndex];lightbox.classList.add('active');document.body.style.overflow='hidden'}

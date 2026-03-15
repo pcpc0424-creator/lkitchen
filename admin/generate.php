@@ -74,7 +74,7 @@ function generateReviewPages($type) {
  * 페이지 HTML 생성
  */
 function generatePageHtml($type, $cfg, $reviews, $currentPage, $totalPages) {
-    $baseUrl = 'https://lkitchen.co.kr';
+    $baseUrl = '''';
     $typeUrl = $type === 'food' ? '음식물처리기-후기' : '싱크볼-후기';
     $subtitle = $type === 'food'
         ? '고객님들의 생생한 사용 후기를 확인하세요'

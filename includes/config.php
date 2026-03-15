@@ -4,7 +4,7 @@
  */
 
 // 기본 설정
-define('SITE_URL', 'https://lkitchen.co.kr');
+define('SITE_URL', '');
 define('ADMIN_DATA_PATH', dirname(__DIR__) . '/admin/data');
 
 // 시간대 설정
@@ -40,7 +40,7 @@ function getSiteSettings() {
         'address' => '서울시 서초구 반포대로22길 35, 2층 2002호',
         'email' => '',
         'footer_text' => '© 2024 LOVELY KITCHEN. All Rights Reserved.',
-        'phone_image_url' => '/qordjq/floating-box.png'
+        'phone_image_url' => '/tnwjd/KakaoTalk_20260313_130929757_clean.png'
     ];
 
     return array_merge($defaults, $settings);
